@@ -1,60 +1,136 @@
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { CuisineDiscs } from "@/components/home/cuisine-discs";
+import s from "@/components/home/home.module.css";
+import { badges, scenes } from "@/components/home/logos";
+import { Overture } from "@/components/home/overture";
+import { PantryProof } from "@/components/home/pantry-proof";
+import { Reveal } from "@/components/home/reveal";
+import { Sunburst } from "@/components/home/sunburst";
 
-const plannedPages = [
-  "Dashboard",
-  "My Recipes",
-  "My Pantry",
-  "Search / Lookup",
-  "Recipe Detail",
-  "Add Recipe",
-]
+/**
+ * The Sunburst — the chosen home page, built from Springfield Kitchen.
+ *
+ * A scroll-driven kebab duel opens the site; when it resolves, the sticky stage
+ * unsticks and the bright sunburst hero scrolls up in its place, followed by
+ * three plain sections. The cartoon dial is high, but the page never stops
+ * being legible: flat cream ground, one hero line, one illustration.
+ *
+ * The page itself is a server component. Only the four pieces that are tied to
+ * scroll or to entering the viewport ship JavaScript.
+ */
+
+// The one link on this page that points at a route which does not exist yet.
+// Supabase Auth is wired up but there is no sign-in page; change this to
+// "/login" once section 8 of the handoff doc gets built.
+const ACCOUNT_HREF = "#start";
 
 export default function Home() {
   return (
-    <main className="mx-auto w-full max-w-2xl px-6 py-16">
-      <div className="mb-8 flex items-center gap-3">
-        <h1 className="text-2xl font-semibold tracking-tight">Chef App</h1>
-        <Badge variant="secondary">Scaffold</Badge>
-      </div>
+    <div className={s.home}>
+      <Overture />
 
-      <p className="text-muted-foreground mb-10">
-        Pantry-matching recipe manager — find what you can cook with what you
-        already have.
-      </p>
+      <nav className={s.nav}>
+        <span className={s.mark}>
+          <span className={s.disc}>
+            <Image src={badges.italian} alt="" width={34} height={34} />
+          </span>
+          DUELING KEBABS
+        </span>
+        <span className={s.spacer} />
+        <span className={s.navLinks}>
+          <Link href="#pantry">Pantry</Link>
+          <Link href="#cuisines">Recipes</Link>
+          <Link href={ACCOUNT_HREF}>Log in</Link>
+        </span>
+      </nav>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Groundwork is in place</CardTitle>
-          <CardDescription>
-            Next.js App Router, Tailwind CSS v4, shadcn/ui and the Supabase
-            client are wired up. Feature work starts from here.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
+      <div className={s.top}>
+        <Sunburst />
+        <div className={s.wrap}>
           <div>
-            <p className="mb-2 text-sm font-medium">Planned pages</p>
-            <ul className="text-muted-foreground grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
-              {plannedPages.map((page) => (
-                <li key={page}>{page}</li>
-              ))}
-            </ul>
+            <span className={s.kicker}>No shopping list required</span>
+            <h1 className={s.big}>
+              WHAT CAN
+              <br />I MAKE?
+            </h1>
+            <p className={s.lede}>
+              Tell it what is in your pantry, your fridge and your freezer. It
+              tells you what you can cook right now.
+            </p>
+            <div className={s.cta}>
+              <Link className={`${s.btn} ${s.primary}`} href="#pantry">
+                Open the fridge
+              </Link>
+              <Link className={s.btn} href="#cuisines">
+                See a recipe
+              </Link>
+            </div>
           </div>
 
-          <Button asChild>
-            <Link href="/health">Check environment health</Link>
-          </Button>
-        </CardContent>
-      </Card>
-    </main>
-  )
+          {/* The hero logo is a square scene, so it takes radius-lg and a
+              keyline rather than the badge discs' radius-disc. Its sand backing
+              is sampled from the illustration's own ground. */}
+          <div className={s.heroart}>
+            <div className={s.panel}>
+              <Image
+                src={scenes.downWithHunger}
+                alt="Down with Hunger — a cartoon man holding a protest placard in one hand and a shawarma in the other, mid-shout"
+                priority
+              />
+            </div>
+            <span className={s.placard}>DOWN WITH HUNGER</span>
+          </div>
+        </div>
+      </div>
+
+      <section className={`${s.wrap} ${s.section}`} id="cuisines">
+        <p className={s.eyebrow}>Your own cuisine list</p>
+        <h2 className={s.sec}>EVERY KITCHEN YOU COOK IN</h2>
+        <CuisineDiscs />
+      </section>
+
+      <section className={`${s.wrap} ${s.section}`} id="pantry">
+        <p className={s.eyebrow}>The whole trick</p>
+        <h2 className={s.sec}>PANTRY IN, DINNER OUT</h2>
+        <PantryProof />
+      </section>
+
+      <div className={s.sky} id="start">
+        <svg
+          className={`${s.cloud} ${s.c1}`}
+          width="150"
+          height="46"
+          viewBox="0 0 150 46"
+          aria-hidden="true"
+        >
+          <path d="M26 42 a18 18 0 0 1 2-35 a24 24 0 0 1 45-4 a20 20 0 0 1 34 12 a16 16 0 0 1-8 27z" />
+        </svg>
+        <svg
+          className={`${s.cloud} ${s.c2}`}
+          width="110"
+          height="36"
+          viewBox="0 0 150 46"
+          aria-hidden="true"
+        >
+          <path d="M26 42 a18 18 0 0 1 2-35 a24 24 0 0 1 45-4 a20 20 0 0 1 34 12 a16 16 0 0 1-8 27z" />
+        </svg>
+        <div className={s.wrap}>
+          <Reveal>
+            <h2 className={`${s.sec} ${s.skyHeading}`}>
+              START WITH WHAT
+              <br />
+              YOU ALREADY HAVE
+            </h2>
+          </Reveal>
+          <Reveal>
+            <Link className={`${s.btn} ${s.primary}`} href={ACCOUNT_HREF}>
+              Create a free account
+            </Link>
+          </Reveal>
+        </div>
+      </div>
+    </div>
+  );
 }
