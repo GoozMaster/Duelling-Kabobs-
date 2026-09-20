@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server"
 import { createServerClient } from "@supabase/ssr"
 
 import { env } from "@/lib/env"
+import type { Database } from "@/lib/supabase/database.types"
 
 /**
  * Refreshes the Supabase auth session on every matched request and forwards the
@@ -11,7 +12,7 @@ import { env } from "@/lib/env"
 export async function updateSession(request: NextRequest) {
   let response = NextResponse.next({ request })
 
-  const supabase = createServerClient(
+  const supabase = createServerClient<Database>(
     env.supabaseUrl,
     env.supabasePublishableKey,
     {

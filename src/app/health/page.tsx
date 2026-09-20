@@ -76,10 +76,44 @@ async function runChecks(): Promise<CheckResult[]> {
   try {
     const supabase = await createClient()
     const { data } = await supabase.auth.getUser()
+    const signedIn = Boolean(data.user)
+
     checks.push({
       label: "Server client session read",
       ok: true,
       detail: data.user ? `signed in as ${data.user.email}` : "no active session (anonymous)",
+    })
+
+    // Public SELECT must work without an account — the Recipes page and the
+    // cuisine filter both depend on it.
+    const cuisines = await supabase
+      .from("cuisines")
+      .select("name", { count: "exact", head: true })
+
+    checks.push({
+      label: "Public read (cuisines)",
+      ok: !cuisines.error && cuisines.count === 11,
+      detail: cuisines.error
+        ? cuisines.error.message
+        : `${cuisines.count} of 11 seeded cuisines readable`,
+    })
+
+    // The inverse: pantry_items has no policy for `anon`, so a visitor with no
+    // session must see zero rows. Seeing any row here means the private data is
+    // leaking to the public internet.
+    const pantry = await supabase
+      .from("pantry_items")
+      .select("id", { count: "exact", head: true })
+
+    const pantryCount = pantry.count ?? 0
+    checks.push({
+      label: signedIn ? "Pantry readable by admin" : "Pantry hidden from the public",
+      ok: signedIn ? pantryCount > 0 : pantryCount === 0,
+      detail: pantry.error
+        ? pantry.error.message
+        : signedIn
+          ? `${pantryCount} items visible to this session`
+          : `${pantryCount} rows returned (must be 0 — RLS blocks anonymous reads)`,
     })
   } catch (error) {
     checks.push({

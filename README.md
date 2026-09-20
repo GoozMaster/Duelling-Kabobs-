@@ -43,6 +43,57 @@ variable.
 The same two variables must be set in the Vercel project settings for
 production, preview and development.
 
+## Database
+
+The schema lives in `supabase/migrations/`, numbered in apply order. Those files
+are the source of truth — the hosted database is a product of them, never the
+other way around.
+
+| Migration | What it does |
+| --- | --- |
+| `20260920000100_init_schema.sql` | `cuisines`, `recipes`, `ingredients`, `pantry_items` + indexes |
+| `20260920000200_rls_policies.sql` | `is_admin()` and every Row Level Security policy |
+| `20260920000300_seed_reference_data.sql` | 11 cuisines and the 256-item pantry inventory |
+
+The Supabase CLI is not installed; migrations are applied through the Supabase
+MCP integration in Claude Code. The filenames follow the CLI's
+`<timestamp>_<name>.sql` convention, so running `supabase link` later picks them
+up without renaming anything.
+
+### Security model
+
+This app ships **only the publishable key**, which can reach PostgREST directly
+at `<project>/rest/v1/*` from any browser — bypassing Next.js entirely. So access
+control cannot live in Server Actions; it has to be in the database.
+
+- `cuisines`, `recipes`, `ingredients` — world-readable, admin-writable.
+- `pantry_items` — admin-only in every direction. No `anon` policy exists, so
+  anonymous reads return zero rows.
+
+"Admin" means one email address, held in `public.is_admin()`. **That literal has
+to stay in sync with the `ADMIN_EMAIL` environment variable** used by the login
+route. Changing the admin means editing both.
+
+Public sign-ups should stay disabled in the Supabase dashboard — there is no
+sign-up flow in this app by design.
+
+### After a schema change
+
+Regenerate the types, or the compiler will be validating against a schema that no
+longer exists:
+
+```
+src/lib/supabase/database.types.ts
+```
+
+It is generated (via the Supabase MCP `generate_typescript_types` tool) and should
+never be hand-edited. All three clients in `src/lib/supabase/` are parameterised
+with its `Database` type, which is what makes table and column names checked at
+compile time.
+
+Visit `/health` after any change — it verifies public reads still work and that
+the pantry is still invisible to anonymous visitors.
+
 ## Layout
 
 ```
@@ -58,7 +109,10 @@ src/
       client.ts         Browser client (Client Components)
       server.ts         Cookie-bound client (Server Components, Actions, Routes)
       middleware.ts     updateSession() — refreshes the auth session
+      database.types.ts Generated schema types (do not hand-edit)
   proxy.ts              Runs updateSession on every matched request
+supabase/
+  migrations/           Schema + RLS + seed, in apply order
 ```
 
 ### A note on `proxy.ts`
