@@ -157,6 +157,8 @@ src/
     pantry.ts           Staple categories and section metadata
     recipes.ts          Draft-recipe shape shared by every intake mode
     recipe-url.ts       schema.org JSON-LD extraction for URL import
+    recipe-csv.ts       CSV parsing for bulk upload
+    similarity.ts       Dice coefficient, for duplicate detection
     env.ts              Fail-fast accessor for the public env vars
     supabase/
       client.ts         Browser client (Client Components)

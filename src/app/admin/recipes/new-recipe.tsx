@@ -5,6 +5,7 @@ import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { type DraftRecipe, emptyDraft } from "@/lib/recipes"
 
+import { CsvImport } from "./csv-import"
 import { RecipeForm } from "./recipe-form"
 import { UrlImport } from "./url-import"
 
@@ -53,9 +54,7 @@ export function NewRecipe({ cuisines }: { cuisines: string[] }) {
         </TabsContent>
 
         <TabsContent value="csv" className="pt-4">
-          <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-3 py-6 text-center text-sm">
-            Bulk CSV upload is the next thing being built.
-          </p>
+          <CsvImport />
         </TabsContent>
 
         <TabsContent value="manual" className="pt-4">
