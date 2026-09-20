@@ -104,6 +104,7 @@ and no roles table; everyone else uses the site signed out.
 | --- | --- |
 | `/login` | Email + password. A non-admin who authenticates is signed straight back out with an explanation. |
 | `/admin` | Guarded by `requireAdmin()`. Currently a stub — section 8 builds the real dashboard. |
+| `/admin/pantry` | My Pantry. Reads and writes `pantry_items`, which has no public policy at all. |
 
 `src/lib/auth.ts` holds the check. `requireAdmin()` is what every admin page
 should call; it returns the user or redirects to `/login`.
@@ -144,10 +145,12 @@ src/
     health/page.tsx     Live Supabase connectivity check
     login/              Admin sign-in page + sign-in/out Server Actions
     admin/page.tsx      Guarded stub; section 8 builds the real dashboard
+    admin/pantry/       My Pantry — staples, standing proteins, fridge, freezer
     globals.css         Tailwind v4 entry + theme tokens
   components/ui/        shadcn/ui components
   lib/
     auth.ts             requireAdmin() and the ADMIN_EMAIL check
+    pantry.ts           Staple categories and section metadata
     env.ts              Fail-fast accessor for the public env vars
     supabase/
       client.ts         Browser client (Client Components)

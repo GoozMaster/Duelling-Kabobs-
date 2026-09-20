@@ -69,6 +69,21 @@ export default async function AdminPage() {
             </p>
           )}
 
+          <Link
+            href="/admin/pantry"
+            className="border-border hover:bg-muted/40 flex items-center justify-between gap-4 rounded-[var(--sk-radius-sm)] border px-3 py-2"
+          >
+            <span>
+              <span className="block text-sm font-medium">My Pantry</span>
+              <span className="text-muted-foreground block text-xs">
+                Staples, standing proteins, fridge and freezer
+              </span>
+            </span>
+            <span aria-hidden className="text-muted-foreground">
+              →
+            </span>
+          </Link>
+
           <p className="text-muted-foreground text-sm">
             The real dashboard — needs-review count, recent recipes, a shortcut to My
             Pantry — is section 8 and gets built last, once it is clear what is actually
