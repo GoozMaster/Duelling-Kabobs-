@@ -618,6 +618,21 @@
   object-fit: cover;
 }
 
+/* A cuisine with no illustration yet. Same disc, same roll — it carries the
+   cuisine's initial in the display face instead of a picture, so a missing
+   asset reads as a designed placeholder rather than a broken image. The full
+   name sits directly beneath, so the letter never has to disambiguate alone. */
+.cz .d.ph {
+  display: grid;
+  place-items: center;
+  background: var(--sk-sand);
+  color: var(--sk-ink);
+  font-family: var(--sk-font-display);
+  font-size: 44px;
+  line-height: 1;
+  user-select: none;
+}
+
 .cz .n {
   font-size: 13px;
   font-weight: 600;

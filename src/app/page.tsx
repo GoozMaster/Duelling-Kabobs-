@@ -1,13 +1,44 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { CuisineDiscs } from "@/components/home/cuisine-discs";
+import { type CuisineDisc, CuisineDiscs } from "@/components/home/cuisine-discs";
 import s from "@/components/home/home.module.css";
 import { badges, scenes } from "@/components/home/logos";
 import { Overture } from "@/components/home/overture";
 import { PantryProof } from "@/components/home/pantry-proof";
 import { Reveal } from "@/components/home/reveal";
 import { Sunburst } from "@/components/home/sunburst";
+import { createPublicClient } from "@/lib/supabase/public";
+
+/**
+ * Rebuilt at most once an hour rather than on every request. The cuisine counts
+ * are the only live data on this page and they only move when a recipe is
+ * added, so a stale hour is harmless — and the showcase entry point stays a
+ * prerendered file instead of a database round trip per visitor.
+ *
+ * This only works because the query below uses the cookie-free public client.
+ * The cookie-bound one reads next/headers, which forces dynamic rendering and
+ * makes this export a no-op.
+ */
+export const revalidate = 3600;
+
+/** The five biggest cuisines, with their real counts. */
+async function topCuisines(): Promise<CuisineDisc[]> {
+  const supabase = createPublicClient();
+  const { data, error } = await supabase.from("recipes").select("cuisine");
+
+  if (error || !data) return [];
+
+  const tally = new Map<string, number>();
+  for (const row of data) {
+    if (row.cuisine) tally.set(row.cuisine, (tally.get(row.cuisine) ?? 0) + 1);
+  }
+
+  return [...tally.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+    .slice(0, 5);
+}
 
 /**
  * The Sunburst — the chosen home page, built from Springfield Kitchen.
@@ -25,7 +56,9 @@ import { Sunburst } from "@/components/home/sunburst";
 // a link for the site owner rather than a call to action for visitors.
 const ACCOUNT_HREF = "/login";
 
-export default function Home() {
+export default async function Home() {
+  const cuisines = await topCuisines();
+
   return (
     <div className={s.home}>
       <Overture />
@@ -87,7 +120,7 @@ export default function Home() {
       <section className={`${s.wrap} ${s.section}`} id="cuisines">
         <p className={s.eyebrow}>Your own cuisine list</p>
         <h2 className={s.sec}>EVERY KITCHEN YOU COOK IN</h2>
-        <CuisineDiscs />
+        <CuisineDiscs cuisines={cuisines} />
       </section>
 
       <section className={`${s.wrap} ${s.section}`} id="pantry">

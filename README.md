@@ -173,6 +173,7 @@ src/
       client.ts         Browser client (Client Components)
       server.ts         Cookie-bound client (Server Components, Actions, Routes)
       middleware.ts     updateSession() — refreshes the auth session
+      public.ts         Cookie-free client for public data (keeps pages static)
       database.types.ts Generated schema types (do not hand-edit)
   proxy.ts              Runs updateSession on every matched request
 supabase/
