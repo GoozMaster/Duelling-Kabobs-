@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { DuelStill } from "./duel-still";
 import s from "./home.module.css";
@@ -27,15 +27,70 @@ const REVEAL_AFTER_MS = 3000;
 /** How long the overlay takes to fade once the page has been revealed. */
 const FADE_MS = 700;
 
+const SEEN_KEY = "dk:intro-seen";
+
+/**
+ * Whether the intro has already played this session.
+ *
+ * Every access is wrapped: sessionStorage throws outright in some privacy
+ * modes, and can be present but empty when site data is blocked. A visitor
+ * whose browser refuses storage should still get the intro, not an error — so
+ * both helpers fail towards "not seen yet".
+ */
+function readSeen(): boolean {
+  try {
+    return window.sessionStorage.getItem(SEEN_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function markSeen(): void {
+  try {
+    window.sessionStorage.setItem(SEEN_KEY, "1");
+  } catch {
+    // Nothing to do. The cost is the intro playing again next navigation,
+    // which is the old behaviour rather than a failure.
+  }
+}
+
 export function Overture() {
   const reduced = usePrefersReducedMotion();
   const [leaving, setLeaving] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const scrollY = useRef(0);
 
+  /**
+   * Read through useSyncExternalStore rather than an effect, because that is
+   * what it is for: state that lives outside React and differs between server
+   * and client.
+   *
+   * The server snapshot is `true` — "already seen" — so the overlay is never
+   * part of the server-rendered HTML. Guessing the other way would put an
+   * intro in the markup for a visitor who already watched it, and they would
+   * see it flash before hydration corrected it.
+   *
+   * Nothing writes to sessionStorage mid-session except this component at
+   * mount, so `subscribe` has nothing to listen for.
+   */
+  const seen = useSyncExternalStore(
+    () => () => {},
+    readSeen,
+    () => true,
+  );
+
   // `reduced` is null until the preference is known. Rendering nothing until
   // then means nobody sees a frame of the motion they opted out of.
-  const showIntro = reduced === false && !dismissed;
+  const showIntro = reduced === false && !seen && !dismissed;
+
+  /**
+   * Marked as soon as it starts, not when it finishes. Reloading halfway
+   * through should not start the intro over — once you have seen any of it,
+   * you have seen it for this session.
+   */
+  useEffect(() => {
+    if (showIntro) markSeen();
+  }, [showIntro]);
 
   /**
    * Two stages, not one.
@@ -109,7 +164,7 @@ export function Overture() {
     return () => window.removeEventListener("keydown", onKey);
   }, [showIntro]);
 
-  if (reduced === null || dismissed) return null;
+  if (reduced === null || seen || dismissed) return null;
 
   if (reduced) {
     // No video at all for reduced motion — not a paused one, not a poster of
