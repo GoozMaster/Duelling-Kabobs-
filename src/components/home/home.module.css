@@ -934,3 +934,178 @@
     display: none;
   }
 }
+
+/* ============================================================================
+   The intro overlay (section 7)
+   Additive only — the Springfield Kitchen rules above are untouched.
+   ========================================================================= */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--sk-space-5);
+  background: var(--sk-surface);
+  animation: introIn 0.2s linear;
+}
+
+/* Same treatment as the cold-open poster it replaces: a square sticker card,
+   hard outline, zero-blur offset shadow. The clip is 300x300, so it fills it
+   exactly rather than being letterboxed. */
+.introCard {
+  width: min(300px, 62vw);
+  aspect-ratio: 1;
+  border-radius: var(--sk-radius-lg);
+  border: 4px solid var(--sk-outline);
+  box-shadow: var(--sk-shadow-pop);
+  overflow: hidden;
+  background: var(--sk-surface-raised);
+}
+
+.introVideo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.introTitle {
+  font-family: var(--sk-font-display);
+  font-size: clamp(28px, 7vw, 44px);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: var(--sk-brick);
+  margin: 0;
+}
+
+.introSkip {
+  font-family: var(--sk-font-ui);
+  font-size: 14px;
+  color: var(--sk-ink-muted);
+  background: none;
+  border: 2px solid transparent;
+  border-radius: var(--sk-radius-pill);
+  padding: var(--sk-space-1) var(--sk-space-4);
+  cursor: pointer;
+}
+
+.introSkip:hover {
+  color: var(--sk-ink);
+}
+
+/* A visible focus ring matters more here than anywhere else on the page: this
+   is a full-screen overlay, and the skip button is the only way out of it. */
+.introSkip:focus-visible {
+  outline: none;
+  border-color: var(--sk-focus-ring);
+  color: var(--sk-ink);
+}
+
+@keyframes introIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Reduced motion: the duel as a still, in the hero slot. */
+.introStill {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--sk-space-6) var(--sk-space-7) 0;
+}
+
+/* ============================================================================
+   Recipe highlight (section 7)
+   ========================================================================= */
+
+.picks {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sk-space-5);
+}
+
+@media (max-width: 760px) {
+  .picks {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pick {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sk-space-2);
+  padding: var(--sk-space-5);
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-md);
+  background: var(--sk-surface-raised);
+  box-shadow: var(--sk-shadow-sticker);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.1s var(--sk-ease-press), box-shadow 0.1s var(--sk-ease-press);
+}
+
+.pick:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-pop);
+}
+
+.pickName {
+  font-family: var(--sk-font-display);
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.01em;
+}
+
+.pickMeta {
+  font-size: 13px;
+  color: var(--sk-ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.picksEmpty {
+  border: 2px dashed var(--sk-outline);
+  border-radius: var(--sk-radius-md);
+  padding: var(--sk-space-7);
+  text-align: center;
+  color: var(--sk-ink-muted);
+}
+
+/* The reveal: the overlay fades and stops taking pointer events, while the clip
+   underneath plays out its remaining seconds instead of being cut off. */
+.introOut {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.7s linear;
+}
+
+/* `.duel` is absolutely positioned and centred by transform, because it was
+   built to sit inside the sticky overture stage. Dropped into the ordinary
+   document flow for the reduced-motion still it escapes its container — it
+   rendered at left:-112px and pushed the page 112px wider than the viewport,
+   producing a horizontal scrollbar. This re-seats it as a normal block rather
+   than editing the original rule, which the stage no longer uses but which
+   stays accurate to what it describes. */
+.introStill .duel {
+  position: static;
+  transform: none;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* The fighters' resting transforms put them off-stage at translateX(±520px),
+   because the scroll animation walked them in from the wings. Held still they
+   were invisible, leaving two floating skewers and no cooks. These re-pose them
+   at the anticipation beat the original called "squared up, skewers raised,
+   leaning back" — the p=0.32 values from the animation's own LX and LEAN
+   tracks. */
+.introStill .duel :global(.figL) {
+  transform: translateX(-150px) rotate(-5deg);
+}
+
+.introStill .duel :global(.figR) {
+  transform: translateX(150px) rotate(5deg);
+}

@@ -4,52 +4,80 @@ import Link from "next/link";
 import { type CuisineDisc, CuisineDiscs } from "@/components/home/cuisine-discs";
 import s from "@/components/home/home.module.css";
 import { badges, scenes } from "@/components/home/logos";
-import { Overture } from "@/components/home/overture";
+import { Overture, OvertureStill } from "@/components/home/overture";
 import { PantryProof } from "@/components/home/pantry-proof";
+import { type Pick, RecipeHighlight } from "@/components/home/recipe-highlight";
 import { Reveal } from "@/components/home/reveal";
 import { Sunburst } from "@/components/home/sunburst";
 import { createPublicClient } from "@/lib/supabase/public";
 
 /**
- * Rebuilt at most once an hour rather than on every request. The cuisine counts
- * are the only live data on this page and they only move when a recipe is
- * added, so a stale hour is harmless — and the showcase entry point stays a
- * prerendered file instead of a database round trip per visitor.
+ * Server-rendered on every request, deliberately.
  *
- * This only works because the query below uses the cookie-free public client.
- * The cookie-bound one reads next/headers, which forces dynamic rendering and
- * makes this export a no-op.
+ * The recipe highlight is specified as a fresh random three per load, and
+ * Next.js decides static-versus-dynamic per route rather than per section —
+ * without Partial Prerendering, which is not enabled here, one genuinely
+ * random block makes the whole page dynamic.
+ *
+ * This page was previously static with a one-hour revalidate. That export is
+ * gone rather than left in place: once the route is dynamic it does nothing,
+ * and a config line that silently has no effect is exactly what hid the
+ * static-to-dynamic regression when the cuisine counts were first added.
  */
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
 
-/** The five biggest cuisines, with their real counts. */
-async function topCuisines(): Promise<CuisineDisc[]> {
+/**
+ * The five biggest cuisines with their real counts, and three recipes at
+ * random — both from one query, since the page needs every row for the tally
+ * anyway and 126 rows is nothing.
+ *
+ * The sample is shuffled in TypeScript rather than `order by random()`, which
+ * PostgREST cannot express. Adding a database function for a decorative
+ * three-item list would be a lot of machinery for no gain.
+ */
+async function homeData(): Promise<{ cuisines: CuisineDisc[]; picks: Pick[] }> {
   const supabase = createPublicClient();
-  const { data, error } = await supabase.from("recipes").select("cuisine");
+  const { data, error } = await supabase
+    .from("recipes")
+    .select("id, title, cuisine");
 
-  if (error || !data) return [];
+  if (error || !data) return { cuisines: [], picks: [] };
 
   const tally = new Map<string, number>();
   for (const row of data) {
     if (row.cuisine) tally.set(row.cuisine, (tally.get(row.cuisine) ?? 0) + 1);
   }
 
-  return [...tally.entries()]
+  const cuisines = [...tally.entries()]
     .map(([name, count]) => ({ name, count }))
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
     .slice(0, 5);
+
+  // Fisher-Yates over a copy: sorting by Math.random() is the common shortcut
+  // and it is measurably biased, favouring some positions over others.
+  const shuffled = [...data];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return { cuisines, picks: shuffled.slice(0, 3) };
 }
 
 /**
  * The Sunburst — the chosen home page, built from Springfield Kitchen.
  *
- * A scroll-driven kebab duel opens the site; when it resolves, the sticky stage
- * unsticks and the bright sunburst hero scrolls up in its place, followed by
- * three plain sections. The cartoon dial is high, but the page never stops
- * being legible: flat cream ground, one hero line, one illustration.
+ * A short kebab-duel clip plays over the page on load and fades after three
+ * seconds, revealing the bright sunburst hero and four plain sections below it.
+ * The cartoon dial is high, but the page never stops being legible: flat cream
+ * ground, one hero line, one illustration.
  *
- * The page itself is a server component. Only the four pieces that are tied to
- * scroll or to entering the viewport ship JavaScript.
+ * The intro used to be 2.6 screens of scroll driving a hand-animated SVG. That
+ * artwork now lives in DuelStill, shown instead of the video to anyone who asks
+ * for reduced motion.
+ *
+ * The page itself is a server component. Only the pieces tied to scroll, to
+ * entering the viewport, or to the intro ship JavaScript.
  */
 
 // Admin sign-in. Only one account exists and it is not self-serve, so this is
@@ -57,7 +85,7 @@ async function topCuisines(): Promise<CuisineDisc[]> {
 const ACCOUNT_HREF = "/login";
 
 export default async function Home() {
-  const cuisines = await topCuisines();
+  const { cuisines, picks } = await homeData();
 
   return (
     <div className={s.home}>
@@ -78,6 +106,8 @@ export default async function Home() {
         </span>
       </nav>
 
+      <OvertureStill />
+
       <div className={s.top}>
         <Sunburst />
         <div className={s.wrap}>
@@ -95,7 +125,7 @@ export default async function Home() {
               <Link className={`${s.btn} ${s.primary}`} href="/what-can-i-make">
                 Open the fridge
               </Link>
-              <Link className={s.btn} href="#cuisines">
+              <Link className={s.btn} href="#picks">
                 See a recipe
               </Link>
             </div>
@@ -116,6 +146,12 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      <section className={`${s.wrap} ${s.section}`} id="picks">
+        <p className={s.eyebrow}>Three from the collection</p>
+        <h2 className={s.sec}>TONIGHT, MAYBE?</h2>
+        <RecipeHighlight picks={picks} />
+      </section>
 
       <section className={`${s.wrap} ${s.section}`} id="cuisines">
         <p className={s.eyebrow}>Your own cuisine list</p>
