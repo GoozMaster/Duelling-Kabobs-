@@ -22,7 +22,7 @@ costs nothing ongoing to operate.
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in the two values
+cp .env.example .env.local   # then fill in the three values
 npm run dev
 ```
 
@@ -31,16 +31,17 @@ wiring is working.
 
 ### Environment variables
 
-Both are public by design — the publishable key only grants what your Row Level
-Security policies allow. **Never** put the `service_role` key in a `NEXT_PUBLIC_*`
-variable.
+The two `NEXT_PUBLIC_` values are public by design — the publishable key only
+grants what your Row Level Security policies allow. **Never** put the
+`service_role` key in a `NEXT_PUBLIC_*` variable.
 
 | Variable | Where to find it |
 | --- | --- |
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase dashboard → Project Settings → API |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase dashboard → Project Settings → API Keys |
+| `ADMIN_EMAIL` | The one account that may sign in. Must match `public.is_admin()` in the RLS migration. Not `NEXT_PUBLIC_` — it stays server-side. |
 
-The same two variables must be set in the Vercel project settings for
+All three must be set in the Vercel project settings for
 production, preview and development.
 
 ## Database
@@ -94,16 +95,59 @@ compile time.
 Visit `/health` after any change — it verifies public reads still work and that
 the pantry is still invisible to anonymous visitors.
 
+## Auth
+
+One account, created by hand in the Supabase dashboard. There is no sign-up flow
+and no roles table; everyone else uses the site signed out.
+
+| Route | Who |
+| --- | --- |
+| `/login` | Email + password. A non-admin who authenticates is signed straight back out with an explanation. |
+| `/admin` | Guarded by `requireAdmin()`. Currently a stub — section 8 builds the real dashboard. |
+
+`src/lib/auth.ts` holds the check. `requireAdmin()` is what every admin page
+should call; it returns the user or redirects to `/login`.
+
+It reads `ADMIN_EMAIL` **lazily**, and deliberately does not live in
+`src/lib/env.ts`. That module validates at import time and is pulled in by
+`supabase/client.ts`, which runs in the browser — where any variable without the
+`NEXT_PUBLIC_` prefix is `undefined`. Putting `ADMIN_EMAIL` there would crash
+every Client Component in the app.
+
+Remember that `requireAdmin()` is a convenience, not the security boundary. RLS
+is. Someone who got past it would still be unable to read or write anything.
+
+`/admin` shows whether the database agrees you are the admin, by calling
+`public.is_admin()` over RPC. If that says **No**, `ADMIN_EMAIL` and the email
+inside the RLS migration have drifted apart — fix it before saving anything.
+
+### Google sign-in is not built yet
+
+The original scope includes Google OAuth. It is not implemented, because the
+provider is not configured in Supabase. Adding it needs:
+
+1. OAuth credentials in Google Cloud.
+2. The Google provider enabled in the Supabase dashboard, with those credentials
+   and the right redirect URLs.
+3. A `/auth/callback` route handler calling `exchangeCodeForSession`.
+4. The button on `/login`, calling `signInWithOAuth`.
+
+The admin check itself needs no changes — it compares the email on whatever JWT
+comes back, regardless of how it was obtained.
+
 ## Layout
 
 ```
 src/
   app/
-    page.tsx            Landing placeholder
+    page.tsx            The Sunburst home page
     health/page.tsx     Live Supabase connectivity check
+    login/              Admin sign-in page + sign-in/out Server Actions
+    admin/page.tsx      Guarded stub; section 8 builds the real dashboard
     globals.css         Tailwind v4 entry + theme tokens
   components/ui/        shadcn/ui components
   lib/
+    auth.ts             requireAdmin() and the ADMIN_EMAIL check
     env.ts              Fail-fast accessor for the public env vars
     supabase/
       client.ts         Browser client (Client Components)
@@ -139,7 +183,7 @@ npm run lint     # eslint
 ## Deploying
 
 The Vercel project is connected to a Git repository, so pushing to `main`
-triggers a production deploy. Make sure the two environment variables above are
-present in the Vercel project first — `src/lib/env.ts` throws on a missing
+triggers a production deploy. Make sure the environment variables above are
+present in the Vercel project first — `src/lib/env.ts` and `src/lib/auth.ts` throw on a missing
 variable, by design, so a misconfigured deploy fails loudly rather than silently
 serving a broken app.

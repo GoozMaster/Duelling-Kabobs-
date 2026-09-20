@@ -21,10 +21,9 @@ import { Sunburst } from "@/components/home/sunburst";
  * scroll or to entering the viewport ship JavaScript.
  */
 
-// The one link on this page that points at a route which does not exist yet.
-// Supabase Auth is wired up but there is no sign-in page; change this to
-// "/login" once section 8 of the handoff doc gets built.
-const ACCOUNT_HREF = "#start";
+// Admin sign-in. Only one account exists and it is not self-serve, so this is
+// a link for the site owner rather than a call to action for visitors.
+const ACCOUNT_HREF = "/login";
 
 export default function Home() {
   return (
@@ -124,9 +123,12 @@ export default function Home() {
               YOU ALREADY HAVE
             </h2>
           </Reveal>
+          {/* Not "create an account" — there is one account, it already
+              exists, and nobody else can make one. Visitors need the recipes,
+              not a sign-up they would be turned away from. */}
           <Reveal>
-            <Link className={`${s.btn} ${s.primary}`} href={ACCOUNT_HREF}>
-              Create a free account
+            <Link className={`${s.btn} ${s.primary}`} href="#cuisines">
+              Browse the recipes
             </Link>
           </Reveal>
         </div>
