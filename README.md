@@ -109,6 +109,13 @@ and no roles table; everyone else uses the site signed out.
 | `/admin/recipes/new` | Add a recipe. Manual entry; URL import and CSV bulk upload land here too. |
 | `/admin/recipes/[id]/edit` | Edit a saved recipe. |
 
+Public routes need no account at all:
+
+| Route | What |
+| --- | --- |
+| `/recipes` | Browse and filter the collection. Alphabetical, infinite scroll. |
+| `/recipes/[id]` | A single recipe. Stub until section 5. |
+
 `src/lib/auth.ts` holds the check. `requireAdmin()` is what every admin page
 should call; it returns the user or redirects to `/login`.
 
@@ -150,12 +157,14 @@ src/
     admin/page.tsx      Guarded stub; section 8 builds the real dashboard
     admin/pantry/       My Pantry — staples, standing proteins, fridge, freezer
     admin/recipes/      Add and edit recipes
+    recipes/            Public browse + recipe detail
     globals.css         Tailwind v4 entry + theme tokens
   components/ui/        shadcn/ui components
   lib/
     auth.ts             requireAdmin() and the ADMIN_EMAIL check
     pantry.ts           Staple categories and section metadata
     recipes.ts          Draft-recipe shape shared by every intake mode
+    recipe-browse.ts    Page size and card shape for the public browse page
     recipe-url.ts       schema.org JSON-LD extraction for URL import
     recipe-csv.ts       CSV parsing for bulk upload
     similarity.ts       Dice coefficient, for duplicate detection

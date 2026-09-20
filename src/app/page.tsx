@@ -40,7 +40,7 @@ export default function Home() {
         <span className={s.spacer} />
         <span className={s.navLinks}>
           <Link href="#pantry">Pantry</Link>
-          <Link href="#cuisines">Recipes</Link>
+          <Link href="/recipes">Recipes</Link>
           <Link href={ACCOUNT_HREF}>Log in</Link>
         </span>
       </nav>
