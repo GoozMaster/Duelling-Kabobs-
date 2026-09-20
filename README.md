@@ -156,6 +156,7 @@ src/
     auth.ts             requireAdmin() and the ADMIN_EMAIL check
     pantry.ts           Staple categories and section metadata
     recipes.ts          Draft-recipe shape shared by every intake mode
+    recipe-url.ts       schema.org JSON-LD extraction for URL import
     env.ts              Fail-fast accessor for the public env vars
     supabase/
       client.ts         Browser client (Client Components)

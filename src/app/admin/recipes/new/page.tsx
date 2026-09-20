@@ -2,10 +2,9 @@ import type { Metadata } from "next"
 import Link from "next/link"
 
 import { requireAdmin } from "@/lib/auth"
-import { emptyDraft } from "@/lib/recipes"
 import { createClient } from "@/lib/supabase/server"
 
-import { RecipeForm } from "../recipe-form"
+import { NewRecipe } from "../new-recipe"
 
 export const metadata: Metadata = {
   title: "Add a recipe — Dueling Kebabs",
@@ -30,15 +29,11 @@ export default async function NewRecipePage() {
           ADD A RECIPE
         </h1>
         <p className="text-muted-foreground text-sm">
-          Type it in by hand. Importing from a URL and bulk CSV upload land here next.
+          Type one in, pull one from a web page, or upload a batch.
         </p>
       </header>
 
-      <RecipeForm
-        draft={emptyDraft()}
-        cuisines={(data ?? []).map((row) => row.name)}
-        mode="create"
-      />
+      <NewRecipe cuisines={(data ?? []).map((row) => row.name)} />
     </main>
   )
 }
