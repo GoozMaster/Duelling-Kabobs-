@@ -70,6 +70,21 @@ export default async function AdminPage() {
           )}
 
           <Link
+            href="/admin/recipes/new"
+            className="border-border hover:bg-muted/40 flex items-center justify-between gap-4 rounded-[var(--sk-radius-sm)] border px-3 py-2"
+          >
+            <span>
+              <span className="block text-sm font-medium">Add a recipe</span>
+              <span className="text-muted-foreground block text-xs">
+                Type one in by hand
+              </span>
+            </span>
+            <span aria-hidden className="text-muted-foreground">
+              →
+            </span>
+          </Link>
+
+          <Link
             href="/admin/pantry"
             className="border-border hover:bg-muted/40 flex items-center justify-between gap-4 rounded-[var(--sk-radius-sm)] border px-3 py-2"
           >

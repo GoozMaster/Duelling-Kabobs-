@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { Fredoka, Geist, Geist_Mono, Luckiest_Guy } from "next/font/google";
+
+import { Toaster } from "@/components/ui/sonner";
+
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,7 +43,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} ${fredoka.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        {/* sonner ships its own Toaster but nothing rendered it, so every
+            toast() in the app was a no-op until this landed. */}
+        <Toaster />
+      </body>
     </html>
   );
 }

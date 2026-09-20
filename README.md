@@ -55,6 +55,7 @@ other way around.
 | `20260920000100_init_schema.sql` | `cuisines`, `recipes`, `ingredients`, `pantry_items` + indexes |
 | `20260920000200_rls_policies.sql` | `is_admin()` and every Row Level Security policy |
 | `20260920000300_seed_reference_data.sql` | 11 cuisines and the 256-item pantry inventory |
+| `20260920000400_save_recipe_function.sql` | `save_recipe()` — recipe + ingredients in one transaction |
 
 The Supabase CLI is not installed; migrations are applied through the Supabase
 MCP integration in Claude Code. The filenames follow the CLI's
@@ -105,6 +106,8 @@ and no roles table; everyone else uses the site signed out.
 | `/login` | Email + password. A non-admin who authenticates is signed straight back out with an explanation. |
 | `/admin` | Guarded by `requireAdmin()`. Currently a stub — section 8 builds the real dashboard. |
 | `/admin/pantry` | My Pantry. Reads and writes `pantry_items`, which has no public policy at all. |
+| `/admin/recipes/new` | Add a recipe. Manual entry; URL import and CSV bulk upload land here too. |
+| `/admin/recipes/[id]/edit` | Edit a saved recipe. |
 
 `src/lib/auth.ts` holds the check. `requireAdmin()` is what every admin page
 should call; it returns the user or redirects to `/login`.
@@ -146,11 +149,13 @@ src/
     login/              Admin sign-in page + sign-in/out Server Actions
     admin/page.tsx      Guarded stub; section 8 builds the real dashboard
     admin/pantry/       My Pantry — staples, standing proteins, fridge, freezer
+    admin/recipes/      Add and edit recipes
     globals.css         Tailwind v4 entry + theme tokens
   components/ui/        shadcn/ui components
   lib/
     auth.ts             requireAdmin() and the ADMIN_EMAIL check
     pantry.ts           Staple categories and section metadata
+    recipes.ts          Draft-recipe shape shared by every intake mode
     env.ts              Fail-fast accessor for the public env vars
     supabase/
       client.ts         Browser client (Client Components)

@@ -139,6 +139,17 @@ export type Database = {
     }
     Functions: {
       is_admin: { Args: never; Returns: boolean }
+      save_recipe: {
+        Args: {
+          p_cuisine: string
+          p_id: string
+          p_ingredients: Json
+          p_instructions: string
+          p_needs_review: boolean
+          p_title: string
+        }
+        Returns: string
+      }
     }
     Enums: {
       [_ in never]: never
