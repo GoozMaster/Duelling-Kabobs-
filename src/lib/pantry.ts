@@ -75,6 +75,24 @@ export const STAPLE_CATEGORIES = [
  */
 export const BASE_STAPLE_CATEGORY = "Base"
 
+/**
+ * The same seven, as a constant.
+ *
+ * "What can I make?" needs them in public mode too, and a public visitor cannot
+ * read pantry_items — RLS grants anonymous no access to it at all. So the list
+ * cannot come from the database there, and the seed row and this array are the
+ * same fact in two places by necessity rather than oversight.
+ */
+export const BASE_STAPLES = [
+  "Salt",
+  "Pepper",
+  "Butter",
+  "Milk",
+  "Eggs",
+  "Water",
+  "General cooking oil",
+] as const
+
 export function isPantrySection(value: unknown): value is PantrySection {
   return PANTRY_SECTIONS.some((section) => section.key === value)
 }

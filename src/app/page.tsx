@@ -72,7 +72,7 @@ export default async function Home() {
         </span>
         <span className={s.spacer} />
         <span className={s.navLinks}>
-          <Link href="#pantry">Pantry</Link>
+          <Link href="/what-can-i-make">What can I make?</Link>
           <Link href="/recipes">Recipes</Link>
           <Link href={ACCOUNT_HREF}>Log in</Link>
         </span>
@@ -92,7 +92,7 @@ export default async function Home() {
               tells you what you can cook right now.
             </p>
             <div className={s.cta}>
-              <Link className={`${s.btn} ${s.primary}`} href="#pantry">
+              <Link className={`${s.btn} ${s.primary}`} href="/what-can-i-make">
                 Open the fridge
               </Link>
               <Link className={s.btn} href="#cuisines">
