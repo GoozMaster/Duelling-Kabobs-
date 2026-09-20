@@ -114,7 +114,7 @@ Public routes need no account at all:
 | Route | What |
 | --- | --- |
 | `/recipes` | Browse and filter the collection. Alphabetical, infinite scroll. |
-| `/recipes/[id]` | A single recipe. Stub until section 5. |
+| `/recipes/[id]` | A single recipe: ingredients, substitutions, instructions. Admin sees edit / mark-reviewed / delete. |
 
 `src/lib/auth.ts` holds the check. `requireAdmin()` is what every admin page
 should call; it returns the user or redirects to `/login`.
@@ -165,6 +165,7 @@ src/
     pantry.ts           Staple categories and section metadata
     recipes.ts          Draft-recipe shape shared by every intake mode
     recipe-browse.ts    Page size and card shape for the public browse page
+    instructions.ts     Splits stored instruction text into headings and steps
     recipe-url.ts       schema.org JSON-LD extraction for URL import
     recipe-csv.ts       CSV parsing for bulk upload
     similarity.ts       Dice coefficient, for duplicate detection

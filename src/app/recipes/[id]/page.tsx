@@ -3,8 +3,12 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { Badge } from "@/components/ui/badge"
+import { parseInstructions } from "@/lib/instructions"
+import { viewerIsAdmin } from "@/lib/recipe-browse"
 import { groupIngredients } from "@/lib/recipes"
 import { createClient } from "@/lib/supabase/server"
+
+import { AdminBar } from "./admin-bar"
 
 export async function generateMetadata({
   params,
@@ -19,9 +23,12 @@ export async function generateMetadata({
 }
 
 /**
- * Placeholder for Recipe Detail (section 5). Public, like the browse page.
- * Section 5 adds instructions, substitutions and the admin edit/delete
- * controls; the route, the query and the grouping stay.
+ * Public recipe view. Anyone can read it; the admin bar renders only for the
+ * one recognised account.
+ *
+ * This page reads cookies to decide that, which forces dynamic rendering — so
+ * unlike the home page it cannot use the cookie-free public client. That is
+ * correct here: the response genuinely differs by who is asking.
  */
 export default async function RecipeDetailPage({
   params,
@@ -35,22 +42,25 @@ export default async function RecipeDetailPage({
   if (!/^[0-9a-f-]{36}$/i.test(id)) notFound()
 
   const supabase = await createClient()
-  const [recipeResult, ingredientsResult] = await Promise.all([
+  const [recipeResult, ingredientsResult, { data: auth }] = await Promise.all([
     supabase.from("recipes").select("*").eq("id", id).maybeSingle(),
     supabase.from("ingredients").select("*").eq("recipe_id", id).order("sort_order"),
+    supabase.auth.getUser(),
   ])
 
   const recipe = recipeResult.data
   if (!recipe) notFound()
 
-  // Reuses the same grouping the editor uses, which is what makes the 39
-  // multi-part recipes read as "Poolish / Dough" instead of one flat list.
+  const ingredients = ingredientsResult.data ?? []
+  const isAdmin = viewerIsAdmin(auth.user?.email)
+
+  // Reuses the editor's own grouping, which is what makes the 39 multi-part
+  // recipes read as "Poolish / Dough" rather than one flat list.
   const groups = groupIngredients(
-    (ingredientsResult.data ?? []).map((row) => ({
-      ...row,
-      groupLabel: row.group_label,
-    })),
+    ingredients.map((row) => ({ ...row, groupLabel: row.group_label })),
   )
+
+  const blocks = parseInstructions(recipe.instructions)
 
   return (
     <main className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-6 py-12">
@@ -64,41 +74,97 @@ export default async function RecipeDetailPage({
         <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
           {recipe.title}
         </h1>
-        {recipe.cuisine && (
-          <span>
-            <Badge variant="outline">{recipe.cuisine}</Badge>
-          </span>
-        )}
+        <div className="flex flex-wrap items-center gap-2">
+          {recipe.cuisine && (
+            <Badge variant="outline" asChild>
+              <Link href={`/recipes?cuisine=${encodeURIComponent(recipe.cuisine)}`}>
+                {recipe.cuisine}
+              </Link>
+            </Badge>
+          )}
+          {/* Admin-only: all 126 imported recipes carry this flag, so showing
+              it publicly would stamp "needs review" across the whole site. */}
+          {isAdmin && recipe.needs_review && (
+            <Badge variant="destructive">Needs review</Badge>
+          )}
+        </div>
       </header>
+
+      {isAdmin && (
+        <AdminBar
+          id={recipe.id}
+          title={recipe.title}
+          ingredientCount={ingredients.length}
+          needsReview={recipe.needs_review}
+        />
+      )}
 
       <section className="flex flex-col gap-4">
         <h2 className="text-lg font-medium">Ingredients</h2>
 
-        {groups.map((group, index) => (
-          <div key={group.label ?? `ungrouped-${index}`} className="flex flex-col gap-1.5">
-            {group.label && (
-              <h3 className="text-muted-foreground text-sm font-medium">{group.label}</h3>
-            )}
-            <ul className="border-border rounded-[var(--sk-radius-md)] border px-4 py-2">
-              {group.items.map((item) => (
-                <li
-                  key={item.id}
-                  className="border-border/40 flex items-baseline justify-between gap-3 border-b py-1.5 text-sm last:border-b-0"
-                >
-                  <span>{item.name}</span>
-                  {!item.required && (
-                    <span className="text-muted-foreground shrink-0 text-xs">optional</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        {groups.length === 0 ? (
+          <p className="text-muted-foreground text-sm">No ingredients recorded yet.</p>
+        ) : (
+          groups.map((group, index) => (
+            <div key={group.label ?? `ungrouped-${index}`} className="flex flex-col gap-1.5">
+              {group.label && (
+                <h3 className="text-muted-foreground text-sm font-medium">{group.label}</h3>
+              )}
+              <ul className="border-border rounded-[var(--sk-radius-md)] border px-4 py-2">
+                {group.items.map((item) => (
+                  <li
+                    key={item.id}
+                    className="border-border/40 flex flex-col gap-0.5 border-b py-2 text-sm last:border-b-0"
+                  >
+                    <span className="flex items-baseline justify-between gap-3">
+                      <span>{item.name}</span>
+                      {!item.required && (
+                        <span className="text-muted-foreground shrink-0 text-xs">
+                          optional
+                        </span>
+                      )}
+                    </span>
+                    {item.substitution && (
+                      <span className="text-muted-foreground text-xs">
+                        or {item.substitution}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        )}
       </section>
 
-      <p className="text-muted-foreground border-border rounded-[var(--sk-radius-sm)] border border-dashed px-3 py-2 text-sm">
-        Instructions, substitution notes and the admin controls arrive in section 5.
-      </p>
+      <section className="flex flex-col gap-3">
+        <h2 className="text-lg font-medium">Instructions</h2>
+
+        {blocks.length === 0 ? (
+          // Two imported recipes genuinely have none. An explicit line beats a
+          // blank region that reads as a loading bug.
+          <p className="text-muted-foreground text-sm">
+            No instructions recorded for this one yet.
+          </p>
+        ) : (
+          <div className="flex flex-col gap-3">
+            {blocks.map((block, index) =>
+              block.kind === "heading" ? (
+                <h3
+                  key={index}
+                  className="font-[family-name:var(--sk-font-display)] pt-2 text-base tracking-wide"
+                >
+                  {block.text}
+                </h3>
+              ) : (
+                <p key={index} className="text-sm leading-relaxed">
+                  {block.text}
+                </p>
+              ),
+            )}
+          </div>
+        )}
+      </section>
     </main>
   )
 }
