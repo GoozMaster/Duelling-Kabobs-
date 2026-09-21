@@ -27,6 +27,79 @@
   overflow-x: clip;
 }
 
+/* ---- the drifting sky ----
+   Fixed, so it does not lengthen the page.
+
+   It lives on exactly one layer, between the gradient it floats over and
+   everything that must stay clear of it:
+
+     0  .toSky's gradient — unpositioned, so it paints underneath
+     1  .drift           — these clouds
+     2  .toSky .wrap, .top, .skyBand
+
+   z-index 0 was the first attempt and the clouds were invisible: every section
+   paints an opaque background, and at 0 this sat under all of them. The second
+   attempt left the hero and the band at `auto` on the theory that document
+   order would carry them, which it does not — an explicit z-index outranks
+   `auto` whichever came first — so white clouds drifted across the band's
+   yellow heading. Both neighbours are now explicitly at 2. */
+.drift {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.driftCloud {
+  position: absolute;
+  top: 0;
+  will-change: transform;
+}
+
+.driftShape {
+  display: block;
+  width: 100%;
+  height: auto;
+  fill: #fff;
+  stroke: var(--sk-outline);
+  stroke-width: 3;
+  /* Horizontal drift lives here, on the inner element, because the outer one's
+     transform is owned by the parallax. */
+  animation: driftAcross linear infinite;
+}
+
+/* Viewport-relative, so a cloud always leaves the right edge completely
+   whatever the window is. The old keyframes stopped at a hard 940px, which on
+   anything wider than a laptop parked the cloud mid-screen and snapped it back
+   — the clouds looked like they were being cut off. */
+@keyframes driftAcross {
+  from {
+    transform: translateX(calc(-100% - 40px));
+  }
+  to {
+    transform: translateX(calc(100vw + 40px));
+  }
+}
+
+/* The ground turning from cream to sky.
+   On the section rather than on .home, and that is the whole point: as a
+   percentage of the page it would slide every time a section is added or cut —
+   which is exactly what happened when two sections were removed and the hero
+   started going blue. Anchored here it always runs from the bottom of the hero
+   to the top of the sky band, whatever else the page does. */
+.toSky {
+  background: linear-gradient(to bottom, var(--sk-surface) 0%, var(--sk-sky) 100%);
+}
+
+/* Left unpositioned on purpose so .drift's clouds pass in front of this
+   gradient; the text inside climbs back over them. */
+.toSky .wrap {
+  position: relative;
+  z-index: 2;
+}
+
 .home h1,
 .home h2,
 .home h3 {
@@ -243,7 +316,10 @@
 
 /* ===================== hero ===================== */
 .top {
+  /* Above .drift: the hero is the one place a cloud must never wander, and an
+     explicit z-index beats the layer's regardless of document order. */
   position: relative;
+  z-index: 2;
   padding: var(--sk-space-8) 0;
   overflow: hidden;
 }
@@ -568,186 +644,75 @@
   }
 }
 
-/* ---- pantry in, dinner out ---- */
-.split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--sk-space-6);
-  align-items: start;
-}
-
-@media (max-width: 760px) {
-  .split {
-    grid-template-columns: 1fr;
-  }
-}
-
-.card {
-  background: var(--sk-surface-raised);
-  border: 3px solid var(--sk-outline);
-  border-radius: var(--sk-radius-lg);
-  padding: var(--sk-space-5);
-  box-shadow: var(--sk-shadow-sticker);
-}
-
-.card h3 {
-  font-family: var(--sk-font-ui);
-  font-weight: 600;
-  font-size: 18px;
-  margin: 0 0 var(--sk-space-3);
-  letter-spacing: 0;
-}
-
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sk-space-2);
-}
-
-.pill {
-  font-size: 13px;
-  font-weight: 600;
-  padding: 5px 12px;
-  border-radius: var(--sk-radius-pill);
-  border: 2.5px solid var(--sk-outline);
-  background: var(--sk-surface);
-  transform: translateY(-26px) scale(0.8);
-  opacity: 0;
-  transition:
-    transform 0.6s var(--sk-ease-land),
-    opacity 0.3s linear;
-}
-
-.in .pill {
-  transform: translateY(0) scale(1);
-  opacity: 1;
-}
-
-.pill.have {
-  background: var(--sk-basil-soft);
-  color: var(--sk-basil);
-}
-
-.footnote {
-  margin: var(--sk-space-4) 0 0;
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--sk-ink-muted);
-}
-
-.rec {
-  display: flex;
-  gap: var(--sk-space-3);
-  align-items: center;
-  padding: var(--sk-space-3) 0;
-  border-bottom: 2px dashed var(--sk-outline);
-}
-
-.rec:last-child {
-  border-bottom: 0;
-}
-
-.rec .th {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--sk-radius-disc);
-  border: 3px solid var(--sk-outline);
-  flex: none;
-  object-fit: cover;
-  background: var(--sk-gold);
-}
-
-.recText {
-  flex: 1;
-  min-width: 0;
-}
-
-.rec .t {
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 20px;
-}
-
-.rec .s {
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--sk-ink-muted);
-}
-
-.tag {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 3px 9px;
-  border-radius: var(--sk-radius-pill);
-  border: 2px solid var(--sk-outline);
-  white-space: nowrap;
-}
-
-.tag.ok {
-  background: var(--sk-basil-soft);
-  color: var(--sk-basil);
-}
-
-.tag.rev {
-  background: var(--sk-brick-soft);
-  color: var(--sk-brick);
-}
-
-.count {
-  font-family: var(--sk-font-display);
-  font-size: 58px;
-  line-height: 52px;
-  color: var(--sk-basil);
-  -webkit-text-stroke: 2.5px var(--sk-outline);
-  paint-order: stroke fill;
-}
-
-/* ---- the sky close ---- */
-.sky {
+/* ---- the sky band ----
+   The cuisine list closes the page, so it takes the sky treatment the old
+   bottom call-to-action used to own: a solid blue band with its own keyline
+   and a yellow display heading. It sits at the point where the page gradient
+   has already turned, so the band reads as the sky thickening rather than as
+   a stripe dropped on top of it. */
+.skyBand {
+  /* Positioned for its own clouds, and above .drift so the parallax layer
+     never crosses the band's solid blue — a white cloud passing over the
+     yellow heading washes it out. The band carries weather of its own. */
+  position: relative;
+  z-index: 2;
   background: var(--sk-sky);
   border-top: 3px solid var(--sk-outline);
-  position: relative;
+  border-bottom: 3px solid var(--sk-outline);
   overflow: hidden;
-  padding: var(--sk-space-8) 0 var(--sk-space-7);
+  padding: var(--sk-space-8) 0;
 }
 
-.cloud {
+/* The band's own weather, in front of its background but behind its text. Two
+   clouds here rather than in SkyDrift so the band still has some sky in it
+   when the parallax layer is off for reduced motion. */
+.bandCloud {
   position: absolute;
+  left: 0;
   fill: #fff;
   stroke: var(--sk-outline);
   stroke-width: 3;
+  opacity: 0.85;
+  animation: driftAcross linear infinite;
 }
 
-.c1 {
-  top: 18px;
-  animation: drift 34s linear infinite;
+/* Both are placed to miss the heading's line. The text does paint over them —
+   .skyBand .wrap sits a layer up — but white passing directly behind yellow
+   still flattens it, so they run in the strip above the eyebrow and in the
+   band behind the discs, which are opaque and read as depth rather than mess. */
+.bandCloud1 {
+  top: 12px;
+  width: 150px;
+  animation-duration: 42s;
 }
 
-.c2 {
-  top: 92px;
-  animation: drift 48s linear infinite;
-  animation-delay: -12s;
+.bandCloud2 {
+  top: 300px;
+  width: 104px;
+  animation-duration: 61s;
+  animation-delay: -14s;
 }
 
-@keyframes drift {
-  from {
-    transform: translateX(-180px);
-  }
-  to {
-    transform: translateX(940px);
-  }
-}
-
-.sky .wrap {
+.skyBand .wrap {
   position: relative;
   z-index: 2;
-  text-align: center;
 }
 
 .skyHeading {
   color: var(--sk-yellow);
+}
+
+.skyEyebrow {
+  color: var(--sk-outline);
+  opacity: 0.75;
+}
+
+/* .sec's own bottom margin collapses out through the Reveal wrapper, so the
+   discs end up almost touching the heading's descenders. Re-asserted here. */
+.skyBand .discs {
+  position: relative;
+  z-index: 2;
+  margin-top: var(--sk-space-6);
 }
 
 /* ---- shared reveal ---- */
@@ -811,7 +776,6 @@
   }
 
   .cz .d,
-  .pill,
   .reveal {
     transform: none !important;
     opacity: 1 !important;

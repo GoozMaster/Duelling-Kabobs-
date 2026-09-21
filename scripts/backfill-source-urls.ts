@@ -37,14 +37,35 @@ import { titleSimilarity } from "../src/lib/similarity.ts"
 const AUTO_APPLY = 0.93
 const REVIEW_FLOOR = 0.85
 
-const HEADING = /^(#{1,6})\s*\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)\s*$/
+/**
+ * A linked recipe heading, as Google Docs actually exports one:
+ *
+ *   ## [**Pineapple Cucumber Smoothie**](https://…) {#pineapple-cucumber-smoothie}
+ *
+ * Three details that are easy to miss and each break the match completely: the
+ * title comes wrapped in bold, the export appends its own anchor id after the
+ * link, and a handful of headings carry a stray `&nbsp;` in between. Anchoring
+ * on `)$` matched nothing at all against the real file; allowing only the
+ * anchor still silently dropped the four headings with the `&nbsp;`, which is
+ * the worse failure because it looks like success.
+ */
+const HEADING =
+  /^(#{1,6})\s*\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)(?:\s|&nbsp;|\{#[^}]*\})*$/
+
+/** Drops the **bold** / *italic* / _underline_ wrapping off a heading title. */
+function unemphasise(title: string): string {
+  return title.replace(/(\*\*|__|\*|_)/g, "").trim()
+}
 
 /** Same list the URL importer strips, so both paths store the same shape. */
 const TRACKING_PARAMS = /^(utm_|fbclid$|gclid$|mc_cid$|mc_eid$|igshid$|ref_src$)/
 
 function clean(raw: string): string {
   try {
-    const url = new URL(raw)
+    // Google Docs escapes some punctuation on the way out, leaving things like
+    // `…/#recipejump\\` in the href. A backslash is not valid in a URL anyway,
+    // so dropping them is both safe and what was meant.
+    const url = new URL(raw.replace(/\\/g, ""))
     for (const key of [...url.searchParams.keys()]) {
       if (TRACKING_PARAMS.test(key)) url.searchParams.delete(key)
     }
@@ -62,7 +83,7 @@ function parseDoc(markdown: string): { entries: DocEntry[]; histogram: Map<numbe
   for (const line of markdown.split(/\r?\n/)) {
     const match = HEADING.exec(line.trim())
     if (!match) continue
-    all.push({ level: match[1].length, title: match[2].trim(), url: clean(match[3]) })
+    all.push({ level: match[1].length, title: unemphasise(match[2]), url: clean(match[3]) })
   }
 
   const histogram = new Map<number, number>()

@@ -5,9 +5,9 @@ import { type CuisineDisc, CuisineDiscs } from "@/components/home/cuisine-discs"
 import s from "@/components/home/home.module.css";
 import { scenes } from "@/components/home/logos";
 import { Overture, OvertureStill } from "@/components/home/overture";
-import { PantryProof } from "@/components/home/pantry-proof";
 import { type Pick, RecipeHighlight } from "@/components/home/recipe-highlight";
 import { Reveal } from "@/components/home/reveal";
+import { SkyDrift } from "@/components/home/sky-drift";
 import { Sunburst } from "@/components/home/sunburst";
 import { SiteNav } from "@/components/site-nav/site-nav";
 import { createPublicClient } from "@/lib/supabase/public";
@@ -69,8 +69,16 @@ async function homeData(): Promise<{ cuisines: CuisineDisc[]; picks: Pick[] }> {
  * The Sunburst — the chosen home page, built from Springfield Kitchen.
  *
  * A short kebab-duel clip plays over the page on load and fades after three
- * seconds, revealing the bright sunburst hero and four plain sections below it.
- * The cartoon dial is high, but the page never stops being legible: flat cream
+ * seconds, revealing the sunburst hero. Below it the page falls through a
+ * cream-to-sky gradient with SkyDrift's clouds parallaxing over it, and lands
+ * on the cuisine list sitting in open sky.
+ *
+ * It used to carry two more sections. "Pantry in, dinner out" explained the
+ * app to someone already using it and offered nothing to click, and the closing
+ * "Start with what you already have" ended on a button that only scrolled back
+ * up the page. Both are gone; the sky they sat on was the part worth keeping.
+ *
+ * The cartoon dial is high, but the page never stops being legible: flat
  * ground, one hero line, one illustration.
  *
  * The intro used to be 2.6 screens of scroll driving a hand-animated SVG. That
@@ -86,6 +94,7 @@ export default async function Home() {
   return (
     <div className={s.home}>
       <Overture />
+      <SkyDrift />
 
       <SiteNav />
 
@@ -130,61 +139,42 @@ export default async function Home() {
         </div>
       </div>
 
-      <section className={`${s.wrap} ${s.section}`} id="picks">
-        <p className={s.eyebrow}>Three from the collection</p>
-        <h2 className={s.sec}>TONIGHT, MAYBE?</h2>
-        <RecipeHighlight picks={picks} />
+      {/* This section carries the ground from cream to sky, so the wrap moves
+          inside it — the gradient needs the full page width, the text does not. */}
+      <section className={`${s.section} ${s.toSky}`} id="picks">
+        <div className={s.wrap}>
+          <p className={s.eyebrow}>Three from the collection</p>
+          <h2 className={s.sec}>TONIGHT, MAYBE?</h2>
+          <RecipeHighlight picks={picks} />
+        </div>
       </section>
 
-      <section className={`${s.wrap} ${s.section}`} id="cuisines">
-        <p className={s.eyebrow}>Your own cuisine list</p>
-        <h2 className={s.sec}>EVERY KITCHEN YOU COOK IN</h2>
-        <CuisineDiscs cuisines={cuisines} />
-      </section>
-
-      <section className={`${s.wrap} ${s.section}`} id="pantry">
-        <p className={s.eyebrow}>The whole trick</p>
-        <h2 className={s.sec}>PANTRY IN, DINNER OUT</h2>
-        <PantryProof />
-      </section>
-
-      <div className={s.sky} id="start">
+      {/* The cuisine list closes the page on the sky band. It was the last
+          thing standing between the hero and a dead call-to-action button; now
+          it *is* the ending, which is why it takes the blue and the clouds. */}
+      <section className={s.skyBand} id="cuisines">
         <svg
-          className={`${s.cloud} ${s.c1}`}
-          width="150"
-          height="46"
+          className={`${s.bandCloud} ${s.bandCloud1}`}
           viewBox="0 0 150 46"
           aria-hidden="true"
         >
           <path d="M26 42 a18 18 0 0 1 2-35 a24 24 0 0 1 45-4 a20 20 0 0 1 34 12 a16 16 0 0 1-8 27z" />
         </svg>
         <svg
-          className={`${s.cloud} ${s.c2}`}
-          width="110"
-          height="36"
+          className={`${s.bandCloud} ${s.bandCloud2}`}
           viewBox="0 0 150 46"
           aria-hidden="true"
         >
-          <path d="M26 42 a18 18 0 0 1 2-35 a24 24 0 0 1 45-4 a20 20 0 0 1 34 12 a16 16 0 0 1-8 27z" />
+          <path d="M20 40 a16 16 0 0 1 6-31 a22 22 0 0 1 38-6 a18 18 0 0 1 30 14 a15 15 0 0 1-10 23z" />
         </svg>
         <div className={s.wrap}>
           <Reveal>
-            <h2 className={`${s.sec} ${s.skyHeading}`}>
-              START WITH WHAT
-              <br />
-              YOU ALREADY HAVE
-            </h2>
+            <p className={`${s.eyebrow} ${s.skyEyebrow}`}>What you cook most</p>
+            <h2 className={`${s.sec} ${s.skyHeading}`}>YOUR TOP FIVE CUISINES</h2>
           </Reveal>
-          {/* Not "create an account" — there is one account, it already
-              exists, and nobody else can make one. Visitors need the recipes,
-              not a sign-up they would be turned away from. */}
-          <Reveal>
-            <Link className={`${s.btn} ${s.primary}`} href="#cuisines">
-              Browse the recipes
-            </Link>
-          </Reveal>
+          <CuisineDiscs cuisines={cuisines} />
         </div>
-      </div>
+      </section>
     </div>
   );
 }
