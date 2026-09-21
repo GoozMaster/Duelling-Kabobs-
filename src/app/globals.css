@@ -175,6 +175,11 @@
   /* easing — see project/motion.md. Never ease-in-out, never a 300ms default. */
   --sk-ease-land: cubic-bezier(0.34, 1.56, 0.64, 1);
   --sk-ease-press: cubic-bezier(0.2, 0.9, 0.3, 1);
+  /* The surprise reel's seven-second run-down. Its own curve because press is
+     tuned for a 180ms button: reused over seven seconds it coasts far too long
+     before it bites. This one leaves fast and spends the last third crawling,
+     which is what makes the landing feel decided rather than cut off. */
+  --sk-ease-reel: cubic-bezier(0.08, 0.82, 0.17, 1);
 }
 
 /* Night Kitchen. `.dark` matches the app's existing shadcn convention;

@@ -3,12 +3,13 @@ import Link from "next/link";
 
 import { type CuisineDisc, CuisineDiscs } from "@/components/home/cuisine-discs";
 import s from "@/components/home/home.module.css";
-import { badges, scenes } from "@/components/home/logos";
+import { scenes } from "@/components/home/logos";
 import { Overture, OvertureStill } from "@/components/home/overture";
 import { PantryProof } from "@/components/home/pantry-proof";
 import { type Pick, RecipeHighlight } from "@/components/home/recipe-highlight";
 import { Reveal } from "@/components/home/reveal";
 import { Sunburst } from "@/components/home/sunburst";
+import { SiteNav } from "@/components/site-nav/site-nav";
 import { createPublicClient } from "@/lib/supabase/public";
 
 /**
@@ -79,11 +80,6 @@ async function homeData(): Promise<{ cuisines: CuisineDisc[]; picks: Pick[] }> {
  * The page itself is a server component. Only the pieces tied to scroll, to
  * entering the viewport, or to the intro ship JavaScript.
  */
-
-// Admin sign-in. Only one account exists and it is not self-serve, so this is
-// a link for the site owner rather than a call to action for visitors.
-const ACCOUNT_HREF = "/login";
-
 export default async function Home() {
   const { cuisines, picks } = await homeData();
 
@@ -91,20 +87,7 @@ export default async function Home() {
     <div className={s.home}>
       <Overture />
 
-      <nav className={s.nav}>
-        <span className={s.mark}>
-          <span className={s.disc}>
-            <Image src={badges.italian} alt="" width={34} height={34} />
-          </span>
-          DUELING KEBABS
-        </span>
-        <span className={s.spacer} />
-        <span className={s.navLinks}>
-          <Link href="/what-can-i-make">What can I make?</Link>
-          <Link href="/recipes">Recipes</Link>
-          <Link href={ACCOUNT_HREF}>Log in</Link>
-        </span>
-      </nav>
+      <SiteNav />
 
       <OvertureStill />
 

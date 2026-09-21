@@ -167,6 +167,7 @@ export async function commitCsvImport(
       p_cuisine: cuisine as string,
       p_needs_review: true,
       p_ingredients: ingredientsPayload(row.draft.ingredients),
+      p_source_url: row.draft.sourceUrl as string,
     })
 
     if (error) {

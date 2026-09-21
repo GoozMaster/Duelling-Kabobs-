@@ -1,0 +1,167 @@
+/* ===================== site nav ===================== */
+/* These rules were moved verbatim out of home.module.css when the nav stopped
+   being home-page furniture and became the shared header. Nothing was
+   restyled in the move — the home page renders <SiteNav /> and looks the same.
+
+   On the home page the nav sits *after* the overture in the DOM, so it only
+   becomes sticky once the duel is over. Nothing overlays the fight. */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: var(--sk-space-5);
+  padding: var(--sk-space-3) var(--sk-space-7);
+  background: var(--sk-surface);
+  border-bottom: 3px solid var(--sk-outline);
+}
+
+.nav .mark {
+  display: flex;
+  align-items: center;
+  gap: var(--sk-space-2);
+  font-family: var(--sk-font-display);
+  font-size: clamp(15px, 4vw, 20px);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.nav .mark .disc {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--sk-radius-disc);
+  border: 3px solid var(--sk-outline);
+  background: var(--sk-gold);
+  overflow: hidden;
+  flex: none;
+}
+
+.nav .mark .disc img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.nav a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sk-ink);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--sk-teal);
+}
+
+.nav a:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--sk-radius-sm);
+}
+
+.navLinks {
+  display: flex;
+  gap: var(--sk-space-5);
+  /* Break between items, never inside one. Without this the row is narrow
+     enough at 375px that "What can I make?" splits across three lines and the
+     nav grows to 105px tall. Wrapping whole items instead costs one extra row
+     at worst and keeps every label readable. */
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.navLinks > * {
+  white-space: nowrap;
+}
+
+/* At 375px the wordmark and three uppercase links do not both fit on one row,
+   so both sides step down rather than one of them being dropped. */
+@media (max-width: 640px) {
+  .nav {
+    /* space-3 rather than space-5 on the sides: 24px of the 375px viewport is
+       worth more to the links than to the margin. */
+    padding: var(--sk-space-3);
+    gap: var(--sk-space-3);
+  }
+  .nav .mark {
+    font-size: 14px;
+    gap: var(--sk-space-1);
+  }
+  .nav .mark .disc {
+    width: 28px;
+    height: 28px;
+  }
+  .nav a {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+  .navLinks {
+    gap: var(--sk-space-3);
+  }
+}
+
+/* ===================== recipes dropdown ===================== */
+/* The Recipes item is a <button>, so `.nav a` above does not reach it. These
+   rules are the anchor rules restated for a button plus a button reset — the
+   pair has to be kept in sync by hand. Anything that changes `.nav a` or its
+   640px step-down belongs here too. */
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sk-ink);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  line-height: inherit;
+}
+
+.trigger:hover {
+  color: var(--sk-teal);
+}
+
+.trigger:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
+  border-radius: var(--sk-radius-sm);
+}
+
+.chevron {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.12s var(--sk-ease-press);
+}
+
+.trigger[data-state="open"] .chevron {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 640px) {
+  .trigger {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* The menu panel itself is styled with Tailwind utilities at the call site
+   rather than from here. Radix portals it to <body> so it escapes `.nav`, and
+   DropdownMenuContent already carries shadcn utilities for width, background,
+   radius and shadow — a module class would have the same specificity as those,
+   so the winner would come down to stylesheet order. Passing utilities instead
+   lets tailwind-merge drop the conflicting ones outright, which is decided at
+   build time rather than by luck. */

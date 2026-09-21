@@ -1,16 +1,16 @@
 "use client"
 
-import Link from "next/link"
 import { useCallback, useEffect, useRef, useState, useTransition } from "react"
 
+import { RecipeCard } from "@/components/recipe-card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import type { RecipeCard } from "@/lib/recipe-browse"
+import type { RecipeSummary } from "@/lib/recipe-browse"
 
 import { loadMoreRecipes } from "./actions"
 
 type Props = {
-  initial: RecipeCard[]
+  initial: RecipeSummary[]
   initialHasMore: boolean
   cuisine: string | null
   isAdminViewer: boolean
@@ -93,20 +93,18 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
       <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <Link
-              href={`/recipes/${recipe.id}`}
-              className="border-border bg-card hover:-translate-y-0.5 focus-visible:ring-ring/50 flex h-full flex-col justify-between gap-3 rounded-[var(--sk-radius-md)] border-2 p-4 shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:outline-none"
-            >
-              <span className="font-medium">{recipe.title}</span>
-              <span className="flex flex-wrap items-center gap-2">
-                {recipe.cuisine && <Badge variant="outline">{recipe.cuisine}</Badge>}
-                {/* Admin-only. Every imported recipe is flagged, so showing this
-                    publicly would put a "needs review" badge on all 126. */}
-                {isAdmin && recipe.needs_review && (
+            <RecipeCard
+              id={recipe.id}
+              title={recipe.title}
+              cuisine={recipe.cuisine}
+              /* Admin-only. Every imported recipe is flagged, so showing this
+                 publicly would put a "needs review" badge on all 126. */
+              meta={
+                isAdmin && recipe.needs_review ? (
                   <Badge variant="destructive">Needs review</Badge>
-                )}
-              </span>
-            </Link>
+                ) : null
+              }
+            />
           </li>
         ))}
       </ul>

@@ -33,6 +33,8 @@ export type DraftRecipe = {
   instructions: string
   cuisine: string | null
   needsReview: boolean
+  /** Where it came from. Null when unknown, which is a real answer here. */
+  sourceUrl: string | null
   ingredients: DraftIngredient[]
 }
 
@@ -57,6 +59,7 @@ export function emptyDraft(): DraftRecipe {
     instructions: "",
     cuisine: null,
     needsReview: false,
+    sourceUrl: null,
     ingredients: [emptyIngredient()],
   }
 }
@@ -72,6 +75,7 @@ export function draftFromRecipe(
     instructions: recipe.instructions,
     cuisine: recipe.cuisine,
     needsReview: recipe.needs_review,
+    sourceUrl: recipe.source_url,
     ingredients:
       ingredients.length > 0
         ? ingredients
@@ -86,6 +90,44 @@ export function draftFromRecipe(
             }))
         : [emptyIngredient()],
   }
+}
+
+export type SourceLink = { href: string | null; label: string }
+
+/**
+ * Turns a stored source into something safe to render.
+ *
+ * Two things make this more than a formatting helper:
+ *
+ * SCHEME GUARD. source_url is free text an admin typed, and the detail page is
+ * the one page anonymous visitors are meant to see. A stored `javascript:...`
+ * dropped into an href would be stored XSS, so anything that is not http or
+ * https comes back with href: null and renders as plain text. Rejecting by
+ * allowlist rather than blocking `javascript:` by name — `data:`, `vbscript:`
+ * and their encoded spellings are the same problem wearing a different hat.
+ *
+ * LABEL. A 120-character URL in a header wrecks the layout, so the link is
+ * labelled with its host. The full URL is still in the href and on hover.
+ *
+ * Non-URL text (a cookbook name, "Mum") is legitimate provenance and survives
+ * as a plain label rather than being thrown away.
+ */
+export function sourceLink(raw: string | null): SourceLink | null {
+  const value = raw?.trim()
+  if (!value) return null
+
+  let parsed: URL
+  try {
+    parsed = new URL(value)
+  } catch {
+    return { href: null, label: value }
+  }
+
+  if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+    return { href: null, label: value }
+  }
+
+  return { href: parsed.toString(), label: parsed.hostname.replace(/^www\./, "") }
 }
 
 /** The payload shape save_recipe() expects in its jsonb argument. */

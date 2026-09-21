@@ -49,6 +49,7 @@ export async function saveRecipe(draft: DraftRecipe): Promise<SaveRecipeResult> 
     p_cuisine: draft.cuisine as string,
     p_needs_review: draft.needsReview,
     p_ingredients: ingredients,
+    p_source_url: draft.sourceUrl as string,
   })
 
   if (error) {
@@ -98,6 +99,12 @@ export async function importFromUrl(rawUrl: string): Promise<UrlImportOutcome> {
   const knownCuisines = (cuisineRows ?? []).map((row) => row.name)
 
   let html: string
+  // The address actually landed on, which is what deserves the credit:
+  // shorteners, share wrappers and http→https upgrades all mean the pasted URL
+  // and the real one are routinely different. redirect: "follow" below makes
+  // response.url the end of that chain.
+  let finalUrl = url.toString()
+
   try {
     const response = await fetch(url, {
       // Some publishers serve a stripped page or a challenge to unknown agents.
@@ -115,13 +122,14 @@ export async function importFromUrl(rawUrl: string): Promise<UrlImportOutcome> {
       return { ok: false, error: `That page returned HTTP ${response.status}.` }
     }
 
+    if (response.url) finalUrl = response.url
     html = await response.text()
   } catch (error) {
     const reason = error instanceof Error ? error.message : "request failed"
     return { ok: false, error: `Could not fetch that page: ${reason}` }
   }
 
-  const result = extractRecipeFromHtml(html, knownCuisines)
+  const result = extractRecipeFromHtml(html, knownCuisines, finalUrl)
 
   return {
     ok: true,

@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 
+import { SiteNav } from "@/components/site-nav/site-nav"
 import { viewerIsAdmin } from "@/lib/recipe-browse"
 import { createClient } from "@/lib/supabase/server"
 
@@ -24,14 +24,10 @@ export default async function WhatCanIMakePage() {
   const initial = await findRecipes([])
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
+    <>
+      <SiteNav />
+      <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
       <header className="flex flex-col gap-2">
-        <Link
-          href="/"
-          className="text-muted-foreground hover:text-foreground w-fit text-sm underline underline-offset-4"
-        >
-          ← Dueling Kebabs
-        </Link>
         <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
           WHAT CAN I MAKE?
         </h1>
@@ -42,7 +38,8 @@ export default async function WhatCanIMakePage() {
         </p>
       </header>
 
-      <SearchPanel isAdmin={isAdmin} initial={initial} />
-    </main>
+        <SearchPanel isAdmin={isAdmin} initial={initial} />
+      </main>
+    </>
   )
 }

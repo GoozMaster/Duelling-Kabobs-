@@ -2,10 +2,11 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { SiteNav } from "@/components/site-nav/site-nav"
 import { Badge } from "@/components/ui/badge"
 import { parseInstructions } from "@/lib/instructions"
 import { viewerIsAdmin } from "@/lib/recipe-browse"
-import { groupIngredients } from "@/lib/recipes"
+import { groupIngredients, sourceLink } from "@/lib/recipes"
 import { createClient } from "@/lib/supabase/server"
 
 import { AdminBar } from "./admin-bar"
@@ -62,9 +63,15 @@ export default async function RecipeDetailPage({
 
   const blocks = parseInstructions(recipe.instructions)
 
+  const source = sourceLink(recipe.source_url)
+
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-6 py-12">
+    <>
+      <SiteNav />
+      <main className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-6 py-12">
       <header className="flex flex-col gap-2">
+        {/* Kept despite the nav: this walks up the hierarchy to the listing,
+            which the nav's wordmark (home) does not do. */}
         <Link
           href="/recipes"
           className="text-muted-foreground hover:text-foreground w-fit text-sm underline underline-offset-4"
@@ -88,6 +95,30 @@ export default async function RecipeDetailPage({
             <Badge variant="destructive">Needs review</Badge>
           )}
         </div>
+
+        {/* Its own line under the badges rather than another badge: it is
+            attribution, not a label, and a null source renders nothing at all
+            rather than the word "Source" with a gap after it. */}
+        {source && (
+          <p className="text-muted-foreground text-xs">
+            Source{" "}
+            {source.href ? (
+              // nofollow because these are third-party sites we are crediting,
+              // not vouching for; noopener because target="_blank" otherwise
+              // hands the destination a handle on this window.
+              <a
+                href={source.href}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className="hover:text-foreground underline underline-offset-4"
+              >
+                {source.label}
+              </a>
+            ) : (
+              <span>{source.label}</span>
+            )}
+          </p>
+        )}
       </header>
 
       {isAdmin && (
@@ -165,6 +196,7 @@ export default async function RecipeDetailPage({
           </div>
         )}
       </section>
-    </main>
+      </main>
+    </>
   )
 }

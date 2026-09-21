@@ -153,6 +153,26 @@ export function RecipeForm({ draft: initialDraft, cuisines: initialCuisines, mod
         )}
       </div>
 
+      <div className="flex flex-col gap-1.5">
+        <Label htmlFor="source-url">Source</Label>
+        {/* type="url" so the browser rejects a non-address before submit. That
+            is the right trade for this field — it should hold a link — and it
+            is why sourceLink() still handles plain text: backfilled and legacy
+            values can be anything, but nothing new gets in that way. */}
+        <Input
+          id="source-url"
+          type="url"
+          inputMode="url"
+          value={draft.sourceUrl ?? ""}
+          onChange={(event) => patch({ sourceUrl: event.target.value || null })}
+          placeholder="https://example.com/the-recipe"
+          disabled={pending}
+        />
+        <p className="text-muted-foreground text-xs">
+          Where it came from. Leave blank if there is nowhere to point.
+        </p>
+      </div>
+
       <IngredientRows
         ingredients={draft.ingredients}
         onChange={(ingredients) => patch({ ingredients })}

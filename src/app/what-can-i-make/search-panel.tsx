@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useEffect, useState, useTransition } from "react"
 
-import { Badge } from "@/components/ui/badge"
+import { RecipeCard } from "@/components/recipe-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -167,25 +167,26 @@ function Bucket({
       <ul className="grid gap-3 sm:grid-cols-2">
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <Link
-              href={`/recipes/${recipe.id}`}
-              className="border-border bg-card hover:-translate-y-0.5 flex h-full flex-col gap-2 rounded-[var(--sk-radius-md)] border-2 p-3 shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:shadow-[var(--sk-shadow-sticker)]"
-            >
-              <span className="font-medium">{recipe.title}</span>
-              <span className="flex flex-wrap items-center gap-2">
-                {recipe.cuisine && <Badge variant="outline">{recipe.cuisine}</Badge>}
+            <RecipeCard
+              size="sm"
+              id={recipe.id}
+              title={recipe.title}
+              cuisine={recipe.cuisine}
+              meta={
                 <span className="text-muted-foreground text-xs">
                   {recipe.totalRequired} ingredients
                 </span>
-              </span>
-              {/* Naming what is absent is the useful part — "missing 2" alone
-                  sends you back to the recipe to work out which two. */}
-              {recipe.missing.length > 0 && (
-                <span className="text-destructive text-xs">
-                  Need: {recipe.missing.join(", ")}
-                </span>
-              )}
-            </Link>
+              }
+              /* Naming what is absent is the useful part — "missing 2" alone
+                 sends you back to the recipe to work out which two. */
+              note={
+                recipe.missing.length > 0 ? (
+                  <span className="text-destructive text-xs">
+                    Need: {recipe.missing.join(", ")}
+                  </span>
+                ) : null
+              }
+            />
           </li>
         ))}
       </ul>

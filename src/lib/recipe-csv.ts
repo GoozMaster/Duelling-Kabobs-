@@ -91,6 +91,9 @@ export function parseRecipeCsv(text: string): CsvParseResult {
       // Bulk imports are flagged until the required/optional tagging and
       // substitutions have been done by hand.
       needsReview: true,
+      // The CSV template has no source column. Left blank rather than guessed
+      // at; the Doc backfill fills these in where it can.
+      sourceUrl: null,
       ingredients: ingredientNames.map((name) => ({
         key: newIngredientKey(),
         name,

@@ -1,0 +1,213 @@
+.stage {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sk-space-5);
+}
+
+/* The picture frame around the whole thing — 4px, the scene weight, because
+   this is a window onto footage rather than a piece of UI chrome. */
+.frame {
+  position: relative;
+  overflow: hidden;
+  border: 4px solid var(--sk-outline);
+  border-radius: var(--sk-radius-lg);
+  box-shadow: var(--sk-shadow-pop);
+  background: var(--sk-outline);
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sk-space-5);
+  padding: var(--sk-space-6) 0;
+}
+
+.video,
+.still {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--sk-outline);
+  opacity: 0.55;
+  transition: opacity 0.4s var(--sk-ease-press);
+}
+
+.scrimDeep {
+  opacity: 0.78;
+}
+
+/* contain: paint stops the scrim and video being repainted every frame while
+   the strip moves underneath them. */
+.viewport {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  contain: paint;
+  padding: var(--sk-space-4) 0;
+}
+
+/* The centre line the winner lands under. Deliberately a thin bar rather than
+   a box: a box implies a slot the tile must fit, and the landing is jittered. */
+.marker {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  margin-left: -1.5px;
+  background: var(--sk-yellow);
+  box-shadow: 0 0 0 1px var(--sk-outline);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.strip {
+  display: flex;
+  gap: var(--gap);
+  /* The transition itself is written by JavaScript, which owns the duration and
+     has to be able to switch it off to reposition the strip. Declaring it here
+     too would fight that. */
+  will-change: transform;
+}
+
+.tile {
+  flex: 0 0 var(--tile);
+  width: var(--tile);
+  min-height: 108px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--sk-space-1);
+  padding: var(--sk-space-3);
+  background: var(--sk-surface-raised);
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-md);
+  box-shadow: var(--sk-shadow-sticker);
+  transform: scale(0.9);
+  transition:
+    transform 0.36s var(--sk-ease-land),
+    box-shadow 0.36s var(--sk-ease-land);
+}
+
+/* The overshoot curve is what makes this read as "popping forward" rather than
+   growing — which is exactly what --sk-ease-land exists for. */
+.tileWon {
+  transform: scale(1);
+  box-shadow: var(--sk-shadow-pop);
+  background: var(--sk-yellow);
+  color: var(--sk-on-yellow);
+}
+
+.tileTitle {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.25;
+  color: var(--sk-ink);
+}
+
+.tileWon .tileTitle {
+  color: var(--sk-on-yellow);
+}
+
+.tileCuisine {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sk-ink-muted);
+}
+
+.tileWon .tileCuisine {
+  color: var(--sk-on-yellow);
+  opacity: 0.75;
+}
+
+.result {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--sk-space-5);
+}
+
+.status {
+  font-family: var(--sk-font-display);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--sk-surface);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sk-space-3);
+  padding: var(--sk-space-5) var(--sk-space-6);
+  background: var(--sk-surface-raised);
+  border: 4px solid var(--sk-outline);
+  border-radius: var(--sk-radius-lg);
+  box-shadow: var(--sk-shadow-pop);
+  text-align: center;
+  max-width: 420px;
+  animation: cardIn 0.36s var(--sk-ease-land) both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.cardKicker {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sk-teal);
+}
+
+.cardTitle {
+  font-family: var(--sk-font-display);
+  font-size: clamp(20px, 4vw, 28px);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--sk-ink);
+}
+
+.cardActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sk-space-3);
+  margin-top: var(--sk-space-2);
+}
+
+@media (max-width: 640px) {
+  .frame {
+    min-height: 360px;
+  }
+}
+
+/* Anyone who has asked for less motion gets the result without the reel. The
+   card's entrance goes too — it is the same request. */
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    animation: none;
+  }
+  .tile,
+  .scrim {
+    transition: none;
+  }
+}

@@ -1,0 +1,284 @@
+/* ===================== faces ===================== */
+.faces {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sk-space-2);
+}
+
+.face {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--sk-space-1) var(--sk-space-4);
+  border: 2px solid var(--sk-outline);
+  border-radius: var(--sk-radius-pill);
+  background: var(--sk-surface-raised);
+  box-shadow: var(--sk-shadow-press);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--sk-ink);
+  text-decoration: none;
+  transition: transform 0.1s var(--sk-ease-press), box-shadow 0.1s var(--sk-ease-press);
+}
+
+.face:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sk-shadow-sticker);
+}
+
+.face:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
+}
+
+.faceOn {
+  background: var(--sk-yellow);
+  color: var(--sk-on-yellow);
+  box-shadow: var(--sk-shadow-sticker);
+}
+
+/* ===================== layout ===================== */
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sk-space-6);
+}
+
+/* On a phone a 640px globe is the worst possible way to pick a cuisine, so the
+   tiles come first there and the globe becomes the thing you scroll to. */
+.globeSlot {
+  order: 2;
+}
+
+.tilesSlot {
+  order: 1;
+}
+
+@media (min-width: 768px) {
+  .globeSlot {
+    order: 1;
+  }
+  .tilesSlot {
+    order: 2;
+  }
+}
+
+/* ===================== globe ===================== */
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sk-space-3);
+}
+
+.globe {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.ocean {
+  fill: var(--sk-sky);
+  stroke: var(--sk-outline);
+  /* 4px is the picture-frame weight: this is a window onto a scene, not a
+     control. */
+  stroke-width: 4;
+}
+
+/* What makes it read as a sphere rather than a blob. Faint enough to sit under
+   the countries without competing with them. */
+.graticule {
+  fill: none;
+  stroke: var(--sk-outline);
+  stroke-width: 0.5;
+  opacity: 0.25;
+}
+
+.land {
+  fill: var(--sk-sand);
+  stroke: var(--sk-outline);
+  stroke-width: 1.5;
+}
+
+.region {
+  cursor: pointer;
+}
+
+.region path {
+  stroke: var(--sk-outline);
+  stroke-width: 2;
+  transition: filter 0.1s var(--sk-ease-press);
+}
+
+.region:hover path,
+.region:focus-visible path {
+  filter: brightness(1.12);
+}
+
+.region:focus-visible {
+  outline: none;
+}
+
+.region:focus-visible path {
+  stroke: var(--sk-focus-ring);
+  stroke-width: 3.5;
+}
+
+/* ===================== hover / focus readout ===================== */
+/*
+  A tooltip with no JavaScript.
+  Every cuisine's caption is rendered and hidden; the rules below reveal the one
+  whose region is under the pointer or holding focus. Pairing :hover with
+  :focus-visible in each rule is the point of doing it this way — a mouseenter
+  handler would leave keyboard users with nothing.
+
+  The list is per CUISINE, not per country, so it is seven rules rather than
+  forty-five. It is also complete by construction: only cuisines that appear in
+  CUISINE_COUNTRIES can be rendered as a region at all, and that list is
+  hardcoded, so a cuisine an admin adds later has no geography and can never be
+  hovered. If a cuisine is ever ADDED to that mapping, add its rule here too.
+*/
+.readout {
+  min-height: 1.5em;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--sk-ink-muted);
+}
+
+.caption {
+  display: none;
+}
+
+.captionIdle {
+  display: none;
+  opacity: 0.7;
+}
+
+.stage:not(:has(.region:hover)):not(:has(.region:focus-visible)) .captionIdle {
+  display: inline;
+}
+
+.stage:has([data-cuisine="Italian"]:hover) [data-cap="Italian"],
+.stage:has([data-cuisine="French"]:hover) [data-cap="French"],
+.stage:has([data-cuisine="American"]:hover) [data-cap="American"],
+.stage:has([data-cuisine="Asian"]:hover) [data-cap="Asian"],
+.stage:has([data-cuisine="Indian"]:hover) [data-cap="Indian"],
+.stage:has([data-cuisine="Mediterranean"]:hover) [data-cap="Mediterranean"],
+.stage:has([data-cuisine="Latin"]:hover) [data-cap="Latin"],
+/* The focus half is gated on nothing being hovered. Someone can have the
+   pointer resting on one country while tabbing to another, and without this
+   the readout shows both captions and grows to two lines. The pointer is the
+   more immediate intent, so it wins. */
+.stage:not(:has(.region:hover)):has([data-cuisine="Italian"]:focus-visible) [data-cap="Italian"],
+.stage:not(:has(.region:hover)):has([data-cuisine="French"]:focus-visible) [data-cap="French"],
+.stage:not(:has(.region:hover)):has([data-cuisine="American"]:focus-visible) [data-cap="American"],
+.stage:not(:has(.region:hover)):has([data-cuisine="Asian"]:focus-visible) [data-cap="Asian"],
+.stage:not(:has(.region:hover)):has([data-cuisine="Indian"]:focus-visible) [data-cap="Indian"],
+.stage:not(:has(.region:hover)):has([data-cuisine="Mediterranean"]:focus-visible) [data-cap="Mediterranean"],
+.stage:not(:has(.region:hover)):has([data-cuisine="Latin"]:focus-visible) [data-cap="Latin"] {
+  display: inline;
+  color: var(--sk-ink);
+}
+
+/* ===================== cuisine tiles ===================== */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--sk-space-3);
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sk-space-1);
+  padding: var(--sk-space-4) var(--sk-space-3);
+  background: var(--sk-surface-raised);
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-md);
+  box-shadow: var(--sk-shadow-sticker);
+  text-decoration: none;
+  text-align: center;
+  transition: transform 0.18s var(--sk-ease-press), box-shadow 0.18s var(--sk-ease-press);
+}
+
+/* Sticker physics, matching the home page buttons. */
+.tile:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--sk-shadow-pop);
+}
+
+.tile:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--sk-shadow-press);
+}
+
+.tile:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
+}
+
+.tileEmpty {
+  opacity: 0.5;
+  box-shadow: none;
+  cursor: default;
+}
+
+.tileEmpty:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.tileDisc {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--sk-radius-disc);
+  border: 3px solid var(--sk-outline);
+  background: var(--sk-gold);
+  overflow: hidden;
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+
+.tileDisc img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.tileInitial {
+  font-family: var(--sk-font-display);
+  font-size: 24px;
+  color: var(--sk-on-gold);
+  background: var(--sk-sand);
+}
+
+.tileName {
+  font-family: var(--sk-font-display);
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  color: var(--sk-ink);
+  text-transform: uppercase;
+}
+
+.tileCount {
+  font-size: 12px;
+  color: var(--sk-ink-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile,
+  .face,
+  .region path {
+    transition: none;
+  }
+  .tile:hover,
+  .face:hover {
+    transform: none;
+  }
+}

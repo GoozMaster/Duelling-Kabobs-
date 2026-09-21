@@ -22,6 +22,22 @@ import {
 
 type Json = unknown
 
+/**
+ * Campaign parameters, dropped before a URL is stored.
+ *
+ * They describe how *we* arrived, not where the recipe is, and they are the
+ * difference between a source line reading "smittenkitchen.com" and one
+ * carrying somebody's ad-attribution trail around for the life of the row.
+ */
+const TRACKING_PARAMS = /^(utm_|fbclid$|gclid$|mc_cid$|mc_eid$|igshid$|ref_src$)/
+
+function stripTracking(url: URL): string {
+  for (const key of [...url.searchParams.keys()]) {
+    if (TRACKING_PARAMS.test(key)) url.searchParams.delete(key)
+  }
+  return url.toString()
+}
+
 function asArray(value: Json): Json[] {
   if (value === null || value === undefined) return []
   return Array.isArray(value) ? value : [value]
@@ -109,6 +125,7 @@ export type UrlImportResult = {
 export function extractRecipeFromHtml(
   html: string,
   knownCuisines: string[],
+  fetchedUrl: string,
 ): UrlImportResult {
   const $ = cheerio.load(html)
   let recipe: Record<string, Json> | null = null
@@ -135,6 +152,42 @@ export function extractRecipeFromHtml(
     }
   })
 
+  /**
+   * Where to credit the recipe, best first.
+   *
+   * The JSON-LD node's own `url` is the publisher saying where this recipe
+   * lives, which beats whatever route we arrived by; `rel=canonical` is the
+   * same claim made about the page. Both are preferred over the fetched URL
+   * because a recipe reached through a category listing, an AMP variant or a
+   * share wrapper should still credit the canonical page.
+   *
+   * Falls back to the URL we actually fetched, which is never wrong, only
+   * sometimes uglier.
+   */
+  const resolveSource = (node: Record<string, Json> | null): string => {
+    const candidates = [
+      node ? plainText(node.url) : "",
+      $('link[rel="canonical"]').attr("href") ?? "",
+    ]
+
+    for (const candidate of candidates) {
+      try {
+        const url = new URL(candidate)
+        if (url.protocol === "http:" || url.protocol === "https:") {
+          return stripTracking(url)
+        }
+      } catch {
+        // Relative or absent. The fetched URL below is always absolute.
+      }
+    }
+
+    try {
+      return stripTracking(new URL(fetchedUrl))
+    } catch {
+      return fetchedUrl
+    }
+  }
+
   const emptyResult = (notice: string): UrlImportResult => ({
     draft: {
       id: null,
@@ -142,6 +195,8 @@ export function extractRecipeFromHtml(
       instructions: "",
       cuisine: null,
       needsReview: false,
+      // A page with no structured markup still has a legitimate source.
+      sourceUrl: resolveSource(null),
       ingredients: [emptyIngredient()],
     },
     notice,
@@ -187,6 +242,7 @@ export function extractRecipeFromHtml(
       // The admin reviews in the form before saving, so this is not a
       // needs-review case the way a bulk CSV import is.
       needsReview: false,
+      sourceUrl: resolveSource(node),
       ingredients:
         ingredientNames.length > 0
           ? ingredientNames.map((name) => ({

@@ -105,6 +105,7 @@ export type Database = {
           id: string
           instructions: string
           needs_review: boolean
+          source_url: string | null
           title: string
         }
         Insert: {
@@ -113,6 +114,7 @@ export type Database = {
           id?: string
           instructions: string
           needs_review?: boolean
+          source_url?: string | null
           title: string
         }
         Update: {
@@ -121,6 +123,7 @@ export type Database = {
           id?: string
           instructions?: string
           needs_review?: boolean
+          source_url?: string | null
           title?: string
         }
         Relationships: [
@@ -146,6 +149,7 @@ export type Database = {
           p_ingredients: Json
           p_instructions: string
           p_needs_review: boolean
+          p_source_url: string
           p_title: string
         }
         Returns: string
