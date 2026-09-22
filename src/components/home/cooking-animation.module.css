@@ -139,8 +139,10 @@
 }
 
 /* ===================== 2. the wok ===================== */
+/* The pan tips about the bottom of its own bowl (y=88 of a 130 viewBox), not
+   a point in the fire below it. */
 .wok {
-  transform-origin: 50% 82%;
+  transform-origin: 50% 68%;
   animation: toss 1.15s ease-in-out infinite;
 }
 
@@ -230,8 +232,10 @@
 }
 
 /* ===================== 4. the taco ===================== */
+/* The pivot is the shell's own bottom (y=94 of a 120 viewBox), not a point
+   below it — swinging about a point in mid-air is a pendulum, not a dance. */
 .taco {
-  transform-origin: 50% 90%;
+  transform-origin: 50% 78%;
   animation: shimmy 0.78s ease-in-out infinite;
 }
 

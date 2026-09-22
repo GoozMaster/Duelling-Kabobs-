@@ -66,27 +66,47 @@ function Pot() {
 function Wok() {
   return (
     <svg className={s.art} viewBox="0 0 150 130" aria-hidden="true">
-      {/* The noodles are drawn above the pan and thrown as one group. */}
+      {/* The noodles are drawn above the pan and thrown as one group. They
+          carry the FULL keyline weight, not the thin one: at the thin weight
+          three short curves and two small discs read as a pair of antennae
+          rather than as food in the air. */}
       <g className={s.noodles}>
-        <path className={`${s.none} ${s.ln} ${s.thin}`} d="M52 52 q10 -18 24 -8" />
-        <path className={`${s.none} ${s.ln} ${s.thin}`} d="M64 46 q14 -16 28 -4" />
-        <path className={`${s.none} ${s.ln} ${s.thin}`} d="M78 50 q12 -14 22 -2" />
-        <circle className={`${s.basil} ${s.ln} ${s.thin}`} cx="60" cy="40" r="5" />
-        <circle className={`${s.brick} ${s.ln} ${s.thin}`} cx="88" cy="34" r="5" />
+        <path className={`${s.none} ${s.ln}`} d="M46 54 q12 -24 30 -10" />
+        <path className={`${s.none} ${s.ln}`} d="M60 48 q16 -22 34 -6" />
+        <path className={`${s.none} ${s.ln}`} d="M74 54 q14 -20 28 -4" />
+        <circle className={`${s.basil} ${s.ln} ${s.thin}`} cx="55" cy="34" r="6" />
+        <circle className={`${s.gold} ${s.ln} ${s.thin}`} cx="71" cy="42" r="5" />
+        <circle className={`${s.brick} ${s.ln} ${s.thin}`} cx="90" cy="30" r="6" />
       </g>
+
+      {/* The fire, drawn BEFORE the pan so the pan occludes its tip. Three
+          attempts got here, and the two failures are worth keeping:
+
+          Painted on TOP of the bowl, a flame reads as a drip running off it.
+          It is the occlusion, not the shape, that puts fire underneath
+          something.
+
+          Split into three small rounded flames, it reads as three droplets. A
+          lick of fire is a point, not a dome, and fire is one body with one
+          base — so this is one tall flame with a real tip, the same silhouette
+          as the pot's, which is the one in this set that already worked.
+
+          A flame that size needs headroom, which is why the bowl below sits at
+          y=58 with a 30-unit depth rather than 66 with 34: the deeper pan left
+          26 units between its underside and the floor, and nothing that reads
+          as fire fits in 26 units. */}
+      <path
+        className={`${s.flame} ${s.yellow} ${s.ln} ${s.thin}`}
+        d="M75 128 c-12 0 -21 -8 -21 -20 c0 -9 5 -15 9 -21 c1 5 3 8 5 9 c-3 -11 3 -19 12 -24 c-1 9 1 13 5 18 c4 6 7 9 7 18 c0 12 -5 20 -17 20 z"
+      />
 
       <g className={s.wok}>
         {/* handle */}
-        <path className={`${s.none} ${s.ln}`} d="M120 66 l22 -12" />
+        <path className={`${s.none} ${s.ln}`} d="M120 58 l22 -12" />
         {/* the pan: a shallow bowl, rim line on top */}
-        <path className={`${s.brick} ${s.ln}`} d="M22 66 a53 34 0 0 0 98 0 z" />
-        <path className={`${s.none} ${s.ln}`} d="M22 66 h98" />
+        <path className={`${s.brick} ${s.ln}`} d="M22 58 a53 30 0 0 0 98 0 z" />
+        <path className={`${s.none} ${s.ln}`} d="M22 58 h98" />
       </g>
-
-      <path
-        className={`${s.flame} ${s.yellow} ${s.ln} ${s.thin}`}
-        d="M71 128 c-8 0 -14 -5 -14 -13 c0 -6 4 -10 6 -14 c1 3 2 5 4 6 c-2 -7 2 -12 8 -16 c-1 6 1 9 4 12 c3 4 4 6 4 12 c0 8 -4 13 -12 13 z"
-      />
     </svg>
   )
 }
@@ -132,14 +152,31 @@ function Taco() {
       />
 
       <g className={s.taco}>
-        {/* filling first so the shell's front wall overlaps it */}
-        <circle className={`${s.basil} ${s.ln} ${s.thin}`} cx="54" cy="52" r="9" />
-        <circle className={`${s.brick} ${s.ln} ${s.thin}`} cx="75" cy="48" r="10" />
-        <circle className={`${s.yellow} ${s.ln} ${s.thin}`} cx="96" cy="52" r="9" />
+        {/* The far wall of the shell, seen through the opening. Without it the
+            cavity shows page background under the filling and the whole thing
+            goes hollow; with it you are looking into something. */}
+        <path className={`${s.gold} ${s.ln} ${s.thin}`} d="M51 54 a24 24 0 0 0 48 0 z" />
 
-        {/* shell: a U, drawn as an arc bulging down, with the rim across the top */}
-        <path className={`${s.sand} ${s.ln}`} d="M38 56 a37 40 0 0 0 74 0 z" />
-        <path className={`${s.none} ${s.ln}`} d="M38 56 h74" />
+        {/* The filling is a slab with a bumpy top that only reaches partway
+            down the cavity. Filling the cavity to the bottom is what turned
+            the first version into a bowl of guacamole: whatever colour owns
+            the largest area is the object, so the shell has to keep it. */}
+        <path
+          className={`${s.basil} ${s.ln} ${s.thin}`}
+          d="M51 54 q8 -12 16 0 q8 -12 16 0 q8 -12 16 0 l0 16 l-48 0 z"
+        />
+        <circle className={`${s.basil} ${s.ln} ${s.thin}`} cx="60" cy="48" r="8" />
+        <circle className={`${s.brick} ${s.ln} ${s.thin}`} cx="75" cy="44" r="9" />
+        <circle className={`${s.yellow} ${s.ln} ${s.thin}`} cx="90" cy="48" r="8" />
+
+        {/* The near wall: a CRESCENT, not a half-disc. An outer arc of r40 over
+            an inner arc of r24 leaves a 16-unit wall, and the two square ends
+            at the top are the folded edges. A single arc closed with a
+            straight rim — which is what this was — draws a bowl. */}
+        <path
+          className={`${s.sand} ${s.ln}`}
+          d="M35 54 a40 40 0 0 0 80 0 l-16 0 a24 24 0 0 1 -48 0 z"
+        />
       </g>
     </svg>
   )
