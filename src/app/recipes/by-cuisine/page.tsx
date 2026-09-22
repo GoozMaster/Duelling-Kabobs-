@@ -20,12 +20,18 @@ export const metadata: Metadata = {
  * `searchParams` prop outlived the code that used it and was the only thing
  * still implying otherwise.
  *
- * The consequence to know about: the cuisine counts below are now resolved at
- * build time and will not move until the next deploy. There is still no
- * `export const revalidate`, but the reason has changed — it used to be inert
- * on a dynamic route, and on a static one it would be the real fix. Adding it
- * is a deliberate decision about staleness, not a tidy-up.
+ * Five minutes, matching `/recipes/surprise`, because the page shows counts.
+ * Prerendered once, "35 recipes" would keep saying 35 after the 36th was
+ * added — a number that is wrong is worse than a number that is late, and it
+ * would be wrong until someone happened to deploy.
+ *
+ * This line is only load-bearing while the route stays static. It is inert on
+ * a dynamic route, which is how the home page ended up with one that did
+ * nothing, so anything added below that reads cookies takes this with it: the
+ * queries here go through the cookie-free public client for that reason.
  */
+export const revalidate = 300
+
 export default async function ByCuisinePage() {
   const supabase = createPublicClient()
   const { counts, total } = await cuisineCounts(supabase)
