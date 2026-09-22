@@ -5,11 +5,14 @@ import { notFound } from "next/navigation"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { Badge } from "@/components/ui/badge"
 import { parseInstructions } from "@/lib/instructions"
+import { markIngredients } from "@/lib/matching"
 import { viewerIsAdmin } from "@/lib/recipe-browse"
 import { groupIngredients, sourceLink } from "@/lib/recipes"
 import { createClient } from "@/lib/supabase/server"
+import { viewerPantry } from "@/lib/viewer-pantry"
 
 import { AdminBar } from "./admin-bar"
+import { IngredientList } from "./ingredient-list"
 
 export async function generateMetadata({
   params,
@@ -55,10 +58,21 @@ export default async function RecipeDetailPage({
   const ingredients = ingredientsResult.data ?? []
   const isAdmin = viewerIsAdmin(auth.user?.email)
 
+  // Every ingredient flagged as on hand or not, from the same matcher the
+  // search page uses, so the two can never reach different verdicts about the
+  // same recipe. The flags are computed here whether or not the reader turns
+  // the view on; it is one pass over a dozen strings.
+  const pantry = await viewerPantry(supabase)
+  const marked = markIngredients(ingredients, pantry.items)
+
+  const requiredMarked = marked.filter((item) => item.required)
+  const totalRequired = requiredMarked.length
+  const have = requiredMarked.filter((item) => item.onHand).length
+
   // Reuses the editor's own grouping, which is what makes the 39 multi-part
   // recipes read as "Poolish / Dough" rather than one flat list.
   const groups = groupIngredients(
-    ingredients.map((row) => ({ ...row, groupLabel: row.group_label })),
+    marked.map((row) => ({ ...row, groupLabel: row.group_label })),
   )
 
   const blocks = parseInstructions(recipe.instructions)
@@ -130,43 +144,12 @@ export default async function RecipeDetailPage({
         />
       )}
 
-      <section className="flex flex-col gap-4">
-        <h2 className="text-lg font-medium">Ingredients</h2>
-
-        {groups.length === 0 ? (
-          <p className="text-muted-foreground text-sm">No ingredients recorded yet.</p>
-        ) : (
-          groups.map((group, index) => (
-            <div key={group.label ?? `ungrouped-${index}`} className="flex flex-col gap-1.5">
-              {group.label && (
-                <h3 className="text-muted-foreground text-sm font-medium">{group.label}</h3>
-              )}
-              <ul className="border-border rounded-[var(--sk-radius-md)] border px-4 py-2">
-                {group.items.map((item) => (
-                  <li
-                    key={item.id}
-                    className="border-border/40 flex flex-col gap-0.5 border-b py-2 text-sm last:border-b-0"
-                  >
-                    <span className="flex items-baseline justify-between gap-3">
-                      <span>{item.name}</span>
-                      {!item.required && (
-                        <span className="text-muted-foreground shrink-0 text-xs">
-                          optional
-                        </span>
-                      )}
-                    </span>
-                    {item.substitution && (
-                      <span className="text-muted-foreground text-xs">
-                        or {item.substitution}
-                      </span>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))
-        )}
-      </section>
+        <IngredientList
+          groups={groups}
+          have={have}
+          totalRequired={totalRequired}
+          usedPantry={pantry.usedPantry}
+        />
 
       <section className="flex flex-col gap-3">
         <h2 className="text-lg font-medium">Instructions</h2>

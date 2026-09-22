@@ -3,12 +3,13 @@
 import Link from "next/link"
 import { useEffect, useState, useTransition } from "react"
 
+import { PotSearch } from "@/components/home/pot-search"
 import { RecipeCard } from "@/components/recipe-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
-import { type FindRecipesResult, type MatchResult, findRecipes } from "./actions"
+import { type FindRecipesResult, findRecipes } from "./actions"
 
 type Props = {
   isAdmin: boolean
@@ -39,10 +40,8 @@ export function SearchPanel({ isAdmin, initial }: Props) {
     setDraft("")
   }
 
-  const nothingFound =
-    results.exact.length === 0 &&
-    results.missingOne.length === 0 &&
-    results.missingTwo.length === 0
+  const nothingFound = results.recipes.length === 0
+  const ready = results.recipes.filter((recipe) => recipe.missing.length === 0)
 
   return (
     <div className="flex flex-col gap-6">
@@ -115,81 +114,59 @@ export function SearchPanel({ isAdmin, initial }: Props) {
         </p>
       </div>
 
-      {pending && <p className="text-muted-foreground text-sm">Matching…</p>}
-
-      {nothingFound && !pending ? (
+      {pending ? (
+        <PotSearch count={typed.length} />
+      ) : nothingFound ? (
         <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-4 py-10 text-center text-sm">
-          Nothing matches yet — not even close. Add a few more ingredients.
+          No recipes to match against yet.
         </p>
       ) : (
-        <div className="flex flex-col gap-6">
-          <Bucket
-            title="You can make these now"
-            blurb="Every ingredient is on hand."
-            recipes={results.exact}
-          />
-          <Bucket
-            title="One ingredient away"
-            blurb="Pick up the one thing listed and these are yours."
-            recipes={results.missingOne}
-          />
-          <Bucket
-            title="Two ingredients away"
-            blurb=""
-            recipes={results.missingTwo}
-          />
+        <div className="flex flex-col gap-3">
+          <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
+            {ready.length > 0
+              ? `${ready.length} you can cook right now`
+              : "Closest to your kitchen"}
+          </h2>
+
+          <ul className="grid gap-3 sm:grid-cols-2">
+            {results.recipes.map((recipe) => (
+              <li key={recipe.id}>
+                <RecipeCard
+                  size="sm"
+                  id={recipe.id}
+                  title={recipe.title}
+                  cuisine={recipe.cuisine}
+                  meta={
+                    <span
+                      className={
+                        recipe.missing.length === 0
+                          ? "text-[var(--sk-basil)] text-xs font-semibold"
+                          : "text-muted-foreground text-xs"
+                      }
+                    >
+                      {recipe.missing.length === 0
+                        ? "All ingredients in"
+                        : `${recipe.have} of ${recipe.totalRequired} ingredients`}
+                    </span>
+                  }
+                  /* Naming what is absent is the useful part — "missing 2"
+                     alone sends you back to the recipe to work out which two.
+                     Long lists are cut off rather than swamping the card. */
+                  note={
+                    recipe.missing.length > 0 ? (
+                      <span className="text-muted-foreground text-xs">
+                        Need: {recipe.missing.slice(0, 3).join(", ")}
+                        {recipe.missing.length > 3 &&
+                          ` +${recipe.missing.length - 3} more`}
+                      </span>
+                    ) : null
+                  }
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </div>
-  )
-}
-
-function Bucket({
-  title,
-  blurb,
-  recipes,
-}: {
-  title: string
-  blurb: string
-  recipes: MatchResult[]
-}) {
-  if (recipes.length === 0) return null
-
-  return (
-    <section className="flex flex-col gap-3">
-      <div>
-        <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
-          {title} <span className="text-muted-foreground">({recipes.length})</span>
-        </h2>
-        {blurb && <p className="text-muted-foreground text-sm">{blurb}</p>}
-      </div>
-
-      <ul className="grid gap-3 sm:grid-cols-2">
-        {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <RecipeCard
-              size="sm"
-              id={recipe.id}
-              title={recipe.title}
-              cuisine={recipe.cuisine}
-              meta={
-                <span className="text-muted-foreground text-xs">
-                  {recipe.totalRequired} ingredients
-                </span>
-              }
-              /* Naming what is absent is the useful part — "missing 2" alone
-                 sends you back to the recipe to work out which two. */
-              note={
-                recipe.missing.length > 0 ? (
-                  <span className="text-destructive text-xs">
-                    Need: {recipe.missing.join(", ")}
-                  </span>
-                ) : null
-              }
-            />
-          </li>
-        ))}
-      </ul>
-    </section>
   )
 }

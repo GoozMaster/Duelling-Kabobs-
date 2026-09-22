@@ -37,7 +37,22 @@ const UNIT_WORDS = [
   "pieces", "head", "heads", "stick", "sticks", "of",
 ]
 
-const STRIP_WORDS = new Set([...SPEC_QUALIFIERS, ...UNIT_WORDS])
+/**
+ * Preparation words, now that the comma rule no longer takes the tail off.
+ *
+ * These are the words that used to be discarded wholesale along with whatever
+ * real ingredient happened to sit behind them. Naming them is both safer and
+ * more precise.
+ */
+const PREP_WORDS = [
+  "peeled", "seeded", "stemmed", "trimmed", "halved", "quartered", "cubed",
+  "julienned", "finely", "roughly", "thinly", "coarsely", "lightly", "well",
+  "divided", "softened", "melted", "beaten", "rinsed", "drained", "washed",
+  "plus", "more", "optional", "garnish", "serving", "taste", "needed",
+  "room", "temperature", "cut", "into", "bite", "sized", "inch", "thick",
+]
+
+const STRIP_WORDS = new Set([...SPEC_QUALIFIERS, ...UNIT_WORDS, ...PREP_WORDS])
 
 /**
  * A token that is purely a measurement: "2", "1/2", "½", "2-3", "350g", "1c".
@@ -75,10 +90,18 @@ export function normalizeIngredient(raw: string): string {
   // ingredient itself.
   text = text.replace(/\([^)]*\)/g, " ")
 
-  // "4 garlic cloves, peeled and finely chopped" — everything after the first
-  // comma is preparation, not identity.
-  text = text.replace(/,.*$/, " ")
-
+  // Commas are NOT a preparation boundary, though they were treated as one.
+  //
+  // "4 garlic cloves, peeled and finely chopped" put the prep after the comma,
+  // which is what the rule was written for. But the data just as often puts
+  // qualifiers there instead: "4 to 6 bone-in, skinless chicken thighs" cut
+  // down to "to bone in", losing the chicken altogether, and no pantry on earth
+  // matches that. The prep words are stripped by name below, which handles both
+  // orders without ever discarding the ingredient itself.
+  //
+  // Leaving the tail in is safe now that matching looks for a whole word
+  // anywhere in the name rather than at the end: extra words can only add
+  // chances to match, never remove one.
   text = text.replace(/\bto taste\b/g, " ")
 
   // Multi-word and hyphenated qualifiers have to go before tokenising, since
@@ -126,33 +149,35 @@ function containsPhrase(haystack: string, phrase: string): boolean {
 /**
  * Whether a pantry list covers one recipe ingredient.
  *
- * A pantry entry counts only when it appears as a whole-word phrase in the
- * ingredient AND covers the ingredient's head noun.
+ * A pantry entry counts when it appears as a whole-word phrase anywhere in the
+ * ingredient name.
  *
- * The head-noun condition is what stops confident wrong answers. Without it,
- * "oil- or salt-packed anchovy filets" matches the pantry's Salt and the recipe
- * is reported as cookable while the anchovies are missing. Its head noun is
- * "filets", which nothing in the pantry covers, so it correctly stays missing.
+ * WHY THE HEAD-NOUN RULE IS GONE. This used to additionally require the entry
+ * to cover the ingredient's last word, to stop "oil- or salt-packed anchovy
+ * filets" counting as covered by Salt. It did stop that, and it also stopped
+ * very nearly everything else: "chicken" did not cover "chicken thighs",
+ * "chicken stock" or "chicken broth", because their last words are thigh,
+ * stock and broth. Measured against the real data, a generous 25-item pantry
+ * covered 34% of required ingredients, and since the median recipe needs 11 of
+ * them, no real recipe could ever come within two of being cookable. The page
+ * showed the same two staple-only recipes whatever you typed.
  *
- * The cost is some legitimate loose matches — "red pepper flakes" no longer
- * counts as Pepper. That trade is deliberate: a missed match makes the list
- * shorter, a false match makes it wrong, and you find out in the kitchen.
+ * The same measurement puts whole-word matching near 70%. It does let the
+ * anchovy case through, which is the deliberate trade: the recipe page now
+ * highlights each ingredient as had or needed, so an over-eager match is
+ * visible before you shop rather than discovered in the kitchen.
  */
 export function isOnHand(ingredientName: string, pantryNormalized: string[]): boolean {
   const ingredient = normalizeIngredient(ingredientName)
   if (!ingredient) return false
 
   // "water or broth", "oil or butter" offer alternatives: having either one is
-  // enough. Without splitting, the head noun of the whole phrase is "broth",
-  // and a pantry full of water reports the ingredient as missing.
+  // enough, so each side is tested on its own.
   const alternatives = ingredient.split(/\s+or\s+/).filter(Boolean)
 
-  return alternatives.some((alternative) => {
-    const head = headNoun(alternative)
-    return pantryNormalized.some(
-      (entry) => containsPhrase(alternative, entry) && containsPhrase(entry, head),
-    )
-  })
+  return alternatives.some((alternative) =>
+    pantryNormalized.some((entry) => containsPhrase(alternative, entry)),
+  )
 }
 
 export type MatchIngredient = {
@@ -175,9 +200,7 @@ export function matchRecipes<T>(
   recipes: Array<{ recipe: T; ingredients: MatchIngredient[] }>,
   pantry: string[],
 ): MatchRecipe<T>[] {
-  const pantryNormalized = pantry
-    .map((entry) => normalizeIngredient(entry))
-    .filter(Boolean)
+  const pantryNormalized = normalizePantry(pantry)
 
   return recipes
     .map(({ recipe, ingredients }) => ({
@@ -187,4 +210,27 @@ export function matchRecipes<T>(
         .map((item) => item.name),
     }))
     .sort((a, b) => a.missing.length - b.missing.length)
+}
+
+/** Normalises a pantry once, for callers that then test many ingredients. */
+export function normalizePantry(pantry: string[]): string[] {
+  return pantry.map((entry) => normalizeIngredient(entry)).filter(Boolean)
+}
+
+/**
+ * Marks every ingredient of one recipe as on hand or not.
+ *
+ * The recipe page's "Can I cook this?" view is this and nothing else, so it
+ * reaches the same verdict as the search page by construction rather than by
+ * two implementations agreeing.
+ */
+export function markIngredients<T extends { name: string }>(
+  ingredients: T[],
+  pantry: string[],
+): Array<T & { onHand: boolean }> {
+  const pantryNormalized = normalizePantry(pantry)
+  return ingredients.map((item) => ({
+    ...item,
+    onHand: isOnHand(item.name, pantryNormalized),
+  }))
 }
