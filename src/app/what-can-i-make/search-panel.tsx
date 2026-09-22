@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { useEffect, useState, useTransition } from "react"
 
-import { PotSearch } from "@/components/home/pot-search"
+import { CookingAnimation } from "@/components/home/cooking-animation"
 import { RecipeCard } from "@/components/recipe-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -115,7 +115,7 @@ export function SearchPanel({ isAdmin, initial }: Props) {
       </div>
 
       {pending ? (
-        <PotSearch count={typed.length} />
+        <CookingAnimation count={typed.length} />
       ) : nothingFound ? (
         <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-4 py-10 text-center text-sm">
           No recipes to match against yet.

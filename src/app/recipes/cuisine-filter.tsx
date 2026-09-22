@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 type Props = {
   counts: Array<{ name: string; count: number }>
@@ -14,14 +17,21 @@ const selected = "bg-primary text-primary-foreground shadow-[var(--sk-shadow-sti
 const empty = "bg-card text-muted-foreground opacity-50"
 
 /**
- * The filter is URL state, so every chip is a plain link — no client component,
- * no hydration, and the back button and a shared link both behave correctly.
- *
- * It echoes the homepage disc treatment (hard outline, zero-blur offset shadow,
- * brand yellow for the active one) rather than reusing the badge illustrations:
- * only 2 of the 10 cuisines have artwork.
+ * The filter chips toggle cuisine selection. Click to select, click again to
+ * revert to "All". Links handle the initial navigation and work with the back
+ * button; the client-side toggle happens in the click handler.
  */
 export function CuisineFilter({ counts, total, active }: Props) {
+  const router = useRouter()
+
+  const handleCuisineClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string) => {
+    // If clicking an already-selected cuisine, go back to "All"
+    if (active === name) {
+      e.preventDefault()
+      router.push("/recipes")
+    }
+  }
+
   return (
     <nav aria-label="Filter by cuisine" className="flex flex-wrap gap-2">
       <Link
@@ -54,6 +64,7 @@ export function CuisineFilter({ counts, total, active }: Props) {
             href={`/recipes?cuisine=${encodeURIComponent(name)}`}
             aria-current={isActive ? "page" : undefined}
             className={`${base} ${isActive ? selected : idle}`}
+            onClick={(e) => handleCuisineClick(e, name)}
           >
             {name}
             <span className="text-xs opacity-70">{count}</span>

@@ -1,8 +1,6 @@
 import type { Metadata } from "next"
-import Link from "next/link"
 
 import { SiteNav } from "@/components/site-nav/site-nav"
-import { GLOBE_FACES, type GlobeFace, isGlobeFace } from "@/lib/cuisine-geography"
 import { cuisineCounts } from "@/lib/recipe-browse"
 import { createPublicClient } from "@/lib/supabase/public"
 
@@ -29,12 +27,6 @@ export default async function ByCuisinePage({
 }: {
   searchParams: Promise<{ face?: string }>
 }) {
-  const { face: requested } = await searchParams
-
-  // An unrecognised ?face= shows the default rather than erroring, exactly as
-  // an unrecognised ?cuisine= does on the recipes page.
-  const face: GlobeFace = isGlobeFace(requested) ? requested : "old"
-
   const supabase = createPublicClient()
   const { counts, total } = await cuisineCounts(supabase)
 
@@ -52,27 +44,11 @@ export default async function ByCuisinePage({
           </p>
         </header>
 
-        {/* Rotation as navigation. Every face is a plain link, so it is
-            shareable and the back button steps through them — the same
-            reasoning behind the cuisine filter chips being links. */}
-        <nav aria-label="Turn the globe" className={s.faces}>
-          {(Object.keys(GLOBE_FACES) as GlobeFace[]).map((key) => (
-            <Link
-              key={key}
-              href={key === "old" ? "/recipes/by-cuisine" : `/recipes/by-cuisine?face=${key}`}
-              aria-current={key === face ? "page" : undefined}
-              className={`${s.face} ${key === face ? s.faceOn : ""}`}
-            >
-              {GLOBE_FACES[key].label}
-            </Link>
-          ))}
-        </nav>
-
         {/* Order flips at the breakpoint: on a phone a 640px globe is the worst
             way to pick a cuisine, so the tiles come first there. */}
         <div className={s.layout}>
           <div className={s.globeSlot}>
-            <Globe face={face} counts={counts} />
+            <Globe face="old" counts={counts} />
           </div>
           <div className={s.tilesSlot}>
             <CuisineTiles counts={counts} />

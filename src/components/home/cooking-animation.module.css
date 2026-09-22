@@ -1,0 +1,349 @@
+/* ===================== the waiting kitchen =====================
+   Five scenes shown while "What can I make?" looks up recipes.
+
+   They share one drawing language, which is the site's: flat fills, hard
+   keylines, zero blur. Nothing here uses a gradient, a soft shadow or an
+   opacity ramp for shading — a cel has none of those, and the moment one scene
+   gets them it stops belonging to the others.
+
+   Shared structure classes come first, then one block per scene. */
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sk-space-3);
+  padding: var(--sk-space-7) 0;
+}
+
+.art {
+  width: 150px;
+  height: auto;
+  display: block;
+  /* Steam, tossed noodles and smoke all travel outside the viewBox. */
+  overflow: visible;
+}
+
+.caption {
+  font-family: var(--sk-font-display);
+  font-size: 17px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--sk-ink);
+}
+
+.sub {
+  font-size: 13px;
+  color: var(--sk-ink-muted);
+  text-align: center;
+}
+
+/* One keyline weight for every scene, so none of them reads as nearer or
+   further than the others. */
+.ln {
+  stroke: var(--sk-outline);
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.thin {
+  stroke-width: 3;
+}
+
+.brick {
+  fill: var(--sk-brick);
+}
+.sand {
+  fill: var(--sk-sand);
+}
+.gold {
+  fill: var(--sk-gold);
+}
+.yellow {
+  fill: var(--sk-yellow);
+}
+.basil {
+  fill: var(--sk-basil);
+}
+.paper {
+  fill: var(--sk-surface-raised);
+}
+.none {
+  fill: none;
+}
+
+/* ---- shared: flame + steam, used by the pot and the grill ---- */
+.flame {
+  transform-origin: 50% 100%;
+  animation: flicker 0.42s ease-in-out infinite alternate;
+}
+
+@keyframes flicker {
+  from {
+    transform: scaleY(1) scaleX(1);
+  }
+  to {
+    transform: scaleY(1.18) scaleX(0.94);
+  }
+}
+
+/* Three puffs on one path, a third of a cycle apart, so the steam reads as
+   continuous without three sets of keyframes. */
+.puff {
+  opacity: 0;
+  animation: rise 2.1s ease-out infinite;
+}
+.puffB {
+  animation-delay: 0.7s;
+}
+.puffC {
+  animation-delay: 1.4s;
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6);
+  }
+  18% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-46px) scale(1.25);
+  }
+}
+
+/* ===================== 1. the pot ===================== */
+.lid {
+  transform-origin: 50% 100%;
+  /* A lid is never still while something is cooking under it. */
+  animation: rattle 0.9s ease-in-out infinite;
+}
+
+@keyframes rattle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-3px) rotate(-2.5deg);
+  }
+  65% {
+    transform: translateY(-1px) rotate(2deg);
+  }
+}
+
+/* ===================== 2. the wok ===================== */
+.wok {
+  transform-origin: 50% 82%;
+  animation: toss 1.15s ease-in-out infinite;
+}
+
+/* The noodles leave the pan, hang, and drop back — offset from the wok's own
+   rhythm so the throw looks caused by it rather than simultaneous with it. */
+.noodles {
+  animation: airborne 1.15s ease-in-out infinite;
+}
+
+@keyframes toss {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  40% {
+    transform: rotate(9deg);
+  }
+  62% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes airborne {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-4deg);
+  }
+  45% {
+    transform: translateY(-26px) rotate(8deg);
+  }
+  72% {
+    transform: translateY(-6px) rotate(-2deg);
+  }
+}
+
+/* ===================== 3. the pizza ===================== */
+.cutter {
+  animation: roll 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* The wheel spins at the rate it travels, which is what stops it reading as a
+   sticker being dragged across the pie. */
+.wheel {
+  transform-origin: 50% 50%;
+  animation: spinWheel 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* The cut appears under the blade rather than being there all along: the dash
+   is the full length of the line, and the offset walks it open. */
+.cut {
+  stroke-dasharray: 104;
+  stroke-dashoffset: 104;
+  animation: score 2.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(-46px);
+  }
+  55%,
+  100% {
+    transform: translateX(46px);
+  }
+}
+
+@keyframes spinWheel {
+  0% {
+    transform: rotate(0deg);
+  }
+  55%,
+  100% {
+    transform: rotate(420deg);
+  }
+}
+
+@keyframes score {
+  0% {
+    stroke-dashoffset: 104;
+  }
+  55%,
+  92% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 104;
+  }
+}
+
+/* ===================== 4. the taco ===================== */
+.taco {
+  transform-origin: 50% 90%;
+  animation: shimmy 0.78s ease-in-out infinite;
+}
+
+/* Two beats per cycle, leaning opposite ways, with a hop in between — a rock
+   back and forth alone reads as a metronome rather than a dance. */
+@keyframes shimmy {
+  0%,
+  100% {
+    transform: rotate(-9deg) translateY(0);
+  }
+  25% {
+    transform: rotate(-3deg) translateY(-7px);
+  }
+  50% {
+    transform: rotate(9deg) translateY(0);
+  }
+  75% {
+    transform: rotate(3deg) translateY(-7px);
+  }
+}
+
+/* The little arcs either side, timed to appear at the extremes of the shimmy. */
+.beat {
+  animation: beat 0.78s ease-in-out infinite;
+}
+.beatB {
+  animation-delay: 0.39s;
+}
+
+@keyframes beat {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ===================== 5. the grill ===================== */
+/* Each skewer turns on the bars, a quarter-cycle apart, the way you would not
+   turn both at once. */
+.skewer {
+  transform-origin: 50% 50%;
+  animation: turnOver 2.6s ease-in-out infinite;
+}
+.skewerB {
+  animation-delay: 0.65s;
+}
+
+@keyframes turnOver {
+  0%,
+  40% {
+    transform: rotate(0deg);
+  }
+  55%,
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+/* Coals breathe rather than blink: the fill stays put and only its brightness
+   moves, so they never stop looking like charcoal. */
+.coal {
+  animation: ember 1.6s ease-in-out infinite alternate;
+}
+.coalB {
+  animation-delay: 0.5s;
+}
+.coalC {
+  animation-delay: 1s;
+}
+
+@keyframes ember {
+  from {
+    fill: var(--sk-brick);
+  }
+  to {
+    fill: var(--sk-yellow);
+  }
+}
+
+/* ===================== reduced motion =====================
+   Everything stops, and every scene is left in a state that still reads as a
+   complete picture: steam mid-rise, the pizza scored, the coals lit. A stack
+   of invisible puffs and an unscored pie would be a broken drawing, not a
+   still one. */
+@media (prefers-reduced-motion: reduce) {
+  .lid,
+  .flame,
+  .puff,
+  .wok,
+  .noodles,
+  .cutter,
+  .wheel,
+  .cut,
+  .taco,
+  .beat,
+  .skewer,
+  .coal {
+    animation: none;
+  }
+  .puff,
+  .beat {
+    opacity: 0.9;
+  }
+  .cut {
+    stroke-dashoffset: 0;
+  }
+  .coal {
+    fill: var(--sk-gold);
+  }
+}
