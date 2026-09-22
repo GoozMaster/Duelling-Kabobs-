@@ -14,19 +14,19 @@ export const metadata: Metadata = {
 }
 
 /**
- * Dynamic, because reading searchParams makes it so — `?face=` is what turns
- * the globe without JavaScript, and that is worth more here than prerendering.
+ * Static, and no longer by accident. This route was dynamic because it read
+ * `?face=` to turn the globe without JavaScript; when the face toggles went,
+ * so did the last per-request input, and Next started prerendering it. The
+ * `searchParams` prop outlived the code that used it and was the only thing
+ * still implying otherwise.
  *
- * There is deliberately no `export const revalidate` below. It would do
- * nothing on a dynamic route, and a config line that silently has no effect is
- * exactly what hid the static-to-dynamic regression on the home page. The work
- * per request is one cheap query plus ~180 path computations.
+ * The consequence to know about: the cuisine counts below are now resolved at
+ * build time and will not move until the next deploy. There is still no
+ * `export const revalidate`, but the reason has changed — it used to be inert
+ * on a dynamic route, and on a static one it would be the real fix. Adding it
+ * is a deliberate decision about staleness, not a tidy-up.
  */
-export default async function ByCuisinePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ face?: string }>
-}) {
+export default async function ByCuisinePage() {
   const supabase = createPublicClient()
   const { counts, total } = await cuisineCounts(supabase)
 
