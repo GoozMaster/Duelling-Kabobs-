@@ -180,48 +180,105 @@ export function GlobeDrag({ face }: { face: GlobeFace }) {
 
     let startX = 0
     let startRotation: [number, number] = [0, 0]
+    let pressed = false
+
+    /**
+     * How far the pointer must travel before this counts as a drag.
+     *
+     * Capturing the pointer on pointerdown breaks the globe completely, which
+     * is how this was first written. Pointer capture retargets the events to
+     * the <svg>, so the browser fires the subsequent `click` at the svg rather
+     * than at the country under the cursor — the anchor never sees it and
+     * clicking a country silently does nothing at all. Waiting for real
+     * movement means a click stays a click and only an actual drag takes the
+     * pointer hostage.
+     */
+    const DRAG_THRESHOLD = 4
 
     const onPointerDown = (event: PointerEvent) => {
-      void load()
-      dragging = true
+      if (event.button !== 0) return
+      // Deliberately does NOT call load(). Starting the fetch here meant the
+      // topology arrived mid-click: the globe repainted between mousedown and
+      // mouseup, the country's path moved out from under the cursor, and the
+      // browser resolved the click against the nearest common ancestor — the
+      // <svg> — instead of the anchor. The first click on any country was
+      // being eaten by the animation starting up. Loading happens on hover
+      // instead, where there is nothing to interrupt.
+      pressed = true
+      dragging = false
       startX = event.clientX
       startRotation = [...rotation.current]
-      // Capture keeps the drag alive when the pointer leaves the circle, but it
-      // throws if the pointer is already gone. Losing capture degrades to a
-      // drag that stops at the edge; letting it throw would abandon the drag
-      // half-initialised with the cursor stuck on "grabbing".
-      try {
-        svg.setPointerCapture(event.pointerId)
-      } catch {
-        // Not capturable; the drag still works inside the element.
-      }
-      svg.style.cursor = "grabbing"
     }
 
     const onPointerMove = (event: PointerEvent) => {
-      if (!dragging) return
-      rotation.current = [
-        startRotation[0] + (event.clientX - startX) * DRAG_SCALE,
-        startRotation[1],
-      ]
+      if (!pressed) return
+
+      const dx = event.clientX - startX
+
+      if (!dragging) {
+        if (Math.abs(dx) < DRAG_THRESHOLD) return
+        dragging = true
+        // Only now, once this is unambiguously a drag. Capture keeps it alive
+        // when the pointer leaves the circle, but throws if the pointer is
+        // already gone; losing it degrades to a drag that stops at the edge.
+        try {
+          svg.setPointerCapture(event.pointerId)
+        } catch {
+          // Not capturable; the drag still works inside the element.
+        }
+        svg.style.cursor = "grabbing"
+      }
+
+      rotation.current = [startRotation[0] + dx * DRAG_SCALE, startRotation[1]]
       paint()
     }
 
     const onPointerUp = (event: PointerEvent) => {
+      if (!pressed) return
+      pressed = false
+
+      if (dragging) {
+        try {
+          svg.releasePointerCapture(event.pointerId)
+        } catch {
+          // Already released, or never captured.
+        }
+        svg.style.cursor = ""
+      }
+      // `dragging` is left set for the click handler below to read, and cleared
+      // there — the click fires after pointerup.
+    }
+
+    /**
+     * Swallows the click that ends a drag.
+     *
+     * Dragging the globe by grabbing Italy and letting go over France should
+     * turn the globe, not open a cuisine. Without this the pointerup is
+     * followed by a click on whatever anchor happens to be under the cursor.
+     */
+    const onClick = (event: MouseEvent) => {
       if (!dragging) return
       dragging = false
-      try {
-        svg.releasePointerCapture(event.pointerId)
-      } catch {
-        // Already released, or never captured.
-      }
-      svg.style.cursor = ""
+      event.preventDefault()
+      event.stopPropagation()
     }
 
     // Pause whenever someone is reading or aiming: under the pointer, holding
     // keyboard focus inside the globe, or with the tab in the background.
     const pause = () => {
       paused = true
+    }
+    /**
+     * Hovering is where the topology gets fetched.
+     *
+     * Safe here precisely because entering also pauses: the spin cannot repaint
+     * while the pointer is inside, so the country under the cursor stays put
+     * between pressing and releasing. On touch, pointerenter still fires ahead
+     * of the tap, so the same guarantee holds.
+     */
+    const enter = () => {
+      paused = true
+      void load()
     }
     const resume = () => {
       paused = false
@@ -231,11 +288,12 @@ export function GlobeDrag({ face }: { face: GlobeFace }) {
     }
 
     svg.style.cursor = "grab"
+    svg.addEventListener("click", onClick, true)
     svg.addEventListener("pointerdown", onPointerDown)
     svg.addEventListener("pointermove", onPointerMove)
     svg.addEventListener("pointerup", onPointerUp)
     svg.addEventListener("pointercancel", onPointerUp)
-    svg.addEventListener("pointerenter", pause)
+    svg.addEventListener("pointerenter", enter)
     svg.addEventListener("pointerleave", resume)
     svg.addEventListener("focusin", pause)
     svg.addEventListener("focusout", resume)
@@ -249,11 +307,12 @@ export function GlobeDrag({ face }: { face: GlobeFace }) {
       stopped = true
       cancelAnimationFrame(frame)
       svg.style.cursor = ""
+      svg.removeEventListener("click", onClick, true)
       svg.removeEventListener("pointerdown", onPointerDown)
       svg.removeEventListener("pointermove", onPointerMove)
       svg.removeEventListener("pointerup", onPointerUp)
       svg.removeEventListener("pointercancel", onPointerUp)
-      svg.removeEventListener("pointerenter", pause)
+      svg.removeEventListener("pointerenter", enter)
       svg.removeEventListener("pointerleave", resume)
       svg.removeEventListener("focusin", pause)
       svg.removeEventListener("focusout", resume)

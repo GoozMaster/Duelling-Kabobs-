@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Geist, Geist_Mono, Luckiest_Guy } from "next/font/google";
 
+import { CuisineSound } from "@/components/cuisine-sound";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
@@ -45,6 +46,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         {children}
+        {/* Renders nothing. It listens for clicks on any cuisine link, from
+            any page, so the filter chips and the globe can stay server-rendered
+            links with no JavaScript of their own. */}
+        <CuisineSound />
         {/* sonner ships its own Toaster but nothing rendered it, so every
             toast() in the app was a no-op until this landed. */}
         <Toaster />

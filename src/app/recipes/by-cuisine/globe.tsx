@@ -13,6 +13,7 @@ import {
 import type { CuisineCount } from "@/lib/recipe-browse"
 
 import { GlobeDrag } from "./globe-drag"
+import { GlobeKeys } from "./globe-keys"
 
 import s from "./by-cuisine.module.css"
 
@@ -145,6 +146,7 @@ export function Globe({ face, counts }: Props) {
       </svg>
 
       <GlobeDrag face={face} />
+      <GlobeKeys />
 
       {/* The hover/focus readout.
           One caption per cuisine, all rendered and all hidden, revealed by the
