@@ -59,6 +59,15 @@ const CLOUDS = [
  */
 const FADE_OVER = 0.45;
 
+/**
+ * The layer never reaches full strength.
+ *
+ * Paired with the missing keyline in .driftShape: distant weather that is both
+ * fully opaque and outlined stops being distant. Half strength is enough to
+ * read as sky and not enough to compete with anything in front of it.
+ */
+const MAX_OPACITY = 0.5;
+
 export function SkyDrift() {
   const layer = useRef<HTMLDivElement>(null);
   const clouds = useRef<Array<HTMLDivElement | null>>([]);
@@ -74,7 +83,7 @@ export function SkyDrift() {
     // Guard the divide: a page shorter than its own viewport has no scrollable
     // range at all, and NaN opacity blanks the layer rather than showing it.
     const scrollable = Math.max(1, document.documentElement.scrollHeight - viewport);
-    el.style.opacity = String(Math.min(1, y / scrollable / FADE_OVER));
+    el.style.opacity = String(Math.min(1, y / scrollable / FADE_OVER) * MAX_OPACITY);
 
     // One strip taller than the viewport so a cloud is always fully clear of
     // the top edge before it reappears at the bottom.

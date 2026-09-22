@@ -58,13 +58,19 @@
   will-change: transform;
 }
 
+/* No keyline, and that is the whole point.
+   These clouds carried the same 3px --sk-outline as the ones in the sky band,
+   which is what made them read as solid objects barging across the headings
+   and the recipe cards rather than as weather a long way behind them. A cel
+   encodes distance in line weight: the foreground gets the heavy outline, the
+   background gives it up. Dropping it here puts these where they belong
+   without moving them an inch. */
 .driftShape {
   display: block;
   width: 100%;
   height: auto;
   fill: #fff;
-  stroke: var(--sk-outline);
-  stroke-width: 3;
+  stroke: none;
   /* Horizontal drift lives here, on the inner element, because the outer one's
      transform is owned by the parallax. */
   animation: driftAcross linear infinite;
@@ -334,6 +340,23 @@
   z-index: 0;
   opacity: 0.85;
   pointer-events: none;
+  /* The rays run 379px past the bottom of the hero, and .top clips its
+     overflow — so every beam was being sliced off along one hard horizontal
+     line across the page. A sunburst should end by running out of light, not
+     by meeting a guillotine. Fading the tips means the clip has nothing solid
+     left to cut. */
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    #000 38%,
+    rgba(0, 0, 0, 0.6) 62%,
+    transparent 84%
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    #000 38%,
+    rgba(0, 0, 0, 0.6) 62%,
+    transparent 84%
+  );
 }
 
 .rays svg {
@@ -556,6 +579,16 @@
   grid-template-columns: repeat(5, 1fr);
   gap: var(--sk-space-5);
   justify-items: center;
+  /* The discs start their roll 420px to the left, which on a centred column
+     puts them out in the page margin — mid-animation you could watch a stray
+     wheel drift past the edge of the layout. Clipping to the row means they
+     roll in from behind its edge instead, which is also better staging: they
+     arrive from offstage rather than from nowhere.
+
+     The padding buys back room for the 4px sticker shadow, which the clip
+     would otherwise shave off the outermost disc. */
+  overflow: hidden;
+  padding: 2px 6px 8px;
 }
 
 @media (max-width: 860px) {
@@ -579,8 +612,13 @@
   box-shadow: var(--sk-shadow-sticker);
   overflow: hidden;
   margin: 0 auto var(--sk-space-3);
-  /* A disc that moves sideways rolls: its rotation is tied to its travel. */
-  transform: translateX(-420px) rotate(-360deg);
+  /* A disc that moves sideways rolls: its rotation is tied to its travel.
+     The travel is roughly one cell, not the 420px it used to be. Over that
+     distance each disc crossed two or three of its neighbours on the way in,
+     so for most of the entrance the row was a heap of overlapping translucent
+     circles. One full turn still reads unmistakably as a wheel; it just no
+     longer rolls through the others to get there. */
+  transform: translateX(-130px) rotate(-360deg);
   opacity: 0;
   transition:
     transform 0.82s var(--sk-ease-land),
@@ -590,6 +628,27 @@
 .cz.in .d {
   transform: translateX(0) rotate(0deg);
   opacity: 1;
+}
+
+/* A wheel that rolled in should still be a wheel.
+   The one piece of motion added here rather than tidied, and it is deliberately
+   the kind that answers a person rather than playing at them: nudge the disc
+   and it turns. It needs its own transition because the roll-in's 0.82s
+   overshoot is far too slow to track a cursor — though letting the release
+   fall back to that curve is what gives it the little settle afterwards. */
+.cz.in:hover .d,
+.cz.in:focus-visible .d {
+  transform: translateX(0) rotate(-14deg) scale(1.06);
+  box-shadow: var(--sk-shadow-pop);
+  transition:
+    transform 0.18s var(--sk-ease-press),
+    box-shadow 0.18s var(--sk-ease-press);
+}
+
+.cz:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 4px;
+  border-radius: var(--sk-radius-sm);
 }
 
 .cz .d img {
@@ -638,9 +697,9 @@
   .cz .d {
     width: 88px;
     height: 88px;
-    /* A full viewport-width roll-in would open a horizontal scrollbar on a
-       phone, so the travel shortens with the disc. */
-    transform: translateX(-240px) rotate(-360deg);
+    /* The travel shortens with the disc, for the same reason as above: at two
+       columns a long roll puts every disc through its neighbour. */
+    transform: translateX(-96px) rotate(-360deg);
   }
 }
 
@@ -686,8 +745,14 @@
   animation-duration: 42s;
 }
 
+/* Anchored to the bottom padding rather than a measured distance from the top.
+   At `top: 300px` it ran exactly through the row of cuisine names, and any
+   fixed offset is only right at one viewport width anyway — the discs wrap to
+   two and three rows on smaller screens, so the band's height moves and a
+   top-anchored cloud walks into whatever has shifted under it. Both clouds now
+   live in padding, which is empty at every size. */
 .bandCloud2 {
-  top: 300px;
+  bottom: 22px;
   width: 104px;
   animation-duration: 61s;
   animation-delay: -14s;
