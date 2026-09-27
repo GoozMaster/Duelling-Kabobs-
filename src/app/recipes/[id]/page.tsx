@@ -97,7 +97,10 @@ export default async function RecipeDetailPage({
   return (
     <>
       <SiteNav />
-      <main className="mx-auto flex w-full max-w-2xl flex-col gap-10 px-6 py-12">
+      {/* One reading column on phones and tablets. From lg up the page opens
+          to the cookbook layout, ingredients beside the method, so a desktop
+          reader is not looking at a 672px strip in the middle of the screen. */}
+      <main className="mx-auto flex w-full max-w-2xl flex-col gap-10 px-6 py-12 lg:max-w-6xl lg:px-10 lg:py-16">
       <header className="flex flex-col gap-2">
         {/* Kept despite the nav: this walks up the hierarchy to the listing,
             which the nav's wordmark (home) does not do. */}
@@ -107,7 +110,7 @@ export default async function RecipeDetailPage({
         >
           ← All recipes
         </Link>
-        <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
+        <h1 className="font-[family-name:var(--sk-font-display)] text-3xl leading-tight tracking-wide text-balance sm:text-4xl lg:text-5xl">
           {recipe.title}
         </h1>
         <div className="flex flex-wrap items-center gap-2">
@@ -160,7 +163,7 @@ export default async function RecipeDetailPage({
       )}
 
       {isStub ? (
-        <section className="border-border bg-card flex flex-col items-start gap-3 rounded-[var(--sk-radius-lg)] border-2 border-dashed p-6">
+        <section className="border-border bg-card flex max-w-2xl flex-col items-start gap-3 rounded-[var(--sk-radius-lg)] border-2 border-dashed p-6">
           <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
             STILL ON THE CUTTING BOARD
           </h2>
@@ -183,7 +186,10 @@ export default async function RecipeDetailPage({
           </div>
         </section>
       ) : (
-        <>
+        // 5:7 keeps ingredient rows short enough to scan and leaves the method
+        // its ~65ch measure. Gap rather than margins, so below lg the stacked
+        // sections keep the same rhythm as the rest of the page.
+        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
           <IngredientList
             groups={groups}
             have={have}
@@ -192,7 +198,9 @@ export default async function RecipeDetailPage({
           />
 
           <section className="flex flex-col gap-4">
-            <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
+            {/* min-h-9 matches the ingredients row, whose 36px switch sets its
+                height, so the two column headings share a line side by side. */}
+            <h2 className="font-[family-name:var(--sk-font-display)] flex min-h-9 items-center text-xl tracking-wide">
               INSTRUCTIONS
             </h2>
 
@@ -222,7 +230,7 @@ export default async function RecipeDetailPage({
               </div>
             )}
           </section>
-        </>
+        </div>
       )}
       </main>
     </>

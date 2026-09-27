@@ -61,26 +61,32 @@ export function IngredientList({ groups, have, totalRequired, usedPantry }: Prop
           role="switch"
           aria-checked={showing}
           onClick={() => setShowing((current) => !current)}
-          className="border-border bg-card hover:-translate-y-0.5 focus-visible:ring-ring/50 inline-flex items-center gap-2 rounded-[var(--sk-radius-pill)] border-2 px-3 py-1.5 text-sm font-medium shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:outline-none"
+          className="border-border bg-card hover:-translate-y-0.5 focus-visible:ring-ring/50 inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-[var(--sk-radius-pill)] border-2 px-3 py-1.5 text-sm font-medium shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:outline-none"
         >
           Can I cook this?
           {/* The track and knob are drawn rather than themed, so the switch
               reads as the same cartoon hardware as the buttons: hard keyline,
               flat fill, no blur. */}
+          {/* The track lays the knob out itself (flex, 2px padding) rather
+              than absolutely positioning it. The old knob had no `left`, so
+              its start came from its static position and the 19px slide
+              carried it clean off the end of the track. shrink-0 stops the
+              button's flex row squeezing the track narrower than the travel.
+              Travel = 36 wide − 2×2 border − 2×2 padding − 12 knob = 16px. */}
           <span
             aria-hidden
-            className="border-outline relative inline-block h-5 w-9 rounded-[var(--sk-radius-pill)] border-2 transition-colors duration-100"
+            className="inline-flex h-5 w-9 shrink-0 items-center rounded-[var(--sk-radius-pill)] border-2 p-[2px] transition-colors duration-100"
             style={{
               borderColor: "var(--sk-outline)",
               background: showing ? "var(--sk-basil)" : "var(--sk-sand)",
             }}
           >
             <span
-              className="absolute top-[1px] h-3 w-3 rounded-full transition-transform duration-150 ease-[var(--sk-ease-press)]"
+              className="block h-3 w-3 shrink-0 rounded-full transition-transform duration-150 ease-[var(--sk-ease-press)]"
               style={{
                 background: "var(--sk-surface-raised)",
                 border: "2px solid var(--sk-outline)",
-                transform: showing ? "translateX(19px)" : "translateX(2px)",
+                transform: showing ? "translateX(16px)" : "translateX(0)",
               }}
             />
           </span>
