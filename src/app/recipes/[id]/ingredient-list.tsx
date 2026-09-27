@@ -49,8 +49,13 @@ export function IngredientList({ groups, have, totalRequired, usedPantry }: Prop
   return (
     <section className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h2 className="text-lg font-medium">Ingredients</h2>
+        <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
+          INGREDIENTS
+        </h2>
 
+        {/* A switch with nothing to check against is a control that does
+            nothing, so it only appears once there is a list to colour in. */}
+        {groups.length > 0 && (
         <button
           type="button"
           role="switch"
@@ -80,6 +85,7 @@ export function IngredientList({ groups, have, totalRequired, usedPantry }: Prop
             />
           </span>
         </button>
+        )}
       </div>
 
       {showing && (
@@ -108,7 +114,9 @@ export function IngredientList({ groups, have, totalRequired, usedPantry }: Prop
       )}
 
       {groups.length === 0 ? (
-        <p className="text-muted-foreground text-sm">No ingredients recorded yet.</p>
+        <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-4 py-6 text-center text-sm">
+          No ingredients written up for this one yet.
+        </p>
       ) : (
         groups.map((group, index) => (
           <div key={group.label ?? `ungrouped-${index}`} className="flex flex-col gap-1.5">
@@ -125,7 +133,7 @@ export function IngredientList({ groups, have, totalRequired, usedPantry }: Prop
                 return (
                   <li
                     key={item.id}
-                    className="border-border/40 flex flex-col gap-0.5 border-b py-2 text-sm last:border-b-0"
+                    className="border-border/40 flex flex-col gap-0.5 border-b py-2 text-base last:border-b-0"
                     /* The bar sits in the row's own left padding rather than on
                        a wrapper, so switching the view never reflows the list. */
                     style={

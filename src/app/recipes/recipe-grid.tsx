@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useCallback, useEffect, useRef, useState, useTransition } from "react"
 
 import { RecipeCard } from "@/components/recipe-card"
@@ -80,11 +81,23 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
 
   if (recipes.length === 0) {
     return (
-      <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-4 py-12 text-center">
-        {cuisine
-          ? `No ${cuisine} recipes yet.`
-          : "No recipes yet. They will show up here as they are added."}
-      </p>
+      <div className="text-muted-foreground flex flex-col items-center gap-3 rounded-[var(--sk-radius-md)] border border-dashed px-4 py-12 text-center">
+        <p>
+          {cuisine
+            ? `No ${cuisine} recipes yet.`
+            : "No recipes yet. They will show up here as they are added."}
+        </p>
+        {/* A filtered dead end needs a way back out that isn't the chip row
+            scrolled away above it. */}
+        {cuisine && (
+          <Link
+            href="/recipes"
+            className="text-foreground text-sm font-medium underline underline-offset-4"
+          >
+            See all recipes
+          </Link>
+        )}
+      </div>
     )
   }
 

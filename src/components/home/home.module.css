@@ -382,7 +382,10 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: var(--sk-teal-soft);
-  color: var(--sk-teal);
+  /* Plain teal on teal-soft measures 4.2:1, just under AA for 13px text.
+     Pulling it a fifth of the way toward ink clears 4.5 in both themes: in
+     Night Kitchen ink is cream, so the same mix lightens instead. */
+  color: color-mix(in srgb, var(--sk-teal) 78%, var(--sk-ink));
   border: 3px solid var(--sk-outline);
   border-radius: var(--sk-radius-pill);
   padding: 5px 14px;
@@ -561,7 +564,10 @@
   margin: 0 0 var(--sk-space-2);
 }
 
-.sec {
+/* Scoped under .home on purpose. `.home h2 { margin: 0 }` above is (0,1,1)
+   and a bare `.sec` is (0,1,0), so the reset used to win and every section
+   heading sat flush on the video or cards beneath it. */
+.home .sec {
   font-size: clamp(28px, 6vw, 38px);
   line-height: 1;
   margin-bottom: var(--sk-space-6);
@@ -578,7 +584,9 @@
 .tour {
   position: relative;
   z-index: 2;
-  padding-top: 0;
+  /* One step, not a full section: enough that the eyebrow no longer sits on
+     the sunburst's bottom edge, without re-opening the gap described above. */
+  padding-top: var(--sk-space-6);
 }
 
 /* A screen is a square scene, not a badge: radius-lg, the keyline, the pop
@@ -805,10 +813,12 @@
   text-transform: uppercase;
 }
 
+/* Ink, not ink-muted: the discs only ever sit on the sky band, where muted
+   measured 3.46:1. Size and weight still keep it a step below the name. */
 .cz .c {
   font-size: 12px;
   line-height: 16px;
-  color: var(--sk-ink-muted);
+  color: var(--sk-ink);
 }
 
 @media (max-width: 520px) {
@@ -888,7 +898,8 @@
   z-index: 2;
 }
 
-.skyHeading {
+/* Matches `.home .sec`'s specificity so the yellow still wins over its white. */
+.home .skyHeading {
   color: var(--sk-yellow);
 }
 
@@ -897,8 +908,8 @@
   opacity: 0.75;
 }
 
-/* .sec's own bottom margin collapses out through the Reveal wrapper, so the
-   discs end up almost touching the heading's descenders. Re-asserted here. */
+/* Belt and braces now that `.home .sec` keeps its bottom margin: the two
+   margins collapse to one space-6, so this no longer doubles the gap. */
 .skyBand .discs {
   position: relative;
   z-index: 2;
@@ -1108,6 +1119,11 @@
 .pick:hover {
   transform: translate(-2px, -2px);
   box-shadow: var(--sk-shadow-pop);
+}
+
+.pick:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
 }
 
 .pickName {

@@ -42,6 +42,17 @@ export function SearchPanel({ isAdmin, initial }: Props) {
 
   const nothingFound = results.recipes.length === 0
   const ready = results.recipes.filter((recipe) => recipe.missing.length === 0)
+  // A public visitor who has typed nothing is looking at a ranking built from
+  // the assumed staples alone. Saying so turns what looked like an answer into
+  // an invitation to start. The admin always has a pantry behind the list.
+  const firstRun = !isAdmin && typed.length === 0
+
+  const heading =
+    ready.length > 0
+      ? `${ready.length} you can cook right now`
+      : firstRun
+        ? "Start with what you have"
+        : "Closest to your kitchen"
 
   return (
     <div className="flex flex-col gap-6">
@@ -97,7 +108,7 @@ export function SearchPanel({ isAdmin, initial }: Props) {
                   onClick={() =>
                     setTyped((current) => current.filter((t) => t !== item))
                   }
-                  className="border-border bg-primary text-primary-foreground inline-flex items-center gap-1.5 rounded-[var(--sk-radius-pill)] border-2 px-3 py-1 text-sm"
+                  className="border-border bg-primary text-primary-foreground focus-visible:ring-ring/50 inline-flex items-center gap-1.5 rounded-[var(--sk-radius-pill)] border-2 px-3 py-1 text-sm focus-visible:ring-[3px] focus-visible:outline-none"
                   aria-label={`Remove ${item}`}
                 >
                   {item}
@@ -114,6 +125,13 @@ export function SearchPanel({ isAdmin, initial }: Props) {
         </p>
       </div>
 
+      {/* The results region unmounts while the animation plays, so a live
+          region inside it would be destroyed before it could speak. This one
+          stays mounted and tells screen readers what the swap meant. */}
+      <p role="status" className="sr-only">
+        {pending ? "Matching recipes…" : nothingFound ? "" : heading}
+      </p>
+
       {pending ? (
         <CookingAnimation count={typed.length} />
       ) : nothingFound ? (
@@ -122,11 +140,17 @@ export function SearchPanel({ isAdmin, initial }: Props) {
         </p>
       ) : (
         <div className="flex flex-col gap-3">
-          <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
-            {ready.length > 0
-              ? `${ready.length} you can cook right now`
-              : "Closest to your kitchen"}
-          </h2>
+          <div className="flex flex-col gap-1">
+            <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
+              {heading}
+            </h2>
+            {firstRun && ready.length === 0 && (
+              <p className="text-muted-foreground text-sm">
+                Add a few ingredients above. Until then, these are ranked against
+                the staples alone.
+              </p>
+            )}
+          </div>
 
           <ul className="grid gap-3 sm:grid-cols-2">
             {results.recipes.map((recipe) => (
