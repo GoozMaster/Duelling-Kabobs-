@@ -9,6 +9,8 @@ import { createClient } from "@/lib/supabase/server"
 export type PantryActionState = { error: string | null }
 
 const PANTRY_PATH = "/admin/pantry"
+// What's in Stock reads the same rows, and its quick-add calls addPantryItem.
+const STOCK_PATH = "/admin/stock"
 
 const ok: PantryActionState = { error: null }
 
@@ -70,6 +72,7 @@ export async function addPantryItem(input: {
   }
 
   revalidatePath(PANTRY_PATH)
+  revalidatePath(STOCK_PATH)
   return ok
 }
 
@@ -101,5 +104,6 @@ export async function deletePantryItem(id: string): Promise<PantryActionState> {
   }
 
   revalidatePath(PANTRY_PATH)
+  revalidatePath(STOCK_PATH)
   return ok
 }
