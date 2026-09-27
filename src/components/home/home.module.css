@@ -570,6 +570,131 @@
   color: var(--sk-surface-raised);
 }
 
+/* ---- the tour ----
+   Sits on the flat cream between the hero and the gradient. No top padding:
+   the hero's own bottom padding is already one section of rhythm, and a second
+   would leave the heading marooned. Positioned above .drift like the hero, so
+   a cloud never crosses a playing video. */
+.tour {
+  position: relative;
+  z-index: 2;
+  padding-top: 0;
+}
+
+/* A screen is a square scene, not a badge: radius-lg, the keyline, the pop
+   shadow. The ground is the video's own cream, so letterboxing on an odd
+   aspect never shows a black bar. */
+.player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border: 4px solid var(--sk-outline);
+  border-radius: var(--sk-radius-lg);
+  box-shadow: var(--sk-shadow-pop);
+  overflow: hidden;
+  background: #fdf6e3;
+}
+
+.player video {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Centred, and small enough to clear the native controls bar underneath.
+   The ink here is literal hex, not --sk-outline: the button sits on the
+   video's poster, a daytime frame that never re-themes, so in Night Kitchen
+   a cream keyline would vanish into it. Same rule as the raster badges. */
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sk-space-3);
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font: inherit;
+}
+
+.playDisc {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: var(--sk-radius-disc);
+  background: var(--sk-yellow);
+  border: 4px solid #16233f;
+  box-shadow: 4px 4px 0 #16233f;
+  transition:
+    transform 0.18s var(--sk-ease-press),
+    box-shadow 0.18s var(--sk-ease-press);
+}
+
+.playDisc svg {
+  width: 44px;
+  height: 44px;
+  fill: #16233f;
+  stroke: #16233f;
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.playLabel {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #16233f;
+  background: #ffffff;
+  border: 3px solid #16233f;
+  border-radius: var(--sk-radius-pill);
+  padding: 4px 14px;
+  box-shadow: 2px 2px 0 #16233f;
+}
+
+.play:hover .playDisc {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 #16233f;
+}
+
+.play:active .playDisc {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #16233f;
+}
+
+.play:focus-visible {
+  outline: none;
+}
+
+.play:focus-visible .playDisc {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
+}
+
+@media (max-width: 640px) {
+  .playDisc {
+    width: 64px;
+    height: 64px;
+  }
+  .playDisc svg {
+    width: 30px;
+    height: 30px;
+  }
+  .playLabel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playDisc {
+    transition: none;
+  }
+}
+
 /* ---- cuisine discs ----
    A grid rather than a wrapping flex row. With flex, the fifth badge drops to
    its own line and sits alone against the left margin; a grid re-flows into

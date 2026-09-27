@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { type CuisineDisc, CuisineDiscs } from "@/components/home/cuisine-discs";
+import { ExplainerVideo } from "@/components/home/explainer-video";
 import s from "@/components/home/home.module.css";
 import { scenes } from "@/components/home/logos";
 import { Overture, OvertureStill } from "@/components/home/overture";
@@ -138,6 +139,18 @@ export default async function Home() {
           </div>
         </div>
       </div>
+
+      {/* The tour: the whole site in two minutes, for anyone who would rather
+          be shown than read. Rendered from video/ — see video/README.md. */}
+      <section className={`${s.section} ${s.tour}`} id="tour">
+        <div className={s.wrap}>
+          <Reveal>
+            <p className={s.eyebrow}>The whole kitchen in two minutes</p>
+            <h2 className={s.sec}>HOW IT WORKS</h2>
+          </Reveal>
+          <ExplainerVideo />
+        </div>
+      </section>
 
       {/* This section carries the ground from cream to sky, so the wrap moves
           inside it — the gradient needs the full page width, the text does not. */}

@@ -40,3 +40,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# explainer video — generated media, all rebuildable with the video:* scripts.
+# The finished MP4, poster and captions in public/video/ ARE committed.
+/video/out/
+/video/public/vo/
+/video/public/music/
+/video/public/sfx/
+/video/public/art/
