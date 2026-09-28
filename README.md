@@ -56,6 +56,7 @@ other way around.
 | `20260920000200_rls_policies.sql` | `is_admin()` and every Row Level Security policy |
 | `20260920000300_seed_reference_data.sql` | 11 cuisines and the 256-item pantry inventory |
 | `20260920000400_save_recipe_function.sql` | `save_recipe()` — recipe + ingredients in one transaction |
+| `20260928000100_pantry_public_read.sql` | Public SELECT on `pantry_items`, for the view-only What's in Stock page |
 
 The Supabase CLI is not installed; migrations are applied through the Supabase
 MCP integration in Claude Code. The filenames follow the CLI's
@@ -69,8 +70,9 @@ at `<project>/rest/v1/*` from any browser — bypassing Next.js entirely. So acc
 control cannot live in Server Actions; it has to be in the database.
 
 - `cuisines`, `recipes`, `ingredients` — world-readable, admin-writable.
-- `pantry_items` — admin-only in every direction. No `anon` policy exists, so
-  anonymous reads return zero rows.
+- `pantry_items` — world-readable, admin-writable. It started admin-only; the
+  public SELECT policy was added so What's in Stock (`/stock`) can show it to
+  everyone, view-only.
 
 "Admin" means one email address, held in `public.is_admin()`. **That literal has
 to stay in sync with the `ADMIN_EMAIL` environment variable** used by the login
@@ -93,8 +95,8 @@ never be hand-edited. All three clients in `src/lib/supabase/` are parameterised
 with its `Database` type, which is what makes table and column names checked at
 compile time.
 
-Visit `/health` after any change — it verifies public reads still work and that
-the pantry is still invisible to anonymous visitors.
+Visit `/health` after any change — it verifies public reads still work,
+including the pantry that What's in Stock depends on.
 
 ## Auth
 
@@ -105,7 +107,7 @@ and no roles table; everyone else uses the site signed out.
 | --- | --- |
 | `/login` | Email + password. A non-admin who authenticates is signed straight back out with an explanation. |
 | `/admin` | Guarded by `requireAdmin()`. Currently a stub — section 8 builds the real dashboard. |
-| `/admin/pantry` | My Pantry. Reads and writes `pantry_items`, which has no public policy at all. |
+| `/admin/pantry` | My Pantry. Reads and writes `pantry_items`; only the admin can write it. |
 | `/admin/recipes/new` | Add a recipe. Manual entry; URL import and CSV bulk upload land here too. |
 | `/admin/recipes/[id]/edit` | Edit a saved recipe. |
 
@@ -116,6 +118,7 @@ Public routes need no account at all:
 | `/recipes` | Browse and filter the collection. Alphabetical, infinite scroll. |
 | `/recipes/[id]` | A single recipe: ingredients, substitutions, instructions. Admin sees edit / mark-reviewed / delete. |
 | `/what-can-i-make` | Ingredient matching. Visitors type what they have; the admin gets their saved pantry. |
+| `/stock` | What's in Stock: pantry, fridge and freezer as animated drawings and lists. View-only for visitors; the admin also gets quick-add. |
 
 `src/lib/auth.ts` holds the check. `requireAdmin()` is what every admin page
 should call; it returns the user or redirects to `/login`.
@@ -158,6 +161,7 @@ src/
     admin/page.tsx      Guarded stub; section 8 builds the real dashboard
     admin/pantry/       My Pantry — staples, standing proteins, fridge, freezer
     admin/recipes/      Add and edit recipes
+    stock/              What's in Stock — public, view-only unless admin
     recipes/            Public browse + recipe detail
     globals.css         Tailwind v4 entry + theme tokens
   components/ui/        shadcn/ui components

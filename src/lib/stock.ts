@@ -145,7 +145,7 @@ export function buildStock(items: PantryItem[]): Stock {
 /** One plain-English line summing up a zone, for the text summary. */
 export function describeZone(zone: StockZone, groups: StockGroup[]): string {
   const total = groups.reduce((sum, group) => sum + group.entries.length, 0)
-  if (total === 0) return "Empty — add what's in there below."
+  if (total === 0) return "Empty."
 
   if (zone === "pantry") {
     const deepest = [...groups]

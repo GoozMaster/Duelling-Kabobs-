@@ -11,7 +11,7 @@ import { BASE_STAPLE_CATEGORY, STAPLE_CATEGORIES } from "@/lib/pantry"
 import type { StockGroup, StockZone, StockZoneInfo } from "@/lib/stock"
 import { buildStock, describeZone, STOCK_ZONES } from "@/lib/stock"
 
-import { addPantryItem } from "../pantry/actions"
+import { addPantryItem } from "../admin/pantry/actions"
 
 import s from "./stock.module.css"
 import { ZoneArt } from "./zone-art"
@@ -22,7 +22,11 @@ function addItem(items: PantryItem[], item: PantryItem): PantryItem[] {
   return [...items, item]
 }
 
-export function StockRoom({ items }: { items: PantryItem[] }) {
+/**
+ * `canEdit` is true only for the admin. Everyone else gets the same drawings
+ * and lists with the quick-add forms left out.
+ */
+export function StockRoom({ items, canEdit }: { items: PantryItem[]; canEdit: boolean }) {
   // Same optimistic pattern as My Pantry: the new jar lands on the shelf at
   // once, and revalidatePath swaps in the real row when the action returns.
   const [optimisticItems, addOptimistic] = useOptimistic(items, addItem)
@@ -97,6 +101,7 @@ export function StockRoom({ items }: { items: PantryItem[] }) {
           count={stock[zone.key].entries.length}
           error={errors[zone.key] ?? null}
           pending={pending}
+          canEdit={canEdit}
           justAdded={justAdded}
           onAdd={(input) => handleAdd(zone.key, input)}
           onOpenChange={(open) =>
@@ -153,6 +158,7 @@ function ZoneSection({
   count,
   error,
   pending,
+  canEdit,
   justAdded,
   onAdd,
   onOpenChange,
@@ -162,6 +168,7 @@ function ZoneSection({
   count: number
   error: string | null
   pending: boolean
+  canEdit: boolean
   justAdded: string | null
   onAdd: (input: AddInput) => void
   onOpenChange: (open: boolean) => void
@@ -202,7 +209,7 @@ function ZoneSection({
           <p className="text-sm">{describeZone(zone.key, groups)}</p>
         </header>
 
-        <QuickAdd zone={zone} pending={pending} onAdd={onAdd} />
+        {canEdit && <QuickAdd zone={zone} pending={pending} onAdd={onAdd} />}
 
         <p
           role="status"
@@ -214,7 +221,8 @@ function ZoneSection({
 
         {count === 0 ? (
           <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-3 py-6 text-center text-sm">
-            Nothing in the {zone.label.toLowerCase()} yet. Add the first thing above.
+            Nothing in the {zone.label.toLowerCase()} yet.
+            {canEdit && " Add the first thing above."}
           </p>
         ) : zone.key === "pantry" ? (
           <PantryList groups={groups} justAdded={justAdded} />

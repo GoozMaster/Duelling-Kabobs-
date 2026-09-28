@@ -10,7 +10,7 @@ export type PantryActionState = { error: string | null }
 
 const PANTRY_PATH = "/admin/pantry"
 // What's in Stock reads the same rows, and its quick-add calls addPantryItem.
-const STOCK_PATH = "/admin/stock"
+const STOCK_PATH = "/stock"
 
 const ok: PantryActionState = { error: null }
 
