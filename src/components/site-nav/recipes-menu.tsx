@@ -24,7 +24,7 @@ import s from "./site-nav.module.css"
  * hover. A menu whose items are not links is a menu you cannot bookmark.
  */
 
-const items = [
+export const recipeItems = [
   { href: "/recipes", label: "All recipes" },
   { href: "/recipes/by-cuisine", label: "By cuisine" },
   { href: "/recipes/surprise", label: "Surprise me" },
@@ -50,7 +50,7 @@ export function RecipesMenu() {
       {/* align="end" because the nav sits top-right; the component's own
           default of "start" would hang the panel off the right edge. */}
       <DropdownMenuContent align="end" className={menu}>
-        {items.map(({ href, label }) => (
+        {recipeItems.map(({ href, label }) => (
           <DropdownMenuItem key={href} asChild className={item}>
             <Link href={href}>{label}</Link>
           </DropdownMenuItem>

@@ -26,9 +26,9 @@ import s from "./site-nav.module.css"
  * what swings its door open.
  */
 
-const everything = { href: "/admin/stock", label: "Everything" }
+export const stockEverything = { href: "/admin/stock", label: "Everything" }
 
-const sections = [
+export const stockSections = [
   { href: "/admin/stock#pantry", label: "Pantry" },
   { href: "/admin/stock#fridge", label: "Fridge" },
   { href: "/admin/stock#freezer", label: "Freezer" },
@@ -52,10 +52,10 @@ export function StockMenu() {
 
       <DropdownMenuContent align="end" className={menu}>
         <DropdownMenuItem asChild className={item}>
-          <Link href={everything.href}>{everything.label}</Link>
+          <Link href={stockEverything.href}>{stockEverything.label}</Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator className="mx-1 bg-[var(--sk-outline)]/30" />
-        {sections.map(({ href, label }) => (
+        {stockSections.map(({ href, label }) => (
           <DropdownMenuItem key={href} asChild className={item}>
             <Link href={href}>{label}</Link>
           </DropdownMenuItem>

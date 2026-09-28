@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { badges } from "@/components/home/logos"
 
+import { MobileMenu } from "./mobile-menu"
 import { RecipesMenu } from "./recipes-menu"
 import s from "./site-nav.module.css"
 import { StockMenu } from "./stock-menu"
@@ -41,6 +42,11 @@ export function SiteNav() {
         {/* Admin sign-in. Only one account exists and it is not self-serve, so
             this is a link for the site owner rather than a call to action. */}
         <Link href="/login">Log in</Link>
+      </span>
+      {/* Phones get one Menu button in place of the row above; CSS decides
+          which of the two is shown. */}
+      <span className={s.mobileMenu}>
+        <MobileMenu />
       </span>
     </nav>
   )

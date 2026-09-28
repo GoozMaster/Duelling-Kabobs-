@@ -234,14 +234,8 @@
 /* ---- Page chrome -------------------------------------------------------- */
 
 .zone {
-  /* Clears the sticky site nav, which stacks its links on a phone. */
+  /* Clears the sticky site nav. */
   scroll-margin-top: 84px;
-}
-
-@media (max-width: 640px) {
-  .zone {
-    scroll-margin-top: 136px;
-  }
 }
 
 .artButton {
