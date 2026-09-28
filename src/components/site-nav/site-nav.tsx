@@ -3,8 +3,27 @@ import Link from "next/link"
 
 import { badges } from "@/components/home/logos"
 
-import { RecipesMenu } from "./recipes-menu"
+import { NavMenu, type NavMenuItem } from "./nav-menu"
 import s from "./site-nav.module.css"
+
+const recipeItems: NavMenuItem[] = [
+  { href: "/recipes", label: "All recipes" },
+  { href: "/recipes/by-cuisine", label: "By cuisine" },
+  { href: "/recipes/surprise", label: "Surprise me" },
+]
+
+/**
+ * The stock page is admin-only, like the pantry it reads, so a visitor who
+ * picks one of these lands on the sign-in page instead. The hashes are the
+ * section ids on /admin/stock; arriving on one scrolls it into view, which is
+ * what swings its door open.
+ */
+const stockItems: NavMenuItem[] = [
+  { href: "/admin/stock", label: "Everything", separatorAfter: true },
+  { href: "/admin/stock#pantry", label: "Pantry" },
+  { href: "/admin/stock#fridge", label: "Fridge" },
+  { href: "/admin/stock#freezer", label: "Freezer" },
+]
 
 /**
  * The shared header.
@@ -20,8 +39,8 @@ import s from "./site-nav.module.css"
  * otherwise shrink it to a 13px nav item.
  *
  * Deliberately not in the root layout: on the home page it has to sit after
- * <Overture /> so the intro is never overlaid by a sticky bar, and /login and
- * the admin routes have their own chrome.
+ * <Overture /> so the intro is never overlaid by a sticky bar. Every page
+ * renders it itself instead; the admin routes get it from admin/layout.tsx.
  */
 export function SiteNav() {
   return (
@@ -35,7 +54,8 @@ export function SiteNav() {
       <span className={s.spacer} />
       <span className={s.navLinks}>
         <Link href="/what-can-i-make">What can I make?</Link>
-        <RecipesMenu />
+        <NavMenu label="Recipes" items={recipeItems} />
+        <NavMenu label="See what's in stock" items={stockItems} />
         {/* Admin sign-in. Only one account exists and it is not self-serve, so
             this is a link for the site owner rather than a call to action. */}
         <Link href="/login">Log in</Link>

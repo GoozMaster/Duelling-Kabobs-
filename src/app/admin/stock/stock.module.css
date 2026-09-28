@@ -233,16 +233,15 @@
 
 /* ---- Page chrome -------------------------------------------------------- */
 
-.jumpBar {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background: color-mix(in srgb, var(--sk-surface) 92%, transparent);
-  backdrop-filter: blur(6px);
+.zone {
+  /* Clears the sticky site nav, which is taller on a phone. */
+  scroll-margin-top: 84px;
 }
 
-.zone {
-  scroll-margin-top: 150px;
+@media (max-width: 640px) {
+  .zone {
+    scroll-margin-top: 124px;
+  }
 }
 
 .artButton {

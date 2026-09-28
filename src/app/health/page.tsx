@@ -1,3 +1,4 @@
+import { SiteNav } from "@/components/site-nav/site-nav"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
@@ -131,46 +132,49 @@ export default async function HealthPage() {
   const allOk = checks.every((check) => check.ok)
 
   return (
-    <main className="mx-auto w-full max-w-2xl px-6 py-16">
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between gap-4">
-            <CardTitle>Environment health</CardTitle>
-            <Badge variant={allOk ? "default" : "destructive"}>
-              {allOk ? "All passing" : "Attention needed"}
-            </Badge>
-          </div>
-          <CardDescription>
-            Live check of the Supabase wiring for this deployment.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <ul className="divide-y text-sm">
-            {checks.map((check) => (
-              <li
-                key={check.label}
-                className="flex items-start justify-between gap-6 py-3"
-              >
-                <div>
-                  <p className="font-medium">{check.label}</p>
-                  <p className="text-muted-foreground break-all">{check.detail}</p>
-                </div>
-                <span
-                  aria-hidden
-                  className={
-                    check.ok
-                      ? "text-emerald-600 dark:text-emerald-400"
-                      : "text-destructive"
-                  }
+    <>
+      <SiteNav />
+      <main className="mx-auto w-full max-w-2xl px-6 py-16">
+        <Card>
+          <CardHeader>
+            <div className="flex items-center justify-between gap-4">
+              <CardTitle>Environment health</CardTitle>
+              <Badge variant={allOk ? "default" : "destructive"}>
+                {allOk ? "All passing" : "Attention needed"}
+              </Badge>
+            </div>
+            <CardDescription>
+              Live check of the Supabase wiring for this deployment.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <ul className="divide-y text-sm">
+              {checks.map((check) => (
+                <li
+                  key={check.label}
+                  className="flex items-start justify-between gap-6 py-3"
                 >
-                  {check.ok ? "PASS" : "FAIL"}
-                </span>
-                <span className="sr-only">{check.ok ? "Pass" : "Fail"}</span>
-              </li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
-    </main>
+                  <div>
+                    <p className="font-medium">{check.label}</p>
+                    <p className="text-muted-foreground break-all">{check.detail}</p>
+                  </div>
+                  <span
+                    aria-hidden
+                    className={
+                      check.ok
+                        ? "text-emerald-600 dark:text-emerald-400"
+                        : "text-destructive"
+                    }
+                  >
+                    {check.ok ? "PASS" : "FAIL"}
+                  </span>
+                  <span className="sr-only">{check.ok ? "Pass" : "Fail"}</span>
+                </li>
+              ))}
+            </ul>
+          </CardContent>
+        </Card>
+      </main>
+    </>
   )
 }

@@ -92,7 +92,7 @@
   white-space: nowrap;
 }
 
-/* At 375px the wordmark and three uppercase links do not both fit on one row,
+/* At 375px the wordmark and the uppercase links do not both fit on one row,
    so both sides step down rather than one of them being dropped. */
 @media (max-width: 640px) {
   .nav {
@@ -113,8 +113,20 @@
     font-size: 11px;
     letter-spacing: 0.04em;
   }
+  /* With four items the links no longer fit beside the wordmark, and stacking
+     them one per row made the bar four rows tall. Instead the wordmark takes
+     its own row and the links share the one under it, wrapping at most once. */
+  .nav {
+    flex-wrap: wrap;
+    row-gap: var(--sk-space-2);
+  }
+  .spacer {
+    display: none;
+  }
   .navLinks {
-    gap: var(--sk-space-3);
+    flex-basis: 100%;
+    justify-content: flex-start;
+    gap: var(--sk-space-2) var(--sk-space-4);
   }
 }
 

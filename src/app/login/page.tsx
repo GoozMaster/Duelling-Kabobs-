@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 
+import { SiteNav } from "@/components/site-nav/site-nav"
 import { isAdmin } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 
@@ -28,15 +29,20 @@ export default async function LoginPage() {
   // is where a non-admin actually gets signed back out.
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-6 px-6 py-16">
-      <LoginForm />
+    <>
+      <SiteNav />
+      {/* flex-1 rather than min-h-screen now that the nav takes a row: the
+          body is a flex column, so this fills what is left and still centres. */}
+      <main className="flex flex-1 flex-col items-center justify-center gap-6 px-6 py-16">
+        <LoginForm />
 
-      <Link
-        href="/"
-        className="text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
-      >
-        Back to Dueling Kebabs
-      </Link>
-    </main>
+        <Link
+          href="/"
+          className="text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
+        >
+          Back to Dueling Kebabs
+        </Link>
+      </main>
+    </>
   )
 }
