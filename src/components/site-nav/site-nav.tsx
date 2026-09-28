@@ -3,8 +3,10 @@ import Link from "next/link"
 
 import { badges } from "@/components/home/logos"
 
+import { MobileMenu } from "./mobile-menu"
 import { RecipesMenu } from "./recipes-menu"
 import s from "./site-nav.module.css"
+import { StockMenu } from "./stock-menu"
 
 /**
  * The shared header.
@@ -20,8 +22,8 @@ import s from "./site-nav.module.css"
  * otherwise shrink it to a 13px nav item.
  *
  * Deliberately not in the root layout: on the home page it has to sit after
- * <Overture /> so the intro is never overlaid by a sticky bar, and /login and
- * the admin routes have their own chrome.
+ * <Overture /> so the intro is never overlaid by a sticky bar. Every page
+ * renders it itself instead; the admin routes get it from admin/layout.tsx.
  */
 export function SiteNav() {
   return (
@@ -36,9 +38,15 @@ export function SiteNav() {
       <span className={s.navLinks}>
         <Link href="/what-can-i-make">What can I make?</Link>
         <RecipesMenu />
+        <StockMenu />
         {/* Admin sign-in. Only one account exists and it is not self-serve, so
             this is a link for the site owner rather than a call to action. */}
         <Link href="/login">Log in</Link>
+      </span>
+      {/* Phones get one Menu button in place of the row above; CSS decides
+          which of the two is shown. */}
+      <span className={s.mobileMenu}>
+        <MobileMenu />
       </span>
     </nav>
   )

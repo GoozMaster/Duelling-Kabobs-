@@ -54,7 +54,7 @@ export function StockRoom({ items }: { items: PantryItem[] }) {
   return (
     <div className="flex flex-col gap-8">
       {/* The text summary doubles as the section switcher. */}
-      <nav aria-label="Storage sections" className={`${s.jumpBar} -mx-4 px-4 py-3 sm:-mx-6 sm:px-6`}>
+      <nav aria-label="Storage sections">
         <p className="text-muted-foreground mb-2 text-sm">
           <strong className="text-foreground">{grandTotal}</strong> things on hand across the
           pantry, fridge and freezer.
@@ -111,12 +111,12 @@ export function StockRoom({ items }: { items: PantryItem[] }) {
 }
 
 /**
- * Opens the door while the section is on screen and shuts it when it leaves,
+ * Opens the door while its drawing is on screen and shuts it when it leaves,
  * so going back to a section plays the opening again. Tapping the drawing
  * overrides it until the next time the section scrolls in or out.
  */
 function useDoor(onOpenChange: (open: boolean) => void) {
-  const ref = useRef<HTMLElement>(null)
+  const ref = useRef<HTMLButtonElement>(null)
   const [open, setOpen] = useState(false)
   const report = useRef(onOpenChange)
 
@@ -134,8 +134,10 @@ function useDoor(onOpenChange: (open: boolean) => void) {
         setOpen(visible)
         report.current(visible)
       },
-      // Open once a good chunk is on screen, not the moment an edge peeks in.
-      { threshold: 0.3, rootMargin: "-10% 0px -10% 0px" },
+      // Watches the drawing rather than the whole section: on a phone the
+      // pantry section is taller than the screen, so no share of it would
+      // ever be "enough" visible. Half the drawing always can be.
+      { threshold: 0.5 },
     )
 
     observer.observe(el)
@@ -168,13 +170,13 @@ function ZoneSection({
 
   return (
     <section
-      ref={ref}
       id={zone.key}
       aria-labelledby={`${zone.key}-heading`}
       className={`${s.zone} border-border bg-card grid gap-6 rounded-[var(--sk-radius-lg)] border-2 p-4 shadow-[var(--sk-shadow-pop)] sm:p-6 md:grid-cols-[minmax(0,5fr)_minmax(0,6fr)]`}
     >
-      <div className="md:sticky md:top-40 md:self-start">
+      <div className="md:sticky md:top-24 md:self-start">
         <button
+          ref={ref}
           type="button"
           className={s.artButton}
           onClick={() => setOpen((current) => !current)}

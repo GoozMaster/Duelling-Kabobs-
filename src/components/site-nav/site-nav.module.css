@@ -176,3 +176,24 @@
    so the winner would come down to stylesheet order. Passing utilities instead
    lets tailwind-merge drop the conflicting ones outright, which is decided at
    build time rather than by luck. */
+
+/* ===================== phone menu ===================== */
+/* At 640px and under, the row of links gives way to a single Menu button
+   (mobile-menu.tsx) holding all of them. Above it nothing changes. */
+.mobileMenu {
+  display: none;
+}
+
+.menuIcon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 640px) {
+  .navLinks {
+    display: none;
+  }
+  .mobileMenu {
+    display: inline-flex;
+  }
+}
