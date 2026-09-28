@@ -99,22 +99,22 @@ async function runChecks(): Promise<CheckResult[]> {
         : `${cuisines.count} of 11 seeded cuisines readable`,
     })
 
-    // The inverse: pantry_items has no policy for `anon`, so a visitor with no
-    // session must see zero rows. Seeing any row here means the private data is
-    // leaking to the public internet.
+    // What's in Stock is public, so pantry_items must be readable with or
+    // without a session. Zero rows here means the public-read policy is
+    // missing and /stock will show every visitor an empty kitchen. Writes stay
+    // admin-only; that is RLS's job and is not probed here, because a check
+    // that tries a write could leave a junk row behind if the policy broke.
     const pantry = await supabase
       .from("pantry_items")
       .select("id", { count: "exact", head: true })
 
     const pantryCount = pantry.count ?? 0
     checks.push({
-      label: signedIn ? "Pantry readable by admin" : "Pantry hidden from the public",
-      ok: signedIn ? pantryCount > 0 : pantryCount === 0,
+      label: "Pantry readable (view only)",
+      ok: !pantry.error && pantryCount > 0,
       detail: pantry.error
         ? pantry.error.message
-        : signedIn
-          ? `${pantryCount} items visible to this session`
-          : `${pantryCount} rows returned (must be 0 — RLS blocks anonymous reads)`,
+        : `${pantryCount} items visible to this ${signedIn ? "session" : "anonymous visitor"}`,
     })
   } catch (error) {
     checks.push({

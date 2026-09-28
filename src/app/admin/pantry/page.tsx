@@ -42,7 +42,7 @@ export default async function PantryPage() {
         </h1>
         <p className="text-muted-foreground text-sm">
           Everything here is assumed on hand when working out what you can cook.{" "}
-          <Link href="/admin/stock" className="text-foreground underline underline-offset-4">
+          <Link href="/stock" className="text-foreground underline underline-offset-4">
             See it all in stock
           </Link>
         </p>

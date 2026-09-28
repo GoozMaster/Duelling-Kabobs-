@@ -21,8 +21,9 @@ export type ViewerPantry = {
  * have the butter.
  *
  * Whether the saved pantry applies is decided HERE, from the session, never
- * from an argument — a public visitor cannot ask for the admin's pantry, and
- * RLS would refuse them anyway, since pantry_items grants anon nothing.
+ * from an argument. The pantry itself is publicly readable (What's in Stock
+ * shows it to everyone), but matching recipes against it is the admin's
+ * answer: a visitor is asking about their own kitchen, not this one.
  *
  * Base staples count for everybody. That is what the Base category was created
  * for: nobody lists salt and water when asked what they have in, so a visitor

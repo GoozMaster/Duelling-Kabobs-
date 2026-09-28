@@ -20,18 +20,17 @@ import s from "./site-nav.module.css"
  * the recipe menu stays exactly as it is. It borrows that menu's trigger
  * styles and panel utilities so the two read as a pair.
  *
- * The stock page is admin-only, like the pantry it reads, so a visitor who
- * picks one of these lands on the sign-in page instead. The hashes are the
- * section ids on /admin/stock; arriving on one scrolls it into view, which is
- * what swings its door open.
+ * The stock page is public and view-only for everyone but the admin. The
+ * hashes are the section ids on /stock; arriving on one scrolls it into view,
+ * which is what swings its door open.
  */
 
-export const stockEverything = { href: "/admin/stock", label: "Everything" }
+export const stockEverything = { href: "/stock", label: "Everything" }
 
 export const stockSections = [
-  { href: "/admin/stock#pantry", label: "Pantry" },
-  { href: "/admin/stock#fridge", label: "Fridge" },
-  { href: "/admin/stock#freezer", label: "Freezer" },
+  { href: "/stock#pantry", label: "Pantry" },
+  { href: "/stock#fridge", label: "Fridge" },
+  { href: "/stock#freezer", label: "Freezer" },
 ]
 
 // Same utilities as RecipesMenu; see the note there on why they are not
