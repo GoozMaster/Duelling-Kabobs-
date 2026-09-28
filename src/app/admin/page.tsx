@@ -263,6 +263,11 @@ export default async function AdminPage() {
             meta="Staples, standing proteins, fridge and freezer"
           />
           <RowLink
+            href="/admin/stock"
+            title="What's in stock"
+            meta="Pantry, fridge and freezer at a glance, with quick add"
+          />
+          <RowLink
             href="/recipes"
             title="Browse recipes"
             meta="The public collection, as visitors see it"
