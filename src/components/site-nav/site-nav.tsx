@@ -3,27 +3,9 @@ import Link from "next/link"
 
 import { badges } from "@/components/home/logos"
 
-import { NavMenu, type NavMenuItem } from "./nav-menu"
+import { RecipesMenu } from "./recipes-menu"
 import s from "./site-nav.module.css"
-
-const recipeItems: NavMenuItem[] = [
-  { href: "/recipes", label: "All recipes" },
-  { href: "/recipes/by-cuisine", label: "By cuisine" },
-  { href: "/recipes/surprise", label: "Surprise me" },
-]
-
-/**
- * The stock page is admin-only, like the pantry it reads, so a visitor who
- * picks one of these lands on the sign-in page instead. The hashes are the
- * section ids on /admin/stock; arriving on one scrolls it into view, which is
- * what swings its door open.
- */
-const stockItems: NavMenuItem[] = [
-  { href: "/admin/stock", label: "Everything", separatorAfter: true },
-  { href: "/admin/stock#pantry", label: "Pantry" },
-  { href: "/admin/stock#fridge", label: "Fridge" },
-  { href: "/admin/stock#freezer", label: "Freezer" },
-]
+import { StockMenu } from "./stock-menu"
 
 /**
  * The shared header.
@@ -54,8 +36,8 @@ export function SiteNav() {
       <span className={s.spacer} />
       <span className={s.navLinks}>
         <Link href="/what-can-i-make">What can I make?</Link>
-        <NavMenu label="Recipes" items={recipeItems} />
-        <NavMenu label="See what's in stock" items={stockItems} />
+        <RecipesMenu />
+        <StockMenu />
         {/* Admin sign-in. Only one account exists and it is not self-serve, so
             this is a link for the site owner rather than a call to action. */}
         <Link href="/login">Log in</Link>
