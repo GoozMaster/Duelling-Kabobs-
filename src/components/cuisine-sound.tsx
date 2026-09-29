@@ -28,16 +28,15 @@ import { useEffect } from "react";
  * Sound Effects/ also holds China.mp3 and Japan.mp3, which have no
  * corresponding cuisine — the collection has "Asian", not "Chinese" or
  * "Japanese" — so they are deliberately unused rather than assigned to
- * something they do not name. The other six cuisines are simply silent; a
+ * something they do not name. The other seven cuisines are simply silent; a
  * missing entry here is a no-op, not an error.
  *
- * Indian's clip is not from Sound Effects/: it is a synthesised cartoon voice
- * saying "Mamma mia!", added by request.
+ * Italian's clip is not Sound Effects/Italian.mp3: it is a synthesised cartoon
+ * voice saying "Mamma mia!", swapped in by request.
  */
 const SOUNDS: Record<string, string> = {
   American: "/sounds/american.mp3",
   Asian: "/sounds/asian.mp3",
-  Indian: "/sounds/indian.mp3",
   Italian: "/sounds/italian.mp3",
   Mediterranean: "/sounds/mediterranean.mp3",
 };
