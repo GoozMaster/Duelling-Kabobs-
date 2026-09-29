@@ -2,6 +2,7 @@ import type { StaticImageData } from "next/image";
 
 import chineseNoodles from "@/assets/logos/chinese-noodles.jpg";
 import downWithHunger from "@/assets/logos/down-with-hunger.png";
+import downWithHungerMark from "@/assets/logos/down-with-hunger-mark.png";
 import duellingKebabs from "@/assets/logos/duelling-kebabs.png";
 import frenchBaker from "@/assets/logos/french-baker.jpg";
 import italianChef from "@/assets/logos/italian-chef.jpg";
@@ -9,7 +10,7 @@ import japaneseSushi from "@/assets/logos/japanese-sushi.jpg";
 import persianKebab from "@/assets/logos/persian-kebab.jpg";
 
 /**
- * The seven raster masters, under the names Springfield Kitchen gives them.
+ * The raster masters, under the names Springfield Kitchen gives them.
  *
  * Two classes that never mix: circular cuisine badges (radius-disc) and square
  * scene illustrations (radius-lg). The scenes are drawn in a heavier, warmer
@@ -18,6 +19,9 @@ import persianKebab from "@/assets/logos/persian-kebab.jpg";
 
 export const scenes = {
   downWithHunger,
+  // The protester's head, cropped from downWithHunger for the nav disc.
+  downWithHungerMark,
+  // Kept for the /dueling-kebabs page; the main site no longer shows it.
   duellingKebabs,
 } satisfies Record<string, StaticImageData>;
 

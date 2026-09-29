@@ -1,9 +1,10 @@
 import type { ReactNode } from "react";
+import { Img, staticFile } from "remotion";
 
 import { bob, drop, easeGravity, easeLand, lin, p, pop, useT, wobble } from "../anim";
-import { Burst, DuelCooks, Drumstick, Flame, Plates, Pot, Puff, RubberChicken } from "../art";
+import { Burst, Drumstick, Flame, Plates, Pot, Puff, RubberChicken } from "../art";
 import { useScene } from "../scene";
-import { C } from "../theme";
+import { C, POP } from "../theme";
 import { Ground, Headline, Sfx, Sunburst } from "../ui";
 
 const POT = { x: 720, y: 530, w: 480, h: 400 };
@@ -11,8 +12,8 @@ const MOUTH = { x: 960, y: POT.y + 170 };
 
 /**
  * The idea. Food, humour and family go into one pot, which rattles, and bursts
- * into the name: the two cooks from the site's overture, clashing skewers
- * under the wordmark. The score's glockenspiel run and hit land on the same
+ * into the name: the protester from the site's hero drops in under the
+ * wordmark and lands with a stamp. The score's glockenspiel run and hit land on the same
  * frame as the burst.
  */
 export function Idea() {
@@ -40,10 +41,9 @@ export function Idea() {
   const starFade = 1 - lin(t, burst + 0.3, 0.25);
 
   // the title
-  const cooksIn = p(t, burst + 0.2, 0.5, easeLand);
+  const panelIn = p(t, burst + 0.2, 0.5, easeLand);
   const clash = burst + 0.62;
-  const spark = t > clash ? pop(t, clash) * (1 - lin(t, clash + 0.9, 0.4)) : 0;
-  const quiver = wobble(t, clash, 4);
+  const quiver = wobble(t, clash, 3);
 
   return (
     <Ground>
@@ -136,17 +136,28 @@ export function Idea() {
           <Sunburst speed={14} opacity={1} y={560} />
           <div style={{ position: "absolute", left: 0, right: 0, top: 80, display: "flex", justifyContent: "center" }}>
             <div style={{ transform: `scale(${slam(t, burst + 0.32)}) rotate(-2deg) translateY(${bob(t, 3.4, 5)}px)` }}>
-              <Headline size={176}>DUELING KEBABS</Headline>
+              <Headline size={150}>DOWN WITH HUNGER</Headline>
             </div>
           </div>
-          <DuelCooks
-            left={-760 * (1 - cooksIn)}
-            right={760 * (1 - cooksIn)}
-            leanL={quiver}
-            leanR={-quiver}
-            clash={spark}
-            style={{ position: "absolute", left: 290, top: 330, width: 1340, height: 782 }}
-          />
+          {/* the home page's hero panel: radius-lg and a keyline on its own sand */}
+          <div
+            style={{
+              position: "absolute",
+              left: 960 - 300,
+              top: 320,
+              width: 600,
+              height: 600,
+              borderRadius: 44,
+              border: `9px solid ${C.ink}`,
+              boxShadow: POP,
+              overflow: "hidden",
+              background: C.sand,
+              transformOrigin: "50% 100%",
+              transform: `translateY(${900 * (1 - panelIn)}px) rotate(${quiver}deg)`,
+            }}
+          >
+            <Img src={staticFile("art/down-with-hunger.png")} style={{ width: "100%", height: "100%", display: "block" }} />
+          </div>
         </>
       )}
       {star > 0 && (

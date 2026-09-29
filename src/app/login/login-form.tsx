@@ -33,7 +33,7 @@ export function LoginForm() {
           ADMIN SIGN-IN
         </CardTitle>
         <CardDescription>
-          Dueling Kebabs has one account, and it is already made. Everyone else can
+          Down With Hunger has one account, and it is already made. Everyone else can
           browse the recipes without signing in at all.
         </CardDescription>
       </CardHeader>

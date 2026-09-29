@@ -266,11 +266,11 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
             and aria-hidden — the Overture gives this footage its meaningful
             description in the one place it carries meaning. */}
         {reduced ? (
-          <Image className={s.still} src={scenes.duellingKebabs} alt="" priority />
+          <Image className={s.still} src={scenes.downWithHunger} alt="" priority />
         ) : (
           <video
             className={s.video}
-            src="/dueling-kebabs.mp4"
+            src="/down-with-hunger.mp4"
             autoPlay
             muted
             loop

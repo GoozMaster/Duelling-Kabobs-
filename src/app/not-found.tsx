@@ -3,10 +3,11 @@ import Image from "next/image"
 import Link from "next/link"
 
 import { scenes } from "@/components/home/logos"
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 
 export const metadata: Metadata = {
-  title: "Not found — Dueling Kebabs",
+  title: "Not found",
 }
 
 // The home page's .btn sticker, restated in utilities because home.module.css
@@ -50,6 +51,7 @@ export default function NotFound() {
           </div>
         </div>
       </main>
+      <SiteFooter />
     </>
   )
 }

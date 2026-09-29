@@ -1,4 +1,4 @@
-# Dueling Kebabs — explainer script
+# Down With Hunger — explainer script
 
 Narrator: male, warm, deadpan cartoon-announcer. Third person, so the story
 belongs to the cook without the narrator claiming to be them. Voice rules come
@@ -20,7 +20,7 @@ through the site's own matcher on 2026-09-26.
 | 8 | | It doesn't know what's in your pantry. And it definitely doesn't know you're out of lemons. | Question marks over the fridge; a lone lemon gets an OUT stamp. |
 | 9 | The idea | So the list got a kitchen of its own. | Pot drops onto a burner. |
 | 10 | | One part food. One part humor. All of it built for feeding the family. | Three tokens (a fork, a grin, a table setting) drop into the pot in turn. |
-| 11 | | This is Dueling Kebabs. | The pot bursts; the two cooks clash skewers; the wordmark slams in. |
+| 11 | | This is Down With Hunger. | The pot bursts; the protester panel drops in and lands with a stamp; the wordmark slams in. |
 | 12 | The menu | Every dish is on the menu, all in one place. | Recipe cards deal onto a grid. |
 | 13 | | Browse the whole collection, filter by cuisine, or spin the globe and pick a spot on the map. | Cuisine chips toggle; the grid reshuffles; a globe turns. |
 | 14 | The pantry | Behind the scenes, the staples are already stocked. | Three shelves: Staples, Proteins, Fridge & freezer. |
@@ -34,5 +34,5 @@ through the site's own matcher on 2026-09-26.
 | 22 | | What you have turns green. What you need turns red. | Rows colour in one by one with "have it" / "need it". |
 | 23 | | For Chicken Shawarma, it's a lemon. Shopping list: done. | The two lemon rows fly into a sticky note: "1 lemon". |
 | 24 | Surprise me | And when nobody can decide, hit "Surprise me", and let the reel pick dinner. | Slot reel spins through real titles and lands. |
-| 25 | Closing | Dueling Kebabs. Every dish worth cooking, one menu away. | Sunburst returns; hero art and wordmark. |
+| 25 | Closing | Every dish worth cooking, one menu away. | Sunburst returns; hero art and wordmark. |
 | 26 | | Down with hunger. | The brick placard slams on. End card. |

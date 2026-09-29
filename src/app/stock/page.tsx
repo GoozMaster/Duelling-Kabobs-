@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import type { PantryItem } from "@/lib/pantry"
 import { viewerIsAdmin } from "@/lib/recipe-browse"
@@ -9,7 +10,7 @@ import { createClient } from "@/lib/supabase/server"
 import { StockRoom } from "./stock-room"
 
 export const metadata: Metadata = {
-  title: "What's in Stock — Dueling Kebabs",
+  title: "What's in Stock",
 }
 
 /**
@@ -77,6 +78,7 @@ export default async function StockPage() {
           <StockRoom items={items} canEdit={canEdit} />
         )}
       </main>
+      <SiteFooter />
     </>
   )
 }

@@ -1,21 +1,14 @@
 /* ============================================================================
-   The Sunburst — Dueling Kebabs home page
+   The Sunburst — Down With Hunger home page
    Ported from Springfield Kitchen's HomeSunburst preview
    (https://claude.ai/artifact/Y5pkv9JbLXKDQHboAdQkmT).
 
    Two deliberate departures from the preview:
 
    1. The preview scrolls a `.page` div because it renders inside a fixed-size
-      card. Here the document itself is the scroller, so the sticky stage is
-      measured against the viewport.
+      card. Here the document itself is the scroller.
    2. The preview is authored at a fixed 960px and has no media queries. A real
-      site needs them, so the hero grid, the disc row and the split stack, and
-      the duel stage scales with the viewport instead of clipping.
-
-   The SVG paint classes are written as `:global` *under* a module class. That
-   keeps the duel's markup readable as SVG — `className="ln cloth"`, the way an
-   illustrator would write it — while the rules themselves stay scoped to this
-   page and cannot leak into the app.
+      site needs them, so the hero grid, the disc row and the split stack.
    ========================================================================= */
 
 .home {
@@ -125,199 +118,6 @@
   .wrap {
     padding: 0 var(--sk-space-5);
   }
-}
-
-/* ===================== the overture: DUELING KEBABS =====================
-   A tall section with a sticky stage. Everything inside is driven by scroll
-   progress through the section, so scrubbing back rewinds the fight. */
-
-/* The stage is the same ground as the rest of the page, which is also what the
-   source artwork does outside its backdrop disc: the cooks' garments and the
-   paper are one off-white, told apart only by the black keyline. */
-.overture {
-  position: relative;
-  background: var(--sk-surface);
-  height: 260svh;
-}
-
-.stage {
-  position: sticky;
-  top: 0;
-  height: 100svh;
-  overflow: hidden;
-}
-
-.shake {
-  position: absolute;
-  inset: 0;
-}
-
-/* 130vw on a phone rather than 100vw: the cooks are drawn at the edges of a
-   960-wide stage, so matching the viewport exactly would render them tiny. At
-   1.3x the clash stays centred and on screen while the figures read larger.
-   The 165svh term is the short-viewport guard — a laptop in landscape is wide
-   enough for 960px but not tall enough for the 560 that comes with it, and
-   without it the cooks lose their feet. */
-.duel {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(960px, 130vw, 165svh);
-  aspect-ratio: 960 / 560;
-  transform: translate(-50%, -50%);
-}
-
-.duel svg {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-}
-
-.ovtitle {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 7%;
-  text-align: center;
-  z-index: 3;
-  font-family: var(--sk-font-display);
-  font-size: clamp(34px, 8vw, 62px);
-  line-height: 0.9;
-  color: #c33b13;
-  -webkit-text-stroke: 4px #050505;
-  paint-order: stroke fill;
-}
-
-.ovsub {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 7%;
-  margin-top: clamp(44px, 11vw, 70px);
-  text-align: center;
-  z-index: 3;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--sk-ink);
-}
-
-.poster {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: min(300px, 62vw);
-  aspect-ratio: 1;
-  transform: translate(-50%, -50%);
-  z-index: 4;
-  border-radius: var(--sk-radius-lg);
-  border: 4px solid var(--sk-outline);
-  box-shadow: var(--sk-shadow-pop);
-  overflow: hidden;
-  background: var(--sk-surface-raised);
-}
-
-.poster img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* The poster is transformed by JS, which has to compose its own scale with the
-   centring translate. Keeping the centring on a wrapper would mean two nested
-   absolutely positioned boxes, so instead JS writes the whole transform and
-   this rule only supplies the resting value. */
-
-/* ---- the fighters ---- */
-.duel :global(.fig) {
-  transform-box: view-box;
-}
-.duel :global(.figL) {
-  transform-origin: 300px 560px;
-  transform: translateX(-520px);
-}
-.duel :global(.figR) {
-  transform-origin: 660px 560px;
-  transform: translateX(520px);
-}
-.duel :global(.spark) {
-  transform-box: view-box;
-  transform-origin: 480px 214px;
-}
-.duel :global(.wrapfly) {
-  transform-box: view-box;
-  transform-origin: 480px 214px;
-}
-.duel :global(.meat) {
-  transform-box: view-box;
-}
-
-/* Colours sampled straight off duelling-kebabs.png, not theme tokens: this is a
-   reproduction of a fixed-colour illustration, the same way the badge JPGs are. */
-.duel :global(.skin) {
-  fill: #ecbf1c;
-}
-.duel :global(.cloth) {
-  fill: #f4f1ea;
-}
-.duel :global(.hair) {
-  fill: #050505;
-}
-.duel :global(.rod) {
-  stroke: #e9e6dd;
-  stroke-width: 8;
-  stroke-linecap: round;
-}
-.duel :global(.rodline) {
-  stroke: #050505;
-  stroke-width: 16;
-  stroke-linecap: round;
-}
-/* A CSS class beats a presentation attribute, so the sleeve keyline needs its
-   own class rather than stroke-width="32" on a .rodline element. */
-.duel :global(.sleeveln) {
-  stroke: #050505;
-  stroke-width: 32;
-  stroke-linecap: round;
-  fill: none;
-}
-.duel :global(.sleeve) {
-  stroke: #f4f1ea;
-  stroke-width: 23;
-  stroke-linecap: round;
-  fill: none;
-}
-.duel :global(.meatc) {
-  fill: #734007;
-  stroke: #050505;
-  stroke-width: 3.5;
-}
-.duel :global(.ln) {
-  stroke: #050505;
-  stroke-width: 5;
-  stroke-linejoin: round;
-}
-.duel :global(.brow) {
-  stroke: #050505;
-  stroke-width: 11;
-  stroke-linecap: round;
-  fill: none;
-}
-.duel :global(.tooth) {
-  stroke: #050505;
-  stroke-width: 2.5;
-}
-
-/* The illustration keeps its own light ground at night, as the badge JPGs do. */
-:global(.dark) .overture,
-:global([data-theme="dark"]) .overture {
-  background: #f4f1ea;
-}
-:global(.dark) .ovsub,
-:global([data-theme="dark"]) .ovsub {
-  color: #16233f;
 }
 
 /* ===================== hero ===================== */
@@ -930,44 +730,9 @@
   transform: none;
 }
 
-/* ---- scroll hint ---- */
-.hint {
-  position: fixed;
-  left: 50%;
-  bottom: 14px;
-  transform: translateX(-50%);
-  z-index: 50;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: var(--sk-surface-raised);
-  border: 3px solid var(--sk-outline);
-  border-radius: var(--sk-radius-pill);
-  padding: 6px 14px;
-  box-shadow: var(--sk-shadow-sticker);
-  animation: nudge 2.2s ease-in-out infinite;
-  pointer-events: none;
-  color: var(--sk-ink);
-  /* It has done its job once the duel resolves. Left pinned, it would sit on
-     top of every section below it for the rest of the page. */
-  transition: opacity 0.3s linear;
-}
-
-@keyframes nudge {
-  0%,
-  100% {
-    transform: translate(-50%, 0);
-  }
-  50% {
-    transform: translate(-50%, -5px);
-  }
-}
-
 /* ===================== reduced motion =====================
    Not a degraded experience: every loop stops, every entrance becomes a plain
-   opacity fade, and the duel resolves to one static screen of the two cooks
-   squared up. All content stays reachable. */
+   opacity fade. All content stays reachable. */
 @media (prefers-reduced-motion: reduce) {
   .home *,
   .home *::before,
@@ -980,28 +745,6 @@
   .reveal {
     transform: none !important;
     opacity: 1 !important;
-  }
-
-  .overture {
-    height: auto !important;
-  }
-
-  .stage {
-    position: static;
-    height: min(620px, 90svh);
-  }
-
-  .duel :global(.figL) {
-    transform: translateX(-150px);
-  }
-
-  .duel :global(.figR) {
-    transform: translateX(150px);
-  }
-
-  .poster,
-  .hint {
-    display: none;
   }
 }
 
@@ -1079,13 +822,6 @@
   to { opacity: 1; }
 }
 
-/* Reduced motion: the duel as a still, in the hero slot. */
-.introStill {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: var(--sk-space-6) var(--sk-space-7) 0;
-}
-
 /* ============================================================================
    Recipe highlight (section 7)
    ========================================================================= */
@@ -1154,33 +890,4 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.7s linear;
-}
-
-/* `.duel` is absolutely positioned and centred by transform, because it was
-   built to sit inside the sticky overture stage. Dropped into the ordinary
-   document flow for the reduced-motion still it escapes its container — it
-   rendered at left:-112px and pushed the page 112px wider than the viewport,
-   producing a horizontal scrollbar. This re-seats it as a normal block rather
-   than editing the original rule, which the stage no longer uses but which
-   stays accurate to what it describes. */
-.introStill .duel {
-  position: static;
-  transform: none;
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
-/* The fighters' resting transforms put them off-stage at translateX(±520px),
-   because the scroll animation walked them in from the wings. Held still they
-   were invisible, leaving two floating skewers and no cooks. These re-pose them
-   at the anticipation beat the original called "squared up, skewers raised,
-   leaning back" — the p=0.32 values from the animation's own LX and LEAN
-   tracks. */
-.introStill .duel :global(.figL) {
-  transform: translateX(-150px) rotate(-5deg);
-}
-
-.introStill .duel :global(.figR) {
-  transform: translateX(150px) rotate(5deg);
 }

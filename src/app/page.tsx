@@ -5,11 +5,12 @@ import { type CuisineDisc, CuisineDiscs } from "@/components/home/cuisine-discs"
 import { ExplainerVideo } from "@/components/home/explainer-video";
 import s from "@/components/home/home.module.css";
 import { scenes } from "@/components/home/logos";
-import { Overture, OvertureStill } from "@/components/home/overture";
+import { Overture } from "@/components/home/overture";
 import { type Pick, RecipeHighlight } from "@/components/home/recipe-highlight";
 import { Reveal } from "@/components/home/reveal";
 import { SkyDrift } from "@/components/home/sky-drift";
 import { Sunburst } from "@/components/home/sunburst";
+import { SiteFooter } from "@/components/site-footer/site-footer";
 import { SiteNav } from "@/components/site-nav/site-nav";
 import { createPublicClient } from "@/lib/supabase/public";
 
@@ -69,8 +70,8 @@ async function homeData(): Promise<{ cuisines: CuisineDisc[]; picks: Pick[] }> {
 /**
  * The Sunburst — the chosen home page, built from Springfield Kitchen.
  *
- * A short kebab-duel clip plays over the page on load and fades after three
- * seconds, revealing the sunburst hero. Below it the page falls through a
+ * A short clip of the protester plays over the page on load and fades after
+ * three seconds, revealing the sunburst hero. Below it the page falls through a
  * cream-to-sky gradient with SkyDrift's clouds parallaxing over it, and lands
  * on the cuisine list sitting in open sky.
  *
@@ -82,9 +83,6 @@ async function homeData(): Promise<{ cuisines: CuisineDisc[]; picks: Pick[] }> {
  * The cartoon dial is high, but the page never stops being legible: flat
  * ground, one hero line, one illustration.
  *
- * The intro used to be 2.6 screens of scroll driving a hand-animated SVG. That
- * artwork now lives in DuelStill, shown instead of the video to anyone who asks
- * for reduced motion.
  *
  * The page itself is a server component. Only the pieces tied to scroll, to
  * entering the viewport, or to the intro ship JavaScript.
@@ -98,8 +96,6 @@ export default async function Home() {
       <SkyDrift />
 
       <SiteNav />
-
-      <OvertureStill />
 
       <div className={s.top}>
         <Sunburst />
@@ -188,6 +184,8 @@ export default async function Home() {
           <CuisineDiscs cuisines={cuisines} />
         </div>
       </section>
+
+      <SiteFooter />
     </div>
   );
 }

@@ -37,8 +37,8 @@ except the fonts, and all of `video/out/`, is generated and git-ignored.
 - **`src/scenes/*.tsx`** are the ten scenes. Inside one, `useScene().phrase(id, "words")`
   gives the moment a phrase is spoken, which is how beats land on words.
 - **Design** follows Springfield Kitchen: `theme.ts` copies the `--sk-*` tokens, `anim.ts`
-  is motion.md's easing and squash rules, and the two cooks in `art.tsx` are the site's
-  `DuelStill` artwork, path for path. The globe uses `src/lib/cuisine-geography.ts` directly.
+  is motion.md's easing and squash rules, and the hero panels reuse the site's own
+  down-with-hunger artwork. The globe uses `src/lib/cuisine-geography.ts` directly.
 - **Mix**: narration averages -20 dBFS; the score is levelled to -20 dBFS RMS and ducked to
   about 17 dB under the voice while it speaks; each effect is levelled on its loudest 50 ms.
 

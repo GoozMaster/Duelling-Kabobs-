@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { isAdmin } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
@@ -9,7 +10,7 @@ import { createClient } from "@/lib/supabase/server"
 import { LoginForm } from "./login-form"
 
 export const metadata: Metadata = {
-  title: "Sign in — Dueling Kebabs",
+  title: "Sign in",
   description: "Admin sign-in. Browsing the recipes needs no account.",
 }
 
@@ -40,9 +41,10 @@ export default async function LoginPage() {
           href="/"
           className="text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
         >
-          Back to Dueling Kebabs
+          Back to Down With Hunger
         </Link>
       </main>
+      <SiteFooter />
     </>
   )
 }

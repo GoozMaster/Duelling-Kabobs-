@@ -9,7 +9,7 @@ import { createClient } from "@/lib/supabase/server"
 import { RecipeForm } from "../../recipe-form"
 
 export const metadata: Metadata = {
-  title: "Edit recipe — Dueling Kebabs",
+  title: "Edit recipe",
 }
 
 export default async function EditRecipePage({

@@ -2,17 +2,16 @@
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
-import { DuelStill } from "./duel-still";
 import s from "./home.module.css";
 import { scenes } from "./logos";
 import { usePrefersReducedMotion } from "./use-scroll-frame";
 
 /**
- * ACT 0 — DUELING KEBABS.
+ * ACT 0 — DOWN WITH HUNGER.
  *
- * Was 2.6 screens of scroll driving a hand-animated SVG duel; now a ~3 second
- * clip that plays once on load and then gets out of the way. The artwork
- * survives in DuelStill, which is what reduced-motion visitors see.
+ * A ~3 second clip of the protester that plays once on load and then gets out
+ * of the way. Reduced-motion visitors skip it entirely: the same protester is
+ * the hero right underneath, so there is nothing a still would add.
  *
  * The overlay sits on top of the finished page rather than being a section in
  * it, so the hero is already laid out underneath and the reveal is a fade
@@ -168,7 +167,7 @@ export function Overture() {
 
   if (reduced) {
     // No video at all for reduced motion — not a paused one, not a poster of
-    // one. The drawing, and straight through to the page.
+    // one. Straight through to the page.
     return null;
   }
 
@@ -176,39 +175,27 @@ export function Overture() {
     <div
       className={`${s.intro} ${leaving ? s.introOut : ""}`}
       role="dialog"
-      aria-label="Dueling Kebabs intro"
+      aria-label="Down With Hunger intro"
       aria-hidden={leaving}
     >
       <div className={s.introCard}>
         <video
           className={s.introVideo}
-          src="/dueling-kebabs.mp4"
-          poster={scenes.duellingKebabs.src}
+          src="/down-with-hunger.mp4"
+          poster={scenes.downWithHunger.src}
           autoPlay
           muted
           playsInline
           // Not looped: it plays once and the page takes over.
-          aria-label="Two cartoon cooks duelling with kebab skewers"
+          aria-label="A cartoon man with a Down With Hunger placard, cheering with a shawarma"
         />
       </div>
 
-      <p className={s.introTitle}>DUELING KEBABS</p>
+      <p className={s.introTitle}>DOWN WITH HUNGER</p>
 
       <button type="button" className={s.introSkip} onClick={() => setDismissed(true)}>
         Skip
       </button>
-    </div>
-  );
-}
-
-/** The still artwork, shown in the hero slot when motion is not wanted. */
-export function OvertureStill() {
-  const reduced = usePrefersReducedMotion();
-  if (!reduced) return null;
-
-  return (
-    <div className={s.introStill}>
-      <DuelStill />
     </div>
   );
 }

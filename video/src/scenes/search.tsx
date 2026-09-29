@@ -110,7 +110,7 @@ export function Search() {
             transform: `scale(${pop(t, winAt)})`,
           }}
         >
-          <Window url="Dueling Kebabs  ›  What can I make?" style={{ width: "100%", height: "100%" }}>
+          <Window url="Down With Hunger  ›  What can I make?" style={{ width: "100%", height: "100%" }}>
             <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 2000, transform: `translateY(${scroll}px)` }}>
               <div style={{ position: "absolute", left: 60, top: 40 }}>
                 <Headline size={80}>WHAT CAN I MAKE?</Headline>

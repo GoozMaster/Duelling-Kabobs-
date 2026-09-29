@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/server"
 import { PantryManager } from "./pantry-manager"
 
 export const metadata: Metadata = {
-  title: "My Pantry — Dueling Kebabs",
+  title: "My Pantry",
 }
 
 export default async function PantryPage() {

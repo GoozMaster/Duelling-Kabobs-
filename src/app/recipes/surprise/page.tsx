@@ -1,12 +1,13 @@
 import type { Metadata } from "next"
 
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { createPublicClient } from "@/lib/supabase/public"
 
 import { Spinner } from "./spinner"
 
 export const metadata: Metadata = {
-  title: "Surprise me — Dueling Kebabs",
+  title: "Surprise me",
   description: "Spin the reel and cook whatever it lands on.",
 }
 
@@ -53,6 +54,7 @@ export default async function SurprisePage() {
           <Spinner recipes={recipes} />
         )}
       </main>
+      <SiteFooter />
     </>
   )
 }

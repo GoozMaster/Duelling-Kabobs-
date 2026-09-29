@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { cuisineCounts, viewerIsAdmin } from "@/lib/recipe-browse"
 import { createClient } from "@/lib/supabase/server"
@@ -15,7 +16,7 @@ const wayIn =
   "border-border bg-card hover:-translate-y-0.5 focus-visible:ring-ring/50 inline-flex items-center rounded-[var(--sk-radius-pill)] border-2 px-4 py-1.5 text-sm font-medium shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:outline-none"
 
 export const metadata: Metadata = {
-  title: "Recipes — Dueling Kebabs",
+  title: "Recipes",
   description: "Browse the whole collection. No account needed.",
 }
 
@@ -80,6 +81,7 @@ export default async function RecipesPage({
           isAdminViewer={isAdminViewer}
         />
       </main>
+      <SiteFooter />
     </>
   )
 }

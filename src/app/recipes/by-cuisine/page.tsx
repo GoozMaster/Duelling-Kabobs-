@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { cuisineCounts } from "@/lib/recipe-browse"
 import { createPublicClient } from "@/lib/supabase/public"
@@ -9,7 +10,7 @@ import { Globe } from "./globe"
 import s from "./by-cuisine.module.css"
 
 export const metadata: Metadata = {
-  title: "By cuisine — Dueling Kebabs",
+  title: "By cuisine",
   description: "Turn the globe, or pick a cuisine from the list.",
 }
 
@@ -61,6 +62,7 @@ export default async function ByCuisinePage() {
           </div>
         </div>
       </main>
+      <SiteFooter />
     </>
   )
 }

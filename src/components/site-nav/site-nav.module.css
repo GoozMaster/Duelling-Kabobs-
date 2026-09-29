@@ -3,8 +3,8 @@
    being home-page furniture and became the shared header. Nothing was
    restyled in the move — the home page renders <SiteNav /> and looks the same.
 
-   On the home page the nav sits *after* the overture in the DOM, so it only
-   becomes sticky once the duel is over. Nothing overlays the fight. */
+   On the home page the nav sits *after* the intro overlay in the DOM, so the
+   sticky bar never covers the clip. */
 .nav {
   position: sticky;
   top: 0;

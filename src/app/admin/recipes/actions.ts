@@ -110,7 +110,7 @@ export async function importFromUrl(rawUrl: string): Promise<UrlImportOutcome> {
       // Some publishers serve a stripped page or a challenge to unknown agents.
       headers: {
         "User-Agent":
-          "Mozilla/5.0 (compatible; DuelingKebabs/1.0; recipe importer)",
+          "Mozilla/5.0 (compatible; DownWithHunger/1.0; recipe importer)",
         Accept: "text/html,application/xhtml+xml",
       },
       redirect: "follow",

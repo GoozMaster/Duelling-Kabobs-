@@ -1,0 +1,373 @@
+/* ============================================================================
+   Dueling Kebabs — the coming-soon page
+   Springfield Kitchen's shadows, radii and easing, in a palette of its own.
+   The colours are local to this page and do not follow the day/night theme:
+   like the badge illustrations, it keeps its own ground in both.
+   ========================================================================= */
+
+.page {
+  --dk-burgundy: #5b1a24;
+  --dk-burgundy-deep: #3e0f18;
+  --dk-gold: #d4a13a;
+  --dk-gold-pale: #f0cf7a;
+  --dk-cream: #f6ecd6;
+  --dk-cream-deep: #ecdcb8;
+  --dk-ink: #1c0a0e;
+  --dk-stamp: #b8232b;
+  /* The house hard shadows, re-cast in this page's ink. */
+  --dk-shadow-sticker: 4px 4px 0 var(--dk-ink);
+  --dk-shadow-pop: 7px 7px 0 var(--dk-ink);
+
+  flex: 1;
+  background: var(--dk-cream);
+  color: var(--dk-ink);
+  font-family: var(--sk-font-ui);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+
+.name,
+.sectionTitle,
+.menuTitle,
+.courseTitle,
+.itemName,
+.stampName,
+.denied,
+.ribbon,
+.since {
+  font-family: var(--font-rakkas), var(--sk-font-display);
+  font-weight: 400;
+}
+
+/* ===================== hero ===================== */
+.hero {
+  background: var(--dk-burgundy);
+  border-bottom: 6px solid var(--dk-gold);
+  padding: var(--sk-space-8) var(--sk-space-5);
+}
+
+.heroInner {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--sk-space-7);
+}
+
+.ribbon {
+  display: inline-block;
+  margin: 0 0 var(--sk-space-4);
+  padding: 4px 18px 2px;
+  background: var(--dk-gold);
+  color: var(--dk-burgundy-deep);
+  border: 3px solid var(--dk-ink);
+  border-radius: var(--sk-radius-pill);
+  box-shadow: var(--dk-shadow-sticker);
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  transform: rotate(-2deg);
+}
+
+.name {
+  margin: 0;
+  color: var(--dk-gold-pale);
+  font-size: clamp(52px, 11vw, 112px);
+  line-height: 0.95;
+  -webkit-text-stroke: 3px var(--dk-ink);
+  paint-order: stroke fill;
+  text-shadow: 5px 5px 0 var(--dk-ink);
+}
+
+.since {
+  margin: var(--sk-space-3) 0 0;
+  color: var(--dk-gold);
+  font-size: clamp(22px, 4vw, 30px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.heroArt {
+  width: min(300px, 70vw);
+  aspect-ratio: 1;
+  border-radius: var(--sk-radius-lg);
+  border: 5px solid var(--dk-gold);
+  outline: 3px solid var(--dk-ink);
+  box-shadow: 10px 10px 0 var(--dk-ink);
+  overflow: hidden;
+  background: #fbf8f1;
+  transform: rotate(2deg);
+}
+
+.heroArt img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .heroInner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+}
+
+/* ===================== bio ===================== */
+.bio {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--sk-space-8) var(--sk-space-5);
+}
+
+.sectionTitle {
+  margin: 0 0 var(--sk-space-4);
+  color: var(--dk-burgundy);
+  font-size: clamp(28px, 5vw, 38px);
+  line-height: 1.1;
+}
+
+.bio p {
+  margin: 0 0 var(--sk-space-4);
+}
+
+/* ===================== menu ===================== */
+.menuSection {
+  background: var(--dk-burgundy-deep);
+  padding: var(--sk-space-8) var(--sk-space-4);
+  border-block: 6px solid var(--dk-gold);
+}
+
+/* The arabesque is the frame's own background, showing through a band of
+   padding round the card: a tiling pattern as a border without border-image's
+   slicing, which wants a nine-patch rather than a repeat. */
+.frame {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 22px;
+  background: url("../../assets/dueling-kebabs/arabesque.svg") repeat;
+  background-size: 40px 40px;
+  border: 3px solid var(--dk-gold);
+  border-radius: var(--sk-radius-lg);
+  box-shadow: var(--dk-shadow-pop);
+}
+
+.card {
+  background: var(--dk-burgundy);
+  border: 3px solid var(--dk-gold);
+  border-radius: var(--sk-radius-md);
+  padding: var(--sk-space-7) clamp(18px, 5vw, 56px);
+  color: var(--dk-cream);
+  text-align: center;
+}
+
+.menuTitle {
+  margin: 0;
+  color: var(--dk-gold-pale);
+  font-size: clamp(44px, 9vw, 72px);
+  line-height: 1;
+}
+
+.legend {
+  list-style: none;
+  margin: var(--sk-space-5) 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sk-space-4) var(--sk-space-7);
+  font-size: 15px;
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--sk-space-3);
+  text-align: left;
+  max-width: 250px;
+}
+
+.legend strong {
+  color: var(--dk-gold-pale);
+}
+
+.flourish {
+  display: block;
+  width: min(240px, 70%);
+  margin: var(--sk-space-6) auto;
+  color: var(--dk-gold);
+}
+
+.courseTitle {
+  margin: 0 0 var(--sk-space-5);
+  color: var(--dk-gold-pale);
+  font-size: clamp(28px, 5vw, 36px);
+  line-height: 1.1;
+}
+
+.courseName {
+  display: block;
+  margin-bottom: 6px;
+  font-family: var(--sk-font-ui);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dk-gold);
+}
+
+.items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sk-space-4);
+}
+
+.item {
+  display: grid;
+  gap: 2px;
+}
+
+.itemName {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 23px;
+  line-height: 1.2;
+  color: var(--dk-cream);
+}
+
+.marks {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.itemNote {
+  font-size: 15px;
+  font-style: italic;
+  color: var(--dk-cream-deep);
+}
+
+/* ===================== banned ===================== */
+.banned {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: var(--sk-space-8) var(--sk-space-5);
+  text-align: center;
+}
+
+.bannedLede {
+  margin: 0 0 var(--sk-space-7);
+  color: #5a3a40;
+}
+
+.stamps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: var(--sk-space-7) var(--sk-space-5);
+}
+
+.ban {
+  display: grid;
+  justify-items: center;
+  gap: var(--sk-space-4);
+}
+
+/* A rubber stamp: two red rings, the item in the upper half, DENIED struck
+   across the lower third on a bar so it never covers the name. Multiply lets the cream show through the ink the way a
+   real impression does, and each stamp lands at its own angle. */
+.stamp {
+  position: relative;
+  width: 184px;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: start center;
+  padding: 24px 30px 0;
+  border-radius: var(--sk-radius-disc);
+  border: 5px solid var(--dk-stamp);
+  box-shadow:
+    inset 0 0 0 4px var(--dk-cream),
+    inset 0 0 0 7px var(--dk-stamp);
+  color: var(--dk-stamp);
+  text-align: center;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+  transform: rotate(var(--tilt, -6deg));
+  transition: transform 0.25s var(--sk-ease-land);
+}
+
+.ban:hover .stamp {
+  transform: rotate(var(--tilt, -6deg)) scale(1.06);
+}
+
+.stampName {
+  font-size: 17px;
+  line-height: 1.1;
+  min-height: 3.6em;
+  display: grid;
+  place-items: center;
+}
+
+.denied {
+  position: absolute;
+  left: -14px;
+  right: -14px;
+  top: 74%;
+  translate: 0 -50%;
+  rotate: -12deg;
+  padding: 2px 0 0;
+  background: var(--dk-cream);
+  border: 4px solid var(--dk-stamp);
+  border-radius: var(--sk-radius-sm);
+  font-size: 30px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.reason {
+  margin: 0;
+  max-width: 24ch;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+/* ===================== foot ===================== */
+.foot {
+  background: var(--dk-burgundy);
+  border-top: 6px solid var(--dk-gold);
+  color: var(--dk-cream-deep);
+  padding: var(--sk-space-7) var(--sk-space-5);
+  text-align: center;
+  font-size: 15px;
+}
+
+.foot p {
+  margin: 0 0 var(--sk-space-3);
+}
+
+.foot a {
+  color: var(--dk-gold-pale);
+  font-weight: 600;
+  text-underline-offset: 4px;
+  padding-block: 6px;
+}
+
+.foot a:focus-visible {
+  outline: 3px solid var(--dk-gold-pale);
+  outline-offset: 3px;
+  border-radius: var(--sk-radius-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stamp {
+    transition: none;
+  }
+}

@@ -7,7 +7,7 @@ import { createClient } from "@/lib/supabase/server"
 import { NewRecipe } from "../new-recipe"
 
 export const metadata: Metadata = {
-  title: "Add a recipe — Dueling Kebabs",
+  title: "Add a recipe",
 }
 
 export default async function NewRecipePage() {

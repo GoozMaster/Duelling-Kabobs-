@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 
-import { badges } from "@/components/home/logos"
+import { scenes } from "@/components/home/logos"
 
 import { MobileMenu } from "./mobile-menu"
 import { RecipesMenu } from "./recipes-menu"
@@ -12,7 +12,7 @@ import { StockMenu } from "./stock-menu"
  * The shared header.
  *
  * This used to be inlined in the home page, which was the only page that had a
- * nav at all — everywhere else carried a one-off "← Dueling Kebabs" link. Now
+ * nav at all — everywhere else carried a one-off back link. Now
  * that Recipes is a menu with three destinations, having it reachable from one
  * page only would mean getting to the globe or the spinner required going home
  * first. Its stylesheet moved out of home.module.css with it, unchanged.
@@ -30,9 +30,9 @@ export function SiteNav() {
     <nav className={s.nav}>
       <Link className={s.mark} href="/">
         <span className={s.disc}>
-          <Image src={badges.italian} alt="" width={34} height={34} />
+          <Image src={scenes.downWithHungerMark} alt="" width={34} height={34} />
         </span>
-        DUELING KEBABS
+        DOWN WITH HUNGER
       </Link>
       <span className={s.spacer} />
       <span className={s.navLinks}>

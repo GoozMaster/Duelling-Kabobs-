@@ -116,7 +116,7 @@ export function Menu() {
           transform: `translateX(${-640 * aside}px) scale(${pop(t, winIn) * (1 - 0.16 * aside)}) rotate(${-2 * aside}deg)`,
         }}
       >
-        <Window url="Dueling Kebabs  ›  Recipes" style={{ width: "100%", height: "100%" }}>
+        <Window url="Down With Hunger  ›  Recipes" style={{ width: "100%", height: "100%" }}>
           <div style={{ position: "absolute", left: PADX, top: 44 }}>
             <Headline size={84}>RECIPES</Headline>
             <div style={{ ...text(30, 500, C.muted), marginTop: 14 }}>126 recipes, no account needed.</div>

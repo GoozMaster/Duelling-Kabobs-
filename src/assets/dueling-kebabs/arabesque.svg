@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <!-- One tile of an eight-point (khatam) lattice. The star at the centre is
+       two squares, one turned 45 degrees; the four corner stars are the same
+       figure cut into quarters, so neighbouring tiles complete each other. -->
+  <rect width="40" height="40" fill="#3e0f18"/>
+  <g fill="none" stroke="#d4a13a" stroke-width="1.6" stroke-linejoin="round">
+    <g id="star">
+      <rect x="13" y="13" width="14" height="14"/>
+      <rect x="13" y="13" width="14" height="14" transform="rotate(45 20 20)"/>
+    </g>
+    <use href="#star" x="-20" y="-20"/>
+    <use href="#star" x="20" y="-20"/>
+    <use href="#star" x="-20" y="20"/>
+    <use href="#star" x="20" y="20"/>
+    <!-- the lines that bind the stars into one lattice -->
+    <path d="M20 10.1 V0 M20 29.9 V40 M10.1 20 H0 M29.9 20 H40"/>
+  </g>
+  <circle cx="20" cy="20" r="2.6" fill="#f0cf7a"/>
+  <g fill="#f0cf7a">
+    <circle cx="0" cy="0" r="2.6"/>
+    <circle cx="40" cy="0" r="2.6"/>
+    <circle cx="0" cy="40" r="2.6"/>
+    <circle cx="40" cy="40" r="2.6"/>
+  </g>
+</svg>

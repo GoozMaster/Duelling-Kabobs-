@@ -14,10 +14,10 @@ const PANEL = { x: 1150, y: 220, size: 460 };
  */
 export function Close() {
   const t = useT();
-  const { at, phrase } = useScene();
+  const { at } = useScene();
 
   const wordmark = at("l25");
-  const lede = phrase("l25", "Every dish");
+  const lede = at("l25") + 0.5;
   const placard = at("l26") + 0.1;
 
   return (
@@ -40,9 +40,9 @@ export function Close() {
           </span>
         </div>
         <div style={{ marginTop: 34 }}>
-          {["DUELING", "KEBABS"].map((word, i) => (
+          {["DOWN WITH", "HUNGER"].map((word, i) => (
             <div key={word} style={{ transform: `scale(${slam(t, wordmark + 0.05 + i * 0.22)})`, transformOrigin: "0% 60%" }}>
-              <Headline size={200} style={{ lineHeight: 0.95 }}>
+              <Headline size={160} style={{ lineHeight: 0.95 }}>
                 {word}
               </Headline>
             </div>

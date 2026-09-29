@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { viewerIsAdmin } from "@/lib/recipe-browse"
 import { createClient } from "@/lib/supabase/server"
@@ -8,7 +9,7 @@ import { findRecipes } from "./actions"
 import { SearchPanel } from "./search-panel"
 
 export const metadata: Metadata = {
-  title: "What can I make? — Dueling Kebabs",
+  title: "What can I make?",
   description:
     "Tell it what you have and it tells you what you can cook. No account needed.",
 }
@@ -40,6 +41,7 @@ export default async function WhatCanIMakePage() {
 
         <SearchPanel isAdmin={isAdmin} initial={initial} />
       </main>
+      <SiteFooter />
     </>
   )
 }

@@ -69,7 +69,7 @@ export function Shop() {
       <Sunburst speed={4} opacity={0.7} x={NOTE.x + NOTE.w / 2} y={NOTE.y + 200} />
 
       <div style={{ position: "absolute", left: WIN.x, top: WIN.y, width: WIN.w, height: WIN.h, transform: `scale(${pop(t, winIn)})` }}>
-        <Window url="Dueling Kebabs  ›  Chicken Shawarma" style={{ width: "100%", height: "100%" }}>
+        <Window url="Down With Hunger  ›  Chicken Shawarma" style={{ width: "100%", height: "100%" }}>
           <div style={{ position: "absolute", left: PADX, top: 34, ...text(26, 400, C.muted), textDecoration: "underline", textUnderlineOffset: 6 }}>
             ← All recipes
           </div>

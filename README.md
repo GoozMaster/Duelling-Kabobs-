@@ -185,7 +185,7 @@ src/
       database.types.ts Generated schema types (do not hand-edit)
   proxy.ts              Runs updateSession on every matched request
 public/
-  dueling-kebabs.mp4    The 5s intro clip (served directly; video cannot be imported)
+  down-with-hunger.mp4  The 5s intro clip (served directly; video cannot be imported)
 supabase/
   migrations/           Schema + RLS + seed, in apply order
 ```

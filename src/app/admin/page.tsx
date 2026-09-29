@@ -15,7 +15,7 @@ import { requireAdmin } from "@/lib/auth"
 import { createClient } from "@/lib/supabase/server"
 
 export const metadata: Metadata = {
-  title: "Admin — Dueling Kebabs",
+  title: "Admin",
 }
 
 /**

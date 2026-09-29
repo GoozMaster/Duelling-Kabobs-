@@ -43,7 +43,7 @@ export async function signIn(
     await supabase.auth.signOut()
     return {
       error:
-        "That account is not the owner of this site. Dueling Kebabs has a single " +
+        "That account is not the owner of this site. Down With Hunger has a single " +
         "admin, so you have been signed back out. Anyone can browse the recipes " +
         "without an account.",
     }

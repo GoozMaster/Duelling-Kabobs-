@@ -78,9 +78,9 @@ export function Surprise() {
         <div style={{ opacity: 1 - lin(t, pageIn - 0.1, 0.25), transform: `translateY(${-60 * lin(t, pageIn - 0.1, 0.25)}px)` }}>
           <div style={{ position: "absolute", left: 150, right: 150, top: 70, transform: `scale(${pop(t, menuIn)})` }}>
             <Sticker radius={30} depth={STICKER} style={{ height: 120, display: "flex", alignItems: "center", padding: "0 40px", gap: 22 }}>
-              <Disc src="italian-chef.jpg" size={70} />
+              <Disc src="down-with-hunger-mark.png" size={70} />
               <Headline size={46} shadow={false}>
-                DUELING KEBABS
+                DOWN WITH HUNGER
               </Headline>
               <span style={{ flex: 1 }} />
               <span style={label(26)}>What can I make?</span>

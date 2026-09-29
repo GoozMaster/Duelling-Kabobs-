@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { Badge } from "@/components/ui/badge"
 import { parseInstructions } from "@/lib/instructions"
@@ -29,7 +30,7 @@ export async function generateMetadata({
 
   // A missing recipe renders app/not-found.tsx, but this metadata still wins
   // the <title>, so it has to say the same thing that page does.
-  return { title: data ? `${data.title} — Dueling Kebabs` : "Not found — Dueling Kebabs" }
+  return { title: data ? data.title : "Not found" }
 }
 
 /**
@@ -233,6 +234,7 @@ export default async function RecipeDetailPage({
         </div>
       )}
       </main>
+      <SiteFooter />
     </>
   )
 }

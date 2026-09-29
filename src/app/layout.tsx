@@ -33,7 +33,11 @@ const fredoka = Fredoka({
 });
 
 export const metadata: Metadata = {
-  title: "Dueling Kebabs",
+  // Pages set just their own name; the template adds the site's.
+  title: {
+    default: "Down With Hunger",
+    template: "%s — Down With Hunger",
+  },
   description:
     "Tell it what is in your pantry, your fridge and your freezer. It tells you what you can cook right now.",
 };
