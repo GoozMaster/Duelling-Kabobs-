@@ -19,7 +19,7 @@ from kokoro_onnx import Kokoro
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MODELS = os.environ.get("KOKORO_DIR", ".")
-VOICE, SPEED = "am_michael", 0.96
+VOICE, SPEED = "am_michael", 1.08
 
 lines = json.load(open(os.path.join(ROOT, "narration.json")))
 only = set(sys.argv[1:])

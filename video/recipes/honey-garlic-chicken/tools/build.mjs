@@ -8,7 +8,7 @@
  *   assets/sfx      the sound effects, synthesised from nothing
  *
  * Same approach as the explainer (video/tools/music.mts, video/src/timeline.ts):
- * scene changes snap to the music's half-bar at 104 BPM, and a beat that lands
+ * scene changes snap to the music's beat at 104 BPM, and a beat that lands
  * on a word is placed by that word's character offset inside its line.
  *
  *   node tools/build.mjs
@@ -28,19 +28,18 @@ const durations = JSON.parse(fs.readFileSync(path.join(root, "narration-timing.j
 
 const BEAT = 60 / 104;
 const BAR = BEAT * 4;
-const HALF = BAR / 2;
 
 const PLAN = [
-  { id: "open", lines: [["l01", 1.1], ["l02", 0.45]], tail: 1.3 },
-  { id: "ingredients", lines: [["l03", 0.55], ["l04", 0.4]], tail: 1.4 },
-  { id: "s1", lines: [["l05", 0.6]], tail: 1.3 },
-  { id: "s2", lines: [["l06", 0.6]], tail: 1.4 },
-  { id: "s3", lines: [["l07", 0.6]], tail: 1.8 },
-  { id: "s4", lines: [["l08", 0.6]], tail: 1.6 },
-  { id: "s5", lines: [["l09", 0.6]], tail: 3.0 },
-  { id: "s6", lines: [["l10", 0.6]], tail: 1.5 },
-  { id: "s7", lines: [["l11", 0.6]], tail: 2.2 },
-  { id: "close", lines: [["l12", 0.7], ["l13", 0.5]], tail: 2.8 },
+  { id: "open", lines: [["l01", 0.7]], tail: 0.5 },
+  { id: "ingredients", lines: [["l02", 0.3]], tail: 1.2 },
+  { id: "s1", lines: [["l03", 0.3]], tail: 0.6 },
+  { id: "s2", lines: [["l04", 0.3]], tail: 1.0 },
+  { id: "s3", lines: [["l05", 0.3]], tail: 0.6 },
+  { id: "s4", lines: [["l06", 0.3]], tail: 1.0 },
+  { id: "s5", lines: [["l07", 0.3]], tail: 2.0 },
+  { id: "s6", lines: [["l08", 0.3]], tail: 0.8 },
+  { id: "s7", lines: [["l09", 0.3]], tail: 1.2 },
+  { id: "close", lines: [["l10", 1.3]], tail: 2.0 },
 ];
 
 const scenes = {};
@@ -55,7 +54,7 @@ for (const s of PLAN) {
     t += durations[id];
   }
   const last = s === PLAN[PLAN.length - 1];
-  const end = last ? t + s.tail : Math.ceil((t + s.tail) / HALF) * HALF;
+  const end = last ? t + s.tail : Math.ceil((t + s.tail) / BEAT) * BEAT;
   scenes[s.id] = { start: +start.toFixed(3), end: +end.toFixed(3) };
   clock = end;
 }
@@ -74,123 +73,135 @@ const sce = (id, d = 0) => +(scenes[id].end + d).toFixed(3);
 
 // ---- named beats: every moment the picture or a sound effect hangs off
 const B = {
+  // the narrator: in with the first line, out as the close card's panel (him again) drops
+  hostIn: sc("open", 0.35),
+  hostOut: sc("close", 0.1),
+
   // open
-  openEyebrow: sc("open", 0.5),
-  openPlate: sc("open", 0.75),
+  openEyebrow: sc("open", 0.4),
+  openPlate: sc("open", 0.6),
   openHoney: ph("l01", "Honey"),
   openGarlic: ph("l01", "Garlic"),
   openChicken: ph("l01", "Chicken"),
-  openSweet: ph("l02", "Sweet"),
-  openSticky: ph("l02", "sticky"),
-  openPot: ph("l02", "the pot"),
+  openSweet: ph("l01", "Sweet"),
+  openSticky: ph("l01", "sticky"),
+  openPot: ph("l01", "the pot does"),
 
-  // ingredients — one row per thing named
-  ingWindow: sc("ingredients", 0.4),
-  ingRows: [
-    ph("l04", "Honey"), ph("l04", "garlic"), ph("l04", "soy sauce"), ph("l04", "ketchup"),
-    ph("l04", "oregano"), ph("l04", "parsley"),
-    ph("l04", "Sesame oil"), ph("l04", "chicken thighs"), ph("l04", "salt and pepper"),
-    ph("l04", "Sesame seeds"), ph("l04", "green onions"),
-  ],
+  // ingredients — a fast deal, top to bottom
+  ingWindow: sc("ingredients", 0.3),
+  ingRows: Array.from({ length: 11 }, (_, i) => +(at("l02", 0.25) + i * 0.27).toFixed(3)),
 
   // step 1
-  s1Drops: [ph("l05", "honey"), ph("l05", "garlic"), ph("l05", "soy sauce"), ph("l05", "ketchup"), ph("l05", "oregano"), ph("l05", "parsley")],
-  s1Whisk: ph("l05", "in a small bowl"),
-  s1Aside: ph("l05", "set it aside", 0.1),
+  s1Drops: [ph("l03", "Honey"), ph("l03", "garlic"), ph("l03", "soy"), ph("l03", "ketchup"), ph("l03", "oregano"), ph("l03", "parsley")],
+  s1Whisk: ph("l03", "Mix it"),
+  s1Aside: ph("l03", "Yes, this one", 0.1),
 
   // step 2
-  s2Saute: ph("l06", "on sauté"),
-  s2Oil: ph("l06", "add the sesame oil"),
+  s2Saute: ph("l04", "Sauté mode"),
+  s2Oil: ph("l04", "Sesame oil"),
+  s2Hot: ph("l04", "Stand back"),
 
   // step 3
-  s3Thighs: sc("s3", 0.75),
-  s3Season: ph("l07", "salt and pepper", -0.15),
-  s3Brown: ph("l07", "brown them"),
-  s3Chip: ph("l07", "two to three"),
-  s3Flip: end("l07", 0.25),
+  s3Thighs: sc("s3", 0.2),
+  s3Season: ph("l05", "Salt and pepper", 0.55),
+  s3Brown: ph("l05", "then brown them"),
+  s3Chip: ph("l05", "two to three"),
+  s3Flip: ph("l05", "Don't poke", -0.25),
 
   // step 4
-  s4Pour: ph("l08", "Pour in the sauce"),
-  s4Lid: ph("l08", "close and lock", 0.15),
-  s4Lock: end("l08", 0.15),
+  s4Pour: ph("l06", "Pour in the sauce", -0.1),
+  s4Lid: ph("l06", "Lock the lid", 0.05),
+  s4Lock: ph("l06", "No peeking"),
 
   // step 5
-  s5Poultry: ph("l09", "Poultry setting"),
-  s5Twenty: ph("l09", "twenty minutes"),
-  s5Count: end("l09", 0.35),
-  s5Done: end("l09", 0.35 + 2.0),
+  s5Poultry: ph("l07", "Poultry setting"),
+  s5Twenty: ph("l07", "twenty minutes"),
+  s5Count: ph("l07", "Go sit down"),
+  s5Done: end("l07", 1.6),
 
   // step 6
-  s6Off: ph("l10", "Turn it off"),
-  s6Steam: ph("l10", "let the pressure"),
-  s6Clock: ph("l10", "about five minutes"),
-  s6Ready: end("l10", 0.4),
+  s6Off: sc("s6", 0.35),
+  s6Steam: ph("l08", "Let the pressure"),
+  s6Clock: ph("l08", "five minutes"),
+  s6Denied: ph("l08", "Opening it early", 0.15),
+  s6Ready: end("l08", 0.2),
 
   // step 7
-  s7Plate: ph("l11", "Plate the chicken"),
-  s7Sauce: ph("l11", "spoon the sauce"),
-  s7Seeds: ph("l11", "toasted sesame seeds"),
-  s7Onions: ph("l11", "green onions"),
-  s7Stamp: end("l11", 0.35),
+  s7Plate: ph("l09", "Plate it"),
+  s7Sauce: ph("l09", "sauce it"),
+  s7Seeds: ph("l09", "sesame seeds"),
+  s7Onions: ph("l09", "green onions"),
+  s7Ranch: ph("l09", "Ranch"),
+  s7Denied: ph("l09", "not invited"),
+  s7Stamp: end("l09", 0.35),
 
   // close
-  closePanel: sc("close", 0.45),
-  closeTitle: at("l12"),
-  closeSlam: at("l13", 0.05),
-  closeCredit: end("l13", 0.6),
+  closePanel: sc("close", 0.35),
+  closeTitle: sc("close", 0.55),
+  closeSlam: at("l10", 0.05),
+  closeCredit: end("l10", 0.5),
+
+  // the host's asides, as speech bubbles: [scene, phrase start, text]
+  quips: [
+    ["open", ph("l01", "You take"), "You take the credit."],
+    ["s1", ph("l03", "Yes, this one"), "Yes, this one gets a bowl."],
+    ["s2", ph("l04", "Stand back"), "Stand back."],
+    ["s3", ph("l05", "Don't poke"), "Don't poke them. We said what we said."],
+    ["s4", ph("l06", "No peeking"), "No peeking."],
+    ["s5", ph("l07", "Go sit down"), "Go sit down."],
+    ["s6", ph("l08", "Opening it early"), "Opening it early is not on the menu."],
+    ["s7", ph("l09", "Ranch"), "Ranch is not invited."],
+  ],
 };
 
 // Each step's text arrives on its first word.
-for (const [s, l] of [["s1", "l05"], ["s2", "l06"], ["s3", "l07"], ["s4", "l08"], ["s5", "l09"], ["s6", "l10"], ["s7", "l11"]]) {
-  B[`${s}Pill`] = sc(s, 0.35);
-  B[`${s}Head`] = at(l, 0.05);
-  B[`${s}Card`] = at(l, 0.45);
+for (const [s, l] of [["s1", "l03"], ["s2", "l04"], ["s3", "l05"], ["s4", "l06"], ["s5", "l07"], ["s6", "l08"], ["s7", "l09"]]) {
+  B[`${s}Pill`] = sc(s, 0.25);
+  B[`${s}Head`] = sc(s, 0.35);
+  B[`${s}Card`] = sc(s, 0.6);
 }
 
 // ---- sound effects: [beat time, effect, volume]. 0.5 sits level with the voice.
 const SFX = [];
 const cue = (t, name, vol = 0.5) => SFX.push([+t.toFixed(3), name, vol]);
-for (const s of PLAN.slice(1)) cue(scenes[s.id].start - 0.32, "whoosh", 0.32);
-cue(B.openEyebrow, "pop", 0.35);
-cue(B.openPlate, "thock", 0.5);
-[B.openHoney, B.openGarlic, B.openChicken].forEach((t) => cue(t, "stamp", 0.4));
-[B.openSweet, B.openSticky, B.openPot].forEach((t) => cue(t, "pop", 0.3));
-cue(B.ingWindow, "pop", 0.4);
-B.ingRows.forEach((t) => cue(t, "tick", 0.45));
-for (const s of ["s1", "s2", "s3", "s4", "s5", "s6", "s7"]) {
-  cue(B[`${s}Pill`], "pop", 0.3);
-  cue(B[`${s}Head`], "thock", 0.4);
-}
-B.s1Drops.forEach((t) => cue(t + 0.05, "plop", 0.4));
-cue(B.s1Whisk, "whisk", 0.45);
+for (const s of PLAN.slice(1)) cue(scenes[s.id].start - 0.32, "whoosh", 0.3);
+cue(B.hostIn, "pop", 0.35);
+cue(B.openPlate, "thock", 0.45);
+[B.openHoney, B.openGarlic, B.openChicken].forEach((t) => cue(t, "stamp", 0.35));
+[B.openSweet, B.openSticky, B.openPot].forEach((t) => cue(t, "pop", 0.28));
+cue(B.ingWindow, "pop", 0.35);
+B.ingRows.forEach((t) => cue(t, "tick", 0.4));
+for (const s of ["s1", "s2", "s3", "s4", "s5", "s6", "s7"]) cue(B[`${s}Head`], "thock", 0.35);
+B.quips.forEach(([, t]) => cue(t, "pop", 0.25));
+B.s1Drops.forEach((t) => cue(t + 0.05, "plop", 0.35));
+cue(B.s1Whisk, "whisk", 0.4);
 cue(B.s1Aside, "stamp", 0.45);
-cue(B.s2Saute, "beep", 0.35);
-cue(B.s2Oil + 0.45, "plop", 0.35);
-cue(B.s2Oil + 0.75, "plop", 0.3);
-B.s3Thighs !== undefined && [0, 0.14, 0.28, 0.42].forEach((d) => cue(B.s3Thighs + d, "thock", 0.35));
-cue(B.s3Season, "shake", 0.4);
-cue(B.s3Brown, "sizzle", 0.4);
-cue(B.s3Chip, "pop", 0.3);
-cue(B.s3Flip, "whoosh", 0.25);
-cue(B.s3Flip + 0.2, "sizzle", 0.35);
-cue(B.s4Pour, "pour", 0.4);
-cue(B.s4Lid, "stamp", 0.55);
-cue(B.s4Lock, "switch", 0.6);
-cue(B.s5Poultry, "beep", 0.35);
-cue(B.s5Twenty, "beep", 0.35);
-cue(B.s5Count, "tick", 0.3);
-cue(B.s5Done, "ding", 0.45);
-cue(B.s6Off, "beep", 0.3);
-cue(B.s6Steam, "steam", 0.35);
-cue(B.s6Clock, "pop", 0.3);
-cue(B.s6Ready, "ding", 0.4);
-cue(B.s7Plate, "thock", 0.45);
-cue(B.s7Sauce, "pour", 0.3);
-cue(B.s7Seeds, "sparkle", 0.3);
-cue(B.s7Onions, "pop", 0.3);
-cue(B.s7Stamp, "stamp", 0.55);
-cue(B.closePanel, "thock", 0.5);
-cue(B.closeTitle, "pop", 0.35);
+cue(B.s2Saute, "beep", 0.32);
+cue(B.s2Oil + 0.3, "plop", 0.32);
+cue(B.s2Hot, "sizzle", 0.3);
+[0, 0.12, 0.24, 0.36].forEach((d) => cue(B.s3Thighs + d, "thock", 0.32));
+cue(B.s3Season, "shake", 0.38);
+cue(B.s3Brown, "sizzle", 0.38);
+cue(B.s3Chip, "pop", 0.28);
+cue(B.s3Flip, "whoosh", 0.22);
+cue(B.s4Pour, "pour", 0.38);
+cue(B.s4Lid, "stamp", 0.5);
+cue(B.s4Lock, "switch", 0.55);
+cue(B.s5Poultry, "beep", 0.32);
+cue(B.s5Twenty, "beep", 0.32);
+cue(B.s5Done, "ding", 0.42);
+cue(B.s6Off, "beep", 0.28);
+cue(B.s6Steam, "steam", 0.32);
+cue(B.s6Denied, "stamp", 0.5);
+cue(B.s6Ready, "ding", 0.38);
+cue(B.s7Plate, "thock", 0.42);
+cue(B.s7Sauce, "pour", 0.28);
+cue(B.s7Seeds, "sparkle", 0.28);
+cue(B.s7Ranch, "pop", 0.3);
+cue(B.s7Denied, "stamp", 0.5);
+cue(B.s7Stamp, "stamp", 0.5);
+cue(B.closePanel, "thock", 0.45);
+cue(B.closeTitle, "pop", 0.3);
 cue(B.closeSlam, "stamp", 0.6);
 
 // ================================================================= synth
@@ -391,7 +402,7 @@ const SWING = 0.62;
 const eighth = (beat, off) => (off ? beat + SWING : beat) * BEAT;
 const COMP = [[0, true, 1], [1, true, 2], [2, false, 3], [2, true, 1], [3, true, 2]];
 
-const button = Math.ceil((L.l13.end + 0.15) / BEAT) * BEAT;
+const button = Math.ceil((L.l10.end + 0.15) / BEAT) * BEAT;
 const music = new Stereo(TOTAL + 0.5);
 const bars = Math.ceil(button / BAR);
 for (let b = 0; b < bars; b++) {
@@ -555,16 +566,31 @@ const sfxLen = (name) => {
   return buf.readUInt32LE(40) / 4 / SR;
 };
 
+/**
+ * One <audio> per cue, de-duplicated (two beats can ask for the same effect on
+ * the same frame) and packed greedily onto the fewest tracks that never overlap.
+ */
+function sfxClips() {
+  const seen = new Set();
+  const free = []; // per track, when it is next free
+  return SFX.sort((a, b) => a[0] - b[0])
+    .filter(([t, name]) => !seen.has(`${t}|${name}`) && seen.add(`${t}|${name}`))
+    .map(([t, name, vol], i) => {
+      const len = sfxLen(name);
+      let track = free.findIndex((f) => f <= t);
+      if (track < 0) track = free.push(0) - 1;
+      free[track] = t + len + 0.01;
+      return `<audio id="sfx-${i}" class="clip" src="assets/sfx/${name}.wav" data-start="${t}" data-duration="${len.toFixed(3)}" data-volume="${vol}" data-track-index="${12 + track}"></audio>`;
+    });
+}
+
 const audio = [
   `<audio id="score" class="clip" src="assets/music/score.wav" data-start="0" data-duration="${TOTAL}" data-volume="1" data-track-index="10"></audio>`,
   ...lines.map(
     (l) =>
       `<audio id="vo-${l.id}" class="clip" src="assets/vo/${l.id}.wav" data-start="${L[l.id].start}" data-duration="${durations[l.id]}" data-volume="${voGain(path.join(root, "assets/vo", `${l.id}.wav`)).toFixed(2)}" data-track-index="11"></audio>`,
   ),
-  ...SFX.sort((a, b) => a[0] - b[0]).map(
-    ([t, name, vol], i) =>
-      `<audio id="sfx-${i}" class="clip" src="assets/sfx/${name}.wav" data-start="${t}" data-duration="${sfxLen(name).toFixed(3)}" data-volume="${vol}" data-track-index="${12 + (i % 3)}"></audio>`,
-  ),
+  ...sfxClips(),
 ];
 
 fs.writeFileSync(
@@ -580,6 +606,15 @@ html = html.replace(/data-scene="(\w+)"/g, (_, id) => {
 });
 html = html.replace("{{TOTAL}}", String(TOTAL));
 html = html.replace("<!-- AUDIO -->", audio.join("\n    "));
+
+// The host talks for as long as he is on screen: the site's 5-second hero
+// clip, laid end to end. Its mouth is moving in every frame, so no lip sync.
+const host = [];
+for (let t = B.hostIn; t < B.hostOut - 0.01; t += 5) {
+  const d = Math.min(5, B.hostOut - t);
+  host.push(`<video id="host-v${host.length}" class="clip host-video" src="assets/art/narrator.mp4" muted playsinline data-start="${t.toFixed(3)}" data-duration="${d.toFixed(3)}" data-media-start="0" data-track-index="2"></video>`);
+}
+html = html.replace("<!-- NARRATOR -->", host.join("\n          "));
 fs.writeFileSync(path.join(root, "index.html"), html);
 
 console.log(`total ${TOTAL.toFixed(2)}s, ${Object.keys(scenes).length} scenes, ${SFX.length} effects, button at ${button.toFixed(2)}s`);

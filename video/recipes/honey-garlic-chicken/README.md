@@ -1,9 +1,13 @@
 # Instant Pot Honey Garlic Chicken — walkthrough video
 
-A 96-second recipe walkthrough built with [HyperFrames](https://www.npmjs.com/package/hyperframes)
+A one-minute recipe walkthrough built with [HyperFrames](https://www.npmjs.com/package/hyperframes)
 (HTML + GSAP, rendered to MP4). It follows the explainer's Springfield Kitchen look — cream ground,
 gold sunburst, yellow Luckiest Guy headlines with the ink keyline, sticker cards, yellow iris wipes —
 and the same synthesised score and sound effects.
+
+The host is the home page's protester: the site's 5-second hero clip (`public/down-with-hunger.mp4`,
+copied to `assets/art/narrator.mp4`) looped in a disc, bottom left, with his asides in speech bubbles.
+The narration borrows the Dueling Kebabs page's deadpan (bowls, ranch, "We said what we said").
 
 **Not on the site yet.** Nothing in `src/` or `public/` points at it.
 
