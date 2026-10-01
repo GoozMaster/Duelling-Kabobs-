@@ -1,0 +1,799 @@
+<!doctype html>
+<!--
+  Instant Pot Honey Garlic Chicken — a HyperFrames recipe walkthrough.
+  index.html is generated from this file (tools/index.template.html) by tools/build.mjs, which stamps every
+  scene and audio clip with its time. Edit this file, then rebuild.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>Honey Garlic Chicken</title>
+    <style>
+      @font-face {
+        font-family: "Luckiest Guy";
+        src: url("assets/fonts/luckiest-guy.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: "Fredoka";
+        src: url("assets/fonts/fredoka.woff2") format("woff2");
+        font-weight: 300 700;
+      }
+      /* Springfield Kitchen, Daytime — the same numbers as the site's --sk-* tokens. */
+      :root {
+        --surface: #fdf6e3;
+        --raised: #ffffff;
+        --sky: #8ecae6;
+        --ink: #16233f;
+        --muted: #55617d;
+        --yellow: #ffd90f;
+        --gold: #f5a623;
+        --brick: #a8382b;
+        --brick-soft: #f8ddd6;
+        --teal: #1f7a84;
+        --teal-soft: #d8eff1;
+        --basil: #2f7d4f;
+        --basil-soft: #dcf0e2;
+        --sand: #edcf9d;
+        --display: "Luckiest Guy", "Arial Black", Impact, sans-serif;
+        --ui: Fredoka, "Trebuchet MS", Verdana, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--yellow); }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: var(--yellow); font-family: var(--ui); color: var(--ink); }
+
+      .scene { position: absolute; inset: 0; background: var(--yellow); overflow: hidden; }
+      .content { position: absolute; inset: 0; background: var(--surface); overflow: hidden; isolation: isolate; }
+      .layer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: visible; }
+      .ring, .closer {
+        opacity: 0; position: absolute; left: 960px; top: 540px; width: 0; height: 0;
+        transform: translate(-50%, -50%); border-radius: 50%; border: 12px solid var(--ink);
+      }
+      .ring { background: transparent; }
+      .closer { background: var(--yellow); }
+
+      /* Display type: yellow, keyline drawn under the fill so it reads as an outer stroke. */
+      .hl {
+        font-family: var(--display); color: var(--yellow); line-height: 0.95; letter-spacing: 0.02em;
+        -webkit-text-stroke: var(--sw) var(--ink); paint-order: stroke fill;
+        text-shadow: calc(var(--sw) * 0.9) calc(var(--sw) * 0.9) 0 var(--ink);
+      }
+      #close-placard .hl, #ing-win .hl { white-space: nowrap; }
+      .pill {
+        display: inline-flex; align-items: center; gap: 12px; font-family: var(--ui); font-weight: 600;
+        letter-spacing: 0.08em; text-transform: uppercase; border: 6px solid var(--ink); border-radius: 999px;
+        padding: 8px 26px; white-space: nowrap; background: var(--raised);
+      }
+      .tag {
+        display: inline-block; font-family: var(--ui); font-weight: 500; font-size: 30px; border: 4px solid var(--ink);
+        border-radius: 999px; padding: 2px 20px; background: var(--raised);
+      }
+      .sticker { background: var(--raised); border: 6px solid var(--ink); border-radius: 28px; box-shadow: 8px 8px 0 var(--ink); }
+      .stamp {
+        position: absolute; font-family: var(--display); color: var(--brick); background: var(--brick-soft);
+        border: 8px solid var(--brick); border-radius: 22px; padding: 14px 34px 4px; letter-spacing: 0.03em;
+        box-shadow: 6px 6px 0 var(--ink); white-space: nowrap;
+      }
+
+      /* Step layout */
+      .left { position: absolute; left: 110px; top: 130px; width: 790px; }
+      .left .hl { font-size: 112px; --sw: 9.5px; margin-top: 30px; }
+      .card { margin-top: 40px; padding: 30px 38px; font-size: 38px; font-weight: 500; line-height: 1.32; }
+      .dots { position: absolute; left: 110px; top: 968px; display: flex; gap: 18px; align-items: center; }
+      .dot { width: 30px; height: 30px; border-radius: 50%; border: 5px solid var(--ink); background: var(--raised); }
+      .dot.done { background: var(--gold); }
+      .dot.now { width: 44px; height: 44px; background: var(--yellow); box-shadow: 4px 4px 0 var(--ink); }
+      .dots .of { font-weight: 600; font-size: 26px; letter-spacing: 0.08em; color: var(--muted); margin-left: 10px; text-transform: uppercase; }
+      .chip { position: absolute; font-size: 32px; box-shadow: 6px 6px 0 var(--ink); }
+
+      /* The site in a window */
+      .window { position: absolute; background: var(--surface); border: 6px solid var(--ink); border-radius: 32px; box-shadow: 16px 16px 0 var(--ink); overflow: hidden; }
+      .chrome { height: 76px; display: flex; align-items: center; gap: 16px; padding: 0 28px; background: var(--raised); border-bottom: 6px solid var(--ink); }
+      .chrome i { width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--ink); display: block; }
+      .chrome .url { font-size: 24px; color: var(--muted); margin-left: 18px; padding: 6px 22px; background: var(--surface); border: 3px solid var(--ink); border-radius: 999px; }
+      .cols { position: absolute; left: 50px; right: 50px; top: 316px; display: flex; gap: 36px; align-items: flex-start; }
+      .col { flex: 1; padding: 30px 30px 20px; }
+      .col h3 { margin: 0 0 16px; }
+      .row { display: flex; gap: 16px; align-items: baseline; font-size: 32px; line-height: 1.2; padding: 10px 4px; border-top: 3px dashed #e7dcc0; }
+      .row:first-of-type { border-top: 0; }
+      .row b { flex: none; width: 22px; height: 22px; border-radius: 50%; border: 3px solid var(--ink); transform: translateY(1px); }
+    </style>
+    <script src="vendor/gsap.min.js"></script>
+    <script src="timeline.js"></script>
+  </head>
+  <body>
+    <div id="root" data-composition-id="root" data-width="1920" data-height="1080" data-start="0" data-duration="96.031">
+      <div class="clip scene" id="open" data-scene="open" data-start="0" data-duration="10.385" data-track-index="0"></div>
+      <div class="clip scene" id="ingredients" data-scene="ingredients" data-start="10.385" data-duration="17.307" data-track-index="0"></div>
+      <div class="clip scene" id="s1" data-scene="s1" data-start="27.692" data-duration="10.385" data-track-index="0"></div>
+      <div class="clip scene" id="s2" data-scene="s2" data-start="38.077" data-duration="6.923" data-track-index="0"></div>
+      <div class="clip scene" id="s3" data-scene="s3" data-start="45" data-duration="10.385" data-track-index="0"></div>
+      <div class="clip scene" id="s4" data-scene="s4" data-start="55.385" data-duration="6.923" data-track-index="0"></div>
+      <div class="clip scene" id="s5" data-scene="s5" data-start="62.308" data-duration="6.923" data-track-index="0"></div>
+      <div class="clip scene" id="s6" data-scene="s6" data-start="69.231" data-duration="8.077" data-track-index="0"></div>
+      <div class="clip scene" id="s7" data-scene="s7" data-start="77.308" data-duration="11.538" data-track-index="0"></div>
+      <div class="clip scene" id="close" data-scene="close" data-start="88.846" data-duration="7.185" data-track-index="0"></div>
+
+    <audio id="score" class="clip" src="assets/music/score.wav" data-start="0" data-duration="96.031" data-volume="1" data-track-index="10"></audio>
+    <audio id="vo-l01" class="clip" src="assets/vo/l01.wav" data-start="1.1" data-duration="3.25" data-volume="1.40" data-track-index="11"></audio>
+    <audio id="vo-l02" class="clip" src="assets/vo/l02.wav" data-start="4.8" data-duration="3.17" data-volume="1.43" data-track-index="11"></audio>
+    <audio id="vo-l03" class="clip" src="assets/vo/l03.wav" data-start="10.935" data-duration="1.665" data-volume="1.22" data-track-index="11"></audio>
+    <audio id="vo-l04" class="clip" src="assets/vo/l04.wav" data-start="13" data-duration="12.53" data-volume="1.58" data-track-index="11"></audio>
+    <audio id="vo-l05" class="clip" src="assets/vo/l05.wav" data-start="28.292" data-duration="7.9" data-volume="1.57" data-track-index="11"></audio>
+    <audio id="vo-l06" class="clip" src="assets/vo/l06.wav" data-start="38.677" data-duration="4.41" data-volume="1.51" data-track-index="11"></audio>
+    <audio id="vo-l07" class="clip" src="assets/vo/l07.wav" data-start="45.6" data-duration="6.935" data-volume="1.55" data-track-index="11"></audio>
+    <audio id="vo-l08" class="clip" src="assets/vo/l08.wav" data-start="55.985" data-duration="3.815" data-volume="1.47" data-track-index="11"></audio>
+    <audio id="vo-l09" class="clip" src="assets/vo/l09.wav" data-start="62.908" data-duration="2.615" data-volume="1.30" data-track-index="11"></audio>
+    <audio id="vo-l10" class="clip" src="assets/vo/l10.wav" data-start="69.831" data-duration="5.02" data-volume="1.51" data-track-index="11"></audio>
+    <audio id="vo-l11" class="clip" src="assets/vo/l11.wav" data-start="77.908" data-duration="7.895" data-volume="1.48" data-track-index="11"></audio>
+    <audio id="vo-l12" class="clip" src="assets/vo/l12.wav" data-start="89.546" data-duration="2.08" data-volume="1.36" data-track-index="11"></audio>
+    <audio id="vo-l13" class="clip" src="assets/vo/l13.wav" data-start="92.126" data-duration="1.105" data-volume="1.23" data-track-index="11"></audio>
+    <audio id="sfx-0" class="clip" src="assets/sfx/pop.wav" data-start="0.5" data-duration="0.150" data-volume="0.35" data-track-index="12"></audio>
+    <audio id="sfx-1" class="clip" src="assets/sfx/thock.wav" data-start="0.75" data-duration="0.200" data-volume="0.5" data-track-index="13"></audio>
+    <audio id="sfx-2" class="clip" src="assets/sfx/stamp.wav" data-start="3.012" data-duration="0.400" data-volume="0.4" data-track-index="14"></audio>
+    <audio id="sfx-3" class="clip" src="assets/sfx/stamp.wav" data-start="3.394" data-duration="0.400" data-volume="0.4" data-track-index="12"></audio>
+    <audio id="sfx-4" class="clip" src="assets/sfx/stamp.wav" data-start="3.84" data-duration="0.400" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-5" class="clip" src="assets/sfx/pop.wav" data-start="4.8" data-duration="0.150" data-volume="0.3" data-track-index="14"></audio>
+    <audio id="sfx-6" class="clip" src="assets/sfx/pop.wav" data-start="5.253" data-duration="0.150" data-volume="0.3" data-track-index="12"></audio>
+    <audio id="sfx-7" class="clip" src="assets/sfx/pop.wav" data-start="6.029" data-duration="0.150" data-volume="0.3" data-track-index="13"></audio>
+    <audio id="sfx-8" class="clip" src="assets/sfx/whoosh.wav" data-start="10.065" data-duration="0.600" data-volume="0.32" data-track-index="14"></audio>
+    <audio id="sfx-9" class="clip" src="assets/sfx/pop.wav" data-start="10.785" data-duration="0.150" data-volume="0.4" data-track-index="12"></audio>
+    <audio id="sfx-10" class="clip" src="assets/sfx/tick.wav" data-start="13" data-duration="0.040" data-volume="0.45" data-track-index="13"></audio>
+    <audio id="sfx-11" class="clip" src="assets/sfx/tick.wav" data-start="13.525" data-duration="0.040" data-volume="0.45" data-track-index="14"></audio>
+    <audio id="sfx-12" class="clip" src="assets/sfx/tick.wav" data-start="14.125" data-duration="0.040" data-volume="0.45" data-track-index="12"></audio>
+    <audio id="sfx-13" class="clip" src="assets/sfx/tick.wav" data-start="14.951" data-duration="0.040" data-volume="0.45" data-track-index="13"></audio>
+    <audio id="sfx-14" class="clip" src="assets/sfx/tick.wav" data-start="15.626" data-duration="0.040" data-volume="0.45" data-track-index="14"></audio>
+    <audio id="sfx-15" class="clip" src="assets/sfx/tick.wav" data-start="16.526" data-duration="0.040" data-volume="0.45" data-track-index="12"></audio>
+    <audio id="sfx-16" class="clip" src="assets/sfx/tick.wav" data-start="18.252" data-duration="0.040" data-volume="0.45" data-track-index="13"></audio>
+    <audio id="sfx-17" class="clip" src="assets/sfx/tick.wav" data-start="19.152" data-duration="0.040" data-volume="0.45" data-track-index="14"></audio>
+    <audio id="sfx-18" class="clip" src="assets/sfx/tick.wav" data-start="20.353" data-duration="0.040" data-volume="0.45" data-track-index="12"></audio>
+    <audio id="sfx-19" class="clip" src="assets/sfx/tick.wav" data-start="22.529" data-duration="0.040" data-volume="0.45" data-track-index="13"></audio>
+    <audio id="sfx-20" class="clip" src="assets/sfx/tick.wav" data-start="23.804" data-duration="0.040" data-volume="0.45" data-track-index="14"></audio>
+    <audio id="sfx-21" class="clip" src="assets/sfx/whoosh.wav" data-start="27.372" data-duration="0.600" data-volume="0.32" data-track-index="12"></audio>
+    <audio id="sfx-22" class="clip" src="assets/sfx/pop.wav" data-start="28.042" data-duration="0.150" data-volume="0.3" data-track-index="13"></audio>
+    <audio id="sfx-23" class="clip" src="assets/sfx/thock.wav" data-start="28.342" data-duration="0.200" data-volume="0.4" data-track-index="14"></audio>
+    <audio id="sfx-24" class="clip" src="assets/sfx/plop.wav" data-start="29.671" data-duration="0.200" data-volume="0.4" data-track-index="12"></audio>
+    <audio id="sfx-25" class="clip" src="assets/sfx/plop.wav" data-start="30.188" data-duration="0.200" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-26" class="clip" src="assets/sfx/plop.wav" data-start="30.778" data-duration="0.200" data-volume="0.4" data-track-index="14"></audio>
+    <audio id="sfx-27" class="clip" src="assets/sfx/plop.wav" data-start="31.591" data-duration="0.200" data-volume="0.4" data-track-index="12"></audio>
+    <audio id="sfx-28" class="clip" src="assets/sfx/plop.wav" data-start="32.255" data-duration="0.200" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-29" class="clip" src="assets/sfx/plop.wav" data-start="33.141" data-duration="0.200" data-volume="0.4" data-track-index="14"></audio>
+    <audio id="sfx-30" class="clip" src="assets/sfx/whisk.wav" data-start="33.682" data-duration="1.300" data-volume="0.45" data-track-index="12"></audio>
+    <audio id="sfx-31" class="clip" src="assets/sfx/stamp.wav" data-start="35.332" data-duration="0.400" data-volume="0.45" data-track-index="13"></audio>
+    <audio id="sfx-32" class="clip" src="assets/sfx/whoosh.wav" data-start="37.757" data-duration="0.600" data-volume="0.32" data-track-index="14"></audio>
+    <audio id="sfx-33" class="clip" src="assets/sfx/pop.wav" data-start="38.427" data-duration="0.150" data-volume="0.3" data-track-index="12"></audio>
+    <audio id="sfx-34" class="clip" src="assets/sfx/thock.wav" data-start="38.727" data-duration="0.200" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-35" class="clip" src="assets/sfx/beep.wav" data-start="40.777" data-duration="0.300" data-volume="0.35" data-track-index="14"></audio>
+    <audio id="sfx-36" class="clip" src="assets/sfx/plop.wav" data-start="42.207" data-duration="0.200" data-volume="0.35" data-track-index="12"></audio>
+    <audio id="sfx-37" class="clip" src="assets/sfx/plop.wav" data-start="42.507" data-duration="0.200" data-volume="0.3" data-track-index="13"></audio>
+    <audio id="sfx-38" class="clip" src="assets/sfx/whoosh.wav" data-start="44.68" data-duration="0.600" data-volume="0.32" data-track-index="14"></audio>
+    <audio id="sfx-39" class="clip" src="assets/sfx/pop.wav" data-start="45.35" data-duration="0.150" data-volume="0.3" data-track-index="12"></audio>
+    <audio id="sfx-40" class="clip" src="assets/sfx/thock.wav" data-start="45.65" data-duration="0.200" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-41" class="clip" src="assets/sfx/thock.wav" data-start="45.75" data-duration="0.200" data-volume="0.35" data-track-index="14"></audio>
+    <audio id="sfx-42" class="clip" src="assets/sfx/thock.wav" data-start="45.89" data-duration="0.200" data-volume="0.35" data-track-index="12"></audio>
+    <audio id="sfx-43" class="clip" src="assets/sfx/thock.wav" data-start="46.03" data-duration="0.200" data-volume="0.35" data-track-index="13"></audio>
+    <audio id="sfx-44" class="clip" src="assets/sfx/thock.wav" data-start="46.17" data-duration="0.200" data-volume="0.35" data-track-index="14"></audio>
+    <audio id="sfx-45" class="clip" src="assets/sfx/shake.wav" data-start="48.237" data-duration="1.000" data-volume="0.4" data-track-index="12"></audio>
+    <audio id="sfx-46" class="clip" src="assets/sfx/sizzle.wav" data-start="49.748" data-duration="1.800" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-47" class="clip" src="assets/sfx/pop.wav" data-start="50.72" data-duration="0.150" data-volume="0.3" data-track-index="14"></audio>
+    <audio id="sfx-48" class="clip" src="assets/sfx/whoosh.wav" data-start="52.785" data-duration="0.600" data-volume="0.25" data-track-index="12"></audio>
+    <audio id="sfx-49" class="clip" src="assets/sfx/sizzle.wav" data-start="52.985" data-duration="1.800" data-volume="0.35" data-track-index="13"></audio>
+    <audio id="sfx-50" class="clip" src="assets/sfx/whoosh.wav" data-start="55.065" data-duration="0.600" data-volume="0.32" data-track-index="14"></audio>
+    <audio id="sfx-51" class="clip" src="assets/sfx/pop.wav" data-start="55.735" data-duration="0.150" data-volume="0.3" data-track-index="12"></audio>
+    <audio id="sfx-52" class="clip" src="assets/sfx/thock.wav" data-start="56.035" data-duration="0.200" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-53" class="clip" src="assets/sfx/pour.wav" data-start="56.709" data-duration="1.300" data-volume="0.4" data-track-index="14"></audio>
+    <audio id="sfx-54" class="clip" src="assets/sfx/stamp.wav" data-start="58.437" data-duration="0.400" data-volume="0.55" data-track-index="12"></audio>
+    <audio id="sfx-55" class="clip" src="assets/sfx/switch.wav" data-start="59.95" data-duration="0.120" data-volume="0.6" data-track-index="13"></audio>
+    <audio id="sfx-56" class="clip" src="assets/sfx/whoosh.wav" data-start="61.988" data-duration="0.600" data-volume="0.32" data-track-index="14"></audio>
+    <audio id="sfx-57" class="clip" src="assets/sfx/pop.wav" data-start="62.658" data-duration="0.150" data-volume="0.3" data-track-index="12"></audio>
+    <audio id="sfx-58" class="clip" src="assets/sfx/thock.wav" data-start="62.958" data-duration="0.200" data-volume="0.4" data-track-index="13"></audio>
+    <audio id="sfx-59" class="clip" src="assets/sfx/beep.wav" data-start="63.577" data-duration="0.300" data-volume="0.35" data-track-index="14"></audio>
+    <audio id="sfx-60" class="clip" src="assets/sfx/beep.wav" data-start="64.611" data-duration="0.300" data-volume="0.35" data-track-index="12"></audio>
+    <audio id="sfx-61" class="clip" src="assets/sfx/tick.wav" data-start="65.873" data-duration="0.040" data-volume="0.3" data-track-index="13"></audio>
+    <audio id="sfx-62" class="clip" src="assets/sfx/ding.wav" data-start="67.873" data-duration="1.600" data-volume="0.45" data-track-index="14"></audio>
+    <audio id="sfx-63" class="clip" src="assets/sfx/whoosh.wav" data-start="68.911" data-duration="0.600" data-volume="0.32" data-track-index="12"></audio>
+    <audio id="sfx-64" class="clip" src="assets/sfx/pop.wav" data-start="69.581" data-duration="0.150" data-volume="0.3" data-track-index="13"></audio>
+    <audio id="sfx-65" class="clip" src="assets/sfx/thock.wav" data-start="69.881" data-duration="0.200" data-volume="0.4" data-track-index="14"></audio>
+    <audio id="sfx-66" class="clip" src="assets/sfx/beep.wav" data-start="70.483" data-duration="0.300" data-volume="0.3" data-track-index="12"></audio>
+    <audio id="sfx-67" class="clip" src="assets/sfx/steam.wav" data-start="71.591" data-duration="3.500" data-volume="0.35" data-track-index="13"></audio>
+    <audio id="sfx-68" class="clip" src="assets/sfx/pop.wav" data-start="73.612" data-duration="0.150" data-volume="0.3" data-track-index="14"></audio>
+    <audio id="sfx-69" class="clip" src="assets/sfx/ding.wav" data-start="75.251" data-duration="1.600" data-volume="0.4" data-track-index="12"></audio>
+    <audio id="sfx-70" class="clip" src="assets/sfx/whoosh.wav" data-start="76.988" data-duration="0.600" data-volume="0.32" data-track-index="13"></audio>
+    <audio id="sfx-71" class="clip" src="assets/sfx/pop.wav" data-start="77.658" data-duration="0.150" data-volume="0.3" data-track-index="14"></audio>
+    <audio id="sfx-72" class="clip" src="assets/sfx/thock.wav" data-start="77.958" data-duration="0.200" data-volume="0.4" data-track-index="12"></audio>
+    <audio id="sfx-73" class="clip" src="assets/sfx/thock.wav" data-start="78.67" data-duration="0.200" data-volume="0.45" data-track-index="13"></audio>
+    <audio id="sfx-74" class="clip" src="assets/sfx/pour.wav" data-start="79.986" data-duration="1.300" data-volume="0.3" data-track-index="14"></audio>
+    <audio id="sfx-75" class="clip" src="assets/sfx/sparkle.wav" data-start="83.171" data-duration="1.400" data-volume="0.3" data-track-index="12"></audio>
+    <audio id="sfx-76" class="clip" src="assets/sfx/pop.wav" data-start="84.903" data-duration="0.150" data-volume="0.3" data-track-index="13"></audio>
+    <audio id="sfx-77" class="clip" src="assets/sfx/stamp.wav" data-start="86.153" data-duration="0.400" data-volume="0.55" data-track-index="14"></audio>
+    <audio id="sfx-78" class="clip" src="assets/sfx/whoosh.wav" data-start="88.526" data-duration="0.600" data-volume="0.32" data-track-index="12"></audio>
+    <audio id="sfx-79" class="clip" src="assets/sfx/thock.wav" data-start="89.296" data-duration="0.200" data-volume="0.5" data-track-index="13"></audio>
+    <audio id="sfx-80" class="clip" src="assets/sfx/pop.wav" data-start="89.546" data-duration="0.150" data-volume="0.35" data-track-index="14"></audio>
+    <audio id="sfx-81" class="clip" src="assets/sfx/stamp.wav" data-start="92.176" data-duration="0.400" data-volume="0.6" data-track-index="12"></audio>
+    </div>
+
+    <script>
+      (() => {
+        const TL = window.TL;
+        const B = TL.b;
+        const C = {
+          surface: "#fdf6e3", raised: "#ffffff", ink: "#16233f", muted: "#55617d", yellow: "#ffd90f",
+          gold: "#f5a623", brick: "#a8382b", brickSoft: "#f8ddd6", teal: "#1f7a84", tealSoft: "#d8eff1",
+          basil: "#2f7d4f", basilSoft: "#dcf0e2", sand: "#edcf9d",
+          steel: "#dfe6ee", steelMid: "#c3ccd8", steelDark: "#8d99ab", well: "#2b3652",
+          raw: "#f3c7a0", browned: "#b9652a", sauce: "#a4501d", glaze: "#c9742c",
+        };
+        const S = 7; // the keyline, at video scale
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+        // Deterministic scatter, so every render is identical.
+        let seed = 7;
+        const rand = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+
+        // ------------------------------------------------------------ pieces
+
+        const hl = (text, size, extra = "") =>
+          `<div class="hl" style="font-size:${size}px;--sw:${Math.max(6, size * 0.085).toFixed(1)}px;${extra}">${text}</div>`;
+
+        const sunburst = (id, x, y, size = 2600, color = C.gold) => {
+          const rays = Array.from({ length: 24 }, (_, i) => {
+            const half = 15 * 0.46, a = 15 * i;
+            const pt = (d) => `${(1000 * Math.cos((d * Math.PI) / 180)).toFixed(1)} ${(1000 * Math.sin((d * Math.PI) / 180)).toFixed(1)}`;
+            return `<path d="M0 0 L${pt(a - half)} L${pt(a + half)} Z" fill="${color}" opacity="${i % 2 ? 0.3 : 0.16}"/>`;
+          }).join("");
+          return `<svg id="${id}" viewBox="-1000 -1000 2000 2000" style="position:absolute;left:${x - size / 2}px;top:${y - size / 2}px;width:${size}px;height:${size}px">${rays}</svg>`;
+        };
+
+        const drop = (fill) =>
+          `<path d="M0 -52 C 26 -16 42 4 42 22 A42 42 0 0 1 -42 22 C -42 4 -26 -16 0 -52 Z" fill="${fill}" stroke="${C.ink}" stroke-width="${S}" stroke-linejoin="round"/>
+           <ellipse cx="-14" cy="14" rx="8" ry="13" fill="#fff" opacity=".55"/>`;
+        const leaves = (fill) =>
+          [[-26, 6, -30], [0, -16, 0], [26, 6, 30]].map(([x, y, r]) =>
+            `<path transform="translate(${x} ${y}) rotate(${r})" d="M0 -34 C 22 -18 22 18 0 34 C -22 18 -22 -18 0 -34 Z" fill="${fill}" stroke="${C.ink}" stroke-width="6" stroke-linejoin="round"/>`).join("") +
+          `<path d="M0 46 L0 -4" stroke="${C.ink}" stroke-width="6" stroke-linecap="round"/>`;
+        const garlic = () =>
+          `<path d="M0 -50 C 8 -32 42 -20 42 12 C 42 40 22 50 0 50 C -22 50 -42 40 -42 12 C -42 -20 -8 -32 0 -50 Z" fill="#fbf3e4" stroke="${C.ink}" stroke-width="${S}" stroke-linejoin="round"/>
+           <path d="M0 -30 C -14 -10 -16 30 -6 48 M0 -30 C 14 -10 16 30 6 48" fill="none" stroke="${C.ink}" stroke-width="4" stroke-linecap="round"/>`;
+
+        const thighPath = "M-85 -20 C -80 -70 20 -78 72 -46 C 102 -25 97 32 60 52 C 10 78 -62 72 -82 36 C -92 15 -90 0 -85 -20 Z";
+        const thigh = (cls = "", browned = false) => `
+          <g class="${cls}">
+            <path class="raw" d="${thighPath}" fill="${C.raw}" stroke="${C.ink}" stroke-width="${S}" stroke-linejoin="round" ${browned ? 'opacity="0"' : ""}/>
+            <g class="brown" ${browned ? "" : 'opacity="0"'}>
+              <path d="${thighPath}" fill="${C.browned}" stroke="${C.ink}" stroke-width="${S}" stroke-linejoin="round"/>
+              <path d="M-50 -30 L 30 -44 M-60 2 L 50 -12 M-48 34 L 40 22" stroke="#7a3a12" stroke-width="9" stroke-linecap="round" opacity=".55"/>
+              <ellipse cx="-30" cy="-36" rx="22" ry="8" fill="#fff" opacity=".35"/>
+            </g>
+          </g>`;
+
+        /** The Instant Pot, front on, sitting with its base on y=900 around x=1390. */
+        const pot = (id, { lid = false } = {}) => `
+          <g id="${id}-pot">
+            <ellipse cx="1390" cy="912" rx="290" ry="26" fill="${C.ink}" opacity=".15"/>
+            <rect x="1168" y="852" width="444" height="54" rx="20" fill="${C.steelDark}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="1112" y="506" width="62" height="38" rx="14" fill="${C.steelDark}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="1606" y="506" width="62" height="38" rx="14" fill="${C.steelDark}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="1150" y="470" width="480" height="400" rx="70" fill="${C.steel}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="1184" y="512" width="30" height="310" rx="15" fill="#fff" opacity=".75"/>
+            <ellipse cx="1390" cy="470" rx="250" ry="56" fill="${C.steelMid}" stroke="${C.ink}" stroke-width="${S}"/>
+            <ellipse id="${id}-well" cx="1390" cy="470" rx="200" ry="38" fill="${C.well}" stroke="${C.ink}" stroke-width="5"/>
+            <g id="${id}-inside"></g>
+            <rect x="1250" y="592" width="280" height="212" rx="28" fill="${C.ink}"/>
+            <rect x="1272" y="614" width="236" height="98" rx="14" fill="#0b1430" stroke="#33426b" stroke-width="3"/>
+            <g id="${id}-display" font-family="Luckiest Guy" text-anchor="middle" fill="${C.yellow}"></g>
+            <circle cx="1310" cy="756" r="20" fill="${C.brick}" stroke="#0b1430" stroke-width="4"/>
+            <circle id="${id}-btn" cx="1390" cy="756" r="20" fill="${C.gold}" stroke="#0b1430" stroke-width="4"/>
+            <circle cx="1470" cy="756" r="20" fill="${C.basil}" stroke="#0b1430" stroke-width="4"/>
+            ${lid ? potLid(id) : ""}
+          </g>`;
+        const potLid = (id) => `
+          <g id="${id}-lid">
+            <rect id="${id}-pin" x="1290" y="318" width="20" height="30" rx="6" fill="${C.brick}" stroke="${C.ink}" stroke-width="5"/>
+            <path d="M1142 466 Q1150 334 1390 322 Q1630 334 1638 466 Z" fill="${C.steel}" stroke="${C.ink}" stroke-width="${S}" stroke-linejoin="round"/>
+            <path d="M1200 430 Q1220 362 1330 346" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" opacity=".7"/>
+            <ellipse cx="1390" cy="466" rx="262" ry="34" fill="${C.steelMid}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="1336" y="292" width="108" height="42" rx="18" fill="${C.ink}"/>
+            <rect x="1494" y="314" width="44" height="40" rx="8" fill="${C.ink}"/>
+            <rect x="1502" y="300" width="28" height="18" rx="5" fill="${C.ink}"/>
+          </g>`;
+        const display = (id, states) =>
+          ($(`#${id}-display`).innerHTML = Object.entries(states)
+            .map(([k, [txt, size, on]]) => `<text class="d-${k}" x="1390" y="${663 + size * 0.36}" font-size="${size}" opacity="${on ? 1 : 0}">${txt}</text>`)
+            .join(""));
+
+        /** A plate from above, centred on (cx, cy). */
+        const plate = (id, cx, cy, garnished) => {
+          const spots = [[-105, -85, -12], [112, -78, 24], [-100, 100, 16], [118, 104, -20]];
+          let seeds = "", onions = "";
+          for (let i = 0; i < 44; i++) {
+            const a = rand() * Math.PI * 2, r = 40 + rand() * 210;
+            seeds += `<ellipse class="seed" cx="${(Math.cos(a) * r).toFixed(1)}" cy="${(Math.sin(a) * r).toFixed(1)}" rx="7" ry="4" transform="rotate(${(rand() * 180).toFixed(0)} ${(Math.cos(a) * r).toFixed(1)} ${(Math.sin(a) * r).toFixed(1)})" fill="#f7e7c4" stroke="${C.ink}" stroke-width="2" ${garnished ? "" : 'opacity="0"'}/>`;
+          }
+          for (let i = 0; i < 20; i++) {
+            const a = rand() * Math.PI * 2, r = 30 + rand() * 220;
+            onions += `<circle class="onion" cx="${(Math.cos(a) * r).toFixed(1)}" cy="${(Math.sin(a) * r).toFixed(1)}" r="10" fill="${C.basilSoft}" stroke="${C.basil}" stroke-width="6" ${garnished ? "" : 'opacity="0"'}/>`;
+          }
+          return `
+          <g id="${id}-plate" transform="translate(${cx} ${cy})">
+            <ellipse cx="14" cy="22" rx="372" ry="372" fill="${C.ink}" opacity=".18"/>
+            <circle r="370" fill="${C.raised}" stroke="${C.ink}" stroke-width="${S + 1}"/>
+            <circle r="292" fill="#fffaf0" stroke="${C.sand}" stroke-width="12"/>
+            <g id="${id}-pool" ${garnished ? "" : 'opacity="0"'}><ellipse rx="230" ry="200" fill="${C.sauce}" opacity=".9"/></g>
+            ${spots.map(([x, y, r], i) => `
+              <g transform="translate(${x} ${y}) rotate(${r}) scale(.92)">
+                <g class="pthigh" id="${id}-t${i}">
+                  ${thigh("", true)}
+                  <g class="glaze" ${garnished ? "" : 'opacity="0"'}>
+                    <path d="M-62 -18 C -56 -54 18 -58 56 -36 C 78 -20 74 20 48 36 C 10 56 -44 52 -60 24 Z" fill="${C.glaze}" opacity=".92"/>
+                    <ellipse cx="-24" cy="-26" rx="26" ry="9" fill="#fff" opacity=".6"/>
+                  </g>
+                </g>
+              </g>`).join("")}
+            <g id="${id}-seeds">${seeds}</g>
+            <g id="${id}-onions">${onions}</g>
+          </g>`;
+        };
+
+        const dots = (n) =>
+          `<div class="dots">${Array.from({ length: 7 }, (_, i) => `<span class="dot ${i + 1 < n ? "done" : i + 1 === n ? "now" : ""}"></span>`).join("")}<span class="of">Step ${n} of 7</span></div>`;
+
+        const frame = (id, inner) => {
+          $(`#${id}`).innerHTML = `<div class="content" id="${id}-c">${inner}</div><div class="ring" id="${id}-ring"></div><div class="closer" id="${id}-close"></div>`;
+        };
+
+        const step = (id, n, title, text, art, chip = "") =>
+          frame(id, `
+            ${sunburst(`${id}-sun`, 1390, 560)}
+            <svg class="layer" viewBox="0 0 1920 1080">${art}</svg>
+            <div class="left">
+              <span class="pill" id="${id}-pill" style="font-size:28px;background:${C.tealSoft};color:${C.teal}">${n === 7 ? "Last step" : `Step ${n}`}</span>
+              <div id="${id}-head">${hl(title, 112)}</div>
+              <div class="card sticker" id="${id}-card">${text}</div>
+            </div>
+            ${dots(n)}
+            ${chip}
+          `);
+
+        // ------------------------------------------------------------ scenes
+        // Card text is the recipe's own instructions, word for word.
+
+        // open
+        frame("open", `
+          ${sunburst("open-sun", 1400, 560, 3000)}
+          <svg class="layer" viewBox="0 0 1920 1080"><g id="open-hero">${plate("op", 1400, 560, true)}</g></svg>
+          <div style="position:absolute;left:120px;top:150px;width:900px">
+            <div style="display:flex;gap:20px;align-items:center">
+              <span class="pill" id="open-eyebrow" style="font-size:30px;background:${C.tealSoft};color:${C.teal}">Instant Pot</span>
+              <span class="tag" id="open-tag">Asian</span>
+            </div>
+            <div style="margin-top:40px">
+              <div id="open-w0">${hl("HONEY", 178)}</div>
+              <div id="open-w1">${hl("GARLIC", 178)}</div>
+              <div id="open-w2">${hl("CHICKEN", 178)}</div>
+            </div>
+            <div style="display:flex;gap:22px;margin-top:56px">
+              <span class="pill chip" id="open-c0" style="position:static;background:${C.yellow}">Sweet</span>
+              <span class="pill chip" id="open-c1" style="position:static;background:${C.brickSoft};color:${C.brick}">Sticky</span>
+              <span class="pill chip" id="open-c2" style="position:static;background:${C.basilSoft};color:${C.basil}">Hands-off</span>
+            </div>
+          </div>
+        `);
+
+        // ingredients
+        const ING = [
+          ["For the sauce", C.yellow, C.gold, ["1/3 cup honey", "4 cloves garlic, minced", "1/2 cup low sodium soy sauce", "1/2 cup no salt ketchup", "1/2 teaspoon dried oregano", "2 tablespoons chopped fresh parsley"]],
+          ["For the pot", C.brickSoft, C.brick, ["1 tablespoon sesame seed oil", "4 to 6 bone-in, skinless chicken thighs", "Salt and fresh ground pepper, to taste"]],
+          ["To finish", C.basilSoft, C.basil, ["1/2 tablespoon toasted sesame seeds", "Sliced green onions"]],
+        ];
+        let rowIndex = 0;
+        frame("ingredients", `
+          ${sunburst("ing-sun", 960, 560, 3000)}
+          <div class="window" id="ing-win" style="left:110px;top:70px;width:1700px;height:930px">
+            <div class="chrome"><i style="background:${C.brick}"></i><i style="background:${C.gold}"></i><i style="background:${C.basil}"></i>
+              <span class="url">Down With Hunger&nbsp;&nbsp;›&nbsp;&nbsp;Instant Pot Honey Garlic Chicken</span></div>
+            <div style="position:absolute;left:56px;top:112px">${hl("INSTANT POT HONEY GARLIC CHICKEN", 92)}</div>
+            <div style="position:absolute;left:56px;top:232px;display:flex;gap:18px;align-items:center">
+              <span class="tag">Asian</span>
+              <span style="font-size:30px;font-weight:600">Ingredients</span>
+              <span style="font-size:28px;color:${C.muted}">· 11 things, mostly from the pantry</span>
+            </div>
+            <div class="cols">
+              ${ING.map(([name, bg, dot, rows], c) => `
+                <div class="col sticker" id="ing-col${c}" style="flex:${c === 0 ? 1.3 : 1}">
+                  <h3><span class="pill" style="font-size:28px;background:${bg};padding:6px 22px">${name}</span></h3>
+                  ${rows.map((r) => `<div class="row" id="ing-r${rowIndex++}"><b style="background:${dot}"></b><span>${r}</span></div>`).join("")}
+                </div>`).join("")}
+            </div>
+          </div>
+        `);
+
+        // step 1 — the sauce
+        const TOKENS = [
+          ["HONEY", drop(C.gold)], ["GARLIC", garlic()], ["SOY SAUCE", drop("#3b2414")],
+          ["KETCHUP", drop("#c8302a")], ["OREGANO", leaves("#6b7d2e")], ["PARSLEY", leaves(C.basil)],
+        ];
+        const tokenX = [1180, 1265, 1350, 1430, 1515, 1600];
+        step("s1", 1, "MIX THE SAUCE",
+          "In a small mixing bowl combine honey, minced garlic, soy sauce, ketchup, oregano and parsley; mix until well combined and set aside.",
+          `
+          <g id="s1-bowl">
+            <ellipse cx="1390" cy="852" rx="300" ry="26" fill="${C.ink}" opacity=".15"/>
+            <ellipse cx="1390" cy="580" rx="290" ry="64" fill="${C.raised}" stroke="${C.ink}" stroke-width="${S}"/>
+            <ellipse cx="1390" cy="580" rx="252" ry="46" fill="#efe6cf"/>
+            <g id="s1-sauce"><ellipse cx="1390" cy="582" rx="252" ry="46" fill="${C.sauce}"/></g>
+            <clipPath id="s1-in"><ellipse cx="1390" cy="582" rx="246" ry="44"/></clipPath>
+            <g clip-path="url(#s1-in)"><g id="s1-swirl" opacity="0" transform="translate(1390 582) scale(1 .18)">
+              <g id="s1-spiral"><path d="M0 0 C 40 -10 60 30 30 60 C -10 100 -90 70 -100 0 C -110 -80 -20 -150 80 -140 C 170 -130 220 -40 210 40" fill="none" stroke="#e8a35a" stroke-width="30" stroke-linecap="round"/></g>
+            </g></g>
+            <path d="M1100 580 Q1110 846 1390 852 Q1670 846 1680 580 A290 64 0 0 1 1100 580 Z" fill="${C.raised}" stroke="${C.ink}" stroke-width="${S}" stroke-linejoin="round"/>
+            <path d="M1124 680 Q1390 760 1656 680" fill="none" stroke="${C.teal}" stroke-width="18"/>
+            <path d="M1150 640 Q1170 760 1260 800" fill="none" stroke="${C.tealSoft}" stroke-width="14" stroke-linecap="round" opacity=".9"/>
+          </g>
+          ${TOKENS.map(([name, art], i) => `
+            <g transform="translate(${tokenX[i]} 260)">
+              <g class="s1-tok" id="s1-tok${i}">
+                <g transform="scale(.95)">${art}</g>
+                <g transform="translate(0 92)">
+                  <rect x="${-name.length * 9.5 - 20}" y="-22" width="${name.length * 19 + 40}" height="44" rx="22" fill="${C.raised}" stroke="${C.ink}" stroke-width="5"/>
+                  <text y="10" text-anchor="middle" font-family="Fredoka" font-weight="600" font-size="24" letter-spacing="1.5" fill="${C.ink}">${name}</text>
+                </g>
+              </g>
+            </g>`).join("")}
+          <g transform="translate(1440 480)"><g id="s1-whisk">
+            <g id="s1-whiskI">
+              <rect x="-14" y="-300" width="28" height="170" rx="12" fill="${C.brick}" stroke="${C.ink}" stroke-width="6"/>
+              <path d="M-10 -130 C -70 -40 -50 120 0 130 C 50 120 70 -40 10 -130" fill="none" stroke="${C.ink}" stroke-width="8"/>
+              <path d="M-4 -130 C -36 -40 -26 110 0 120 C 26 110 36 -40 4 -130" fill="none" stroke="${C.ink}" stroke-width="7"/>
+            </g>
+          </g></g>`);
+        // the stamp
+        $("#s1-c").insertAdjacentHTML("beforeend", `<div class="stamp" id="s1-stamp" style="left:1440px;top:180px;font-size:76px">SET ASIDE</div>`);
+
+        // step 2 — sauté and oil
+        step("s2", 2, "HEAT IT UP", "Heat the Instant Pot in sauté mode. Add sesame oil to the pot.",
+          `
+          ${pot("s2")}
+          <g id="s2-heat" opacity="0">
+            ${[1300, 1390, 1480].map((x, i) => `<path class="s2-wave" d="M${x} 430 q -20 -30 0 -60 q 20 -30 0 -60" fill="none" stroke="${C.brick}" stroke-width="10" stroke-linecap="round"/>`).join("")}
+          </g>
+          <g transform="translate(1690 270)">
+            <g id="s2-bottle">
+              <rect x="-18" y="-150" width="36" height="60" rx="8" fill="#d79a32" stroke="${C.ink}" stroke-width="6"/>
+              <rect x="-24" y="-176" width="48" height="30" rx="8" fill="${C.ink}"/>
+              <rect x="-56" y="-96" width="112" height="210" rx="34" fill="#e3a63d" stroke="${C.ink}" stroke-width="${S}"/>
+              <rect x="-44" y="-30" width="88" height="86" rx="12" fill="${C.raised}" stroke="${C.ink}" stroke-width="5"/>
+              <text y="6" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="20" fill="${C.ink}">SESAME</text>
+              <text y="36" text-anchor="middle" font-family="Fredoka" font-weight="700" font-size="20" fill="${C.ink}">OIL</text>
+            </g>
+          </g>
+          ${[0, 1, 2].map((i) => `<g transform="translate(${1440 - i * 30} ${330})"><g class="s2-drip"><path d="M0 -16 C 8 -6 13 1 13 7 A13 13 0 0 1 -13 7 C -13 1 -8 -6 0 -16 Z" fill="${C.gold}" stroke="${C.ink}" stroke-width="4"/></g></g>`).join("")}`,
+          `<span class="pill chip" id="s2-chip" style="left:1110px;top:150px;background:${C.yellow}">Sauté mode</span>`);
+        display("s2", { off: ["OFF", 58, true], saute: ["SAUTÉ", 58], hot: ["HOT", 58] });
+        $("#s2-inside").innerHTML = `<g id="s2-oil" opacity="0"><ellipse cx="1390" cy="474" rx="170" ry="28" fill="${C.gold}"/><ellipse cx="1340" cy="468" rx="50" ry="8" fill="#fff" opacity=".6"/></g>`;
+
+        // step 3 — season and brown
+        const SPOTS3 = [[-112, -92, -10], [112, -84, 22], [-104, 102, 14], [118, 106, -18]];
+        step("s3", 3, "BROWN THE CHICKEN",
+          "Season chicken thighs with salt and pepper; arrange in the instant pot and cook for about 2 to 3 minutes per side.",
+          `
+          <g transform="translate(1390 580)">
+            <ellipse cx="14" cy="24" rx="372" ry="372" fill="${C.ink}" opacity=".15"/>
+            <rect x="-440" y="-34" width="90" height="68" rx="20" fill="${C.steelDark}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="350" y="-34" width="90" height="68" rx="20" fill="${C.steelDark}" stroke="${C.ink}" stroke-width="${S}"/>
+            <circle r="370" fill="${C.steelMid}" stroke="${C.ink}" stroke-width="${S + 1}"/>
+            <circle r="312" fill="${C.well}" stroke="${C.ink}" stroke-width="5"/>
+            <g id="s3-sizzle" opacity="0">
+              ${Array.from({ length: 16 }, (_, i) => {
+                const a = (i / 16) * Math.PI * 2, r = 250 + (i % 3) * 18;
+                return `<circle class="s3-bub" cx="${(Math.cos(a) * r).toFixed(0)}" cy="${(Math.sin(a) * r).toFixed(0)}" r="${8 + (i % 4) * 3}" fill="none" stroke="#fff" stroke-width="5" opacity=".8"/>`;
+              }).join("")}
+            </g>
+            ${SPOTS3.map(([x, y, r], i) => {
+              let sp = "";
+              for (let k = 0; k < 12; k++) {
+                const sx = -60 + rand() * 120, sy = -40 + rand() * 80;
+                sp += `<circle class="speck" cx="${sx.toFixed(0)}" cy="${sy.toFixed(0)}" r="${k % 2 ? 4.5 : 3.6}" fill="${k % 2 ? "#fff" : C.ink}" ${k % 2 ? `stroke="${C.ink}" stroke-width="1.5"` : ""} opacity="0"/>`;
+              }
+              return `<g transform="translate(${x} ${y}) rotate(${r})"><g class="s3-thigh" id="s3-t${i}">${thigh()}${sp}</g></g>`;
+            }).join("")}
+          </g>
+          <g transform="translate(1180 150)"><g id="s3-salt">
+            <rect x="-40" y="-60" width="80" height="120" rx="24" fill="${C.raised}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="-34" y="-84" width="68" height="34" rx="10" fill="${C.steelMid}" stroke="${C.ink}" stroke-width="6"/>
+            <text y="16" text-anchor="middle" font-family="Luckiest Guy" font-size="44" fill="${C.ink}">S</text></g></g>
+          <g transform="translate(1600 150)"><g id="s3-pepper">
+            <rect x="-40" y="-60" width="80" height="120" rx="24" fill="${C.ink}" stroke="${C.ink}" stroke-width="${S}"/>
+            <rect x="-34" y="-84" width="68" height="34" rx="10" fill="${C.steelMid}" stroke="${C.ink}" stroke-width="6"/>
+            <text y="16" text-anchor="middle" font-family="Luckiest Guy" font-size="44" fill="${C.raised}">P</text></g></g>`,
+          `<span class="pill chip" id="s3-chip" style="left:1390px;top:960px;transform:translateX(-50%);background:${C.yellow}">2–3 min a side</span>`);
+
+        // step 4 — sauce in, lid on
+        step("s4", 4, "POUR AND LOCK", "Add the prepared honey garlic sauce to the pot; cover and lock the lid.",
+          `
+          ${pot("s4", { lid: true })}
+          <rect id="s4-stream" x="1452" y="190" width="26" height="290" rx="13" fill="${C.sauce}" stroke="${C.ink}" stroke-width="5"/>
+          <g transform="translate(1600 170)">
+            <g id="s4-bowl">
+              <path d="M-120 0 Q-110 110 0 116 Q110 110 120 0 Z" fill="${C.raised}" stroke="${C.ink}" stroke-width="${S}" stroke-linejoin="round"/>
+              <ellipse rx="120" ry="28" fill="${C.sauce}" stroke="${C.ink}" stroke-width="${S}"/>
+              <path d="M-104 44 Q0 80 104 44" fill="none" stroke="${C.teal}" stroke-width="12"/>
+            </g>
+          </g>`,
+          `<div class="pill chip" id="s4-lock" style="left:1580px;top:250px;background:${C.basilSoft};color:${C.basil}">
+             <svg width="34" height="40" viewBox="0 0 34 40"><path d="M8 18 V12 a9 9 0 0 1 18 0 V18" fill="none" stroke="${C.ink}" stroke-width="5"/><rect x="3" y="17" width="28" height="21" rx="5" fill="${C.basil}" stroke="${C.ink}" stroke-width="4"/></svg>Locked</div>`);
+        display("s4", { off: ["SAUTÉ", 58, true], lock: ["LOCKED", 50] });
+        $("#s4-inside").innerHTML = `<g id="s4-fill"><ellipse cx="1390" cy="476" rx="186" ry="32" fill="${C.sauce}"/></g>`;
+
+        // step 5 — pressure cook
+        step("s5", 5, "20 MINUTES", "Cook in poultry mode for 20 minutes.",
+          `${pot("s5", { lid: true })}
+           <g id="s5-ring" opacity="0"><circle cx="1390" cy="663" r="150" fill="none" stroke="${C.yellow}" stroke-width="10"/></g>`,
+          `<span class="pill chip" id="s5-chip" style="left:1530px;top:120px;background:${C.yellow}">Poultry · 20 min</span>`);
+        display("s5", { lock: ["LOCKED", 50, true], poultry: ["POULTRY", 44] });
+        {
+          const g = $("#s5-display");
+          let strip = "";
+          for (let m = 20; m >= 0; m--) strip += `<text x="1390" y="${684 + (20 - m) * 98}" font-size="60">${String(m).padStart(2, "0")}:00</text>`;
+          g.insertAdjacentHTML("beforeend", `<clipPath id="s5-clip"><rect x="1272" y="614" width="236" height="98" rx="14"/></clipPath><g clip-path="url(#s5-clip)"><g id="s5-strip" opacity="0">${strip}</g></g>`);
+        }
+
+        // step 6 — natural release
+        step("s6", 6, "LET OFF STEAM", "Turn off the pot and allow it to release the pressure, about 5 minutes.",
+          `${pot("s6", { lid: true })}
+           ${Array.from({ length: 12 }, (_, i) => `<g transform="translate(1516 300)"><g class="s6-puff" id="s6-p${i}" opacity="0">
+              <circle cx="0" cy="0" r="34" fill="#fff" stroke="${C.ink}" stroke-width="5"/><circle cx="26" cy="-14" r="24" fill="#fff" stroke="${C.ink}" stroke-width="5"/><circle cx="-24" cy="-10" r="22" fill="#fff" stroke="${C.ink}" stroke-width="5"/><circle cx="2" cy="-4" r="30" fill="#fff"/></g></g>`).join("")}`,
+          `<div class="pill chip" id="s6-clock" style="left:1080px;top:120px;background:${C.raised}">
+             <svg width="46" height="46" viewBox="-23 -23 46 46"><circle r="19" fill="${C.yellow}" stroke="${C.ink}" stroke-width="4"/><line id="s6-hand" x1="0" y1="0" x2="0" y2="-13" stroke="${C.ink}" stroke-width="4" stroke-linecap="round"/><circle r="3" fill="${C.ink}"/></svg>About 5 min</div>`);
+        $("#s6-c").insertAdjacentHTML("beforeend", `<div class="stamp" id="s6-stamp" style="left:1490px;top:150px;font-size:66px;color:${C.basil};background:${C.basilSoft};border-color:${C.basil}">READY</div>`);
+        display("s6", { done: ["00:00", 60, true], off: ["OFF", 58] });
+
+        // step 7 — plate up
+        step("s7", 7, "PLATE IT UP",
+          "Transfer chicken to a serving plate and spoon the sauce over the chicken. Garnish with toasted sesame seeds and green onions. Serve.",
+          plate("s7", 1390, 560, false));
+        $("#s7-c").insertAdjacentHTML("beforeend", `<div class="stamp" id="s7-stamp" style="left:1250px;top:860px;font-size:80px">DINNER'S UP!</div>`);
+
+        // close
+        frame("close", `
+          ${sunburst("close-sun", 1390, 470, 3000)}
+          <div id="close-panel" style="position:absolute;left:1150px;top:200px;width:480px;height:480px">
+            <div style="width:100%;height:100%;border-radius:44px;border:9px solid ${C.ink};background:${C.sand};box-shadow:14px 14px 0 ${C.ink};overflow:hidden">
+              <img src="assets/art/down-with-hunger.png" style="width:100%;height:100%;display:block" alt="" />
+            </div>
+          </div>
+          <div style="position:absolute;left:130px;top:200px;width:960px">
+            <span class="pill" id="close-eyebrow" style="font-size:28px;background:${C.tealSoft};color:${C.teal}">Instant Pot · Asian</span>
+            <div id="close-title" style="margin-top:36px">${hl("HONEY GARLIC", 128)}${hl("CHICKEN", 128, "margin-top:8px")}</div>
+            <div id="close-sub" style="font-size:42px;font-weight:500;color:${C.muted};margin-top:40px">One pot. Seven steps. Dinner.</div>
+          </div>
+          <div id="close-placard" style="position:absolute;left:960px;top:820px;transform:translateX(-50%)">
+            <div style="background:${C.brick};border:9px solid ${C.ink};border-radius:24px;box-shadow:12px 12px 0 ${C.ink};padding:18px 54px 4px">
+              ${hl("DOWN WITH HUNGER", 104, `color:#fff`)}
+            </div>
+          </div>
+          <div id="close-credit" style="position:absolute;left:0;right:0;top:1010px;text-align:center;font-size:24px;color:${C.muted}">Recipe adapted from diethood.com</div>
+        `);
+
+        // ------------------------------------------------------------ motion
+        // Springfield Kitchen's motion.md: entrances overshoot and settle,
+        // presses are quick, loops are linear. Nothing eases in-and-out.
+
+        const tl = gsap.timeline({ paused: true });
+        const LAND = "back.out(1.9)";
+        const SLAM = "elastic.out(1, 0.45)";
+
+        const pop = (el, at, dur = 0.5) => tl.fromTo(el, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: dur, ease: LAND }, at);
+        const popFrom = (el, at, origin) => tl.fromTo(el, { scale: 0, transformOrigin: origin }, { scale: 1, duration: 0.5, ease: LAND }, at);
+        const slam = (el, at, origin = "0% 60%") => {
+          tl.fromTo(el, { scale: 1.6, opacity: 0, transformOrigin: origin }, { scale: 1, opacity: 1, duration: 0.55, ease: SLAM }, at);
+        };
+        /** Falls on gravity, lands at `at`, squashes and rings out. Bottom-anchored. */
+        const fall = (el, at, h = 760, fallDur = 0.36) => {
+          tl.fromTo(el, { y: -h }, { y: 0, duration: fallDur, ease: "power2.in" }, at - fallDur);
+          tl.fromTo(el, { scaleX: 1.16, scaleY: 0.84, transformOrigin: "50% 100%" }, { scaleX: 1, scaleY: 1, duration: 0.7, ease: "elastic.out(1, 0.35)", immediateRender: false }, at);
+        };
+        const bob = (el, from, to, px = 9, period = 3.6) => {
+          const n = Math.max(1, Math.floor((to - from) / (period / 2)));
+          tl.to(el, { y: `-=${px}`, duration: period / 2, ease: "sine.inOut", repeat: n - 1, yoyo: true }, from);
+        };
+        const show = (sel, at) => tl.set(sel, { opacity: 1 }, at);
+        const hide = (sel, at) => tl.set(sel, { opacity: 0 }, at);
+        const swap = (id, from, to, at) => { hide(`#${id}-display .d-${from}`, at); show(`#${id}-display .d-${to}`, at); };
+        const press = (el, at) => tl.fromTo(el, { scale: 1, transformOrigin: "50% 50%" }, { scale: 0.8, duration: 0.08, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, at);
+
+        // Every scene: the iris opens on yellow, the sunburst turns, a yellow
+        // disc closes over the end. A cut is always yellow for a frame or two.
+        const ids = Object.keys(TL.scenes);
+        const SUN = { open: "open-sun", ingredients: "ing-sun", close: "close-sun" };
+        ["s1", "s2", "s3", "s4", "s5", "s6", "s7"].forEach((s) => (SUN[s] = s + "-sun"));
+        ids.forEach((id, i) => {
+          const { start, end } = TL.scenes[id];
+          const c = `#${id}-c`;
+          if (i > 0) {
+            tl.fromTo(c, { clipPath: "circle(0px at 960px 540px)" }, { clipPath: "circle(1250px at 960px 540px)", duration: 0.42, ease: "power3.out" }, start);
+            tl.set(c, { clipPath: "none" }, start + 0.42);
+            tl.set(`#${id}-ring`, { opacity: 0 }, 0);
+            tl.fromTo(`#${id}-ring`, { width: 0, height: 0, opacity: 1 }, { width: 2524, height: 2524, duration: 0.42, ease: "power3.out" }, start);
+            tl.set(`#${id}-ring`, { opacity: 0 }, start + 0.42);
+          } else {
+            tl.set(`#${id}-ring`, { opacity: 0 }, 0);
+          }
+          if (i < ids.length - 1) {
+            tl.set(`#${id}-close`, { opacity: 0 }, 0);
+            tl.set(`#${id}-close`, { opacity: 1 }, end - 0.32);
+            tl.fromTo(`#${id}-close`, { width: 0, height: 0 }, { width: 2524, height: 2524, duration: 0.32, ease: "power2.in" }, end - 0.32);
+          } else {
+            tl.set(`#${id}-close`, { opacity: 0 }, 0);
+          }
+          const sun = document.getElementById(SUN[id]);
+          if (sun) tl.fromTo(sun, { rotation: 0 }, { rotation: -6, duration: 0.25, ease: "sine.out" }, start)
+                     .to(sun, { rotation: -6 + (end - start) * 5, duration: end - start - 0.25, ease: "none" }, start + 0.25);
+        });
+
+        // steps share an entrance: pill, title, card
+        for (const s of ["s1", "s2", "s3", "s4", "s5", "s6", "s7"]) {
+          popFrom(`#${s}-pill`, B[`${s}Pill`], "0% 50%");
+          slam(`#${s}-head`, B[`${s}Head`]);
+          tl.fromTo(`#${s}-card`, { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: LAND }, B[`${s}Card`]);
+          popFrom(`#${s} .dot.now`, B[`${s}Pill`] + 0.15, "50% 50%");
+        }
+
+        // ---- open
+        popFrom("#open-eyebrow", B.openEyebrow, "0% 50%");
+        popFrom("#open-tag", B.openEyebrow + 0.2, "0% 50%");
+        fall("#open-hero", B.openPlate, 900);
+        bob("#open-hero", B.openPlate + 0.8, TL.scenes.open.end);
+        slam("#open-w0", B.openHoney);
+        slam("#open-w1", B.openGarlic);
+        slam("#open-w2", B.openChicken);
+        popFrom("#open-c0", B.openSweet, "50% 50%");
+        popFrom("#open-c1", B.openSticky, "50% 50%");
+        popFrom("#open-c2", B.openPot, "50% 50%");
+
+        // ---- ingredients
+        fall("#ing-win", B.ingWindow + 0.3, 1100, 0.4);
+        const firstRow = [0, 6, 9];
+        [0, 1, 2].forEach((c) => popFrom(`#ing-col${c}`, B.ingRows[firstRow[c]] - 0.3, "50% 0%"));
+        B.ingRows.forEach((t, i) => {
+          tl.fromTo(`#ing-r${i}`, { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: LAND }, t);
+          tl.fromTo(`#ing-r${i} b`, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.45, ease: SLAM }, t + 0.05);
+        });
+
+        // ---- step 1: tokens drop into the bowl, it gets whisked and set aside
+        fall("#s1-bowl", TL.scenes.s1.start + 0.7, 700);
+        tl.fromTo("#s1-sauce", { scale: 0, opacity: 0, transformOrigin: "50% 50%" }, { scale: 0.35, opacity: 1, duration: 0.3, ease: LAND }, B.s1Drops[0] + 0.3);
+        B.s1Drops.forEach((t, i) => {
+          const tok = `#s1-tok${i}`;
+          tl.fromTo(tok, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.4, ease: LAND }, t - 0.42);
+          tl.to(tok, { x: 1390 - tokenX[i], y: 300, duration: 0.34, ease: "power2.in" }, t);
+          tl.to(tok, { scale: 0.2, opacity: 0, duration: 0.12, ease: "power2.in" }, t + 0.26);
+          tl.to("#s1-sauce", { scale: 0.35 + 0.65 * ((i + 1) / 6), duration: 0.4, ease: LAND }, t + 0.32);
+        });
+        // the whisk comes in, beats back and forth, leaves a swirl
+        {
+          const w = B.s1Whisk, stop = B.s1Aside - 0.15;
+          tl.fromTo("#s1-whisk", { y: -700 }, { y: 0, duration: 0.35, ease: "power2.out" }, w - 0.35);
+          const beats = Math.max(2, Math.floor((stop - w) / 0.22));
+          tl.fromTo("#s1-whiskI", { x: -70, rotation: -14, transformOrigin: "50% 0%" }, { x: 70, rotation: 14, duration: (stop - w) / beats, ease: "sine.inOut", repeat: beats - 1, yoyo: true }, w);
+          show("#s1-swirl", w + 0.2);
+          tl.fromTo("#s1-spiral", { rotation: 0, svgOrigin: "0 0" }, { rotation: 900, duration: stop - w, ease: "none" }, w + 0.2);
+          tl.to("#s1-whisk", { y: -760, duration: 0.35, ease: "power2.in" }, stop);
+          tl.to("#s1-bowl", { x: 90, scale: 0.9, transformOrigin: "50% 100%", duration: 0.5, ease: LAND }, B.s1Aside);
+          tl.fromTo("#s1-stamp", { scale: 2.2, opacity: 0, rotation: -10 }, { scale: 1, opacity: 1, rotation: -8, duration: 0.45, ease: SLAM }, B.s1Aside + 0.05);
+        }
+
+        // ---- step 2: sauté, heat, oil
+        fall("#s2-pot", TL.scenes.s2.start + 0.7, 800);
+        press("#s2-btn", B.s2Saute - 0.1);
+        swap("s2", "off", "saute", B.s2Saute);
+        popFrom("#s2-chip", B.s2Saute + 0.1, "50% 50%");
+        show("#s2-heat", B.s2Saute + 0.4);
+        tl.fromTo(".s2-wave", { y: 20, opacity: 0 }, { y: -40, opacity: 1, duration: 0.8, ease: "none", stagger: { each: 0.25, repeat: Math.floor((TL.scenes.s2.end - B.s2Saute) / 0.8) } }, B.s2Saute + 0.4);
+        popFrom("#s2-bottle", B.s2Oil - 0.55, "50% 100%");
+        tl.to("#s2-bottle", { rotation: -120, x: -150, y: 40, transformOrigin: "50% 50%", duration: 0.45, ease: LAND }, B.s2Oil);
+        $$(".s2-drip").forEach((d, i) => {
+          tl.fromTo(d, { y: -30, opacity: 0 }, { y: 140, opacity: 1, duration: 0.36, ease: "power2.in" }, B.s2Oil + 0.45 + i * 0.18);
+          tl.to(d, { opacity: 0, duration: 0.05 }, B.s2Oil + 0.81 + i * 0.18);
+        });
+        tl.to("#s2-oil", { opacity: 1, duration: 0.4 }, B.s2Oil + 0.8);
+        tl.to("#s2-bottle", { rotation: 0, x: 0, y: 0, duration: 0.4, ease: LAND }, B.s2Oil + 1.5);
+        swap("s2", "saute", "hot", B.s2Oil + 1.9);
+
+        // ---- step 3: thighs in, seasoned, browned, flipped
+        $$(".s3-thigh").forEach((t, i) => fall(t, B.s3Thighs + i * 0.14, 520, 0.3));
+        ["#s3-salt", "#s3-pepper"].forEach((s, i) => {
+          popFrom(s, B.s3Season - 0.35 + i * 0.1, "50% 100%");
+          tl.fromTo(s, { rotation: 0, transformOrigin: "50% 50%" }, { rotation: i ? -150 : 150, duration: 0.25, ease: "power2.out", immediateRender: false }, B.s3Season);
+          tl.to(s, { y: 60, duration: 0.11, ease: "sine.inOut", yoyo: true, repeat: 7 }, B.s3Season + 0.25);
+          tl.to(s, { scale: 0, duration: 0.25, ease: "back.in(2)" }, B.s3Season + 1.3);
+        });
+        $$("#s3 .speck").forEach((sp, i) => {
+          const t = B.s3Season + 0.3 + (i % 12) * 0.07;
+          tl.fromTo(sp, { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 0.2, ease: "power2.in" }, t);
+        });
+        show("#s3-sizzle", B.s3Brown);
+        tl.fromTo(".s3-bub", { scale: 0.3, transformOrigin: "50% 50%" }, { scale: 1.2, duration: 0.45, ease: "none", stagger: { each: 0.05, repeat: Math.floor((TL.scenes.s3.end - B.s3Brown) / 0.45), yoyo: true } }, B.s3Brown);
+        popFrom("#s3-chip", B.s3Chip, "50% 50%");
+        $$(".s3-thigh").forEach((t, i) => {
+          const at = B.s3Flip + i * 0.12;
+          tl.to(t, { scaleY: 0, duration: 0.14, ease: "power2.in", transformOrigin: "50% 50%" }, at);
+          tl.set(t.querySelector(".raw"), { opacity: 0 }, at + 0.14);
+          tl.set(t.querySelector(".brown"), { opacity: 1 }, at + 0.14);
+          tl.to(t, { scaleY: 1, duration: 0.45, ease: LAND }, at + 0.14);
+        });
+
+        // ---- step 4: pour, lid, lock
+        tl.set("#s4-lid", { y: -800 }, 0);
+        fall("#s4-pot", TL.scenes.s4.start + 0.6, 800);
+        popFrom("#s4-bowl", B.s4Pour - 0.5, "50% 100%");
+        tl.to("#s4-bowl", { rotation: -52, transformOrigin: "50% 50%", duration: 0.3, ease: LAND }, B.s4Pour);
+        tl.fromTo("#s4-stream", { scaleY: 0, transformOrigin: "50% 0%" }, { scaleY: 1, duration: 0.25, ease: "power2.in" }, B.s4Pour + 0.2);
+        tl.fromTo("#s4-fill", { scale: 0.1, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.8, ease: "power1.out" }, B.s4Pour + 0.4);
+        tl.to("#s4-stream", { scaleY: 0, transformOrigin: "50% 100%", duration: 0.2, ease: "power2.out" }, B.s4Lid - 0.55);
+        tl.to("#s4-bowl", { rotation: 0, y: -400, duration: 0.4, ease: "power2.in" }, B.s4Lid - 0.5);
+        tl.fromTo("#s4-lid", { y: -800 }, { y: 0, duration: 0.36, ease: "power2.in", immediateRender: false }, B.s4Lid - 0.36);
+        tl.fromTo("#s4-pot", { scaleX: 1.08, scaleY: 0.92, transformOrigin: "50% 100%" }, { scaleX: 1, scaleY: 1, duration: 0.6, ease: "elastic.out(1, 0.35)", immediateRender: false }, B.s4Lid);
+        swap("s4", "off", "lock", B.s4Lock);
+        tl.fromTo("#s4-lid", { rotation: 0, svgOrigin: "1390 466" }, { rotation: 4, duration: 0.12, ease: "power2.out", yoyo: true, repeat: 1, immediateRender: false }, B.s4Lock - 0.1);
+        popFrom("#s4-lock", B.s4Lock, "0% 50%");
+
+        // ---- step 5: poultry, 20 minutes, count down
+        popFrom("#s5-pot", TL.scenes.s5.start + 0.45, "50% 100%");
+        press("#s5-btn", B.s5Poultry - 0.1);
+        swap("s5", "lock", "poultry", B.s5Poultry);
+        hide("#s5-display .d-poultry", B.s5Twenty);
+        show("#s5-strip", B.s5Twenty);
+        popFrom("#s5-chip", B.s5Twenty, "50% 50%");
+        tl.to("#s5-pin", { y: -16, duration: 0.3, ease: LAND }, B.s5Count - 0.2);
+        tl.to("#s5-strip", { y: -20 * 98, duration: B.s5Done - B.s5Count, ease: "steps(20)" }, B.s5Count);
+        tl.fromTo("#s5-ring", { opacity: 1, scale: 0.6, transformOrigin: "50% 50%" }, { opacity: 0, scale: 1.4, duration: 0.6, ease: "power2.out" }, B.s5Done);
+        tl.fromTo("#s5-display", { opacity: 1 }, { opacity: 0.3, duration: 0.15, yoyo: true, repeat: 3, ease: "none", immediateRender: false }, B.s5Done);
+
+        // ---- step 6: off, steam, ready
+        tl.set("#s6-pin", { y: -16 }, 0);
+        popFrom("#s6-pot", TL.scenes.s6.start + 0.45, "50% 100%");
+        press("#s6-btn", B.s6Off - 0.1);
+        swap("s6", "done", "off", B.s6Off);
+        {
+          const from = B.s6Steam, until = B.s6Ready - 0.3;
+          $$(".s6-puff").forEach((p, i) => {
+            const t = from + i * ((until - from) / 12);
+            const k = 1 - i / 14; // the venting tails off
+            tl.fromTo(p, { opacity: 0, x: 0, y: 0, scale: 0.3, transformOrigin: "50% 50%" },
+              { opacity: 1, scale: 0.6 + 0.8 * k, x: 50 + (i % 3) * 30, y: -150 * k - 50, duration: 0.5, ease: "power2.out" }, t);
+            tl.to(p, { opacity: 0, y: `-=${60}`, duration: 0.6, ease: "power1.in" }, t + 0.5);
+          });
+        }
+        popFrom("#s6-clock", B.s6Clock, "0% 50%");
+        tl.fromTo("#s6-hand", { rotation: 0, svgOrigin: "0 0" }, { rotation: 360, duration: B.s6Ready - B.s6Clock, ease: "none" }, B.s6Clock);
+        tl.to("#s6-pin", { y: 0, duration: 0.2, ease: "power2.in" }, B.s6Ready - 0.15);
+        tl.fromTo("#s6-stamp", { scale: 2.2, opacity: 0, rotation: -10 }, { scale: 1, opacity: 1, rotation: 6, duration: 0.45, ease: SLAM }, B.s6Ready);
+
+        // ---- step 7: chicken, sauce, seeds, onions, served
+        popFrom("#s7-plate", TL.scenes.s7.start + 0.45, "50% 50%");
+        $$("#s7 .pthigh").forEach((t, i) => fall(t, B.s7Plate + 0.3 + i * 0.13, 500, 0.3));
+        tl.fromTo("#s7-pool", { opacity: 0, scale: 0.4, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.6, ease: LAND }, B.s7Sauce);
+        $$("#s7 .glaze").forEach((g, i) => tl.fromTo(g, { opacity: 0, scale: 0.3, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.45, ease: LAND }, B.s7Sauce + 0.15 + i * 0.12));
+        $$("#s7 .seed").forEach((s, i) => tl.fromTo(s, { opacity: 0, y: -50 }, { opacity: 1, y: 0, duration: 0.22, ease: "power2.in" }, B.s7Seeds + (i % 22) * 0.035));
+        $$("#s7 .onion").forEach((s, i) => tl.fromTo(s, { opacity: 0, scale: 2.2, transformOrigin: "50% 50%" }, { opacity: 1, scale: 1, duration: 0.35, ease: SLAM }, B.s7Onions + i * 0.05));
+        tl.fromTo("#s7-stamp", { scale: 2.2, opacity: 0, rotation: -12 }, { scale: 1, opacity: 1, rotation: -6, duration: 0.45, ease: SLAM }, B.s7Stamp);
+
+        // ---- close
+        fall("#close-panel", B.closePanel, 1000);
+        bob("#close-panel", B.closePanel + 0.8, TL.scenes.close.end);
+        popFrom("#close-eyebrow", TL.scenes.close.start + 0.6, "0% 50%");
+        slam("#close-title", B.closeTitle);
+        tl.fromTo("#close-sub", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: LAND }, B.closeTitle + 0.7);
+        tl.fromTo("#close-placard", { scale: 2.4, opacity: 0, rotation: -8, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, rotation: -3, duration: 0.6, ease: SLAM }, B.closeSlam);
+        tl.fromTo("#close-credit", { opacity: 0 }, { opacity: 1, duration: 0.6, ease: "none" }, B.closeCredit);
+
+        // hold the timeline open to the last frame
+        tl.set({}, {}, TL.total);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["root"] = tl;
+      })();
+    </script>
+  </body>
+</html>
