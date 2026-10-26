@@ -39,13 +39,13 @@ const menu =
   "w-auto min-w-44 rounded-[var(--sk-radius-md)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] p-1 shadow-[var(--sk-shadow-pop)] ring-0"
 
 const item =
-  "cursor-pointer rounded-[var(--sk-radius-sm)] px-3 py-2 text-[13px] font-semibold tracking-[0.06em] text-[var(--sk-ink)] uppercase focus:bg-[var(--sk-yellow)] focus:text-[var(--sk-on-yellow)]"
+  "cursor-pointer rounded-[var(--sk-radius-sm)] px-3 py-2 text-[15px] font-semibold text-[var(--sk-ink)] focus:bg-[var(--sk-yellow)] focus:text-[var(--sk-on-yellow)]"
 
 export function StockMenu() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className={s.trigger}>
-        See what&apos;s in stock
+        What&apos;s in stock
         <ChevronDownIcon className={s.chevron} aria-hidden />
       </DropdownMenuTrigger>
 

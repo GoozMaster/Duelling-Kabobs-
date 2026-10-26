@@ -168,7 +168,7 @@ export function RecipeForm({ draft: initialDraft, cuisines: initialCuisines, mod
           placeholder="https://example.com/the-recipe"
           disabled={pending}
         />
-        <p className="text-muted-foreground text-xs">
+        <p className="text-muted-foreground text-sm">
           Where it came from. Leave blank if there is nowhere to point.
         </p>
       </div>

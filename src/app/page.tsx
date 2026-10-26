@@ -30,21 +30,25 @@ import { createPublicClient } from "@/lib/supabase/public";
 export const dynamic = "force-dynamic";
 
 /**
- * The five biggest cuisines with their real counts, and three recipes at
- * random — both from one query, since the page needs every row for the tally
- * anyway and 126 rows is nothing.
+ * The five biggest cuisines with their real counts, three recipes at random,
+ * and the size of the collection — all from one query, since the page needs
+ * every row for the tally anyway and 127 rows is nothing.
  *
  * The sample is shuffled in TypeScript rather than `order by random()`, which
  * PostgREST cannot express. Adding a database function for a decorative
  * three-item list would be a lot of machinery for no gain.
  */
-async function homeData(): Promise<{ cuisines: CuisineDisc[]; picks: Pick[] }> {
+async function homeData(): Promise<{
+  cuisines: CuisineDisc[];
+  picks: Pick[];
+  total: number;
+}> {
   const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("recipes")
-    .select("id, title, cuisine");
+    .select("id, title, cuisine, ingredients(count)");
 
-  if (error || !data) return { cuisines: [], picks: [] };
+  if (error || !data) return { cuisines: [], picks: [], total: 0 };
 
   const tally = new Map<string, number>();
   for (const row of data) {
@@ -64,66 +68,66 @@ async function homeData(): Promise<{ cuisines: CuisineDisc[]; picks: Pick[] }> {
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
 
-  return { cuisines, picks: shuffled.slice(0, 3) };
+  const picks = shuffled.slice(0, 3).map(({ id, title, cuisine, ingredients }) => ({
+    id,
+    title,
+    cuisine,
+    ingredientCount: ingredients[0]?.count ?? 0,
+  }));
+
+  return { cuisines, picks, total: data.length };
 }
 
 /**
  * The Sunburst — the chosen home page, built from Springfield Kitchen.
  *
  * A short clip of the protester plays over the page on load and fades after
- * three seconds, revealing the sunburst hero. Below it the page falls through a
- * cream-to-sky gradient with SkyDrift's clouds parallaxing over it, and lands
- * on the cuisine list sitting in open sky.
+ * three seconds. Underneath, the page is one sky: the sun's rays radiate from
+ * behind the protester across the hero and the tour, a cloud bank rolls in,
+ * and the recipes and cuisines sit in open blue with clouds drifting behind.
  *
- * It used to carry two more sections. "Pantry in, dinner out" explained the
- * app to someone already using it and offered nothing to click, and the closing
- * "Start with what you already have" ended on a button that only scrolled back
- * up the page. Both are gone; the sky they sat on was the part worth keeping.
- *
- * The cartoon dial is high, but the page never stops being legible: flat
- * ground, one hero line, one illustration.
- *
+ * Every section opens with a heading that says plainly what it holds and a
+ * sentence under it, and where there is somewhere further to go, a way there
+ * on the far side of the same row.
  *
  * The page itself is a server component. Only the pieces tied to scroll, to
  * entering the viewport, or to the intro ship JavaScript.
  */
 export default async function Home() {
-  const { cuisines, picks } = await homeData();
+  const { cuisines, picks, total } = await homeData();
 
   return (
     <div className={s.home}>
       <Overture />
-      <SkyDrift />
 
       <SiteNav />
 
-      <div className={s.top}>
-        <Sunburst />
-        <div className={s.wrap}>
-          <div>
-            <span className={s.kicker}>No shopping list required</span>
+      <header className={s.hero}>
+        <div className={`page-wrap ${s.heroGrid}`}>
+          <div className={s.heroCopy}>
             <h1 className={s.big}>
               WHAT CAN
               <br />I MAKE?
             </h1>
             <p className={s.lede}>
-              Tell it what is in your pantry, your fridge and your freezer. It
-              tells you what you can cook right now.
+              Tell it what is in your pantry, fridge and freezer, and it shows
+              you the recipes you can cook right now. No shopping trip first.
             </p>
             <div className={s.cta}>
               <Link className={`${s.btn} ${s.primary}`} href="/what-can-i-make">
-                Open the fridge
+                Find recipes I can make
               </Link>
-              <Link className={s.btn} href="#picks">
-                See a recipe
+              <Link className={s.btn} href="/recipes">
+                {total > 0 ? `Browse all ${total} recipes` : "Browse recipes"}
               </Link>
             </div>
           </div>
 
           {/* The hero logo is a square scene, so it takes radius-lg and a
-              keyline rather than the badge discs' radius-disc. Its sand backing
-              is sampled from the illustration's own ground. */}
+              keyline rather than the badge discs' radius-disc. The sun sits
+              behind it and radiates out across the page. */}
           <div className={s.heroart}>
+            <Sunburst />
             <div className={s.panel}>
               <Image
                 src={scenes.downWithHunger}
@@ -134,56 +138,74 @@ export default async function Home() {
             <span className={s.placard}>DOWN WITH HUNGER</span>
           </div>
         </div>
-      </div>
+      </header>
 
       {/* The tour: the whole site in two minutes, for anyone who would rather
           be shown than read. Rendered from video/ — see video/README.md. */}
-      <section className={`${s.section} ${s.tour}`} id="tour">
-        <div className={s.wrap}>
+      <section className={s.tour} id="tour" aria-labelledby="tour-title">
+        <div className={`page-wrap ${s.tourGrid}`}>
           <Reveal>
-            <p className={s.eyebrow}>The whole kitchen in two minutes</p>
-            <h2 className={s.sec}>HOW IT WORKS</h2>
+            <div className={s.head}>
+              <div>
+                <h2 className={s.sec} id="tour-title">
+                  See how it works
+                </h2>
+                <p className={s.sub}>A two-minute video tour of the site.</p>
+              </div>
+            </div>
+            <ul className={s.covers}>
+              <li>Type in the ingredients you have and see which recipes they cover.</li>
+              <li>Browse every recipe by cuisine, on a spinning globe, or at random.</li>
+              <li>Check what is in the pantry, the fridge and the freezer.</li>
+            </ul>
           </Reveal>
           <ExplainerVideo />
         </div>
       </section>
 
-      {/* This section carries the ground from cream to sky, so the wrap moves
-          inside it — the gradient needs the full page width, the text does not. */}
-      <section className={`${s.section} ${s.toSky}`} id="picks">
-        <div className={s.wrap}>
-          <p className={s.eyebrow}>Three from the collection</p>
-          <h2 className={s.sec}>TONIGHT, MAYBE?</h2>
-          <RecipeHighlight picks={picks} />
-        </div>
-      </section>
+      <div className={s.sky}>
 
-      {/* The cuisine list closes the page on the sky band. It was the last
-          thing standing between the hero and a dead call-to-action button; now
-          it *is* the ending, which is why it takes the blue and the clouds. */}
-      <section className={s.skyBand} id="cuisines">
-        <svg
-          className={`${s.bandCloud} ${s.bandCloud1}`}
-          viewBox="0 0 150 46"
-          aria-hidden="true"
-        >
-          <path d="M26 42 a18 18 0 0 1 2-35 a24 24 0 0 1 45-4 a20 20 0 0 1 34 12 a16 16 0 0 1-8 27z" />
-        </svg>
-        <svg
-          className={`${s.bandCloud} ${s.bandCloud2}`}
-          viewBox="0 0 150 46"
-          aria-hidden="true"
-        >
-          <path d="M20 40 a16 16 0 0 1 6-31 a22 22 0 0 1 38-6 a18 18 0 0 1 30 14 a15 15 0 0 1-10 23z" />
-        </svg>
-        <div className={s.wrap}>
-          <Reveal>
-            <p className={`${s.eyebrow} ${s.skyEyebrow}`}>What you cook most</p>
-            <h2 className={`${s.sec} ${s.skyHeading}`}>YOUR TOP FIVE CUISINES</h2>
-          </Reveal>
-          <CuisineDiscs cuisines={cuisines} />
-        </div>
-      </section>
+        <section className={s.skySection} id="picks" aria-labelledby="picks-title">
+          <div className="page-wrap">
+            <div className={s.head}>
+              <div>
+                <h2 className={s.sec} id="picks-title">
+                  Three recipes to try
+                </h2>
+                <p className={s.sub}>
+                  Picked at random from the collection. Reload the page for
+                  three more.
+                </p>
+              </div>
+              <Link className={s.more} href="/recipes">
+                See all recipes
+              </Link>
+            </div>
+            <RecipeHighlight picks={picks} />
+          </div>
+        </section>
+
+        <SkyDrift lane="middle" />
+
+        <section className={s.skySection} id="cuisines" aria-labelledby="cuisines-title">
+          <div className="page-wrap">
+            <div className={s.head}>
+              <div>
+                <h2 className={s.sec} id="cuisines-title">
+                  Browse by cuisine
+                </h2>
+                <p className={s.sub}>The five cuisines with the most recipes.</p>
+              </div>
+              <Link className={s.more} href="/recipes/by-cuisine">
+                See every cuisine on the globe
+              </Link>
+            </div>
+            <CuisineDiscs cuisines={cuisines} />
+          </div>
+        </section>
+
+        <SkyDrift lane="end" />
+      </div>
 
       <SiteFooter />
     </div>

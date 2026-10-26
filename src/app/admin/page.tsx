@@ -27,9 +27,9 @@ const REVIEW_PREVIEW = 5
 const RECENT_LIMIT = 5
 
 const CARD =
-  "border-border gap-5 rounded-[var(--sk-radius-lg)] border-2 shadow-[var(--sk-shadow-pop)]"
+  "gap-5 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] shadow-[var(--sk-shadow-sticker)]"
 const ROW =
-  "border-border hover:bg-muted/40 flex items-center justify-between gap-4 rounded-[var(--sk-radius-sm)] border px-3 py-2 transition-colors"
+  "hover:bg-[var(--sk-sand)]/50 flex items-center justify-between gap-4 rounded-[var(--sk-radius-md)] border-2 border-[var(--sk-outline)]/20 px-3 py-2.5 transition-colors"
 
 /**
  * Elapsed-time phrasing, deliberately not calendar-based.
@@ -68,8 +68,8 @@ function RowLink({ href, title, meta }: { href: string; title: string; meta: str
   return (
     <Link href={href} className={ROW}>
       <span className="min-w-0">
-        <span className="block truncate text-sm font-medium">{title}</span>
-        <span className="text-muted-foreground block text-xs">{meta}</span>
+        <span className="block truncate text-base font-semibold">{title}</span>
+        <span className="text-muted-foreground block text-sm">{meta}</span>
       </span>
       <span aria-hidden className="text-muted-foreground">
         →
@@ -120,160 +120,152 @@ export default async function AdminPage() {
   const recentRecipes = recent.data ?? []
 
   return (
-    <main className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-6 py-16">
-      <Card className={CARD}>
-        <CardHeader>
-          <CardTitle className="font-[family-name:var(--sk-font-display)] text-2xl tracking-wide">
-            ADMIN
-          </CardTitle>
-          <CardDescription>
-            Signed in as <strong className="text-foreground">{user.email}</strong>
-          </CardDescription>
-        </CardHeader>
+    <main className="page-wrap flex flex-col gap-8 py-10 lg:py-14">
+      <header className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
+        <div className="flex flex-col gap-3">
+          <h1 className="font-display text-[clamp(40px,5vw,64px)] leading-none">Admin</h1>
+          <p className="text-lg">
+            Signed in as <strong>{user.email}</strong>
+          </p>
+        </div>
 
-        <CardContent className="flex flex-col gap-5">
-          {!dbAgrees && (
-            <QueryError
-              message={
-                adminError
-                  ? `Could not confirm your admin status with the database: ${adminError.message}`
-                  : "ADMIN_EMAIL and the email inside public.is_admin() have drifted apart. You can reach the admin pages, but every save will be rejected by row-level security until they match."
-              }
-            />
-          )}
-
-          <div className="flex flex-wrap items-center gap-3">
-            <form action={signOut}>
-              <Button
-                type="submit"
-                variant="outline"
-                size="lg"
-                className="border-border h-10 border-2"
-              >
-                Sign out
-              </Button>
-            </form>
-
-            <Link
-              href="/"
-              className="text-muted-foreground hover:text-foreground text-sm underline underline-offset-4"
+        <div className="flex flex-wrap items-center gap-4">
+          <Link
+            href="/"
+            className="text-base font-semibold underline underline-offset-4 hover:text-[var(--sk-teal)]"
+          >
+            Back to the site
+          </Link>
+          <form action={signOut}>
+            <Button
+              type="submit"
+              variant="outline"
+              size="lg"
+              className="h-11 rounded-[var(--sk-radius-pill)] border-[3px] border-[var(--sk-outline)] px-6 text-base font-semibold"
             >
-              Back to the site
-            </Link>
-          </div>
-        </CardContent>
-      </Card>
+              Sign out
+            </Button>
+          </form>
+        </div>
+      </header>
 
-      <Card className={CARD}>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
-            NEEDS REVIEW
-            {reviewCount > 0 && <Badge variant="destructive">{reviewCount}</Badge>}
-          </CardTitle>
-          <CardDescription>
-            Bulk-imported recipes still waiting for their ingredients to be tagged
-            required or optional.
-          </CardDescription>
-        </CardHeader>
+      {!dbAgrees && (
+        <QueryError
+          message={
+            adminError
+              ? `Could not confirm your admin status with the database: ${adminError.message}`
+              : "ADMIN_EMAIL and the email inside public.is_admin() have drifted apart. You can reach the admin pages, but every save will be rejected by row-level security until they match."
+          }
+        />
+      )}
 
-        <CardContent className="flex flex-col gap-3">
-          {review.error ? (
-            <QueryError
-              message={`Could not load the review queue: ${review.error.message}`}
-            />
-          ) : reviewCount === 0 ? (
-            <p className="text-muted-foreground text-sm">
-              Nothing waiting. Every recipe has been through by hand.
-            </p>
-          ) : (
-            <>
-              {(review.data ?? []).map((recipe) => (
+      {/* Three columns on a wide screen: the work waiting, what just arrived,
+          and the ways into everything else. */}
+      <div className="grid items-start gap-6 lg:grid-cols-3">
+        <Card className={CARD}>
+          <CardHeader>
+            <CardTitle className="font-display flex items-center gap-2 text-2xl">
+              Needs review
+              {reviewCount > 0 && <Badge variant="destructive">{reviewCount}</Badge>}
+            </CardTitle>
+            <CardDescription className="text-[15px]">
+              Bulk-imported recipes still waiting for their ingredients to be tagged
+              required or optional.
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent className="flex flex-col gap-3">
+            {review.error ? (
+              <QueryError
+                message={`Could not load the review queue: ${review.error.message}`}
+              />
+            ) : reviewCount === 0 ? (
+              <p className="text-base">Nothing waiting. Every recipe has been through by hand.</p>
+            ) : (
+              <>
+                {(review.data ?? []).map((recipe) => (
+                  <RowLink
+                    key={recipe.id}
+                    href={`/admin/recipes/${recipe.id}/edit`}
+                    title={recipe.title}
+                    meta={recipe.cuisine ?? "No cuisine yet"}
+                  />
+                ))}
+
+                {reviewCount > REVIEW_PREVIEW && (
+                  <p className="text-muted-foreground text-sm">
+                    Showing the {REVIEW_PREVIEW} most recent of {reviewCount}.
+                  </p>
+                )}
+              </>
+            )}
+          </CardContent>
+        </Card>
+
+        <Card className={CARD}>
+          <CardHeader>
+            <CardTitle className="font-display text-2xl">Recently added</CardTitle>
+            <CardDescription className="text-[15px]">
+              The last {RECENT_LIMIT} recipes to land.
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent className="flex flex-col gap-3">
+            {recent.error ? (
+              <QueryError
+                message={`Could not load recent recipes: ${recent.error.message}`}
+              />
+            ) : recentRecipes.length === 0 ? (
+              <p className="text-base">
+                No recipes yet.{" "}
+                <Link href="/admin/recipes/new" className="underline underline-offset-4">
+                  Add the first one.
+                </Link>
+              </p>
+            ) : (
+              recentRecipes.map((recipe) => (
                 <RowLink
                   key={recipe.id}
-                  href={`/admin/recipes/${recipe.id}/edit`}
+                  href={`/recipes/${recipe.id}`}
                   title={recipe.title}
-                  meta={recipe.cuisine ?? "No cuisine yet"}
+                  meta={[recipe.cuisine, formatAdded(recipe.created_at)]
+                    .filter(Boolean)
+                    .join(", ")}
                 />
-              ))}
+              ))
+            )}
+          </CardContent>
+        </Card>
 
-              {reviewCount > REVIEW_PREVIEW && (
-                <p className="text-muted-foreground text-xs">
-                  Showing the {REVIEW_PREVIEW} most recent of {reviewCount}.
-                </p>
-              )}
-            </>
-          )}
-        </CardContent>
-      </Card>
+        <Card className={CARD}>
+          <CardHeader>
+            <CardTitle className="font-display text-2xl">Shortcuts</CardTitle>
+          </CardHeader>
 
-      <Card className={CARD}>
-        <CardHeader>
-          <CardTitle className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
-            RECENTLY ADDED
-          </CardTitle>
-          <CardDescription>The last {RECENT_LIMIT} recipes to land.</CardDescription>
-        </CardHeader>
-
-        <CardContent className="flex flex-col gap-3">
-          {recent.error ? (
-            <QueryError
-              message={`Could not load recent recipes: ${recent.error.message}`}
+          <CardContent className="flex flex-col gap-3">
+            <RowLink
+              href="/admin/recipes/new"
+              title="Add a recipe"
+              meta="By hand, from a web address, or a CSV batch"
             />
-          ) : recentRecipes.length === 0 ? (
-            <p className="text-muted-foreground text-sm">
-              No recipes yet.{" "}
-              <Link
-                href="/admin/recipes/new"
-                className="text-foreground underline underline-offset-4"
-              >
-                Add the first one.
-              </Link>
-            </p>
-          ) : (
-            recentRecipes.map((recipe) => (
-              <RowLink
-                key={recipe.id}
-                href={`/recipes/${recipe.id}`}
-                title={recipe.title}
-                meta={[recipe.cuisine, formatAdded(recipe.created_at)]
-                  .filter(Boolean)
-                  .join(" · ")}
-              />
-            ))
-          )}
-        </CardContent>
-      </Card>
-
-      <Card className={CARD}>
-        <CardHeader>
-          <CardTitle className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
-            SHORTCUTS
-          </CardTitle>
-        </CardHeader>
-
-        <CardContent className="flex flex-col gap-3">
-          <RowLink
-            href="/admin/recipes/new"
-            title="Add a recipe"
-            meta="By hand, from a web address, or a CSV batch"
-          />
-          <RowLink
-            href="/admin/pantry"
-            title="My Pantry"
-            meta="Staples, standing proteins, fridge and freezer"
-          />
-          <RowLink
-            href="/stock"
-            title="What's in stock"
-            meta="Pantry, fridge and freezer at a glance, with quick add"
-          />
-          <RowLink
-            href="/recipes"
-            title="Browse recipes"
-            meta="The public collection, as visitors see it"
-          />
-        </CardContent>
-      </Card>
+            <RowLink
+              href="/admin/pantry"
+              title="My Pantry"
+              meta="Staples, standing proteins, fridge and freezer"
+            />
+            <RowLink
+              href="/stock"
+              title="What's in stock"
+              meta="Pantry, fridge and freezer at a glance, with quick add"
+            />
+            <RowLink
+              href="/recipes"
+              title="Browse recipes"
+              meta="The public collection, as visitors see it"
+            />
+          </CardContent>
+        </Card>
+      </div>
     </main>
   )
 }

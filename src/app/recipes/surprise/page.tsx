@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Link from "next/link"
 
 import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
@@ -35,14 +36,17 @@ export default async function SurprisePage() {
   return (
     <>
       <SiteNav />
-      <main className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-12">
-        <header className="flex flex-col gap-2">
-          <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
-            SURPRISE ME
+      <main className="page-wrap flex flex-col gap-8 py-10 lg:py-14">
+        <header className="flex flex-col gap-3">
+          <h1 className="font-display text-[clamp(40px,5vw,64px)] leading-none">
+            Surprise me
           </h1>
-          <p className="text-muted-foreground text-sm">
-            One recipe out of {recipes.length}, picked at random. It ignores your
-            pantry entirely — that is what the other page is for.
+          <p className="max-w-[64ch] text-lg">
+            One recipe out of all {recipes.length}, picked at random. To match
+            recipes to the ingredients you have, use{" "}
+            <Link href="/what-can-i-make" className="font-semibold underline underline-offset-4">
+              What can I make?
+            </Link>
           </p>
         </header>
 

@@ -140,7 +140,7 @@ function StapleCategories({
           >
             <summary className="hover:bg-muted/40 flex cursor-pointer items-center justify-between gap-3 rounded-[var(--sk-radius-md)] px-3 py-2 text-sm font-medium select-none">
               <span>{category}</span>
-              <span className="text-muted-foreground flex items-center gap-2 text-xs">
+              <span className="text-muted-foreground flex items-center gap-2 text-sm">
                 {inCategory.length}
                 <span aria-hidden className="transition-transform group-open:rotate-90">
                   ›
@@ -149,7 +149,7 @@ function StapleCategories({
             </summary>
 
             {category === BASE_STAPLE_CATEGORY && (
-              <p className="text-muted-foreground px-3 pb-1 text-xs">
+              <p className="text-muted-foreground px-3 pb-1 text-sm">
                 Never reported as missing when matching recipes.
               </p>
             )}

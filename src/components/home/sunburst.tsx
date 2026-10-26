@@ -6,9 +6,15 @@ import s from "./home.module.css";
 import { usePrefersReducedMotion, useScrollFrame } from "./use-scroll-frame";
 
 /**
- * The sunburst behind the hero: 24 gold rays that rotate 0.06° per pixel
- * scrolled. Scroll-driven, not looping — scrubbing back rewinds it, which is
- * the whole reason this concept was chosen over the four others.
+ * The sun behind the hero: 24 gold rays that rotate 0.06° per pixel scrolled.
+ * Scroll-driven, not looping — scrubbing back rewinds it.
+ *
+ * It renders inside the illustration's column, so it is centred on the
+ * protester at every width without measuring anything, and it is far larger
+ * than the screen: the rays leave the viewport on every side and fade out with
+ * distance, then the sky's cloud bank rolls over them. That is what replaced
+ * the old version, a ray disc clipped into a box across the top third of the
+ * page with a hard edge where the hero ended.
  *
  * It rests at -6° so the rays are never axis-aligned at the top of the page.
  */
@@ -25,7 +31,7 @@ const RAYS = Array.from({ length: RAY_COUNT }, (_, i) => {
     `${(200 * Math.cos((deg * Math.PI) / 180)).toFixed(2)} ${(200 * Math.sin((deg * Math.PI) / 180)).toFixed(2)}`;
   return {
     d: `M0 0 L${point(angle - halfWidth)} L${point(angle + halfWidth)} Z`,
-    opacity: i % 2 ? 0.3 : 0.16,
+    opacity: i % 2 ? 0.34 : 0.18,
   };
 });
 

@@ -1,102 +1,29 @@
 /* ============================================================================
    The Sunburst — Down With Hunger home page
-   Ported from Springfield Kitchen's HomeSunburst preview
-   (https://claude.ai/artifact/Y5pkv9JbLXKDQHboAdQkmT).
+   Built from Springfield Kitchen (https://claude.ai/artifact/Y5pkv9JbLXKDQHboAdQkmT).
 
-   Two deliberate departures from the preview:
+   The page is one piece of weather. The sun sits behind the protester and its
+   rays run out across the cream half of the page — the hero and the tour —
+   until a bank of cartoon cloud rolls in and the ground turns to open sky for
+   the recipes and the cuisines. Nothing is boxed: the rays end by running out
+   of light, and the sky starts at the clouds.
 
-   1. The preview scrolls a `.page` div because it renders inside a fixed-size
-      card. Here the document itself is the scroller.
-   2. The preview is authored at a fixed 960px and has no media queries. A real
-      site needs them, so the hero grid, the disc row and the split stack.
+   Stacking, inside .home's own context:
+
+     0  .rays        — the sunburst
+     1  .hero, .tour — their content sits over the rays
+     2  .sky         — opaque, so the rays stop at the cloud bank
    ========================================================================= */
 
 .home {
+  position: relative;
+  isolation: isolate;
   background: var(--sk-surface);
   color: var(--sk-ink);
   font-family: var(--sk-font-ui);
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 17px;
+  line-height: 1.6;
   overflow-x: clip;
-}
-
-/* ---- the drifting sky ----
-   Fixed, so it does not lengthen the page.
-
-   It lives on exactly one layer, between the gradient it floats over and
-   everything that must stay clear of it:
-
-     0  .toSky's gradient — unpositioned, so it paints underneath
-     1  .drift           — these clouds
-     2  .toSky .wrap, .top, .skyBand
-
-   z-index 0 was the first attempt and the clouds were invisible: every section
-   paints an opaque background, and at 0 this sat under all of them. The second
-   attempt left the hero and the band at `auto` on the theory that document
-   order would carry them, which it does not — an explicit z-index outranks
-   `auto` whichever came first — so white clouds drifted across the band's
-   yellow heading. Both neighbours are now explicitly at 2. */
-.drift {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  overflow: hidden;
-  pointer-events: none;
-  opacity: 0;
-}
-
-.driftCloud {
-  position: absolute;
-  top: 0;
-  will-change: transform;
-}
-
-/* No keyline, and that is the whole point.
-   These clouds carried the same 3px --sk-outline as the ones in the sky band,
-   which is what made them read as solid objects barging across the headings
-   and the recipe cards rather than as weather a long way behind them. A cel
-   encodes distance in line weight: the foreground gets the heavy outline, the
-   background gives it up. Dropping it here puts these where they belong
-   without moving them an inch. */
-.driftShape {
-  display: block;
-  width: 100%;
-  height: auto;
-  fill: #fff;
-  stroke: none;
-  /* Horizontal drift lives here, on the inner element, because the outer one's
-     transform is owned by the parallax. */
-  animation: driftAcross linear infinite;
-}
-
-/* Viewport-relative, so a cloud always leaves the right edge completely
-   whatever the window is. The old keyframes stopped at a hard 940px, which on
-   anything wider than a laptop parked the cloud mid-screen and snapped it back
-   — the clouds looked like they were being cut off. */
-@keyframes driftAcross {
-  from {
-    transform: translateX(calc(-100% - 40px));
-  }
-  to {
-    transform: translateX(calc(100vw + 40px));
-  }
-}
-
-/* The ground turning from cream to sky.
-   On the section rather than on .home, and that is the whole point: as a
-   percentage of the page it would slide every time a section is added or cut —
-   which is exactly what happened when two sections were removed and the hero
-   started going blue. Anchored here it always runs from the bottom of the hero
-   to the top of the sky band, whatever else the page does. */
-.toSky {
-  background: linear-gradient(to bottom, var(--sk-surface) 0%, var(--sk-sky) 100%);
-}
-
-/* Left unpositioned on purpose so .drift's clouds pass in front of this
-   gradient; the text inside climbs back over them. */
-.toSky .wrap {
-  position: relative;
-  z-index: 2;
 }
 
 .home h1,
@@ -104,59 +31,26 @@
 .home h3 {
   font-family: var(--sk-font-display);
   font-weight: 400;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   margin: 0;
 }
 
-.wrap {
-  max-width: 880px;
-  margin: 0 auto;
-  padding: 0 var(--sk-space-7);
-}
-
-@media (max-width: 640px) {
-  .wrap {
-    padding: 0 var(--sk-space-5);
-  }
-}
-
-/* ===================== hero ===================== */
-.top {
-  /* Above .drift: the hero is the one place a cloud must never wander, and an
-     explicit z-index beats the layer's regardless of document order. */
-  position: relative;
-  z-index: 2;
-  padding: var(--sk-space-8) 0;
-  overflow: hidden;
-}
-
+/* ===================== the sun ===================== */
+/* Centred on the illustration and sized off the viewport's longer side, so the
+   rays always reach past the screen edges whatever the window is. The radial
+   mask lets them fade out with distance — light running out, not a crop. */
 .rays {
   position: absolute;
-  top: -260px;
-  left: 50%;
-  width: 1100px;
-  height: 1100px;
-  margin-left: -550px;
   z-index: 0;
-  opacity: 0.85;
+  left: 50%;
+  top: 50%;
+  width: 220vmax;
+  height: 220vmax;
+  transform: translate(-50%, -50%);
   pointer-events: none;
-  /* The rays run 379px past the bottom of the hero, and .top clips its
-     overflow — so every beam was being sliced off along one hard horizontal
-     line across the page. A sunburst should end by running out of light, not
-     by meeting a guillotine. Fading the tips means the clip has nothing solid
-     left to cut. */
-  -webkit-mask-image: radial-gradient(
-    circle at 50% 50%,
-    #000 38%,
-    rgba(0, 0, 0, 0.6) 62%,
-    transparent 84%
-  );
-  mask-image: radial-gradient(
-    circle at 50% 50%,
-    #000 38%,
-    rgba(0, 0, 0, 0.6) 62%,
-    transparent 84%
-  );
+  -webkit-mask-image: radial-gradient(circle closest-side, #000 22%, transparent 100%);
+  mask-image: radial-gradient(circle closest-side, #000 22%, transparent 100%);
 }
 
 .rays svg {
@@ -166,68 +60,64 @@
   transform-origin: 50% 50%;
 }
 
-.top .wrap {
+/* ===================== hero ===================== */
+.hero {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: var(--sk-space-6);
+  align-items: center;
+  /* The first screen, less the nav. Capped so a very tall window does not
+     strand the hero in the middle of a cream field. */
+  min-height: min(calc(100svh - 67px), 880px);
+  padding-block: var(--sk-space-8);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: var(--sk-space-7);
   align-items: center;
 }
 
-.kicker {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: var(--sk-teal-soft);
-  /* Plain teal on teal-soft measures 4.2:1, just under AA for 13px text.
-     Pulling it a fifth of the way toward ink clears 4.5 in both themes: in
-     Night Kitchen ink is cream, so the same mix lightens instead. */
-  color: color-mix(in srgb, var(--sk-teal) 78%, var(--sk-ink));
-  border: 3px solid var(--sk-outline);
-  border-radius: var(--sk-radius-pill);
-  padding: 5px 14px;
-  margin-bottom: var(--sk-space-4);
+.heroCopy {
+  position: relative;
+  z-index: 1;
 }
 
-/* The one hero-xl line on the page. 72px is the token; it steps down to the
-   `hero` style's 48px on narrow screens, which is what the type scale says. */
-.big {
-  font-size: clamp(44px, 9vw, 66px);
-  line-height: 0.88;
-  margin-bottom: var(--sk-space-4);
-  -webkit-text-stroke: 3px var(--sk-outline);
+/* The one hero-xl line on the page, yellow with the ink keyline. */
+.home .big {
+  font-size: clamp(56px, 7.6vw, 116px);
+  line-height: 0.9;
+  -webkit-text-stroke: 4px var(--sk-outline);
   paint-order: stroke fill;
   color: var(--sk-yellow);
+  margin-bottom: var(--sk-space-5);
 }
 
 .lede {
-  font-size: 17px;
-  line-height: 27px;
-  color: var(--sk-ink-muted);
-  max-width: 34ch;
-  margin: 0 0 var(--sk-space-5);
+  font-size: clamp(18px, 1.6vw, 22px);
+  line-height: 1.5;
+  max-width: 36ch;
+  margin: 0 0 var(--sk-space-6);
 }
 
 .cta {
   display: flex;
-  gap: var(--sk-space-3);
+  gap: var(--sk-space-4);
   flex-wrap: wrap;
 }
 
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-family: var(--sk-font-ui);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  line-height: 1.2;
   text-decoration: none;
   border: 3px solid var(--sk-outline);
-  border-radius: var(--sk-radius-md);
-  padding: 11px 20px;
+  border-radius: var(--sk-radius-pill);
+  padding: 14px 26px;
   cursor: pointer;
   background: var(--sk-surface-raised);
   color: var(--sk-ink);
@@ -255,19 +145,20 @@
 
 .btn:focus-visible {
   outline: 3px solid var(--sk-focus-ring);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-/* The hero logo is the Down with Hunger illustration: a square scene, so it
-   takes radius-lg and a keyline rather than the badge discs' radius-disc. */
+/* The illustration column. Positioned, but never given a z-index or a
+   transform: the rays inside it have to stack in .home's context, not here. */
 .heroart {
   position: relative;
-  width: 320px;
-  max-width: 100%;
+  justify-self: center;
+  width: clamp(260px, 28vw, 380px);
 }
 
 .panel {
   position: relative;
+  z-index: 1;
   border-radius: var(--sk-radius-lg);
   border: 4px solid var(--sk-outline);
   box-shadow: var(--sk-shadow-pop);
@@ -300,93 +191,144 @@
    brick ribbon over the corner rather than relying on the drawn lettering. */
 .placard {
   position: absolute;
-  left: -18px;
-  bottom: -16px;
+  left: -22px;
+  bottom: -18px;
   z-index: 2;
   background: var(--sk-brick);
   color: #fff;
   border: 3px solid var(--sk-outline);
   border-radius: var(--sk-radius-sm);
-  padding: 7px 14px;
+  padding: 8px 16px;
   font-family: var(--sk-font-display);
-  font-size: 17px;
+  font-size: clamp(16px, 1.6vw, 21px);
   letter-spacing: 0.02em;
   box-shadow: var(--sk-shadow-sticker);
   transform: rotate(-3deg);
 }
 
-/* Between the two-column breakpoint and about 920px the copy column and the
-   ribbon crowd each other, so the ribbon stops breaking the panel's frame. */
-@media (min-width: 761px) and (max-width: 920px) {
-  .top .wrap {
-    grid-template-columns: 1fr 280px;
+@media (max-width: 700px) {
+  .hero {
+    min-height: 0;
   }
-  .heroart {
-    width: 280px;
-  }
-  .placard {
-    left: 6px;
-    bottom: -14px;
-  }
-}
-
-@media (max-width: 760px) {
-  .top .wrap {
+  .heroGrid {
     grid-template-columns: 1fr;
-    justify-items: start;
+    gap: var(--sk-space-7);
   }
   /* The illustration moves above the headline rather than beside it. */
   .heroart {
     order: -1;
-    width: 260px;
-  }
-  .rays {
-    top: -360px;
-  }
-  .placard {
-    left: -10px;
-    font-size: 15px;
+    justify-self: start;
+    width: min(300px, 76vw);
+    margin-left: 10px;
   }
 }
 
-/* ===================== sections ===================== */
-.section {
-  padding-top: var(--sk-space-8);
-  padding-bottom: var(--sk-space-8);
+/* ===================== section heads ===================== */
+/* A heading on the left, the sentence that says what the section is under it,
+   and — where there is one — the way onward at the far side, so the head of
+   every section spans the frame instead of hugging the left margin. */
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--sk-space-4) var(--sk-space-7);
+  margin-bottom: var(--sk-space-7);
 }
 
-.eyebrow {
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--sk-ink-muted);
-  margin: 0 0 var(--sk-space-2);
-}
-
-/* Scoped under .home on purpose. `.home h2 { margin: 0 }` above is (0,1,1)
-   and a bare `.sec` is (0,1,0), so the reset used to win and every section
-   heading sat flush on the video or cards beneath it. */
 .home .sec {
-  font-size: clamp(28px, 6vw, 38px);
-  line-height: 1;
-  margin-bottom: var(--sk-space-6);
-  -webkit-text-stroke: 3px var(--sk-outline);
-  paint-order: stroke fill;
-  color: var(--sk-surface-raised);
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 0.95;
+  color: var(--sk-ink);
 }
 
-/* ---- the tour ----
-   Sits on the flat cream between the hero and the gradient. No top padding:
-   the hero's own bottom padding is already one section of rhythm, and a second
-   would leave the heading marooned. Positioned above .drift like the hero, so
-   a cloud never crosses a playing video. */
+.sub {
+  margin: var(--sk-space-3) 0 0;
+  font-size: 18px;
+  max-width: 62ch;
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--sk-ink);
+  text-decoration: none;
+  background: var(--sk-surface-raised);
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-pill);
+  padding: 10px 20px;
+  box-shadow: var(--sk-shadow-press);
+  white-space: nowrap;
+  transition:
+    transform 0.15s var(--sk-ease-press),
+    box-shadow 0.15s var(--sk-ease-press);
+}
+
+.more:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-sticker);
+}
+
+.more:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
+}
+
+/* ===================== the tour ===================== */
 .tour {
   position: relative;
-  z-index: 2;
-  /* One step, not a full section: enough that the eyebrow no longer sits on
-     the sunburst's bottom edge, without re-opening the gap described above. */
-  padding-top: var(--sk-space-6);
+  z-index: 1;
+  padding-block: var(--sk-space-8) calc(var(--sk-space-8) * 2);
+}
+
+.tourGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
+  gap: var(--sk-space-7);
+  align-items: center;
+}
+
+.tourGrid .head {
+  display: block;
+  margin-bottom: var(--sk-space-5);
+}
+
+.covers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: var(--sk-space-4);
+}
+
+.covers li {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: var(--sk-space-3);
+  align-items: start;
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+/* A drawn tick, the same keyline as everything else. */
+.covers li::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  border-radius: var(--sk-radius-disc);
+  border: 3px solid var(--sk-outline);
+  background: var(--sk-yellow)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6.5 12.5l3.5 3.5 7.5-8' fill='none' stroke='%2316233f' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")
+    center / 18px no-repeat;
+}
+
+@media (max-width: 960px) {
+  .tourGrid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* A screen is a square scene, not a badge: radius-lg, the keyline, the pop
@@ -410,8 +352,7 @@
 
 /* Centred, and small enough to clear the native controls bar underneath.
    The ink here is literal hex, not --sk-outline: the button sits on the
-   video's poster, a daytime frame that never re-themes, so in Night Kitchen
-   a cream keyline would vanish into it. Same rule as the raster badges. */
+   video's poster, a daytime frame that never re-themes. */
 .play {
   position: absolute;
   left: 50%;
@@ -452,10 +393,8 @@
 }
 
 .playLabel {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: #16233f;
   background: #ffffff;
   border: 3px solid #16233f;
@@ -497,60 +436,179 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .playDisc {
-    transition: none;
+/* ===================== the sky ===================== */
+.sky {
+  position: relative;
+  z-index: 2;
+  background: var(--sk-sky);
+  padding-block: calc(var(--sk-space-8) + 24px) var(--sk-space-8);
+}
+
+/* The cloud bank the page falls through. One tile, repeated across: puffs on
+   top over the cream, a shallow scalloped underside over the blue. Only the
+   two curves are stroked, never the tile's sides, so the seams vanish. */
+.sky::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -60px;
+  height: 108px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 108' preserveAspectRatio='none'%3E%3Cpath d='M0 58A30 30 0 0 1 52 40A36 36 0 0 1 120 32A28 28 0 0 1 170 44A35.7 35.7 0 0 1 240 58V84A60 60 0 0 1 160 88A60 60 0 0 1 84 86A60 60 0 0 1 0 84Z' fill='%23ffffff'/%3E%3Cpath d='M0 58A30 30 0 0 1 52 40A36 36 0 0 1 120 32A28 28 0 0 1 170 44A35.7 35.7 0 0 1 240 58M240 84A60 60 0 0 1 160 88A60 60 0 0 1 84 86A60 60 0 0 1 0 84' fill='none' stroke='%2316233f' stroke-width='3.5' stroke-linejoin='round'/%3E%3C/svg%3E")
+    0 0 / 240px 108px repeat-x;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.skySection {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- drifting weather ----
+   Each lane is a strip of empty sky between sections, so a cloud can never
+   cross a heading or a card. */
+.lane {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.lane:last-child {
+  height: 120px;
+  margin-bottom: calc(var(--sk-space-8) * -1);
+}
+
+.cloud {
+  position: absolute;
+  left: 0;
+  display: block;
+  height: auto;
+  fill: #fff;
+  stroke: #16233f;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  animation: driftAcross linear infinite;
+}
+
+@keyframes driftAcross {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(100vw);
   }
 }
 
-/* ---- cuisine discs ----
-   A grid rather than a wrapping flex row. With flex, the fifth badge drops to
-   its own line and sits alone against the left margin; a grid re-flows into
-   even, centred rows instead. */
-.discs {
+/* ===================== recipe picks ===================== */
+.picks {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: var(--sk-space-5);
-  justify-items: center;
-  /* The discs start their roll 420px to the left, which on a centred column
-     puts them out in the page margin — mid-animation you could watch a stray
-     wheel drift past the edge of the layout. Clipping to the row means they
-     roll in from behind its edge instead, which is also better staging: they
-     arrive from offstage rather than from nowhere.
-
-     The padding buys back room for the 4px sticker shadow, which the clip
-     would otherwise shave off the outermost disc. */
-  overflow: hidden;
-  padding: 2px 6px 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sk-space-6);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 900px) {
+  .picks {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pick {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: var(--sk-space-5);
+  align-items: center;
+  padding: var(--sk-space-5);
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-lg);
+  background: var(--sk-surface-raised);
+  box-shadow: var(--sk-shadow-sticker);
+  color: var(--sk-ink);
+  text-decoration: none;
+  transition:
+    transform 0.15s var(--sk-ease-press),
+    box-shadow 0.15s var(--sk-ease-press);
+}
+
+.pick:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--sk-shadow-pop);
+}
+
+.pick:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
+}
+
+.pickArt {
+  width: 88px;
+  height: 88px;
+  border-radius: var(--sk-radius-disc);
+  border: 3px solid var(--sk-outline);
+  overflow: hidden;
+  background: var(--sk-sand);
+}
+
+.pickName {
+  display: block;
+  font-size: 21px;
+  line-height: 1.25;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.pickMeta {
+  display: block;
+  margin-top: var(--sk-space-2);
+  font-size: 15px;
+}
+
+.picksEmpty {
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-lg);
+  background: var(--sk-surface-raised);
+  padding: var(--sk-space-7);
+  text-align: center;
+}
+
+/* ===================== cuisine discs ===================== */
+.discs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--sk-space-6);
+  justify-items: center;
+  /* The discs roll in from behind the row's edge rather than from out in the
+     page margin. The padding buys back room for the sticker shadow. */
+  overflow: hidden;
+  padding: 4px 8px 10px;
+}
+
+@media (max-width: 900px) {
   .discs {
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: var(--sk-space-6);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: var(--sk-space-7);
   }
 }
 
 .cz {
   text-align: center;
-  width: 128px;
-  max-width: 100%;
+  width: 100%;
+  color: var(--sk-ink);
+  text-decoration: none;
 }
 
 .cz .d {
-  width: 116px;
-  height: 116px;
+  width: clamp(104px, 11vw, 150px);
+  aspect-ratio: 1;
   border-radius: var(--sk-radius-disc);
   border: 4px solid var(--sk-outline);
   box-shadow: var(--sk-shadow-sticker);
   overflow: hidden;
-  margin: 0 auto var(--sk-space-3);
+  background: var(--sk-sand);
+  margin: 0 auto var(--sk-space-4);
   /* A disc that moves sideways rolls: its rotation is tied to its travel.
-     The travel is roughly one cell, not the 420px it used to be. Over that
-     distance each disc crossed two or three of its neighbours on the way in,
-     so for most of the entrance the row was a heap of overlapping translucent
-     circles. One full turn still reads unmistakably as a wheel; it just no
-     longer rolls through the others to get there. */
+     Roughly one cell of travel, so no disc rolls through its neighbour. */
   transform: translateX(-130px) rotate(-360deg);
   opacity: 0;
   transition:
@@ -563,12 +621,7 @@
   opacity: 1;
 }
 
-/* A wheel that rolled in should still be a wheel.
-   The one piece of motion added here rather than tidied, and it is deliberately
-   the kind that answers a person rather than playing at them: nudge the disc
-   and it turns. It needs its own transition because the roll-in's 0.82s
-   overshoot is far too slow to track a cursor — though letting the release
-   fall back to that curve is what gives it the little settle afterwards. */
+/* Nudge the disc and it turns: motion that answers a person. */
 .cz.in:hover .d,
 .cz.in:focus-visible .d {
   transform: translateX(0) rotate(-14deg) scale(1.06);
@@ -584,136 +637,31 @@
   border-radius: var(--sk-radius-sm);
 }
 
-.cz .d img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-/* A cuisine with no illustration yet. Same disc, same roll — it carries the
-   cuisine's initial in the display face instead of a picture, so a missing
-   asset reads as a designed placeholder rather than a broken image. The full
-   name sits directly beneath, so the letter never has to disambiguate alone. */
-.cz .d.ph {
-  display: grid;
-  place-items: center;
-  background: var(--sk-sand);
-  color: var(--sk-ink);
-  font-family: var(--sk-font-display);
-  font-size: 44px;
-  line-height: 1;
-  user-select: none;
-}
-
 .cz .n {
-  font-size: 13px;
+  display: block;
+  font-size: 20px;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-/* Ink, not ink-muted: the discs only ever sit on the sky band, where muted
-   measured 3.46:1. Size and weight still keep it a step below the name. */
 .cz .c {
-  font-size: 12px;
-  line-height: 16px;
-  color: var(--sk-ink);
+  display: block;
+  font-size: 16px;
 }
 
 @media (max-width: 520px) {
-  .discs {
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--sk-space-5) var(--sk-space-4);
+  /* Five discs in two columns leave the last one alone; centre it on the row
+     instead of parking it under the first column. */
+  .discs > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
   }
-  .cz {
-    width: 96px;
+  .discs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sk-space-6) var(--sk-space-4);
   }
   .cz .d {
-    width: 88px;
-    height: 88px;
-    /* The travel shortens with the disc, for the same reason as above: at two
-       columns a long roll puts every disc through its neighbour. */
     transform: translateX(-96px) rotate(-360deg);
   }
-}
-
-/* ---- the sky band ----
-   The cuisine list closes the page, so it takes the sky treatment the old
-   bottom call-to-action used to own: a solid blue band with its own keyline
-   and a yellow display heading. It sits at the point where the page gradient
-   has already turned, so the band reads as the sky thickening rather than as
-   a stripe dropped on top of it. */
-.skyBand {
-  /* Positioned for its own clouds, and above .drift so the parallax layer
-     never crosses the band's solid blue — a white cloud passing over the
-     yellow heading washes it out. The band carries weather of its own. */
-  position: relative;
-  z-index: 2;
-  background: var(--sk-sky);
-  border-top: 3px solid var(--sk-outline);
-  border-bottom: 3px solid var(--sk-outline);
-  overflow: hidden;
-  padding: var(--sk-space-8) 0;
-}
-
-/* The band's own weather, in front of its background but behind its text. Two
-   clouds here rather than in SkyDrift so the band still has some sky in it
-   when the parallax layer is off for reduced motion. */
-.bandCloud {
-  position: absolute;
-  left: 0;
-  fill: #fff;
-  stroke: var(--sk-outline);
-  stroke-width: 3;
-  opacity: 0.85;
-  animation: driftAcross linear infinite;
-}
-
-/* Both are placed to miss the heading's line. The text does paint over them —
-   .skyBand .wrap sits a layer up — but white passing directly behind yellow
-   still flattens it, so they run in the strip above the eyebrow and in the
-   band behind the discs, which are opaque and read as depth rather than mess. */
-.bandCloud1 {
-  top: 12px;
-  width: 150px;
-  animation-duration: 42s;
-}
-
-/* Anchored to the bottom padding rather than a measured distance from the top.
-   At `top: 300px` it ran exactly through the row of cuisine names, and any
-   fixed offset is only right at one viewport width anyway — the discs wrap to
-   two and three rows on smaller screens, so the band's height moves and a
-   top-anchored cloud walks into whatever has shifted under it. Both clouds now
-   live in padding, which is empty at every size. */
-.bandCloud2 {
-  bottom: 22px;
-  width: 104px;
-  animation-duration: 61s;
-  animation-delay: -14s;
-}
-
-.skyBand .wrap {
-  position: relative;
-  z-index: 2;
-}
-
-/* Matches `.home .sec`'s specificity so the yellow still wins over its white. */
-.home .skyHeading {
-  color: var(--sk-yellow);
-}
-
-.skyEyebrow {
-  color: var(--sk-outline);
-  opacity: 0.75;
-}
-
-/* Belt and braces now that `.home .sec` keeps its bottom margin: the two
-   margins collapse to one space-6, so this no longer doubles the gap. */
-.skyBand .discs {
-  position: relative;
-  z-index: 2;
-  margin-top: var(--sk-space-6);
 }
 
 /* ---- shared reveal ---- */
@@ -732,7 +680,7 @@
 
 /* ===================== reduced motion =====================
    Not a degraded experience: every loop stops, every entrance becomes a plain
-   opacity fade. All content stays reachable. */
+   appearance. All content stays reachable; the clouds rest where they are. */
 @media (prefers-reduced-motion: reduce) {
   .home *,
   .home *::before,
@@ -746,11 +694,14 @@
     transform: none !important;
     opacity: 1 !important;
   }
+
+  .cloud {
+    transform: translateX(var(--rest, 0)) !important;
+  }
 }
 
 /* ============================================================================
-   The intro overlay (section 7)
-   Additive only — the Springfield Kitchen rules above are untouched.
+   The intro overlay
    ========================================================================= */
 
 .intro {
@@ -765,9 +716,8 @@
   animation: introIn 0.2s linear;
 }
 
-/* Same treatment as the cold-open poster it replaces: a square sticker card,
-   hard outline, zero-blur offset shadow. The clip is 300x300, so it fills it
-   exactly rather than being letterboxed. */
+/* A square sticker card, hard outline, zero-blur offset shadow. The clip is
+   300x300, so it fills it exactly rather than being letterboxed. */
 .introCard {
   width: min(300px, 62vw);
   aspect-ratio: 1;
@@ -796,17 +746,16 @@
 
 .introSkip {
   font-family: var(--sk-font-ui);
-  font-size: 14px;
-  color: var(--sk-ink-muted);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--sk-ink);
   background: none;
   border: 2px solid transparent;
   border-radius: var(--sk-radius-pill);
   padding: var(--sk-space-1) var(--sk-space-4);
   cursor: pointer;
-}
-
-.introSkip:hover {
-  color: var(--sk-ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 /* A visible focus ring matters more here than anywhere else on the page: this
@@ -814,74 +763,15 @@
 .introSkip:focus-visible {
   outline: none;
   border-color: var(--sk-focus-ring);
-  color: var(--sk-ink);
 }
 
 @keyframes introIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* ============================================================================
-   Recipe highlight (section 7)
-   ========================================================================= */
-
-.picks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sk-space-5);
-}
-
-@media (max-width: 760px) {
-  .picks {
-    grid-template-columns: 1fr;
+  from {
+    opacity: 0;
   }
-}
-
-.pick {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sk-space-2);
-  padding: var(--sk-space-5);
-  border: 3px solid var(--sk-outline);
-  border-radius: var(--sk-radius-md);
-  background: var(--sk-surface-raised);
-  box-shadow: var(--sk-shadow-sticker);
-  color: inherit;
-  text-decoration: none;
-  transition: transform 0.1s var(--sk-ease-press), box-shadow 0.1s var(--sk-ease-press);
-}
-
-.pick:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: var(--sk-shadow-pop);
-}
-
-.pick:focus-visible {
-  outline: 3px solid var(--sk-focus-ring);
-  outline-offset: 3px;
-}
-
-.pickName {
-  font-family: var(--sk-font-display);
-  font-size: 20px;
-  line-height: 24px;
-  letter-spacing: 0.01em;
-}
-
-.pickMeta {
-  font-size: 13px;
-  color: var(--sk-ink-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.picksEmpty {
-  border: 2px dashed var(--sk-outline);
-  border-radius: var(--sk-radius-md);
-  padding: var(--sk-space-7);
-  text-align: center;
-  color: var(--sk-ink-muted);
+  to {
+    opacity: 1;
+  }
 }
 
 /* The reveal: the overlay fades and stops taking pointer events, while the clip

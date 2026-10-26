@@ -40,14 +40,14 @@ export default async function ByCuisinePage() {
   return (
     <>
       <SiteNav />
-      <main className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-12">
-        <header className="flex flex-col gap-2">
-          <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
-            BY CUISINE
+      <main className="page-wrap flex flex-col gap-8 py-10 lg:py-14">
+        <header className="flex flex-col gap-3">
+          <h1 className="font-display text-[clamp(40px,5vw,64px)] leading-none">
+            Recipes by cuisine
           </h1>
-          <p className="text-muted-foreground text-sm">
+          <p className="max-w-[60ch] text-lg">
             {total} recipes across {counts.filter((c) => c.count > 0).length}{" "}
-            cuisines. Turn the globe and click a country, or pick from the list.
+            cuisines. Spin the globe and click a country, or pick a cuisine from the list.
           </p>
         </header>
 

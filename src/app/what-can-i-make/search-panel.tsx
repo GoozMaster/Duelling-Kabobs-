@@ -52,13 +52,13 @@ export function SearchPanel({ isAdmin, initial }: Props) {
       ? `${ready.length} you can cook right now`
       : firstRun
         ? "Start with what you have"
-        : "Closest to your kitchen"
+        : "Closest matches"
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="border-border bg-card flex flex-col gap-3 rounded-[var(--sk-radius-lg)] border-2 p-4 shadow-[var(--sk-shadow-pop)]">
+    <div className="grid items-start gap-8 lg:grid-cols-[minmax(320px,400px)_minmax(0,1fr)] lg:gap-12">
+      <div className="flex flex-col gap-4 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] p-5 shadow-[var(--sk-shadow-pop)] lg:sticky lg:top-24">
         {isAdmin && (
-          <p className="text-sm">
+          <p className="text-[15px]">
             Using your pantry — <strong>{results.pantryCount} items</strong>.{" "}
             <Link
               href="/admin/pantry"
@@ -75,23 +75,23 @@ export function SearchPanel({ isAdmin, initial }: Props) {
             event.preventDefault()
             addDraft()
           }}
-          className="flex flex-col gap-1.5"
+          className="flex flex-col gap-2"
         >
-          <Label htmlFor="ingredient">
+          <Label htmlFor="ingredient" className="text-base font-semibold">
             {isAdmin ? "Anything else you have?" : "What do you have?"}
           </Label>
-          <div className="flex flex-col gap-2 sm:flex-row">
+          <div className="flex gap-2">
             <Input
               id="ingredient"
               value={draft}
               onChange={(event) => setDraft(event.target.value)}
               placeholder="chicken thighs"
               autoComplete="off"
-              className="flex-1"
+              className="h-11 flex-1 rounded-[var(--sk-radius-pill)] border-2 border-[var(--sk-outline)] px-4 text-base"
             />
             <Button
               type="submit"
-              className="border-border shrink-0 border-2"
+              className="h-11 shrink-0 rounded-[var(--sk-radius-pill)] border-2 border-[var(--sk-outline)] px-5 text-base font-semibold"
               disabled={!draft.trim()}
             >
               Add
@@ -108,7 +108,7 @@ export function SearchPanel({ isAdmin, initial }: Props) {
                   onClick={() =>
                     setTyped((current) => current.filter((t) => t !== item))
                   }
-                  className="border-border bg-primary text-primary-foreground focus-visible:ring-ring/50 inline-flex items-center gap-1.5 rounded-[var(--sk-radius-pill)] border-2 px-3 py-1 text-sm focus-visible:ring-[3px] focus-visible:outline-none"
+                  className="border-border bg-primary text-primary-foreground focus-visible:ring-ring/50 inline-flex items-center gap-1.5 rounded-[var(--sk-radius-pill)] border-2 px-3 py-1 text-[15px] font-semibold focus-visible:ring-[3px] focus-visible:outline-none"
                   aria-label={`Remove ${item}`}
                 >
                   {item}
@@ -119,7 +119,7 @@ export function SearchPanel({ isAdmin, initial }: Props) {
           </ul>
         )}
 
-        <p className="text-muted-foreground text-xs">
+        <p className="text-muted-foreground text-sm">
           Salt, pepper, butter, milk, eggs, water and cooking oil are assumed — no need to
           list them.
         </p>
@@ -135,24 +135,24 @@ export function SearchPanel({ isAdmin, initial }: Props) {
       {pending ? (
         <CookingAnimation count={typed.length} />
       ) : nothingFound ? (
-        <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-4 py-10 text-center text-sm">
+        <p className="rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-4 py-10 text-center text-lg">
           No recipes to match against yet.
         </p>
       ) : (
-        <div className="flex flex-col gap-3">
+        <div className="flex min-w-0 flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
+            <h2 className="font-display text-[clamp(26px,2.6vw,34px)] leading-none">
               {heading}
             </h2>
             {firstRun && ready.length === 0 && (
-              <p className="text-muted-foreground text-sm">
-                Add a few ingredients above. Until then, these are ranked against
+              <p className="mt-2 text-base">
+                Add a few ingredients. Until then, these are ranked against
                 the staples alone.
               </p>
             )}
           </div>
 
-          <ul className="grid gap-3 sm:grid-cols-2">
+          <ul className="grid gap-4 sm:grid-cols-2">
             {results.recipes.map((recipe) => (
               <li key={recipe.id}>
                 <RecipeCard
@@ -164,8 +164,8 @@ export function SearchPanel({ isAdmin, initial }: Props) {
                     <span
                       className={
                         recipe.missing.length === 0
-                          ? "text-[var(--sk-basil)] text-xs font-semibold"
-                          : "text-muted-foreground text-xs"
+                          ? "text-[var(--sk-basil)] font-semibold"
+                          : ""
                       }
                     >
                       {recipe.missing.length === 0
@@ -178,7 +178,7 @@ export function SearchPanel({ isAdmin, initial }: Props) {
                      Long lists are cut off rather than swamping the card. */
                   note={
                     recipe.missing.length > 0 ? (
-                      <span className="text-muted-foreground text-xs">
+                      <span className="text-muted-foreground text-sm">
                         Need: {recipe.missing.slice(0, 3).join(", ")}
                         {recipe.missing.length > 3 &&
                           ` +${recipe.missing.length - 3} more`}

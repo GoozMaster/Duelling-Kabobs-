@@ -81,7 +81,7 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
 
   if (recipes.length === 0) {
     return (
-      <div className="text-muted-foreground flex flex-col items-center gap-3 rounded-[var(--sk-radius-md)] border border-dashed px-4 py-12 text-center">
+      <div className="flex flex-col items-center gap-3 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-4 py-12 text-center text-lg">
         <p>
           {cuisine
             ? `No ${cuisine} recipes yet.`
@@ -103,7 +103,7 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
 
   return (
     <div className="flex flex-col gap-6">
-      <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {recipes.map((recipe) => (
           <li key={recipe.id}>
             <RecipeCard
@@ -136,7 +136,7 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
           <Button
             type="button"
             variant="outline"
-            className="border-border border-2"
+            className="h-11 rounded-[var(--sk-radius-pill)] border-[3px] border-[var(--sk-outline)] px-6 text-base font-semibold"
             onClick={loadMore}
             disabled={pending}
           >

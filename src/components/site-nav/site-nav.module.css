@@ -1,7 +1,6 @@
 /* ===================== site nav ===================== */
-/* These rules were moved verbatim out of home.module.css when the nav stopped
-   being home-page furniture and became the shared header. Nothing was
-   restyled in the move — the home page renders <SiteNav /> and looks the same.
+/* The bar runs the full width; its contents sit in the page frame, so the
+   wordmark lines up with every page's heading below it.
 
    On the home page the nav sits *after* the intro overlay in the DOM, so the
    sticky bar never covers the clip. */
@@ -9,28 +8,34 @@
   position: sticky;
   top: 0;
   z-index: 40;
+  background: var(--sk-surface);
+  border-bottom: 3px solid var(--sk-outline);
+}
+
+.inner {
   display: flex;
   align-items: center;
   gap: var(--sk-space-5);
-  padding: var(--sk-space-3) var(--sk-space-7);
-  background: var(--sk-surface);
-  border-bottom: 3px solid var(--sk-outline);
+  min-height: 64px;
+  padding-block: var(--sk-space-2);
 }
 
 .nav .mark {
   display: flex;
   align-items: center;
-  gap: var(--sk-space-2);
+  gap: var(--sk-space-3);
   font-family: var(--sk-font-display);
-  font-size: clamp(15px, 4vw, 20px);
-  letter-spacing: 0.01em;
+  font-size: 22px;
+  letter-spacing: 0.02em;
   line-height: 1;
   white-space: nowrap;
+  color: var(--sk-ink);
+  text-decoration: none;
 }
 
 .nav .mark .disc {
-  width: 34px;
-  height: 34px;
+  width: 40px;
+  height: 40px;
   border-radius: var(--sk-radius-disc);
   border: 3px solid var(--sk-outline);
   background: var(--sk-gold);
@@ -49,124 +54,70 @@
   flex: 1;
 }
 
-.nav a {
-  font-size: 13px;
+/* Sentence case at reading size. The old 13px tracked capitals were the one
+   piece of the site that looked like a template rather than a cartoon. */
+.nav a,
+.trigger {
+  font-family: var(--sk-font-ui);
+  font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--sk-ink);
   text-decoration: none;
 }
 
-/* The text alone is 17px tall, under WCAG 2.5.8's 24px target. Padding grows
-   the hit area to 33px and the matching negative margin gives it back, so the
-   bar's height and the row's alignment do not move. The wordmark is already
-   34px, so it is left out. */
-.navLinks > a {
-  padding-block: 8px;
-  margin-block: -8px;
+/* The pill grows the hit area past WCAG 2.5.8's 24px and gives hover a shape
+   to fill, without moving the row's alignment. */
+.navLinks > a,
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 14px;
+  border-radius: var(--sk-radius-pill);
+  transition: background 0.12s var(--sk-ease-press);
 }
 
-.nav a:hover {
-  color: var(--sk-teal);
+.navLinks > a:hover,
+.trigger:hover,
+.trigger[data-state="open"] {
+  background: var(--sk-sand);
 }
 
-.nav a:focus-visible {
+.nav a:focus-visible,
+.trigger:focus-visible {
   outline: 3px solid var(--sk-focus-ring);
-  outline-offset: 3px;
-  border-radius: var(--sk-radius-sm);
+  outline-offset: 2px;
 }
 
 .navLinks {
   display: flex;
-  gap: var(--sk-space-5);
-  /* Break between items, never inside one. Without this the row is narrow
-     enough at 375px that "What can I make?" splits across three lines and the
-     nav grows to 105px tall. Wrapping whole items instead costs one extra row
-     at worst and keeps every label readable. */
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  align-items: center;
+  gap: var(--sk-space-1);
 }
 
 .navLinks > * {
   white-space: nowrap;
 }
 
-/* At 375px the wordmark and three uppercase links do not both fit on one row,
-   so both sides step down rather than one of them being dropped. */
-@media (max-width: 640px) {
-  .nav {
-    /* space-3 rather than space-5 on the sides: 24px of the 375px viewport is
-       worth more to the links than to the margin. */
-    padding: var(--sk-space-3);
-    gap: var(--sk-space-3);
-  }
-  .nav .mark {
-    font-size: 14px;
-    gap: var(--sk-space-1);
-  }
-  .nav .mark .disc {
-    width: 28px;
-    height: 28px;
-  }
-  .nav a {
-    font-size: 11px;
-    letter-spacing: 0.04em;
-  }
-  .navLinks {
-    gap: var(--sk-space-3);
-  }
-}
-
-/* ===================== recipes dropdown ===================== */
-/* The Recipes item is a <button>, so `.nav a` above does not reach it. These
-   rules are the anchor rules restated for a button plus a button reset — the
-   pair has to be kept in sync by hand. Anything that changes `.nav a` or its
-   640px step-down belongs here too. */
+/* ===================== dropdown triggers ===================== */
+/* The menus are <button>s; the shared rule above gives them the link look, and
+   this only resets what a button brings with it. */
 .trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--sk-ink);
   background: none;
   border: 0;
-  /* Same 33px hit area as `.navLinks > a`, given back the same way. */
-  padding: 8px 0;
-  margin-block: -8px;
   cursor: pointer;
   line-height: inherit;
 }
 
-.trigger:hover {
-  color: var(--sk-teal);
-}
-
-.trigger:focus-visible {
-  outline: 3px solid var(--sk-focus-ring);
-  outline-offset: 3px;
-  border-radius: var(--sk-radius-sm);
-}
-
 .chevron {
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   transition: transform 0.12s var(--sk-ease-press);
 }
 
 .trigger[data-state="open"] .chevron {
   transform: rotate(180deg);
-}
-
-@media (max-width: 640px) {
-  .trigger {
-    font-size: 11px;
-    letter-spacing: 0.04em;
-  }
 }
 
 /* The menu panel itself is styled with Tailwind utilities at the call site
@@ -178,22 +129,37 @@
    build time rather than by luck. */
 
 /* ===================== phone menu ===================== */
-/* At 640px and under, the row of links gives way to a single Menu button
-   (mobile-menu.tsx) holding all of them. Above it nothing changes. */
+/* Under 820px the row of links gives way to a single Menu button
+   (mobile-menu.tsx) holding all of them. */
 .mobileMenu {
   display: none;
 }
 
 .menuIcon {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 820px) {
   .navLinks {
     display: none;
   }
   .mobileMenu {
     display: inline-flex;
+  }
+  .mobileMenu .trigger {
+    border: 3px solid var(--sk-outline);
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 420px) {
+  .nav .mark {
+    font-size: 18px;
+    gap: var(--sk-space-2);
+  }
+  .nav .mark .disc {
+    width: 34px;
+    height: 34px;
   }
 }

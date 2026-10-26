@@ -104,6 +104,24 @@
   --input: color-mix(in srgb, var(--sk-outline) 55%, transparent);
 }
 
+/* The page frame. Every page's <main> and the nav's inner row use it. */
+@utility page-wrap {
+  width: 100%;
+  max-width: var(--sk-page-max);
+  margin-inline: auto;
+  padding-inline: var(--sk-gutter);
+}
+
+/* Luckiest Guy is a capitals face: its lowercase is a set of odd small caps,
+   so mixed-case titles from the database ("Bacon and Avocado") came out as a
+   jumble of heights. Every display line is set in capitals instead. */
+@utility font-display {
+  font-family: var(--sk-font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -149,6 +167,11 @@
   /* type */
   --sk-font-display: var(--font-luckiest-guy), "Arial Black", Impact, system-ui, sans-serif;
   --sk-font-ui: var(--font-fredoka), "Trebuchet MS", Verdana, system-ui, sans-serif;
+
+  /* page frame — one width and one pair of margins for every page, so the nav,
+     the headings and the content all start on the same left edge. */
+  --sk-page-max: 1280px;
+  --sk-gutter: clamp(20px, 4vw, 56px);
 
   /* spacing — 4px base */
   --sk-space-1: 4px;

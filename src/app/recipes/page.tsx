@@ -13,7 +13,7 @@ import { RecipeGrid } from "./recipe-grid"
 // Echoes the .btn sticker treatment from the home page rather than the filter
 // chips: these launch a different page, the chips filter this one.
 const wayIn =
-  "border-border bg-card hover:-translate-y-0.5 focus-visible:ring-ring/50 inline-flex items-center rounded-[var(--sk-radius-pill)] border-2 px-4 py-1.5 text-sm font-medium shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:outline-none"
+  "inline-flex items-center rounded-[var(--sk-radius-pill)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-5 py-2.5 text-base font-semibold shadow-[var(--sk-shadow-sticker)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[var(--sk-shadow-pop)] focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none"
 
 export const metadata: Metadata = {
   title: "Recipes",
@@ -47,27 +47,28 @@ export default async function RecipesPage({
   return (
     <>
       <SiteNav />
-      <main className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-6 py-12">
-        <header className="flex flex-col gap-2">
-          <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
-            RECIPES
-          </h1>
-          <p className="text-muted-foreground text-sm">
-            {total} {total === 1 ? "recipe" : "recipes"}, no account needed.
-          </p>
-        </header>
+      <main className="page-wrap flex flex-col gap-8 py-10 lg:py-14">
+        <header className="flex flex-wrap items-end justify-between gap-x-10 gap-y-5">
+          <div className="flex flex-col gap-3">
+            <h1 className="font-display text-[clamp(40px,5vw,64px)] leading-none">Recipes</h1>
+            <p className="max-w-[60ch] text-lg">
+              All {total} {total === 1 ? "recipe" : "recipes"} in the collection. Filter by
+              cuisine below, or try one of the other ways in.
+            </p>
+          </div>
 
-        {/* The other two ways in also live in the nav's Recipes menu, but that
-            menu is a Radix trigger and does nothing without JavaScript. These
-            are plain links, so the globe and the spinner are never unreachable. */}
-        <nav aria-label="Other ways to browse" className="flex flex-wrap gap-2">
-          <Link href="/recipes/by-cuisine" className={wayIn}>
-            Browse the globe →
-          </Link>
-          <Link href="/recipes/surprise" className={wayIn}>
-            Surprise me →
-          </Link>
-        </nav>
+          {/* The other two ways in also live in the nav's Recipes menu, but that
+              menu is a Radix trigger and does nothing without JavaScript. These
+              are plain links, so the globe and the spinner are never unreachable. */}
+          <nav aria-label="Other ways to browse" className="flex flex-wrap gap-3">
+            <Link href="/recipes/by-cuisine" className={wayIn}>
+              Browse on the globe
+            </Link>
+            <Link href="/recipes/surprise" className={wayIn}>
+              Pick one at random
+            </Link>
+          </nav>
+        </header>
 
         <CuisineFilter counts={counts} total={total} active={cuisine} />
 

@@ -59,7 +59,7 @@ export function StockRoom({ items, canEdit }: { items: PantryItem[]; canEdit: bo
     <div className="flex flex-col gap-8">
       {/* The text summary doubles as the section switcher. */}
       <nav aria-label="Storage sections">
-        <p className="text-muted-foreground mb-2 text-sm">
+        <p className="mb-3 text-base">
           <strong className="text-foreground">{grandTotal}</strong> things on hand across the
           pantry, fridge and freezer.
         </p>
@@ -72,18 +72,18 @@ export function StockRoom({ items, canEdit }: { items: PantryItem[]; canEdit: bo
                 <a
                   href={`#${zone.key}`}
                   aria-current={open ? "location" : undefined}
-                  className={`border-border bg-card flex h-full flex-col rounded-[var(--sk-radius-md)] border-2 px-3 py-2 transition-[transform,box-shadow] hover:-translate-y-0.5 ${
+                  className={`flex h-full flex-col gap-0.5 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-4 py-3 transition-[transform,box-shadow] hover:-translate-y-0.5 ${
                     open ? "shadow-[var(--sk-shadow-sticker)]" : "shadow-[var(--sk-shadow-press)]"
                   }`}
                 >
-                  <span className="font-[family-name:var(--sk-font-display)] text-base tracking-wide sm:text-lg">
+                  <span className="font-display text-lg sm:text-2xl">
                     {zone.label.toUpperCase()}
                   </span>
-                  <span className="text-muted-foreground text-xs">
-                    <strong className="text-foreground text-sm">{count}</strong>{" "}
+                  <span className="text-[15px]">
+                    <strong>{count}</strong>{" "}
                     {count === 1 ? "item" : "items"}
                   </span>
-                  <span className="text-muted-foreground mt-1 hidden text-xs sm:block">
+                  <span className="text-muted-foreground mt-1 hidden text-sm sm:block">
                     {describeZone(zone.key, stock[zone.key].groups)}
                   </span>
                 </a>
@@ -198,15 +198,15 @@ function ZoneSection({
         <header className="flex flex-col gap-1">
           <h2
             id={`${zone.key}-heading`}
-            className="flex items-baseline gap-2 font-[family-name:var(--sk-font-display)] text-2xl tracking-wide"
+            className="font-display flex items-baseline gap-3 text-[clamp(28px,3vw,40px)] leading-none"
           >
             {zone.label.toUpperCase()}
-            <span className="text-muted-foreground font-[family-name:var(--sk-font-ui)] text-sm tracking-normal">
+            <span className="font-[family-name:var(--sk-font-ui)] text-base font-normal tracking-normal normal-case">
               {count} {count === 1 ? "item" : "items"}
             </span>
           </h2>
-          <p className="text-muted-foreground text-sm">{zone.blurb}</p>
-          <p className="text-sm">{describeZone(zone.key, groups)}</p>
+          <p className="mt-2 text-base">{zone.blurb}</p>
+          <p className="text-muted-foreground text-[15px]">{describeZone(zone.key, groups)}</p>
         </header>
 
         {canEdit && <QuickAdd zone={zone} pending={pending} onAdd={onAdd} />}
@@ -230,9 +230,9 @@ function ZoneSection({
           <div className="flex flex-col gap-4">
             {groups.map((group) => (
               <div key={group.name} className="flex flex-col gap-1.5">
-                <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                <h3 className="text-base font-semibold">
                   {group.name}
-                  <span className="ml-1 font-normal">{group.entries.length}</span>
+                  <span className="text-muted-foreground ml-2 font-normal">{group.entries.length}</span>
                 </h3>
                 <ItemList group={group} justAdded={justAdded} />
               </div>
@@ -284,9 +284,9 @@ function PantryList({ groups, justAdded }: { groups: StockGroup[]; justAdded: st
               : undefined
           }
         >
-          <summary className="hover:bg-muted/40 flex cursor-pointer items-center justify-between gap-3 rounded-[var(--sk-radius-md)] px-3 py-2 text-sm font-medium select-none">
+          <summary className="hover:bg-muted/40 flex cursor-pointer items-center justify-between gap-3 rounded-[var(--sk-radius-md)] px-3 py-2.5 text-base font-medium select-none">
             <span>{group.name}</span>
-            <span className="text-muted-foreground flex items-center gap-2 text-xs">
+            <span className="text-muted-foreground flex items-center gap-2 text-sm">
               {group.entries.length}
               <span aria-hidden className="transition-transform group-open:rotate-90">
                 ›

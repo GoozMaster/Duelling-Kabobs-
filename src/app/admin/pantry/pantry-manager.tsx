@@ -133,7 +133,7 @@ export function PantryManager({ items }: { items: PantryItem[] }) {
               {PANTRY_SECTIONS.map((section) => (
                 <TabsTrigger key={section.key} value={section.key}>
                   {section.label}
-                  <span className="text-muted-foreground ml-1 text-xs">
+                  <span className="text-muted-foreground ml-1 text-sm">
                     {optimisticItems.filter((item) => item.section === section.key).length}
                   </span>
                 </TabsTrigger>

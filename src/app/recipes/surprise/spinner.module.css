@@ -12,7 +12,7 @@
   border: 4px solid var(--sk-outline);
   border-radius: var(--sk-radius-lg);
   box-shadow: var(--sk-shadow-pop);
-  background: var(--sk-outline);
+  background: var(--sk-gold);
   min-height: 420px;
   display: flex;
   flex-direction: column;
@@ -21,14 +21,19 @@
   padding: var(--sk-space-6) 0;
 }
 
+/* A centred square at the frame's height, on the gold. The clip is 300px
+   square; stretched to cover a 1200px frame it was a smear. */
 .video,
 .still {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  left: 50%;
+  width: auto;
+  aspect-ratio: 1;
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  transform: translateX(-50%);
 }
 
 .scrim {
@@ -118,9 +123,7 @@
 }
 
 .tileCuisine {
-  font-size: 11px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 13px;
   color: var(--sk-ink-muted);
 }
 
@@ -172,9 +175,8 @@
 }
 
 .cardKicker {
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--sk-teal);
 }
 

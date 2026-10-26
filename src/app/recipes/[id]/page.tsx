@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
+import { CuisineArt } from "@/components/cuisine-art"
 import { Badge } from "@/components/ui/badge"
 import { parseInstructions } from "@/lib/instructions"
 import { markIngredients } from "@/lib/matching"
@@ -15,9 +16,9 @@ import { viewerPantry } from "@/lib/viewer-pantry"
 import { AdminBar } from "./admin-bar"
 import { IngredientList } from "./ingredient-list"
 
-// The same sticker pill as the recipes page's "ways in": these leave the page.
+// The sticker pill for links that leave the page: the cuisine, the stub's ways out.
 const wayOn =
-  "border-border bg-card hover:-translate-y-0.5 focus-visible:ring-ring/50 inline-flex items-center rounded-[var(--sk-radius-pill)] border-2 px-4 py-1.5 text-sm font-medium shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:outline-none"
+  "inline-flex items-center rounded-[var(--sk-radius-pill)] border-2 border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-4 py-1.5 text-base font-semibold shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:-translate-y-0.5 hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none"
 
 export async function generateMetadata({
   params,
@@ -95,144 +96,156 @@ export default async function RecipeDetailPage({
   // separate "none recorded" lines under two empty headings.
   const isStub = ingredients.length === 0 && blocks.length === 0
 
+
   return (
     <>
       <SiteNav />
-      {/* One reading column on phones and tablets. From lg up the page opens
-          to the cookbook layout, ingredients beside the method, so a desktop
-          reader is not looking at a 672px strip in the middle of the screen. */}
-      <main className="mx-auto flex w-full max-w-2xl flex-col gap-10 px-6 py-12 lg:max-w-6xl lg:px-10 lg:py-16">
-      <header className="flex flex-col gap-2">
-        {/* Kept despite the nav: this walks up the hierarchy to the listing,
-            which the nav's wordmark (home) does not do. */}
-        <Link
-          href="/recipes"
-          className="text-muted-foreground hover:text-foreground w-fit text-sm underline underline-offset-4"
-        >
-          ← All recipes
-        </Link>
-        <h1 className="font-[family-name:var(--sk-font-display)] text-3xl leading-tight tracking-wide text-balance sm:text-4xl lg:text-5xl">
-          {recipe.title}
-        </h1>
-        <div className="flex flex-wrap items-center gap-2">
-          {recipe.cuisine && (
-            <Badge variant="outline" asChild>
-              <Link href={`/recipes?cuisine=${encodeURIComponent(recipe.cuisine)}`}>
-                {recipe.cuisine}
-              </Link>
-            </Badge>
-          )}
-          {/* Admin-only: all 126 imported recipes carry this flag, so showing
-              it publicly would stamp "needs review" across the whole site. */}
-          {isAdmin && recipe.needs_review && (
-            <Badge variant="destructive">Needs review</Badge>
-          )}
-        </div>
+      <main className="page-wrap flex flex-col gap-10 py-10 lg:gap-14 lg:py-14">
+        <header className="flex flex-col gap-6">
+          {/* Kept despite the nav: this walks up the hierarchy to the listing,
+              which the nav's wordmark (home) does not do. */}
+          <Link
+            href="/recipes"
+            className="hover:text-[var(--sk-teal)] w-fit text-base font-semibold underline underline-offset-4"
+          >
+            ← All recipes
+          </Link>
 
-        {/* Its own line under the badges rather than another badge: it is
-            attribution, not a label, and a null source renders nothing at all
-            rather than the word "Source" with a gap after it. */}
-        {source && (
-          <p className="text-muted-foreground text-xs">
-            Source{" "}
-            {source.href ? (
-              // nofollow because these are third-party sites we are crediting,
-              // not vouching for; noopener because target="_blank" otherwise
-              // hands the destination a handle on this window.
-              <a
-                href={source.href}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                className="hover:text-foreground underline underline-offset-4"
-              >
-                {source.label}
-              </a>
-            ) : (
-              <span>{source.label}</span>
-            )}
-          </p>
-        )}
-      </header>
-
-      {isAdmin && (
-        <AdminBar
-          id={recipe.id}
-          title={recipe.title}
-          ingredientCount={allIngredients.length}
-          needsReview={recipe.needs_review}
-        />
-      )}
-
-      {isStub ? (
-        <section className="border-border bg-card flex max-w-2xl flex-col items-start gap-3 rounded-[var(--sk-radius-lg)] border-2 border-dashed p-6">
-          <h2 className="font-[family-name:var(--sk-font-display)] text-xl tracking-wide">
-            STILL ON THE CUTTING BOARD
-          </h2>
-          <p className="text-muted-foreground max-w-prose">
-            This one is in the collection by name, but its ingredients and method
-            have not been written up yet.
-          </p>
-          <div className="flex flex-wrap gap-2 pt-1">
-            <Link href="/recipes/surprise" className={wayOn}>
-              Surprise me instead →
-            </Link>
-            {recipe.cuisine && (
-              <Link
-                href={`/recipes?cuisine=${encodeURIComponent(recipe.cuisine)}`}
-                className={wayOn}
-              >
-                More {recipe.cuisine} →
-              </Link>
-            )}
-          </div>
-        </section>
-      ) : (
-        // 5:7 keeps ingredient rows short enough to scan and leaves the method
-        // its ~65ch measure. Gap rather than margins, so below lg the stacked
-        // sections keep the same rhythm as the rest of the page.
-        <div className="grid items-start gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-16">
-          <IngredientList
-            groups={groups}
-            have={have}
-            totalRequired={totalRequired}
-            usedPantry={pantry.usedPantry}
-          />
-
-          <section className="flex flex-col gap-4">
-            {/* min-h-9 matches the ingredients row, whose 36px switch sets its
-                height, so the two column headings share a line side by side. */}
-            <h2 className="font-[family-name:var(--sk-font-display)] flex min-h-9 items-center text-xl tracking-wide">
-              INSTRUCTIONS
-            </h2>
-
-            {blocks.length === 0 ? (
-              // An explicit line beats a blank region that reads as a loading bug.
-              <p className="text-muted-foreground rounded-[var(--sk-radius-md)] border border-dashed px-4 py-6 text-center text-sm">
-                No method written up for this one yet.
-              </p>
-            ) : (
-              // 16px, not 14: this is the part of the page people read at the
-              // counter, often from arm's length.
-              <div className="flex max-w-prose flex-col gap-4">
-                {blocks.map((block, index) =>
-                  block.kind === "heading" ? (
-                    <h3
-                      key={index}
-                      className="font-[family-name:var(--sk-font-display)] pt-3 text-lg tracking-wide"
-                    >
-                      {block.text}
-                    </h3>
-                  ) : (
-                    <p key={index} className="text-base leading-7">
-                      {block.text}
-                    </p>
-                  ),
+          <div className="flex items-center gap-5 sm:gap-8">
+            <span className="hidden size-24 shrink-0 overflow-hidden rounded-full border-4 border-[var(--sk-outline)] shadow-[var(--sk-shadow-sticker)] sm:block lg:size-32">
+              <CuisineArt name={recipe.cuisine ?? "Other"} px={128} />
+            </span>
+            <div className="flex min-w-0 flex-col gap-4">
+              <h1 className="font-display text-[clamp(34px,5vw,68px)] leading-[0.95] text-balance">
+                {recipe.title}
+              </h1>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-base">
+                {recipe.cuisine && (
+                  <Link
+                    href={`/recipes?cuisine=${encodeURIComponent(recipe.cuisine)}`}
+                    className={wayOn}
+                  >
+                    {recipe.cuisine}
+                  </Link>
+                )}
+                {ingredients.length > 0 && (
+                  <span>
+                    {ingredients.length} {ingredients.length === 1 ? "ingredient" : "ingredients"}
+                  </span>
+                )}
+                {/* Attribution, not a label, and a null source renders nothing
+                    at all rather than the word "Source" with a gap after it. */}
+                {source && (
+                  <span>
+                    From{" "}
+                    {source.href ? (
+                      // nofollow because these are third-party sites we are
+                      // crediting, not vouching for; noopener because
+                      // target="_blank" otherwise hands the destination a
+                      // handle on this window.
+                      <a
+                        href={source.href}
+                        target="_blank"
+                        rel="noopener noreferrer nofollow"
+                        className="font-semibold underline underline-offset-4 hover:text-[var(--sk-teal)]"
+                      >
+                        {source.label}
+                      </a>
+                    ) : (
+                      <span className="font-semibold">{source.label}</span>
+                    )}
+                  </span>
+                )}
+                {/* Admin-only: all 126 imported recipes carry this flag, so
+                    showing it publicly would stamp "needs review" across the
+                    whole site. */}
+                {isAdmin && recipe.needs_review && (
+                  <Badge variant="destructive">Needs review</Badge>
                 )}
               </div>
-            )}
+            </div>
+          </div>
+        </header>
+
+        {isAdmin && (
+          <AdminBar
+            id={recipe.id}
+            title={recipe.title}
+            ingredientCount={allIngredients.length}
+            needsReview={recipe.needs_review}
+          />
+        )}
+
+        {isStub ? (
+          <section className="flex max-w-2xl flex-col items-start gap-4 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] p-8 shadow-[var(--sk-shadow-sticker)]">
+            <h2 className="font-display text-2xl">Not written up yet</h2>
+            <p className="max-w-prose text-[17px]">
+              This one is in the collection by name, but its ingredients and
+              method have not been added yet.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-1">
+              <Link href="/recipes/surprise" className={wayOn}>
+                Pick a random recipe instead
+              </Link>
+              {recipe.cuisine && (
+                <Link
+                  href={`/recipes?cuisine=${encodeURIComponent(recipe.cuisine)}`}
+                  className={wayOn}
+                >
+                  More {recipe.cuisine} recipes
+                </Link>
+              )}
+            </div>
           </section>
-        </div>
-      )}
+        ) : (
+          // The ingredient card keeps a fixed, comfortable width and rides
+          // alongside the method on wide screens, so the list is still in view
+          // at the last step. The method takes the rest at a ~68ch measure.
+          <div className="grid items-start gap-10 lg:grid-cols-[minmax(340px,420px)_minmax(0,1fr)] lg:gap-16">
+            <div className="lg:sticky lg:top-24">
+              <IngredientList
+                groups={groups}
+                have={have}
+                totalRequired={totalRequired}
+                usedPantry={pantry.usedPantry}
+              />
+            </div>
+
+            <section aria-labelledby="method-title" className="flex flex-col gap-6">
+              <h2 id="method-title" className="font-display text-[clamp(28px,3vw,40px)] leading-none">
+                Method
+              </h2>
+
+              {blocks.length === 0 ? (
+                // An explicit line beats a blank region that reads as a loading bug.
+                <p className="text-muted-foreground text-[17px]">
+                  No method written up for this one yet.
+                </p>
+              ) : (
+                // 18px: this is the part of the page people read at the
+                // counter, often from arm's length. Each step gets a marker
+                // rather than a number, because the stored text often carries
+                // its own numbering (see lib/instructions.ts).
+                <div className="flex max-w-[68ch] flex-col gap-5">
+                  {blocks.map((block, index) =>
+                    block.kind === "heading" ? (
+                      <h3 key={index} className="font-display pt-4 text-xl first:pt-0">
+                        {block.text}
+                      </h3>
+                    ) : (
+                      <p
+                        key={index}
+                        className="relative pl-8 text-lg leading-[1.7] before:absolute before:top-[0.55em] before:left-0 before:size-3.5 before:rounded-full before:border-2 before:border-[var(--sk-outline)] before:bg-[var(--sk-yellow)] before:content-['']"
+                      >
+                        {block.text}
+                      </p>
+                    ),
+                  )}
+                </div>
+              )}
+            </section>
+          </div>
+        )}
       </main>
       <SiteFooter />
     </>

@@ -1,7 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 
-import { badgeForCuisine } from "@/components/home/logos"
+import { CuisineArt } from "@/components/cuisine-art"
 import type { CuisineCount } from "@/lib/recipe-browse"
 
 import s from "./by-cuisine.module.css"
@@ -27,16 +26,12 @@ export function CuisineTiles({ counts }: { counts: CuisineCount[] }) {
   return (
     <nav aria-label="Browse by cuisine" className={s.tiles}>
       {counts.map(({ name, count }) => {
-        const badge = badgeForCuisine(name)
-
-        const face = badge ? (
+        // Every cuisine has a picture now: the four raster badges, and a
+        // drawing for the rest where a display-face initial used to stand in.
+        const face = (
           <span className={s.tileDisc}>
-            <Image src={badge} alt="" width={56} height={56} />
+            <CuisineArt name={name} px={60} />
           </span>
-        ) : (
-          // Only four of the eleven cuisines have artwork, so the rest get a
-          // display-face initial — the same fallback CuisineDiscs uses.
-          <span className={`${s.tileDisc} ${s.tileInitial}`}>{name.charAt(0)}</span>
         )
 
         // A cuisine with nothing in it shows, greyed and unlinked. The list is

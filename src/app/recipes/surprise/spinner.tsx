@@ -315,7 +315,7 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
         <div className={s.result} role="status" aria-live="polite">
           {winner ? (
             <div className={s.card}>
-              <span className={s.cardKicker}>Tonight you are making</span>
+              <span className={s.cardKicker}>Your random pick</span>
               <span className={s.cardTitle}>{winner.title}</span>
               {winner.cuisine && <Badge variant="outline">{winner.cuisine}</Badge>}
               <div className={s.cardActions}>

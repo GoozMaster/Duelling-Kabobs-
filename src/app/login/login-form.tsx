@@ -29,8 +29,8 @@ export function LoginForm() {
   return (
     <Card className="border-border w-full max-w-sm gap-6 rounded-[var(--sk-radius-lg)] border-2 shadow-[var(--sk-shadow-pop)]">
       <CardHeader>
-        <CardTitle className="font-[family-name:var(--sk-font-display)] text-2xl tracking-wide">
-          ADMIN SIGN-IN
+        <CardTitle className="font-display text-3xl">
+          Admin sign-in
         </CardTitle>
         <CardDescription>
           Down With Hunger has one account, and it is already made. Everyone else can

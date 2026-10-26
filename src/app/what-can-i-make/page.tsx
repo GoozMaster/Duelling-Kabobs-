@@ -27,15 +27,15 @@ export default async function WhatCanIMakePage() {
   return (
     <>
       <SiteNav />
-      <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
-      <header className="flex flex-col gap-2">
-        <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
-          WHAT CAN I MAKE?
+      <main className="page-wrap flex flex-col gap-8 py-10 lg:py-14">
+      <header className="flex flex-col gap-3">
+        <h1 className="font-display text-[clamp(40px,5vw,64px)] leading-none">
+          What can I make?
         </h1>
-        <p className="text-muted-foreground text-sm">
+        <p className="max-w-[60ch] text-lg">
           {isAdmin
             ? "Matched against your saved pantry."
-            : "Type what you have in. Nothing is saved — it resets when you leave."}
+            : "Add the ingredients you have, one at a time, and the recipes you can cook rise to the top. Nothing is saved."}
         </p>
       </header>
 

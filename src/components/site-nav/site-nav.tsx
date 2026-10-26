@@ -28,9 +28,10 @@ import { StockMenu } from "./stock-menu"
 export function SiteNav() {
   return (
     <nav className={s.nav}>
+      <div className={`page-wrap ${s.inner}`}>
       <Link className={s.mark} href="/">
         <span className={s.disc}>
-          <Image src={scenes.downWithHungerMark} alt="" width={34} height={34} />
+          <Image src={scenes.downWithHungerMark} alt="" width={40} height={40} />
         </span>
         DOWN WITH HUNGER
       </Link>
@@ -48,6 +49,7 @@ export function SiteNav() {
       <span className={s.mobileMenu}>
         <MobileMenu />
       </span>
+      </div>
     </nav>
   )
 }

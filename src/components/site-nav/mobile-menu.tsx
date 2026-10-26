@@ -37,7 +37,7 @@ type Group = { label?: string; items: { href: string; label: string }[] }
 const groups: Group[] = [
   { items: [{ href: "/what-can-i-make", label: "What can I make?" }] },
   { label: "Recipes", items: recipeItems },
-  { label: "See what's in stock", items: [stockEverything, ...stockSections] },
+  { label: "What's in stock", items: [stockEverything, ...stockSections] },
   { items: [{ href: "/login", label: "Log in" }] },
 ]
 
@@ -48,7 +48,7 @@ const menu =
   "w-auto min-w-56 max-h-[var(--radix-dropdown-menu-content-available-height)] overflow-y-auto rounded-[var(--sk-radius-md)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] p-1 shadow-[var(--sk-shadow-pop)] ring-0"
 
 const item =
-  "cursor-pointer rounded-[var(--sk-radius-sm)] px-3 py-2 text-[13px] font-semibold tracking-[0.06em] text-[var(--sk-ink)] uppercase focus:bg-[var(--sk-yellow)] focus:text-[var(--sk-on-yellow)]"
+  "cursor-pointer rounded-[var(--sk-radius-sm)] px-3 py-2 text-[15px] font-semibold text-[var(--sk-ink)] focus:bg-[var(--sk-yellow)] focus:text-[var(--sk-on-yellow)]"
 
 const heading = `${item} flex items-center justify-between gap-3`
 

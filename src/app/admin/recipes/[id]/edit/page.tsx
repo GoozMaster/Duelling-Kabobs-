@@ -36,7 +36,7 @@ export default async function EditRecipePage({
   }
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
+    <main className="page-wrap flex flex-col gap-8 py-10 *:max-w-4xl lg:py-14">
       <header className="flex flex-col gap-2">
         <Link
           href="/admin"
@@ -44,7 +44,7 @@ export default async function EditRecipePage({
         >
           ← Admin
         </Link>
-        <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
+        <h1 className="font-display text-[clamp(36px,4.5vw,56px)] leading-none">
           EDIT RECIPE
         </h1>
       </header>

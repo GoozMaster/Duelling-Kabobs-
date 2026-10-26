@@ -42,8 +42,8 @@ export default async function StockPage() {
   return (
     <>
       <SiteNav />
-      <main className="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-12 sm:px-6">
-        <header className="flex flex-col gap-2">
+      <main className="page-wrap flex flex-col gap-8 py-10 lg:py-14">
+        <header className="flex flex-col gap-3">
           {canEdit && (
             <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
               <Link
@@ -60,10 +60,10 @@ export default async function StockPage() {
               </Link>
             </div>
           )}
-          <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
-            WHAT&apos;S IN STOCK
+          <h1 className="font-display text-[clamp(40px,5vw,64px)] leading-none">
+            What&apos;s in stock
           </h1>
-          <p className="text-muted-foreground text-sm">
+          <p className="max-w-[64ch] text-lg">
             Everything on hand, by where it lives. Scroll to a section, or tap a door, to
             open it up.
             {!canEdit && " View only — the kitchen's owner keeps this list up to date."}

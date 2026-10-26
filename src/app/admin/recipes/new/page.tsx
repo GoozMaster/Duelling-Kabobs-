@@ -17,7 +17,7 @@ export default async function NewRecipePage() {
   const { data } = await supabase.from("cuisines").select("name").order("name")
 
   return (
-    <main className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
+    <main className="page-wrap flex flex-col gap-8 py-10 *:max-w-4xl lg:py-14">
       <header className="flex flex-col gap-2">
         <Link
           href="/admin"
@@ -25,10 +25,10 @@ export default async function NewRecipePage() {
         >
           ← Admin
         </Link>
-        <h1 className="font-[family-name:var(--sk-font-display)] text-3xl tracking-wide">
+        <h1 className="font-display text-[clamp(36px,4.5vw,56px)] leading-none">
           ADD A RECIPE
         </h1>
-        <p className="text-muted-foreground text-sm">
+        <p className="text-lg">
           Type one in, pull one from a web page, or upload a batch.
         </p>
       </header>

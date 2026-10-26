@@ -10,7 +10,7 @@ type Props = {
 }
 
 const base =
-  "border-border inline-flex items-center gap-1.5 rounded-[var(--sk-radius-pill)] border-2 px-3 py-1 text-sm transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)]"
+  "inline-flex items-center gap-2 rounded-[var(--sk-radius-pill)] border-2 border-[var(--sk-outline)] px-4 py-1.5 text-[15px] font-semibold transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)]"
 
 const idle = "bg-card hover:-translate-y-0.5 shadow-[var(--sk-shadow-press)]"
 const selected = "bg-primary text-primary-foreground shadow-[var(--sk-shadow-sticker)]"
@@ -40,7 +40,7 @@ export function CuisineFilter({ counts, total, active }: Props) {
         className={`${base} ${active ? idle : selected}`}
       >
         All
-        <span className="text-xs opacity-70">{total}</span>
+        <span className="text-[13px] font-normal opacity-75">{total}</span>
       </Link>
 
       {counts.map(({ name, count }) => {
@@ -53,7 +53,7 @@ export function CuisineFilter({ counts, total, active }: Props) {
           return (
             <span key={name} className={`${base} ${empty}`} aria-disabled="true">
               {name}
-              <span className="text-xs opacity-70">0</span>
+              <span className="text-[13px] font-normal opacity-75">0</span>
             </span>
           )
         }
@@ -67,7 +67,7 @@ export function CuisineFilter({ counts, total, active }: Props) {
             onClick={(e) => handleCuisineClick(e, name)}
           >
             {name}
-            <span className="text-xs opacity-70">{count}</span>
+            <span className="text-[13px] font-normal opacity-75">{count}</span>
           </Link>
         )
       })}
