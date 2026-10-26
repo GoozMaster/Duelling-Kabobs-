@@ -12,7 +12,7 @@
  */
 function SkeletonCard({ rows }: { rows: number }) {
   return (
-    <div className="border-border bg-card flex flex-col gap-4 rounded-[var(--sk-radius-lg)] border-2 p-6 shadow-[var(--sk-shadow-pop)]">
+    <div className="bg-card flex flex-col gap-4 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] p-6 shadow-[var(--sk-shadow-sticker)]">
       <div className="bg-muted h-5 w-40 animate-pulse rounded-[var(--sk-radius-pill)]" />
       <div className="bg-muted h-3 w-64 max-w-full animate-pulse rounded-[var(--sk-radius-pill)]" />
 
@@ -33,12 +33,15 @@ export default function Loading() {
     <main
       aria-busy="true"
       aria-label="Loading"
-      className="mx-auto flex w-full max-w-2xl flex-col gap-6 px-6 py-16"
+      className="page-wrap flex flex-col gap-8 py-10 lg:py-14"
     >
-      <SkeletonCard rows={1} />
-      <SkeletonCard rows={3} />
-      <SkeletonCard rows={5} />
-      <SkeletonCard rows={3} />
+      {/* The same frame the admin pages draw into: a title, then cards. */}
+      <div className="bg-muted h-12 w-56 animate-pulse rounded-[var(--sk-radius-pill)]" />
+      <div className="grid items-start gap-6 lg:grid-cols-3">
+        <SkeletonCard rows={5} />
+        <SkeletonCard rows={5} />
+        <SkeletonCard rows={4} />
+      </div>
     </main>
   )
 }

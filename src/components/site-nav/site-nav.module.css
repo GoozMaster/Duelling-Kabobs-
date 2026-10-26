@@ -15,6 +15,7 @@
 .inner {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: var(--sk-space-5);
   min-height: 64px;
   padding-block: var(--sk-space-2);
@@ -31,6 +32,12 @@
   white-space: nowrap;
   color: var(--sk-ink);
   text-decoration: none;
+}
+
+.nav .mark:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 4px;
+  border-radius: var(--sk-radius-pill);
 }
 
 .nav .mark .disc {
@@ -50,107 +57,206 @@
   object-fit: cover;
 }
 
-.spacer {
-  flex: 1;
-}
-
-/* Sentence case at reading size. The old 13px tracked capitals were the one
-   piece of the site that looked like a template rather than a cartoon. */
-.nav a,
-.trigger {
+/* ===================== menu toggle ===================== */
+/* A yellow sticker-pill that presses in. Open, it goes white so the bar reads
+   as "something is on". */
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 6px 18px;
   font-family: var(--sk-font-ui);
   font-size: 16px;
   font-weight: 600;
-  letter-spacing: 0;
-  color: var(--sk-ink);
-  text-decoration: none;
-}
-
-/* The pill grows the hit area past WCAG 2.5.8's 24px and gives hover a shape
-   to fill, without moving the row's alignment. */
-.navLinks > a,
-.trigger {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 14px;
+  line-height: 1;
+  color: var(--sk-on-yellow);
+  background: var(--sk-yellow);
+  border: 3px solid var(--sk-outline);
   border-radius: var(--sk-radius-pill);
-  transition: background 0.12s var(--sk-ease-press);
+  box-shadow: var(--sk-shadow-press);
+  cursor: pointer;
+  transition:
+    transform 0.12s var(--sk-ease-press),
+    box-shadow 0.12s var(--sk-ease-press),
+    background-color 0.2s var(--sk-ease-press);
 }
 
-.navLinks > a:hover,
-.trigger:hover,
-.trigger[data-state="open"] {
-  background: var(--sk-sand);
+.toggle:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--sk-outline);
 }
 
-.nav a:focus-visible,
-.trigger:focus-visible {
+.toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.toggle[aria-expanded="true"] {
+  background: var(--sk-surface-raised);
+  color: var(--sk-ink);
+}
+
+.toggle:focus-visible {
   outline: 3px solid var(--sk-focus-ring);
-  outline-offset: 2px;
+  outline-offset: 3px;
 }
 
-.navLinks {
-  display: flex;
-  align-items: center;
-  gap: var(--sk-space-1);
-}
-
-.navLinks > * {
+/* Two stacked lines in a one-line window; the script slides them. */
+.toggleText {
+  display: block;
+  height: 1em;
+  overflow: hidden;
   white-space: nowrap;
 }
 
-/* ===================== dropdown triggers ===================== */
-/* The menus are <button>s; the shared rule above gives them the link look, and
-   this only resets what a button brings with it. */
-.trigger {
-  background: none;
-  border: 0;
-  cursor: pointer;
-  line-height: inherit;
+.toggleLines {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
-.chevron {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.12s var(--sk-ease-press);
+.toggleLines > span {
+  display: block;
+  height: 1em;
+  line-height: 1;
 }
 
-.trigger[data-state="open"] .chevron {
-  transform: rotate(180deg);
+.icon {
+  position: relative;
+  flex: none;
+  width: 14px;
+  height: 14px;
 }
 
-/* The menu panel itself is styled with Tailwind utilities at the call site
-   rather than from here. Radix portals it to <body> so it escapes `.nav`, and
-   DropdownMenuContent already carries shadcn utilities for width, background,
-   radius and shadow — a module class would have the same specificity as those,
-   so the winner would come down to stylesheet order. Passing utilities instead
-   lets tailwind-merge drop the conflicting ones outright, which is decided at
-   build time rather than by luck. */
-
-/* ===================== phone menu ===================== */
-/* Under 820px the row of links gives way to a single Menu button
-   (mobile-menu.tsx) holding all of them. */
-.mobileMenu {
-  display: none;
+.iconLine {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(50% - 1px);
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
 }
 
-.menuIcon {
-  width: 20px;
-  height: 20px;
+/* ===================== side panel ===================== */
+/* Fixed to the viewport and clipped, so the off-screen layers never add a
+   horizontal scrollbar. Its top is set by script to wherever the bar ends.
+   z-index 50 puts it over page content; the bar stays visible above it. */
+.layers {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  width: min(100vw, 480px);
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-@media (max-width: 820px) {
-  .navLinks {
-    display: none;
-  }
-  .mobileMenu {
-    display: inline-flex;
-  }
-  .mobileMenu .trigger {
-    border: 3px solid var(--sk-outline);
-    padding: 6px 14px;
-  }
+.layer,
+.panel {
+  position: absolute;
+  inset: 0;
+  border-left: 3px solid var(--sk-outline);
+}
+
+.panel {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--sk-space-5) var(--sk-space-4) var(--sk-space-7);
+  background: var(--sk-surface);
+  pointer-events: auto;
+}
+
+.list,
+.sub {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list {
+  gap: var(--sk-space-4);
+}
+
+.sub {
+  gap: 2px;
+  margin-top: var(--sk-space-1);
+}
+
+/* Each label slides up out of its own clip, which is what makes the stagger
+   read as lines being drawn rather than fading in. */
+.clip {
+  display: block;
+  overflow: hidden;
+}
+
+.label {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+.bigLink,
+.heading {
+  font-family: var(--sk-font-display);
+  font-size: clamp(30px, 8.6vw, 40px);
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.bigLink,
+.subLink {
+  display: block;
+  width: fit-content;
+  padding: 4px 12px;
+  border-radius: var(--sk-radius-md);
+  color: var(--sk-ink);
+  text-decoration: none;
+  transition:
+    background-color 0.12s var(--sk-ease-press),
+    color 0.12s var(--sk-ease-press);
+}
+
+.bigLink:hover,
+.subLink:hover {
+  background: var(--sk-yellow);
+  color: var(--sk-on-yellow);
+}
+
+/* Inset, because the clip would cut an outside ring off. */
+.bigLink:focus-visible,
+.subLink:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: -3px;
+}
+
+.bigLink[aria-current="page"],
+.subLink[aria-current="page"] {
+  background: var(--sk-sand);
+}
+
+.bigLink[aria-current="page"]:hover,
+.subLink[aria-current="page"]:hover {
+  background: var(--sk-yellow);
+}
+
+/* A group's name is not a link, so it takes the teal instead of the ink. */
+.heading {
+  padding: 4px 12px;
+  color: var(--sk-teal);
+}
+
+.subLink {
+  font-family: var(--sk-font-ui);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  padding: 7px 12px;
+  border-radius: var(--sk-radius-pill);
 }
 
 @media (max-width: 420px) {
@@ -161,5 +267,13 @@
   .nav .mark .disc {
     width: 34px;
     height: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .bigLink,
+  .subLink {
+    transition: none;
   }
 }

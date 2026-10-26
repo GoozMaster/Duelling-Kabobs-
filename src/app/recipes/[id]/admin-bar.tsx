@@ -50,9 +50,9 @@ export function AdminBar({ id, title, ingredientCount, needsReview }: Props) {
   }
 
   return (
-    <div className="border-border bg-[var(--sk-sand)] flex flex-col gap-3 rounded-[var(--sk-radius-md)] border-2 p-3">
+    <div className="flex flex-col gap-3 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-sand)] px-4 py-3">
       <div className="flex flex-wrap items-center gap-2">
-        <span className="text-sm font-medium">Admin</span>
+        <span className="text-base font-semibold">Admin</span>
 
         <Button asChild size="sm" variant="outline" className="border-border border-2">
           <Link href={`/admin/recipes/${id}/edit`}>Edit</Link>

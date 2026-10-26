@@ -66,9 +66,10 @@
   z-index: 1;
   display: grid;
   align-items: center;
-  /* The first screen, less the nav. Capped so a very tall window does not
-     strand the hero in the middle of a cream field. */
-  min-height: min(calc(100svh - 67px), 880px);
+  /* The first screen, less the nav. Capped, and tied to the width too, so a
+     tall window or a portrait tablet does not strand the hero in the middle of
+     a cream field. */
+  min-height: min(calc(100svh - 67px), 880px, 62vw);
   padding-block: var(--sk-space-8);
 }
 
