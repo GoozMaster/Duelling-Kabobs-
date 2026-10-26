@@ -4,169 +4,96 @@
   gap: var(--sk-space-5);
 }
 
-/* The picture frame around the whole thing — 4px, the scene weight, because
-   this is a window onto footage rather than a piece of UI chrome. */
+/* The wall's window. 4px, the scene weight: this is a picture of a place, not a
+   piece of UI chrome. The wall inside clips to it. */
 .frame {
-  position: relative;
-  overflow: hidden;
+  height: clamp(380px, 38vw, 520px);
   border: 4px solid var(--sk-outline);
   border-radius: var(--sk-radius-lg);
   box-shadow: var(--sk-shadow-pop);
-  background: var(--sk-gold);
-  min-height: 420px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--sk-space-5);
-  padding: var(--sk-space-6) 0;
-}
-
-/* A centred square at the frame's height, on the gold. The clip is 300px
-   square; stretched to cover a 1200px frame it was a smear. */
-.video,
-.still {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: auto;
-  aspect-ratio: 1;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-  transform: translateX(-50%);
-}
-
-.scrim {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: var(--sk-outline);
-  opacity: 0.55;
-  transition: opacity 0.4s var(--sk-ease-press);
-}
-
-.scrimDeep {
-  opacity: 0.78;
-}
-
-/* contain: paint stops the scrim and video being repainted every frame while
-   the strip moves underneath them. */
-.viewport {
-  position: relative;
-  z-index: 2;
+  background: var(--sk-sand);
   overflow: hidden;
-  contain: paint;
-  padding: var(--sk-space-4) 0;
 }
 
-/* The centre line the winner lands under. Deliberately a thin bar rather than
-   a box: a box implies a slot the tile must fit, and the landing is jittered. */
-.marker {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  margin-left: -1.5px;
-  background: var(--sk-yellow);
-  box-shadow: 0 0 0 1px var(--sk-outline);
-  z-index: 3;
-  pointer-events: none;
-}
-
-.strip {
-  display: flex;
-  gap: var(--gap);
-  /* The transition itself is written by JavaScript, which owns the duration and
-     has to be able to switch it off to reposition the strip. Declaring it here
-     too would fight that. */
-  will-change: transform;
-}
-
+/* One tile. Fills the slot the wall gives it; the slot owns the gap. */
 .tile {
-  flex: 0 0 var(--tile);
-  width: var(--tile);
-  min-height: 108px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--sk-space-1);
-  padding: var(--sk-space-3);
+  align-items: center;
+  gap: var(--sk-space-3);
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--sk-space-3);
   background: var(--sk-surface-raised);
+  color: var(--sk-ink);
   border: 3px solid var(--sk-outline);
   border-radius: var(--sk-radius-md);
   box-shadow: var(--sk-shadow-sticker);
-  transform: scale(0.9);
   transition:
-    transform 0.36s var(--sk-ease-land),
-    box-shadow 0.36s var(--sk-ease-land);
+    transform 0.4s var(--sk-ease-land),
+    box-shadow 0.4s var(--sk-ease-land),
+    background 0.2s;
 }
 
-/* The overshoot curve is what makes this read as "popping forward" rather than
-   growing — which is exactly what --sk-ease-land exists for. */
-.tileWon {
-  transform: scale(1);
-  box-shadow: var(--sk-shadow-pop);
-  background: var(--sk-yellow);
-  color: var(--sk-on-yellow);
+.disc {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-disc);
+  overflow: hidden;
+  background: var(--sk-surface);
 }
 
 .tileTitle {
+  font-family: var(--sk-font-ui);
   font-weight: 600;
-  font-size: 14px;
-  line-height: 1.25;
-  color: var(--sk-ink);
+  font-size: 15px;
+  line-height: 1.15;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  overflow: hidden;
+  overflow-wrap: anywhere;
 }
 
-.tileWon .tileTitle {
+/* The landed tile. The wall sets data-active on the slot around it. The
+   overshoot curve reads as popping forward, not growing. */
+[data-active="true"] > .tile {
+  background: var(--sk-yellow);
   color: var(--sk-on-yellow);
+  box-shadow: var(--sk-shadow-pop);
+  transform: scale(1.14);
 }
 
-.tileCuisine {
-  font-size: 13px;
-  color: var(--sk-ink-muted);
-}
-
-.tileWon .tileCuisine {
-  color: var(--sk-on-yellow);
-  opacity: 0.75;
-}
-
-.result {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  justify-content: center;
-  padding: 0 var(--sk-space-5);
-}
-
-.status {
-  font-family: var(--sk-font-display);
-  font-size: 18px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--sk-surface);
-}
-
-.card {
+.dock {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sk-space-3);
-  padding: var(--sk-space-5) var(--sk-space-6);
+  justify-content: center;
+  gap: var(--sk-space-4);
+  min-height: 96px;
+}
+
+/* The result: same sticker card as before, laid out as one row on a wide
+   screen so it costs little height. */
+.dockWon {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sk-space-4) var(--sk-space-6);
+  padding: var(--sk-space-4) var(--sk-space-5);
   background: var(--sk-surface-raised);
   border: 4px solid var(--sk-outline);
   border-radius: var(--sk-radius-lg);
   box-shadow: var(--sk-shadow-pop);
-  text-align: center;
-  max-width: 420px;
   animation: cardIn 0.36s var(--sk-ease-land) both;
 }
 
 @keyframes cardIn {
   from {
     opacity: 0;
-    transform: translateY(12px) scale(0.96);
+    transform: translateY(12px) scale(0.97);
   }
   to {
     opacity: 1;
@@ -174,42 +101,141 @@
   }
 }
 
-.cardKicker {
+.pick {
+  display: flex;
+  align-items: center;
+  gap: var(--sk-space-4);
+  min-width: 0;
+}
+
+.pickDisc {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-disc);
+  overflow: hidden;
+  background: var(--sk-surface);
+}
+
+.pickText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.pickKicker {
   font-size: 15px;
   font-weight: 600;
   color: var(--sk-teal);
 }
 
-.cardTitle {
+.pickTitle {
   font-family: var(--sk-font-display);
-  font-size: clamp(20px, 4vw, 28px);
+  font-size: clamp(20px, 3vw, 28px);
   line-height: 1.1;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   color: var(--sk-ink);
+  overflow-wrap: anywhere;
 }
 
-.cardActions {
+.pickCuisine {
+  font-size: 15px;
+  color: var(--sk-ink-muted);
+}
+
+.actions {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--sk-space-3);
-  margin-top: var(--sk-space-2);
+  gap: var(--sk-space-4);
+}
+
+/* Pill, 3px ink border, hard offset shadow — the home page's .btn. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sk-font-ui);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-pill);
+  padding: 14px 26px;
+  cursor: pointer;
+  background: var(--sk-surface-raised);
+  color: var(--sk-ink);
+  box-shadow: var(--sk-shadow-sticker);
+  transition:
+    transform 0.18s var(--sk-ease-press),
+    box-shadow 0.18s var(--sk-ease-press),
+    background 0.18s;
+}
+
+.btnPrimary {
+  background: var(--sk-yellow);
+  color: var(--sk-on-yellow);
+}
+
+.btnBig {
+  font-size: 20px;
+  padding: 16px 38px;
+}
+
+.btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--sk-shadow-pop);
+}
+
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--sk-shadow-press);
+}
+
+.btn[aria-disabled="true"] {
+  cursor: progress;
+  transform: none;
+  box-shadow: var(--sk-shadow-press);
+  opacity: 0.7;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--sk-focus-ring);
+  outline-offset: 3px;
 }
 
 @media (max-width: 640px) {
-  .frame {
-    min-height: 360px;
+  .tile {
+    gap: var(--sk-space-2);
+    padding: 0 var(--sk-space-2);
+  }
+  .disc {
+    width: 38px;
+    height: 38px;
+  }
+  .tileTitle {
+    font-size: 13px;
+  }
+  .dockWon {
+    flex-direction: column;
+    text-align: center;
+  }
+  .pick {
+    flex-direction: column;
   }
 }
 
-/* Anyone who has asked for less motion gets the result without the reel. The
-   card's entrance goes too — it is the same request. */
+/* No drift, no spin; the card's entrance and the tile pop go with them. */
 @media (prefers-reduced-motion: reduce) {
-  .card {
+  .dockWon {
     animation: none;
   }
   .tile,
-  .scrim {
+  .btn {
     transition: none;
   }
 }
