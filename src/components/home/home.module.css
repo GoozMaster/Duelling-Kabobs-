@@ -664,20 +664,6 @@
   }
 }
 
-/* ---- shared reveal ---- */
-.reveal {
-  opacity: 0;
-  transform: translateY(26px);
-  transition:
-    opacity 0.45s linear,
-    transform 0.62s var(--sk-ease-land);
-}
-
-.reveal.in {
-  opacity: 1;
-  transform: none;
-}
-
 /* ===================== reduced motion =====================
    Not a degraded experience: every loop stops, every entrance becomes a plain
    appearance. All content stays reachable; the clouds rest where they are. */
@@ -689,8 +675,7 @@
     transition: none !important;
   }
 
-  .cz .d,
-  .reveal {
+  .cz .d {
     transform: none !important;
     opacity: 1 !important;
   }

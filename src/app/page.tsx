@@ -7,7 +7,7 @@ import s from "@/components/home/home.module.css";
 import { scenes } from "@/components/home/logos";
 import { Overture } from "@/components/home/overture";
 import { type Pick, RecipeHighlight } from "@/components/home/recipe-highlight";
-import { Reveal } from "@/components/home/reveal";
+import AnimatedContent from "@/components/animated-content";
 import { SkyDrift } from "@/components/home/sky-drift";
 import { Sunburst } from "@/components/home/sunburst";
 import { SiteFooter } from "@/components/site-footer/site-footer";
@@ -144,7 +144,7 @@ export default async function Home() {
           be shown than read. Rendered from video/ — see video/README.md. */}
       <section className={s.tour} id="tour" aria-labelledby="tour-title">
         <div className={`page-wrap ${s.tourGrid}`}>
-          <Reveal>
+          <AnimatedContent distance={60} duration={0.9}>
             <div className={s.head}>
               <div>
                 <h2 className={s.sec} id="tour-title">
@@ -158,29 +158,30 @@ export default async function Home() {
               <li>Browse every recipe by cuisine, on a spinning globe, or at random.</li>
               <li>Check what is in the pantry, the fridge and the freezer.</li>
             </ul>
-          </Reveal>
+          </AnimatedContent>
           <ExplainerVideo />
         </div>
       </section>
 
       <div className={s.sky}>
-
         <section className={s.skySection} id="picks" aria-labelledby="picks-title">
           <div className="page-wrap">
-            <div className={s.head}>
-              <div>
-                <h2 className={s.sec} id="picks-title">
-                  Three recipes to try
-                </h2>
-                <p className={s.sub}>
-                  Picked at random from the collection. Reload the page for
-                  three more.
-                </p>
+            <AnimatedContent distance={50} duration={0.8}>
+              <div className={s.head}>
+                <div>
+                  <h2 className={s.sec} id="picks-title">
+                    Three recipes to try
+                  </h2>
+                  <p className={s.sub}>
+                    Picked at random from the collection. Reload the page for
+                    three more.
+                  </p>
+                </div>
+                <Link className={s.more} href="/recipes">
+                  See all recipes
+                </Link>
               </div>
-              <Link className={s.more} href="/recipes">
-                See all recipes
-              </Link>
-            </div>
+            </AnimatedContent>
             <RecipeHighlight picks={picks} />
           </div>
         </section>
@@ -189,17 +190,19 @@ export default async function Home() {
 
         <section className={s.skySection} id="cuisines" aria-labelledby="cuisines-title">
           <div className="page-wrap">
-            <div className={s.head}>
-              <div>
-                <h2 className={s.sec} id="cuisines-title">
-                  Browse by cuisine
-                </h2>
-                <p className={s.sub}>The five cuisines with the most recipes.</p>
+            <AnimatedContent distance={50} duration={0.8}>
+              <div className={s.head}>
+                <div>
+                  <h2 className={s.sec} id="cuisines-title">
+                    Browse by cuisine
+                  </h2>
+                  <p className={s.sub}>The five cuisines with the most recipes.</p>
+                </div>
+                <Link className={s.more} href="/recipes/by-cuisine">
+                  See every cuisine on the globe
+                </Link>
               </div>
-              <Link className={s.more} href="/recipes/by-cuisine">
-                See every cuisine on the globe
-              </Link>
-            </div>
+            </AnimatedContent>
             <CuisineDiscs cuisines={cuisines} />
           </div>
         </section>

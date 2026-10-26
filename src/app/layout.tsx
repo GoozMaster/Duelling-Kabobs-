@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Geist, Geist_Mono, Luckiest_Guy } from "next/font/google";
 
+import { ClickSpark } from "@/components/click-spark";
 import { CuisineSound } from "@/components/cuisine-sound";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -57,6 +58,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* sonner ships its own Toaster but nothing rendered it, so every
             toast() in the app was a no-op until this landed. */}
         <Toaster />
+        {/* One click-through layer over the viewport for the click sparks. */}
+        <ClickSpark />
       </body>
     </html>
   );

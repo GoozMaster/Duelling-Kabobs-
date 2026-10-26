@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import AnimatedContent from "@/components/animated-content";
 import { CuisineArt } from "@/components/cuisine-art";
 
 import s from "./home.module.css";
@@ -29,7 +30,8 @@ export function RecipeHighlight({ picks }: { picks: Pick[] }) {
   }
 
   return (
-    <div className={s.picks}>
+    // The three cards arrive one after another as the section scrolls in.
+    <AnimatedContent className={s.picks} distance={70} duration={0.7} stagger={0.12}>
       {picks.map((pick) => (
         <Link key={pick.id} className={s.pick} href={`/recipes/${pick.id}`}>
           <span className={s.pickArt}>
@@ -45,6 +47,6 @@ export function RecipeHighlight({ picks }: { picks: Pick[] }) {
           </span>
         </Link>
       ))}
-    </div>
+    </AnimatedContent>
   );
 }
