@@ -1,6 +1,6 @@
 {
-  "name": "Chef App",
-  "short_name": "Chef",
+  "name": "Down With Hunger",
+  "short_name": "Down With Hunger",
   "description": "Pantry-matching recipe manager — find what you can cook with what you already have.",
   "start_url": "/",
   "display": "standalone",

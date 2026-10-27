@@ -1,4 +1,4 @@
-# Chef App
+# Down With Hunger
 
 Pantry-matching recipe manager — find what you can cook with what you already have.
 
