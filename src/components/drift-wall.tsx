@@ -24,8 +24,9 @@ import {
  *
  * Changed:
  *  - a tile renders whatever `renderTile` returns instead of an `image` URL;
- *  - the hover / focus / link behaviour is gone — the wall is decoration, so it
- *    is aria-hidden and nothing in it is focusable;
+ *  - the hover / focus / link behaviour is gone — the wall is aria-hidden and
+ *    nothing in it is focusable, but pressing a tile calls `onSelect`, even
+ *    while the wall is drifting or spinning;
  *  - the fade mask, dimming and overlay are gone, so tiles stay fully legible;
  *  - an imperative `spinTo(id)`: every column accelerates hard, then brakes, and
  *    the column holding `id` is steered so that tile stops on the centre line.
@@ -58,6 +59,8 @@ export interface DriftWallProps<T extends { id: string }> {
   variance?: number
   /** Pointer tilt strength; 0 turns it off. */
   parallax?: number
+  /** Called with a tile's id when it is pressed and released on, even mid-spin. */
+  onSelect?: (id: string) => void
   className?: string
   style?: CSSProperties
 }
@@ -148,6 +151,7 @@ export default function DriftWall<T extends { id: string }>({
   speed = 34,
   variance = 0.45,
   parallax = 0.5,
+  onSelect,
   className,
   style,
 }: DriftWallProps<T>) {
@@ -176,10 +180,14 @@ export default function DriftWall<T extends { id: string }>({
   }, [])
 
   // Narrow frames get smaller tiles rather than fewer columns of cramped ones.
-  const k = size.w > 0 && size.w < 640 ? 0.74 : 1
+  const narrow = size.w > 0 && size.w < 640
+  const k = narrow ? 0.74 : size.w >= 1000 ? 1.1 : 1
   const th = Math.round(tileHeight * k)
   const g = Math.round(gap * k)
   const unit = th + g
+  // The turned plane projects right-heavy (empty strip on the left, last column
+  // clipped on the right), so it is nudged left to sit centred in the frame.
+  const shift = narrow ? -20 : -12
 
   // Exactly as many columns as fit, stretched to span the frame. Every column
   // centre therefore lands inside the frame, so whichever column holds the
@@ -252,9 +260,9 @@ export default function DriftWall<T extends { id: string }>({
       const plane = planeRef.current
       if (!plane) return
       plane.style.transform =
-        `translateX(${-turn * 4}px) scale(${zoom}) rotateX(${tilt + py}deg) rotateY(${turn + px}deg) translateZ(${-depth}px)`
+        `translateX(${shift}px) scale(${zoom}) rotateX(${tilt + py}deg) rotateY(${turn + px}deg) translateZ(${-depth}px)`
     },
-    [zoom, tilt, turn, depth],
+    [zoom, tilt, turn, depth, shift],
   )
 
   const writeTracks = useCallback(() => {
@@ -412,6 +420,20 @@ export default function DriftWall<T extends { id: string }>({
     [locate, offsetFor, reduced, writeTracks],
   )
 
+  // A tile moves under the pointer while spinning, so press and release can land
+  // on different tiles and a per-tile click would be lost. Remember the tile
+  // under the press; the click that bubbles to the wall acts on that one.
+  const pressed = useRef<string | null>(null)
+  const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    const tile = (e.target as HTMLElement).closest<HTMLElement>("[data-tile-id]")
+    pressed.current = tile?.dataset.tileId ?? null
+  }
+  const onClick = () => {
+    const id = pressed.current
+    pressed.current = null
+    if (id) onSelect?.(id)
+  }
+
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
     if (reduced || parallax <= 0) return
     const r = containerRef.current?.getBoundingClientRect()
@@ -425,6 +447,8 @@ export default function DriftWall<T extends { id: string }>({
       className={className}
       aria-hidden="true"
       onPointerMove={onPointerMove}
+      onPointerDown={onPointerDown}
+      onClick={onClick}
       onPointerLeave={() => (pointer.current = { x: 0, y: 0 })}
       style={{
         position: "relative",
