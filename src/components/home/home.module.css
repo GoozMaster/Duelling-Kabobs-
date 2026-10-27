@@ -23,7 +23,9 @@
   font-family: var(--sk-font-ui);
   font-size: 17px;
   line-height: 1.6;
-  overflow-x: clip;
+  /* Both axes: the sun's rays are far taller than the page and would otherwise
+     stretch the scroll height past the footer into blank space. */
+  overflow: clip;
 }
 
 .home h1,
