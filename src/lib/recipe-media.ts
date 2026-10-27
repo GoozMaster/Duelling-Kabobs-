@@ -69,6 +69,35 @@ export function youtubeEmbedUrl(id: string, start?: number | null): string {
   return `https://www.youtube-nocookie.com/embed/${id}?${params}`
 }
 
+const INSTAGRAM_HOSTS = new Set(["instagram.com", "www.instagram.com", "m.instagram.com"])
+const INSTAGRAM_CODE = /^[A-Za-z0-9_-]{5,40}$/
+
+export type InstagramPost = { kind: "p" | "reel" | "tv"; code: string }
+
+/**
+ * Pulls the post type and shortcode out of an Instagram link:
+ * /p/CODE, /reel/CODE, /reels/CODE, /tv/CODE, or the same under a username
+ * (/someone/reel/CODE). The shortcode is [A-Za-z0-9_-] only, so it can only
+ * ever build an instagram.com embed URL. Returns null for anything else.
+ */
+export function instagramPost(raw: string | null | undefined): InstagramPost | null {
+  const url = parseUrl(raw)
+  if (!url || !INSTAGRAM_HOSTS.has(url.hostname.toLowerCase())) return null
+
+  const parts = url.pathname.split("/").filter(Boolean)
+  const at = parts.findIndex((part) => ["p", "reel", "reels", "tv"].includes(part))
+  const code = at >= 0 ? parts[at + 1] : undefined
+  if (!code || !INSTAGRAM_CODE.test(code)) return null
+
+  const type = parts[at]
+  return { kind: type === "reels" ? "reel" : (type as InstagramPost["kind"]), code }
+}
+
+/** The official embeddable player for an Instagram post or reel. */
+export function instagramEmbedUrl({ kind, code }: InstagramPost): string {
+  return `https://www.instagram.com/${kind}/${code}/embed/`
+}
+
 /** An https URL for a dish photo, or null. http and every other scheme are refused. */
 export function safeImageUrl(raw: string | null | undefined): string | null {
   const value = raw?.trim()
