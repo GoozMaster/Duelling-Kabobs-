@@ -1,10 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { type CuisineDisc, CuisineDiscs } from "@/components/home/cuisine-discs";
 import { ExplainerVideo } from "@/components/home/explainer-video";
+import { HeroClip } from "@/components/home/hero-clip";
 import s from "@/components/home/home.module.css";
-import { scenes } from "@/components/home/logos";
 import { Overture } from "@/components/home/overture";
 import { type Pick, RecipeHighlight } from "@/components/home/recipe-highlight";
 import AnimatedContent from "@/components/animated-content";
@@ -129,11 +128,7 @@ export default async function Home() {
           <div className={s.heroart}>
             <Sunburst />
             <div className={s.panel}>
-              <Image
-                src={scenes.downWithHunger}
-                alt="Down with Hunger — a cartoon man holding a protest placard in one hand and a shawarma in the other, mid-shout"
-                priority
-              />
+              <HeroClip />
             </div>
           </div>
         </div>
