@@ -38,6 +38,8 @@ import s from "./site-nav.module.css"
 export type StaggeredMenuItem =
   | { label: string; href: string }
   | { label: string; links: MenuLink[] }
+  /** A server action, posted as a form, for things a link must not do (sign out). */
+  | { label: string; action: () => Promise<void> }
 
 export interface StaggeredMenuProps {
   /** Rendered at the left of the bar. Passed in so it can stay a server component. */
@@ -303,6 +305,16 @@ export function StaggeredMenu({
                       ))}
                     </ul>
                   </>
+                ) : "action" in item ? (
+                  <span className={s.clip}>
+                    <form action={item.action}>
+                      <button type="submit" className={`${s.bigLink} ${s.actionButton}`}>
+                        <span data-sm-label className={s.label}>
+                          {item.label}
+                        </span>
+                      </button>
+                    </form>
+                  </span>
                 ) : (
                   <span className={s.clip}>{renderLink(item, s.bigLink)}</span>
                 )}

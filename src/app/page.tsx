@@ -106,8 +106,8 @@ export default async function Home() {
         <div className={`page-wrap ${s.heroGrid}`}>
           <div className={s.heroCopy}>
             <h1 className={s.big}>
-              WHAT CAN
-              <br />I MAKE?
+              LET’S GET
+              <br />COOKING!
             </h1>
             <p className={s.lede}>
               Tell it what is in your pantry, fridge and freezer, and it shows
@@ -130,8 +130,8 @@ export default async function Home() {
             <Sunburst />
             <div className={s.panel}>
               <Image
-                src={scenes.downWithHungerHero}
-                alt="Down with Hunger — a cartoon man holding a blank protest sign in one hand and a shawarma in the other, shouting the slogan in a speech bubble"
+                src={scenes.downWithHunger}
+                alt="Down with Hunger — a cartoon man holding a protest placard in one hand and a shawarma in the other, mid-shout"
                 priority
               />
             </div>

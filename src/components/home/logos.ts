@@ -2,7 +2,6 @@ import type { StaticImageData } from "next/image";
 
 import chineseNoodles from "@/assets/logos/chinese-noodles.jpg";
 import downWithHunger from "@/assets/logos/down-with-hunger.png";
-import downWithHungerHero from "@/assets/logos/down-with-hunger-hero.png";
 import downWithHungerMark from "@/assets/logos/down-with-hunger-mark.png";
 import duellingKebabs from "@/assets/logos/duelling-kebabs.png";
 import frenchBaker from "@/assets/logos/french-baker.jpg";
@@ -22,9 +21,6 @@ export const scenes = {
   downWithHunger,
   // The protester's head, cropped from downWithHunger for the nav disc.
   downWithHungerMark,
-  // The hero crop: the placard lettering (cut off by the head) is painted out so
-  // the speech bubble is the only place the name appears in the artwork.
-  downWithHungerHero,
   // Kept for the /dueling-kebabs page; the main site no longer shows it.
   duellingKebabs,
 } satisfies Record<string, StaticImageData>;

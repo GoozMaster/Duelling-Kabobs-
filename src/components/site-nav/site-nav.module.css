@@ -227,6 +227,16 @@
   color: var(--sk-on-yellow);
 }
 
+/* The sign-out button is a <button> dressed as a bigLink. */
+.actionButton {
+  border: 0;
+  background: none;
+  font: inherit;
+  font-family: var(--sk-font-display);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 /* Inset, because the clip would cut an outside ring off. */
 .bigLink:focus-visible,
 .subLink:focus-visible {

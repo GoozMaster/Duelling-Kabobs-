@@ -1,7 +1,10 @@
 import Image from "next/image"
 import Link from "next/link"
 
+import { signOut } from "@/app/login/actions"
 import { scenes } from "@/components/home/logos"
+import { isAdmin } from "@/lib/auth"
+import { createClient } from "@/lib/supabase/server"
 
 import { recipeItems, stockEverything, stockSections } from "./links"
 import s from "./site-nav.module.css"
@@ -23,16 +26,27 @@ import { StaggeredMenu, type StaggeredMenuItem } from "./staggered-menu"
  * renders it itself instead; the admin routes get it from admin/layout.tsx.
  */
 
-const items: StaggeredMenuItem[] = [
+const baseItems: StaggeredMenuItem[] = [
   { label: "What can I make?", href: "/what-can-i-make" },
   { label: "Recipes", links: recipeItems },
   { label: "What's in stock", links: [stockEverything, ...stockSections] },
-  // Admin sign-in. Only one account exists and it is not self-serve, so this
-  // is a link for the site owner rather than a call to action.
-  { label: "Log in", href: "/login" },
 ]
 
-export function SiteNav() {
+export async function SiteNav() {
+  // Admin sign-in. Only one account exists and it is not self-serve, so this
+  // is for the site owner rather than a call to action. Once signed in it turns
+  // into Log out so it is clear a session is open.
+  const supabase = await createClient()
+  const { data } = await supabase.auth.getUser()
+  const signedIn = isAdmin(data.user?.email)
+
+  const items: StaggeredMenuItem[] = [
+    ...baseItems,
+    signedIn
+      ? { label: "Log out", action: signOut }
+      : { label: "Log in", href: "/login" },
+  ]
+
   return (
     <StaggeredMenu
       items={items}
