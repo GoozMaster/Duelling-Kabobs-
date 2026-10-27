@@ -7,7 +7,7 @@
 /* The wall's window. 4px, the scene weight: this is a picture of a place, not a
    piece of UI chrome. The wall inside clips to it. */
 .frame {
-  height: clamp(380px, 38vw, 520px);
+  height: clamp(420px, 62vh, 780px);
   border: 4px solid var(--sk-outline);
   border-radius: var(--sk-radius-lg);
   box-shadow: var(--sk-shadow-pop);
@@ -25,6 +25,7 @@
   padding: 0 var(--sk-space-3);
   background: var(--sk-surface-raised);
   color: var(--sk-ink);
+  cursor: pointer;
   border: 3px solid var(--sk-outline);
   border-radius: var(--sk-radius-md);
   box-shadow: var(--sk-shadow-sticker);
@@ -209,6 +210,16 @@
 }
 
 @media (max-width: 640px) {
+  /* Wall and button fit the screen together instead of the button falling below the fold. */
+  .stage {
+    gap: var(--sk-space-4);
+  }
+  .frame {
+    height: clamp(300px, 46svh, 420px);
+  }
+  .dock {
+    min-height: 0;
+  }
   .tile {
     gap: var(--sk-space-2);
     padding: 0 var(--sk-space-2);

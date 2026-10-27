@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 import { CuisineArt } from "@/components/cuisine-art"
@@ -28,6 +29,7 @@ function renderTile(recipe: Recipe) {
 }
 
 export function Spinner({ recipes }: { recipes: Recipe[] }) {
+  const router = useRouter()
   const reduced = usePrefersReducedMotion()
   const wallRef = useRef<DriftWallHandle>(null)
   const run = useRef(0)
@@ -83,7 +85,12 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
   return (
     <div className={s.stage}>
       <div className={s.frame}>
-        <DriftWall ref={wallRef} items={recipes} renderTile={renderTile} />
+        <DriftWall
+          ref={wallRef}
+          items={recipes}
+          renderTile={renderTile}
+          onSelect={(id) => router.push(`/recipes/${id}`)}
+        />
       </div>
 
       <div className={`${s.dock} ${winner ? s.dockWon : ""}`}>
