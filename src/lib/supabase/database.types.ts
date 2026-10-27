@@ -107,6 +107,8 @@ export type Database = {
           needs_review: boolean
           source_url: string | null
           title: string
+          youtube_url: string | null
+          image_url: string | null
         }
         Insert: {
           created_at?: string
@@ -116,6 +118,8 @@ export type Database = {
           needs_review?: boolean
           source_url?: string | null
           title: string
+          youtube_url?: string | null
+          image_url?: string | null
         }
         Update: {
           created_at?: string
@@ -125,6 +129,8 @@ export type Database = {
           needs_review?: boolean
           source_url?: string | null
           title?: string
+          youtube_url?: string | null
+          image_url?: string | null
         }
         Relationships: [
           {
