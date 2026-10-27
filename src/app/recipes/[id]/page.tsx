@@ -15,6 +15,7 @@ import { viewerPantry } from "@/lib/viewer-pantry"
 
 import { AdminBar } from "./admin-bar"
 import { IngredientList } from "./ingredient-list"
+import { MethodSteps } from "./method-steps"
 
 // The sticker pill for links that leave the page: the cuisine, the stub's ways out.
 const wayOn =
@@ -222,26 +223,7 @@ export default async function RecipeDetailPage({
                   No method written up for this one yet.
                 </p>
               ) : (
-                // 18px: this is the part of the page people read at the
-                // counter, often from arm's length. Each step gets a marker
-                // rather than a number, because the stored text often carries
-                // its own numbering (see lib/instructions.ts).
-                <div className="flex max-w-[68ch] flex-col gap-5">
-                  {blocks.map((block, index) =>
-                    block.kind === "heading" ? (
-                      <h3 key={index} className="font-display pt-4 text-xl first:pt-0">
-                        {block.text}
-                      </h3>
-                    ) : (
-                      <p
-                        key={index}
-                        className="relative pl-8 text-lg leading-[1.7] before:absolute before:top-[0.55em] before:left-0 before:size-3.5 before:rounded-full before:border-2 before:border-[var(--sk-outline)] before:bg-[var(--sk-yellow)] before:content-['']"
-                      >
-                        {block.text}
-                      </p>
-                    ),
-                  )}
-                </div>
+                <MethodSteps blocks={blocks} />
               )}
             </section>
           </div>
