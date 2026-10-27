@@ -21,7 +21,7 @@ import { RecipeMedia } from "./recipe-media"
 
 // The sticker pill for links that leave the page: the cuisine, the stub's ways out.
 const wayOn =
-  "inline-flex items-center rounded-[var(--sk-radius-pill)] border-2 border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-4 py-1.5 text-base font-semibold shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:-translate-y-0.5 hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none"
+  "inline-flex items-center capitalize rounded-[var(--sk-radius-pill)] border-2 border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-4 py-1.5 text-base font-semibold shadow-[var(--sk-shadow-press)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:-translate-y-0.5 hover:shadow-[var(--sk-shadow-sticker)] focus-visible:ring-[3px] focus-visible:ring-ring/50 focus-visible:outline-none"
 
 export async function generateMetadata({
   params,

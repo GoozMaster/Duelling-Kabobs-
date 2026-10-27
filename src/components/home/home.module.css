@@ -112,6 +112,7 @@
 
 .btn {
   display: inline-flex;
+  text-transform: capitalize;
   align-items: center;
   font-family: var(--sk-font-ui);
   font-size: 17px;
@@ -219,6 +220,7 @@
 
 .more {
   display: inline-flex;
+  text-transform: capitalize;
   align-items: center;
   font-weight: 600;
   font-size: 17px;

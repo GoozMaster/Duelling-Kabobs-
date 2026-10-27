@@ -61,6 +61,8 @@ export interface DriftWallProps<T extends { id: string }> {
   parallax?: number
   /** Called with a tile's id when it is pressed and released on, even mid-spin. */
   onSelect?: (id: string) => void
+  /** Fires the moment a tile is clicked, before `onSelect` follows. */
+  onPress?: (id: string) => void
   className?: string
   style?: CSSProperties
 }
@@ -152,6 +154,7 @@ export default function DriftWall<T extends { id: string }>({
   variance = 0.45,
   parallax = 0.5,
   onSelect,
+  onPress,
   className,
   style,
 }: DriftWallProps<T>) {
@@ -426,12 +429,26 @@ export default function DriftWall<T extends { id: string }>({
   const pressed = useRef<string | null>(null)
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     const tile = (e.target as HTMLElement).closest<HTMLElement>("[data-tile-id]")
-    pressed.current = tile?.dataset.tileId ?? null
+    // Anywhere on the tile itself counts, its border and text included; the
+    // slot's own padding is the gap between tiles and selects nothing.
+    pressed.current = tile && e.target !== tile ? (tile.dataset.tileId ?? null) : null
   }
+  // The chosen tile pops out and lights up (the same look as a landed winner)
+  // for a beat before the page opens, so the click reads as a choice.
+  const opening = useRef<number | null>(null)
+  useEffect(() => () => {
+    if (opening.current !== null) window.clearTimeout(opening.current)
+  }, [])
   const onClick = () => {
     const id = pressed.current
     pressed.current = null
-    if (id) onSelect?.(id)
+    if (!id || opening.current !== null) return
+    setActiveId(id)
+    onPress?.(id)
+    opening.current = window.setTimeout(() => {
+      opening.current = null
+      onSelect?.(id)
+    }, 450)
   }
 
   const onPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {

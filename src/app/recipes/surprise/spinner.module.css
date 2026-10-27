@@ -11,8 +11,30 @@
   border: 4px solid var(--sk-outline);
   border-radius: var(--sk-radius-lg);
   box-shadow: var(--sk-shadow-pop);
-  background: var(--sk-sand);
+  /* The home page's open sky, with the same clouds drifting behind the tiles. */
+  position: relative;
+  isolation: isolate;
+  background: var(--sk-sky);
   overflow: hidden;
+}
+
+.skyLane {
+  position: absolute;
+  inset-inline: 0;
+  z-index: 0;
+}
+
+.skyLane:first-child {
+  top: 4%;
+}
+
+.skyLane:nth-child(2) {
+  bottom: 4%;
+}
+
+.frame > :last-child {
+  position: relative;
+  z-index: 1;
 }
 
 /* One tile. Fills the slot the wall gives it; the slot owns the gap. */
@@ -157,6 +179,7 @@
 /* Pill, 3px ink border, hard offset shadow — the home page's .btn. */
 .btn {
   display: inline-flex;
+  text-transform: capitalize;
   align-items: center;
   justify-content: center;
   font-family: var(--sk-font-ui);

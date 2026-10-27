@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 
 import { CuisineArt } from "@/components/cuisine-art"
 import DriftWall, { type DriftWallHandle } from "@/components/drift-wall"
+import { SkyDrift } from "@/components/home/sky-drift"
 import { usePrefersReducedMotion } from "@/components/home/use-scroll-frame"
 
 import s from "./spinner.module.css"
@@ -15,6 +16,16 @@ type Recipe = { id: string; title: string; cuisine: string | null }
 /** Longest the page waits for the wall to report it has stopped. The spin is ~3s;
     this only matters in a backgrounded tab, where animation frames are paused. */
 const GIVE_UP_MS = 8000
+
+/** The click sound. Played on the press itself, so it lands with the pop. A
+    missing file or a blocked autoplay just means no sound. */
+function playCoin() {
+  try {
+    void new Audio("/sounds/coin.mp3").play().catch(() => {})
+  } catch {
+    // No audio support: silent.
+  }
+}
 
 /** Module-level so its identity never changes and the wall's tiles stay memoised. */
 function renderTile(recipe: Recipe) {
@@ -54,6 +65,7 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
     if (reduced) {
       wallRef.current?.jumpTo(recipe.id)
       setWinner(recipe)
+      playCoin()
       return
     }
 
@@ -64,6 +76,7 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
       setSpinning(false)
       setGiveUp(null)
       setWinner(recipe)
+      playCoin()
     })
   }, [recipes, reduced, spinning])
 
@@ -85,11 +98,18 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
   return (
     <div className={s.stage}>
       <div className={s.frame}>
+        <div className={s.skyLane}>
+          <SkyDrift lane="middle" />
+        </div>
+        <div className={s.skyLane}>
+          <SkyDrift lane="end" />
+        </div>
         <DriftWall
           ref={wallRef}
           items={recipes}
           renderTile={renderTile}
           onSelect={(id) => router.push(`/recipes/${id}`)}
+          onPress={playCoin}
         />
       </div>
 

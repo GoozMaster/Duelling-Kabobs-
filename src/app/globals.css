@@ -132,6 +132,11 @@
   html {
     @apply font-sans;
   }
+  /* Button labels are Title Case everywhere. */
+  button,
+  [role="button"] {
+    text-transform: capitalize;
+  }
 }
 /* ============================================================================
    Springfield Kitchen — design system tokens

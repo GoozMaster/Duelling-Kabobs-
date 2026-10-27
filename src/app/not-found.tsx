@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 // The home page's .btn sticker, restated in utilities because home.module.css
 // is scoped to the home page.
 const btn =
-  "border-border inline-flex items-center rounded-[var(--sk-radius-pill)] border-[3px] px-5 py-2.5 text-base font-semibold shadow-[var(--sk-shadow-sticker)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[var(--sk-shadow-pop)] focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--sk-focus-ring)] focus-visible:outline-solid"
+  "border-border inline-flex items-center capitalize rounded-[var(--sk-radius-pill)] border-[3px] px-5 py-2.5 text-base font-semibold shadow-[var(--sk-shadow-sticker)] transition-[box-shadow,transform] duration-100 ease-[var(--sk-ease-press)] hover:-translate-x-[3px] hover:-translate-y-[3px] hover:shadow-[var(--sk-shadow-pop)] focus-visible:outline-[3px] focus-visible:outline-offset-2 focus-visible:outline-[var(--sk-focus-ring)] focus-visible:outline-solid"
 
 /**
  * Covers both an unmatched URL and every notFound() call — most often a recipe
