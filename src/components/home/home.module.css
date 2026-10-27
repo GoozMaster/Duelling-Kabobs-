@@ -337,16 +337,16 @@
    video's poster, a daytime frame that never re-themes. */
 .play {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sk-space-3);
+  justify-content: center;
+  gap: var(--sk-space-4);
   padding: 0;
   border: 0;
-  background: none;
+  /* The thumbnail: a plain white card over the poster until play is pressed. */
+  background: #ffffff;
   cursor: pointer;
   font: inherit;
 }
@@ -375,14 +375,17 @@
 }
 
 .playLabel {
-  font-size: 15px;
-  font-weight: 600;
-  color: #16233f;
-  background: #ffffff;
-  border: 3px solid #16233f;
-  border-radius: var(--sk-radius-pill);
-  padding: 4px 14px;
-  box-shadow: 2px 2px 0 #16233f;
+  font-family: var(--sk-font-display);
+  font-size: clamp(28px, 4.2vw, 56px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--sk-yellow);
+  /* Yellow on white needs a navy keyline to read. */
+  -webkit-text-stroke: 2px #16233f;
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0 #16233f;
 }
 
 .play:hover .playDisc {

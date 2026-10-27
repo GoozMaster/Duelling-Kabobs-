@@ -55,7 +55,7 @@ export function ExplainerVideo() {
             </svg>
           </span>
           <span className={s.playLabel} aria-hidden="true">
-            Play the tour · 2:20
+            Play The Tour
           </span>
         </button>
       )}
