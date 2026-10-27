@@ -16,6 +16,7 @@ import { viewerPantry } from "@/lib/viewer-pantry"
 import { AdminBar } from "./admin-bar"
 import { IngredientList } from "./ingredient-list"
 import { MethodSteps } from "./method-steps"
+import { RecipeMedia } from "./recipe-media"
 
 // The sticker pill for links that leave the page: the cuisine, the stub's ways out.
 const wayOn =
@@ -167,6 +168,14 @@ export default async function RecipeDetailPage({
             </div>
           </div>
         </header>
+
+        <RecipeMedia
+          id={recipe.id}
+          title={recipe.title}
+          isAdmin={isAdmin}
+          youtubeUrl={recipe.youtube_url}
+          imageUrl={recipe.image_url}
+        />
 
         {isAdmin && (
           <AdminBar
