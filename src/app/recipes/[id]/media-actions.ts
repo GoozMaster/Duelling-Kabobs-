@@ -3,13 +3,13 @@
 import { revalidatePath } from "next/cache"
 
 import { requireAdmin } from "@/lib/auth"
-import { safeImageUrl, youtubeId } from "@/lib/recipe-media"
+import { instagramPost, safeImageUrl, youtubeId } from "@/lib/recipe-media"
 import { createClient } from "@/lib/supabase/server"
 
 export type MediaActionResult = { error: string | null }
 
 /**
- * Saves a recipe's YouTube link and dish photo. Blank clears the field.
+ * Saves a recipe's YouTube or Instagram video link and dish photo. Blank clears the field.
  *
  * Kept apart from save_recipe() on purpose: the recipe form never touches these
  * columns, so editing a recipe can't wipe them. Calls requireAdmin() itself for
@@ -26,8 +26,11 @@ export async function saveRecipeMedia(
   const yt = youtube.trim()
   const img = image.trim()
 
-  if (yt && !youtubeId(yt)) {
-    return { error: "That doesn't look like a YouTube link (watch, youtu.be or shorts)." }
+  if (yt && !youtubeId(yt) && !instagramPost(yt)) {
+    return {
+      error:
+        "That doesn't look like a YouTube link (watch, youtu.be or shorts) or an Instagram post or reel.",
+    }
   }
   if (img && !safeImageUrl(img)) {
     return { error: "The photo link must be a full https:// address." }

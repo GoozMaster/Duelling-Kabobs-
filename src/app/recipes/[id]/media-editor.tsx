@@ -11,7 +11,7 @@ import { saveRecipeMedia } from "./media-actions"
 
 type Props = { id: string; youtubeUrl: string; imageUrl: string }
 
-/** Admin-only: paste a YouTube link and/or a photo link. Blank removes it. */
+/** Admin-only: paste a YouTube or Instagram link and/or a photo link. Blank removes it. */
 export function MediaEditor({ id, youtubeUrl, imageUrl }: Props) {
   const [youtube, setYoutube] = useState(youtubeUrl)
   const [image, setImage] = useState(imageUrl)
@@ -38,12 +38,12 @@ export function MediaEditor({ id, youtubeUrl, imageUrl }: Props) {
       </summary>
       <form onSubmit={handleSave} className="flex flex-col gap-4 pt-3">
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="media-youtube">YouTube link</Label>
+          <Label htmlFor="media-youtube">YouTube or Instagram link</Label>
           <Input
             id="media-youtube"
             type="url"
             inputMode="url"
-            placeholder="https://www.youtube.com/watch?v=…"
+            placeholder="https://www.youtube.com/watch?v=… or https://www.instagram.com/reel/…"
             value={youtube}
             onChange={(event) => setYoutube(event.target.value)}
           />
@@ -59,7 +59,7 @@ export function MediaEditor({ id, youtubeUrl, imageUrl }: Props) {
             onChange={(event) => setImage(event.target.value)}
           />
           <p className="text-muted-foreground text-sm">
-            Shown only when there is no YouTube link. Leave a field blank to remove it.
+            Shown only when there is no video link. Leave a field blank to remove it.
           </p>
         </div>
         <div>

@@ -1,4 +1,4 @@
-import { youtubeId } from "@/lib/recipe-media"
+import { instagramPost, youtubeId } from "@/lib/recipe-media"
 
 const EMBED_PATTERNS = [
   /youtube(?:-nocookie)?\.com\/embed\/([A-Za-z0-9_-]{11})/,
@@ -15,8 +15,9 @@ function isPublicHost(host: string): boolean {
 }
 
 /**
- * A YouTube link for a recipe, taken from its source link: the source itself
- * when it is a YouTube video, otherwise the first YouTube video embedded in the
+ * A video link for a recipe, taken from its source link: the source itself
+ * when it is a YouTube video or an Instagram post/reel (Instagram pages are
+ * login-walled, so those are never fetched), otherwise the first YouTube video embedded in the
  * source page. Fetched on the server and cached for a day, so a recipe page
  * never waits on the source site twice. Returns null for anything unreachable.
  */
@@ -24,7 +25,7 @@ export async function videoFromSource(sourceUrl: string | null | undefined): Pro
   const raw = sourceUrl?.trim()
   if (!raw) return null
 
-  if (youtubeId(raw)) return raw
+  if (youtubeId(raw) || instagramPost(raw)) return raw
 
   let url: URL
   try {
