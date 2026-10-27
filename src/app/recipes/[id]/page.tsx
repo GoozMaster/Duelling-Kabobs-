@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { parseInstructions } from "@/lib/instructions"
 import { markIngredients } from "@/lib/matching"
 import { viewerIsAdmin } from "@/lib/recipe-browse"
+import { instagramPost, youtubeId } from "@/lib/recipe-media"
 import { groupIngredients, sourceLink } from "@/lib/recipes"
 import { videoFromSource } from "@/lib/source-video"
 import { createClient } from "@/lib/supabase/server"
@@ -17,7 +18,7 @@ import { viewerPantry } from "@/lib/viewer-pantry"
 import { AdminBar } from "./admin-bar"
 import { IngredientList } from "./ingredient-list"
 import { MethodSteps } from "./method-steps"
-import { RecipeMedia } from "./recipe-media"
+import { InstagramPlayer, RecipeMedia } from "./recipe-media"
 
 // The sticker pill for links that leave the page: the cuisine, the stub's ways out.
 const wayOn =
@@ -103,6 +104,10 @@ export default async function RecipeDetailPage({
   // separate "none recorded" lines under two empty headings.
   const isStub = ingredients.length === 0 && blocks.length === 0
 
+  // A portrait Instagram video sits in its own column beside the method on wide
+  // screens (the stub layout has no columns, so it stays up top there).
+  const instagram = youtubeId(youtubeUrl) ? null : instagramPost(youtubeUrl)
+  const instagramAside = Boolean(instagram) && !isStub
 
   return (
     <>
@@ -180,6 +185,7 @@ export default async function RecipeDetailPage({
           isAdmin={isAdmin}
           youtubeUrl={youtubeUrl}
           imageUrl={recipe.image_url}
+          instagramAside={instagramAside}
         />
 
         {isAdmin && (
@@ -216,7 +222,13 @@ export default async function RecipeDetailPage({
           // The ingredient card keeps a fixed, comfortable width and rides
           // alongside the method on wide screens, so the list is still in view
           // at the last step. The method takes the rest at a ~68ch measure.
-          <div className="grid items-start gap-10 lg:grid-cols-[minmax(340px,420px)_minmax(0,1fr)] lg:gap-16">
+          <div
+            className={`grid items-start gap-10 lg:grid-cols-[minmax(340px,420px)_minmax(0,1fr)] lg:gap-16 ${
+              instagramAside
+                ? "xl:grid-cols-[minmax(300px,380px)_minmax(0,1fr)_minmax(300px,360px)] xl:gap-10"
+                : ""
+            }`}
+          >
             <div className="lg:sticky lg:top-24">
               <IngredientList
                 groups={groups}
@@ -240,6 +252,12 @@ export default async function RecipeDetailPage({
                 <MethodSteps blocks={blocks} />
               )}
             </section>
+
+            {instagram && instagramAside && (
+              <aside aria-label="Instagram video" className="hidden xl:sticky xl:top-24 xl:block">
+                <InstagramPlayer post={instagram} title={recipe.title} />
+              </aside>
+            )}
           </div>
         )}
       </main>
