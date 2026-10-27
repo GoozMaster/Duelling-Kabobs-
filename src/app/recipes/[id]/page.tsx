@@ -10,6 +10,7 @@ import { parseInstructions } from "@/lib/instructions"
 import { markIngredients } from "@/lib/matching"
 import { viewerIsAdmin } from "@/lib/recipe-browse"
 import { groupIngredients, sourceLink } from "@/lib/recipes"
+import { videoFromSource } from "@/lib/source-video"
 import { createClient } from "@/lib/supabase/server"
 import { viewerPantry } from "@/lib/viewer-pantry"
 
@@ -72,6 +73,10 @@ export default async function RecipeDetailPage({
   const allIngredients = ingredientsResult.data ?? []
   const ingredients = allIngredients.filter((row) => !/^\s*TODO\b/i.test(row.name))
   const isAdmin = viewerIsAdmin(auth.user?.email)
+
+  // A video the admin set wins; otherwise the source link's own video (or one
+  // embedded on the source page) is shown.
+  const youtubeUrl = recipe.youtube_url ?? (await videoFromSource(recipe.source_url))
 
   // Every ingredient flagged as on hand or not, from the same matcher the
   // search page uses, so the two can never reach different verdicts about the
@@ -173,7 +178,7 @@ export default async function RecipeDetailPage({
           id={recipe.id}
           title={recipe.title}
           isAdmin={isAdmin}
-          youtubeUrl={recipe.youtube_url}
+          youtubeUrl={youtubeUrl}
           imageUrl={recipe.image_url}
         />
 

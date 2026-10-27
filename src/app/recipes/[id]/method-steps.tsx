@@ -27,7 +27,7 @@ export function MethodSteps({ blocks }: { blocks: InstructionBlock[] }) {
   }
 
   return (
-    <div className="flex max-w-[68ch] flex-col gap-5 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[color-mix(in_srgb,var(--sk-sand)_40%,var(--sk-surface))] p-5 text-[var(--sk-ink)] shadow-[var(--sk-shadow-sticker)] sm:p-7">
+    <div className="flex max-w-[68ch] flex-col gap-5 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] p-5 text-[var(--sk-ink)] shadow-[var(--sk-shadow-pop)] sm:p-7">
       <div className="flex items-center justify-between gap-3">
         <span className="text-base font-semibold">
           {done.size} of {blocks.filter((b) => b.kind === "step").length} steps done

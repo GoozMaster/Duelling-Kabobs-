@@ -91,7 +91,7 @@
   line-height: 0.9;
   -webkit-text-stroke: 4px var(--sk-outline);
   paint-order: stroke fill;
-  color: var(--sk-yellow);
+  color: var(--sk-brick);
   margin-bottom: var(--sk-space-5);
 }
 
