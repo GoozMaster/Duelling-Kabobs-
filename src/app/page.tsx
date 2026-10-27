@@ -130,12 +130,11 @@ export default async function Home() {
             <Sunburst />
             <div className={s.panel}>
               <Image
-                src={scenes.downWithHunger}
-                alt="Down with Hunger — a cartoon man holding a protest placard in one hand and a shawarma in the other, mid-shout"
+                src={scenes.downWithHungerHero}
+                alt="Down with Hunger — a cartoon man holding a blank protest sign in one hand and a shawarma in the other, shouting the slogan in a speech bubble"
                 priority
               />
             </div>
-            <span className={s.placard}>DOWN WITH HUNGER</span>
           </div>
         </div>
       </header>
