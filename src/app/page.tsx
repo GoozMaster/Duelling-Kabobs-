@@ -108,6 +108,10 @@ export default async function Home() {
               LET’S GET
               <br />COOKING!
             </h1>
+            <p className={s.tagline}>
+              A growing compilation of the best recipes across the internet,
+              tested and family approved.
+            </p>
             <p className={s.lede}>
               Tell it what is in your pantry, fridge and freezer, and it shows
               you the recipes you can cook right now. No shopping trip first.
@@ -140,20 +144,17 @@ export default async function Home() {
         <div className={`page-wrap ${s.tourGrid}`}>
           <AnimatedContent distance={60} duration={0.9}>
             <div className={s.head}>
-              <div>
-                <h2 className={s.sec} id="tour-title">
-                  See how it works
-                </h2>
-                <p className={s.sub}>A two-minute video tour of the site.</p>
-              </div>
+              <h2 className={s.sec} id="tour-title">
+                Here’s how it works
+              </h2>
             </div>
-            <ul className={s.covers}>
-              <li>Type in the ingredients you have and see which recipes they cover.</li>
-              <li>Browse every recipe by cuisine, on a spinning globe, or at random.</li>
-              <li>Check what is in the pantry, the fridge and the freezer.</li>
-            </ul>
           </AnimatedContent>
           <ExplainerVideo />
+          <ul className={s.covers}>
+            <li>See all of my favorite real life tested recipes from across the internet.</li>
+            <li>Browse every recipe or choose one at random.</li>
+            <li>See what you can make tonight with just what’s in your pantry, fridge, and freezer.</li>
+          </ul>
         </div>
       </section>
 
@@ -171,9 +172,6 @@ export default async function Home() {
                     three more.
                   </p>
                 </div>
-                <Link className={s.more} href="/recipes">
-                  See all recipes
-                </Link>
               </div>
             </AnimatedContent>
             <RecipeHighlight picks={picks} />

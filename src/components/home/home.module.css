@@ -68,11 +68,9 @@
   z-index: 1;
   display: grid;
   align-items: center;
-  /* The first screen, less the nav. Capped, and tied to the width too, so a
-     tall window or a portrait tablet does not strand the hero in the middle of
-     a cream field. */
-  min-height: min(calc(100svh - 67px), 880px, 62vw);
-  padding-block: var(--sk-space-8);
+  /* Sized by its content, so the tour video below it starts high on the page
+     instead of a full screen down. */
+  padding-block: var(--sk-space-7) var(--sk-space-5);
 }
 
 .heroGrid {
@@ -95,6 +93,14 @@
   paint-order: stroke fill;
   color: var(--sk-brick);
   margin-bottom: var(--sk-space-5);
+}
+
+.tagline {
+  font-size: clamp(20px, 1.9vw, 26px);
+  font-weight: 600;
+  line-height: 1.35;
+  max-width: 32ch;
+  margin: 0 0 var(--sk-space-4);
 }
 
 .lede {
@@ -251,19 +257,19 @@
 .tour {
   position: relative;
   z-index: 1;
-  padding-block: var(--sk-space-8) calc(var(--sk-space-8) * 2);
+  padding-block: var(--sk-space-5) calc(var(--sk-space-8) * 2);
 }
 
+/* Headline, the video straight under it, then the three short points. */
 .tourGrid {
   display: grid;
-  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.4fr);
-  gap: var(--sk-space-7);
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sk-space-6);
 }
 
 .tourGrid .head {
   display: block;
-  margin-bottom: var(--sk-space-5);
+  margin-bottom: 0;
 }
 
 .covers {
@@ -271,7 +277,8 @@
   margin: 0;
   padding: 0;
   display: grid;
-  gap: var(--sk-space-4);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sk-space-5);
 }
 
 .covers li {
@@ -296,8 +303,14 @@
     center / 18px no-repeat;
 }
 
+.tourGrid .player,
+.tourGrid .covers {
+  width: 100%;
+  max-width: 960px;
+}
+
 @media (max-width: 960px) {
-  .tourGrid {
+  .covers {
     grid-template-columns: 1fr;
   }
 }

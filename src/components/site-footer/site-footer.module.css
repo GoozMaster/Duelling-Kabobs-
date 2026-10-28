@@ -17,6 +17,7 @@
 .inner {
   display: grid;
   grid-template-columns: 1fr auto;
+  align-items: center;
   gap: var(--sk-space-6) var(--sk-space-7);
   padding-block: var(--sk-space-7) var(--sk-space-5);
 }
@@ -35,38 +36,33 @@
   font-size: 17px;
 }
 
-.links {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sk-space-2);
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.links a {
-  color: inherit;
-  text-decoration: none;
-  padding-block: 2px;
-}
-
-.links a:hover {
-  color: var(--sk-yellow);
-}
-
 .egg {
-  grid-column: 1 / -1;
-  justify-self: start;
-  font-size: 14px;
-  color: inherit;
-  opacity: 0.8;
-  text-decoration: underline dotted;
-  text-underline-offset: 4px;
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sk-space-4);
+  font-size: 16px;
+  color: #fff;
+  text-decoration: none;
   padding-block: 6px;
 }
 
-.egg:hover {
-  color: var(--sk-yellow);
-  opacity: 1;
+.egg span {
+  text-decoration: underline dotted;
+  text-underline-offset: 4px;
+}
+
+.eggArt {
+  width: 96px;
+  height: 96px;
+  flex: none;
+  border-radius: var(--sk-radius-lg);
+  border: 3px solid var(--sk-outline);
+  background: #fbf8f1;
+}
+
+.egg:hover span {
+  text-decoration-style: solid;
 }
 
 .footer a:focus-visible {
@@ -78,5 +74,9 @@
 @media (max-width: 640px) {
   .inner {
     grid-template-columns: 1fr;
+  }
+
+  .egg {
+    justify-self: start;
   }
 }

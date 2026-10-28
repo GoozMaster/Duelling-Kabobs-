@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 import { CuisineArt } from "@/components/cuisine-art"
+import { play as playCuisineSound } from "@/components/cuisine-sound"
 import DriftWall, { type DriftWallHandle } from "@/components/drift-wall"
 import { SkyDrift } from "@/components/home/sky-drift"
 import { usePrefersReducedMotion } from "@/components/home/use-scroll-frame"
@@ -17,11 +18,12 @@ type Recipe = { id: string; title: string; cuisine: string | null }
     this only matters in a backgrounded tab, where animation frames are paused. */
 const GIVE_UP_MS = 8000
 
-/** The click sound. Played on the press itself, so it lands with the pop. A
-    missing file or a blocked autoplay just means no sound. */
-function playCoin() {
+/** The cuisine's own clip, for a recipe's category. A recipe with no cuisine, or
+    a cuisine with no clip, or a blocked autoplay just means no sound. */
+function playCuisine(recipe: Recipe | undefined) {
+  if (!recipe?.cuisine) return
   try {
-    void new Audio("/sounds/coin.mp3").play().catch(() => {})
+    playCuisineSound(recipe.cuisine)
   } catch {
     // No audio support: silent.
   }
@@ -65,7 +67,7 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
     if (reduced) {
       wallRef.current?.jumpTo(recipe.id)
       setWinner(recipe)
-      playCoin()
+      playCuisine(recipe)
       return
     }
 
@@ -76,7 +78,7 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
       setSpinning(false)
       setGiveUp(null)
       setWinner(recipe)
-      playCoin()
+      playCuisine(recipe)
     })
   }, [recipes, reduced, spinning])
 
@@ -109,7 +111,7 @@ export function Spinner({ recipes }: { recipes: Recipe[] }) {
           items={recipes}
           renderTile={renderTile}
           onSelect={(id) => router.push(`/recipes/${id}`)}
-          onPress={playCoin}
+          onPress={(id) => playCuisine(recipes.find((r) => r.id === id))}
         />
       </div>
 

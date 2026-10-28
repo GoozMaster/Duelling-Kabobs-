@@ -27,7 +27,7 @@ import { StaggeredMenu, type StaggeredMenuItem } from "./staggered-menu"
  */
 
 const baseItems: StaggeredMenuItem[] = [
-  { label: "What can I make?", href: "/what-can-i-make" },
+  { label: "What can I make?", href: "/what-can-i-make", accent: true },
   { label: "Recipes", links: recipeItems },
   { label: "What's in stock", links: [stockEverything, ...stockSections] },
 ]

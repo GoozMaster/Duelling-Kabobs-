@@ -101,7 +101,7 @@ function silence() {
   }
 }
 
-function play(cuisine: string) {
+export function play(cuisine: string) {
   const audio = prime(cuisine);
   if (!audio) return;
 
