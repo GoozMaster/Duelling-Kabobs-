@@ -260,6 +260,15 @@
   color: var(--sk-teal);
 }
 
+/* A top-level link that sits alongside the groups takes their teal. */
+.bigLink.accent {
+  color: var(--sk-teal);
+}
+
+.bigLink.accent:hover {
+  color: var(--sk-on-yellow);
+}
+
 .subLink {
   font-family: var(--sk-font-ui);
   font-size: 20px;

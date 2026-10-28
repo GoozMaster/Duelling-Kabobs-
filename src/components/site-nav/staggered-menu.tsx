@@ -36,7 +36,7 @@ import s from "./site-nav.module.css"
  */
 
 export type StaggeredMenuItem =
-  | { label: string; href: string }
+  | { label: string; href: string; accent?: boolean }
   | { label: string; links: MenuLink[] }
   /** A server action, posted as a form, for things a link must not do (sign out). */
   | { label: string; action: () => Promise<void> }
@@ -316,7 +316,7 @@ export function StaggeredMenu({
                     </form>
                   </span>
                 ) : (
-                  <span className={s.clip}>{renderLink(item, s.bigLink)}</span>
+                  <span className={s.clip}>{renderLink(item, item.accent ? `${s.bigLink} ${s.accent}` : s.bigLink)}</span>
                 )}
               </li>
             ))}

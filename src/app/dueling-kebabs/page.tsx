@@ -141,7 +141,6 @@ export default function DuelingKebabs() {
           <div className={s.heroText}>
             <p className={s.ribbon}>Coming soon. Sort of.</p>
             <h1 className={s.name}>Dueling Kebabs</h1>
-            <p className={s.since}>Since the argument</p>
           </div>
           {/* The art is a 300px master, so it is shown at no more than that:
               the frame around it carries the scale instead. */}
