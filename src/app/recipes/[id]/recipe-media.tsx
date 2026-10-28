@@ -1,6 +1,7 @@
 import {
   instagramEmbedUrl,
   instagramPost,
+  type InstagramPost,
   safeImageUrl,
   youtubeEmbedUrl,
   youtubeId,
@@ -17,6 +18,12 @@ type Props = {
   // migration, and until it is applied the row simply doesn't carry them.
   youtubeUrl?: string | null
   imageUrl?: string | null
+  /**
+   * An Instagram video is portrait, so on wide screens the page shows it in a
+   * column beside the method (see InstagramPlayer) instead of up here, where
+   * it would leave a tall empty gap. Narrower screens still show it here.
+   */
+  instagramAside?: boolean
 }
 
 const frame =
@@ -29,7 +36,42 @@ const frame =
  * without a video. With neither, visitors see nothing at all (no empty box);
  * the admin sees the editor so they can add one.
  */
-export function RecipeMedia({ id, title, isAdmin, youtubeUrl, imageUrl }: Props) {
+/** Instagram's own embed player in a portrait frame. */
+export function InstagramPlayer({
+  post,
+  title,
+  className = "",
+}: {
+  post: InstagramPost
+  title: string
+  className?: string
+}) {
+  return (
+    // Portrait, so a height-capped frame rather than the 16:9 box. Its
+    // caption/footer scroll inside the embed.
+    <div className={`${frame} mx-auto aspect-[9/16] max-h-[85vh] max-w-[420px] ${className}`}>
+      <iframe
+        src={instagramEmbedUrl(post)}
+        title={`Instagram video: ${title}`}
+        loading="lazy"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allow="encrypted-media; picture-in-picture; web-share"
+        allowFullScreen
+        scrolling="no"
+        className="size-full"
+      />
+    </div>
+  )
+}
+
+export function RecipeMedia({
+  id,
+  title,
+  isAdmin,
+  youtubeUrl,
+  imageUrl,
+  instagramAside = false,
+}: Props) {
   const videoId = youtubeId(youtubeUrl)
   const instagram = videoId ? null : instagramPost(youtubeUrl)
   const image = safeImageUrl(imageUrl)
@@ -37,7 +79,10 @@ export function RecipeMedia({ id, title, isAdmin, youtubeUrl, imageUrl }: Props)
   if (!videoId && !instagram && !image && !isAdmin) return null
 
   return (
-    <section aria-label="Video or photo" className="flex max-w-3xl flex-col gap-4">
+    <section
+      aria-label="Video or photo"
+      className={`flex max-w-3xl flex-col gap-4 ${instagram && instagramAside && !isAdmin ? "xl:hidden" : ""}`}
+    >
       {videoId ? (
         <div className={`${frame} aspect-video`}>
           <iframe
@@ -51,20 +96,7 @@ export function RecipeMedia({ id, title, isAdmin, youtubeUrl, imageUrl }: Props)
           />
         </div>
       ) : instagram ? (
-        // Instagram's own embed page: portrait, so a centred, height-capped
-        // frame rather than the 16:9 box. Its caption/footer scroll inside.
-        <div className={`${frame} mx-auto aspect-[9/16] max-h-[85vh] max-w-[420px]`}>
-          <iframe
-            src={instagramEmbedUrl(instagram)}
-            title={`Instagram video: ${title}`}
-            loading="lazy"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allow="encrypted-media; picture-in-picture; web-share"
-            allowFullScreen
-            scrolling="no"
-            className="size-full"
-          />
-        </div>
+        <InstagramPlayer post={instagram} title={title} className={instagramAside ? "xl:hidden" : ""} />
       ) : (
         image && (
           <figure className={frame}>
