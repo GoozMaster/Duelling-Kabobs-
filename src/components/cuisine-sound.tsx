@@ -23,18 +23,22 @@ import { useEffect } from "react";
  */
 
 /**
- * Only the four cuisines with a sound that matches one.
+ * Nine of the eleven cuisines have a sound; Drinks and Other are silent.
  *
  * Sound Effects/ also holds China.mp3 and Japan.mp3, which have no
  * corresponding cuisine — the collection has "Asian", not "Chinese" or
  * "Japanese" — so they are deliberately unused rather than assigned to
- * something they do not name. The other seven cuisines are simply silent; a
- * missing entry here is a no-op, not an error.
+ * something they do not name. A missing entry here is a no-op, not an error.
  */
 const SOUNDS: Record<string, string> = {
   American: "/sounds/american.mp3",
   Asian: "/sounds/asian.mp3",
+  Breads: "/sounds/breads.mp3",
+  Desserts: "/sounds/desserts.mp3",
+  French: "/sounds/french.mp3",
+  Indian: "/sounds/indian.mp3",
   Italian: "/sounds/italian.mp3",
+  Latin: "/sounds/latin.mp3",
   Mediterranean: "/sounds/mediterranean.mp3",
 };
 
@@ -62,7 +66,7 @@ let capTimer: number | undefined;
 /**
  * Warms a clip without playing it.
  *
- * Mediterranean is nearly a megabyte, so without this the first click spends
+ * Some clips are a few hundred kilobytes, so without this the first click spends
  * the whole navigation downloading and the sting lands over the page it was
  * supposed to introduce. Hovering is enough warning to have it buffered.
  */
