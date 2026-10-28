@@ -23,7 +23,7 @@ import { useEffect } from "react";
  */
 
 /**
- * Nine of the eleven cuisines have a sound; Drinks and Other are silent.
+ * Ten of the eleven cuisines have a sound; only Other is silent.
  *
  * Sound Effects/ also holds China.mp3 and Japan.mp3, which have no
  * corresponding cuisine — the collection has "Asian", not "Chinese" or
@@ -35,6 +35,7 @@ const SOUNDS: Record<string, string> = {
   Asian: "/sounds/asian.mp3",
   Breads: "/sounds/breads.mp3",
   Desserts: "/sounds/desserts.mp3",
+  Drinks: "/sounds/drinks.mp3",
   French: "/sounds/french.mp3",
   Indian: "/sounds/indian.mp3",
   Italian: "/sounds/italian.mp3",
@@ -54,6 +55,13 @@ const SOUNDS: Record<string, string> = {
  * which only governs audio that plays automatically for longer than that.
  */
 const CAP_MS = 2600;
+
+/**
+ * Clips that are the joke, not a sting: cutting them off mid-line ruins them,
+ * so they play to the end and skip the cap and fade. A second selection still
+ * interrupts them.
+ */
+const PLAY_FULL = new Set(["French", "Mediterranean"]);
 const FADE_MS = 450;
 const FADE_STEPS = 18;
 const VOLUME = 0.35;
@@ -108,6 +116,8 @@ function play(cuisine: string) {
   // none of them are worth an unhandled rejection in the console over a sound
   // effect.
   void audio.play().catch(() => {});
+
+  if (PLAY_FULL.has(cuisine)) return;
 
   capTimer = window.setTimeout(
     () => {
