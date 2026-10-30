@@ -77,6 +77,34 @@ export async function cuisineCounts(
 }
 
 /**
+ * The subheadings in use under one cuisine, with each one's recipe count.
+ *
+ * Read from the recipes themselves rather than from a table of their own: a
+ * subheading exists exactly while something is filed under it, so there is no
+ * vocabulary to keep in step and a new one needs no code. Alphabetical, like
+ * the cuisine chips.
+ */
+export async function subcategoryCounts(
+  supabase: SupabaseClient<Database>,
+  cuisine: string,
+): Promise<CuisineCount[]> {
+  const { data } = await supabase
+    .from("recipes")
+    .select("subcategory")
+    .eq("cuisine", cuisine)
+    .not("subcategory", "is", null)
+
+  const tally = new Map<string, number>()
+  for (const row of data ?? []) {
+    if (row.subcategory) tally.set(row.subcategory, (tally.get(row.subcategory) ?? 0) + 1)
+  }
+
+  return [...tally.entries()]
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([name, count]) => ({ name, count }))
+}
+
+/**
  * Admin check that cannot take a public page down.
  *
  * isAdmin() throws when ADMIN_EMAIL is missing, which is the right behaviour on
