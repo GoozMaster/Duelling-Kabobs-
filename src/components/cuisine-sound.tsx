@@ -45,6 +45,9 @@ const SOUNDS: Record<string, string> = {
   Italian: "/sounds/italian.mp3",
   Latin: "/sounds/latin.mp3",
   Persian: "/sounds/persian.mp3",
+  // Special menus, keyed "menu:<slug>" by cuisineFromLink.
+  "menu:vegan": "/sounds/menu-vegan.mp3",
+  "menu:christmas": "/sounds/menu-christmas.mp3",
 };
 
 /**
@@ -65,7 +68,7 @@ const CAP_MS = 2600;
  * so they play to the end and skip the cap and fade. A second selection still
  * interrupts them.
  */
-const PLAY_FULL = new Set(["French", "Persian"]);
+const PLAY_FULL = new Set(["French", "Persian", "menu:vegan", "menu:christmas"]);
 const FADE_MS = 450;
 const FADE_STEPS = 18;
 const VOLUME = 0.35;
@@ -149,11 +152,14 @@ export function play(cuisine: string) {
  */
 function cuisineFromLink(anchor: Element): string | null {
   const href = anchor.getAttribute("href");
-  if (!href || !href.includes("cuisine=")) return null;
+  if (!href) return null;
 
   try {
     const url = new URL(href, window.location.origin);
-    if (url.pathname !== "/recipes") return null;
+    // A special menu page has its own clip, keyed by its slug.
+    const menu = url.pathname.match(/^\/menus\/([a-z0-9-]+)\/?$/);
+    if (menu) return `menu:${menu[1]}`;
+    if (!href.includes("cuisine=") || url.pathname !== "/recipes") return null;
     return url.searchParams.get("cuisine");
   } catch {
     return null;
