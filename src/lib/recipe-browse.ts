@@ -31,6 +31,17 @@ export type RecipePage = {
 export type CuisineCount = { name: string; count: number }
 
 /**
+ * Cuisines that stay in the database but are not offered for browsing.
+ *
+ * "Other" is the catch-all the admin form files a new cuisine under. It holds
+ * no recipes and has no geography, so as a filter chip or a globe tile it was a
+ * dead end reading "Other (0)". It stays in the `cuisines` table because the
+ * admin form and the CSV import still resolve against it; only the public
+ * lists drop it.
+ */
+const HIDDEN_CUISINES = new Set(["Other"])
+
+/**
  * The full cuisine vocabulary with each one's recipe count, plus the total.
  *
  * Two queries rather than a group-by: PostgREST cannot express one, and the
@@ -58,10 +69,9 @@ export async function cuisineCounts(
   }
 
   return {
-    counts: (cuisineRows.data ?? []).map(({ name }) => ({
-      name,
-      count: tally.get(name) ?? 0,
-    })),
+    counts: (cuisineRows.data ?? [])
+      .filter(({ name }) => !HIDDEN_CUISINES.has(name))
+      .map(({ name }) => ({ name, count: tally.get(name) ?? 0 })),
     total: recipeRows.data?.length ?? 0,
   }
 }
