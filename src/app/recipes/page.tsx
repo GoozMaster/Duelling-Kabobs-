@@ -5,13 +5,14 @@ import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
 import { fetchAllIngredients } from "@/lib/ingredients"
 import { searchRecipesByIngredient } from "@/lib/ingredient-search"
-import { cuisineCounts, viewerIsAdmin } from "@/lib/recipe-browse"
+import { cuisineCounts, subcategoryCounts, viewerIsAdmin } from "@/lib/recipe-browse"
 import { createClient } from "@/lib/supabase/server"
 
 import { fetchRecipePage } from "./actions"
 import { CuisineFilter } from "./cuisine-filter"
 import { IngredientSearchBar } from "./ingredient-search-bar"
 import { RecipeGrid } from "./recipe-grid"
+import { SubcategoryFilter } from "./subcategory-filter"
 
 // Echoes the .btn sticker treatment from the home page rather than the filter
 // chips: these launch a different page, the chips filter this one.
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
 export default async function RecipesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ cuisine?: string; q?: string }>
+  searchParams: Promise<{ cuisine?: string; sub?: string; q?: string }>
 }) {
-  const { cuisine: requested, q } = await searchParams
+  const { cuisine: requested, sub: requestedSub, q } = await searchParams
   const query = (q ?? "").trim().slice(0, 80)
   const supabase = await createClient()
 
@@ -45,12 +46,20 @@ export default async function RecipesPage({
   const cuisine =
     requested && counts.some(({ name }) => name === requested) ? requested : null
 
+  // Subheadings only exist inside a cuisine, and an unknown one is ignored for
+  // the same reason an unknown cuisine is: show the recipes, not a dead end.
+  const subcategories = cuisine ? await subcategoryCounts(supabase, cuisine) : []
+  const subcategory =
+    requestedSub && subcategories.some(({ name }) => name === requestedSub)
+      ? requestedSub
+      : null
+
   const isAdminViewer = viewerIsAdmin(auth.user?.email)
 
   // An ingredient search replaces the paged list with every match, since the
   // result set is small and ranking across pages would be meaningless.
   const search = query ? await runSearch(supabase, query, cuisine) : null
-  const page = search ? null : await fetchRecipePage({ cuisine })
+  const page = search ? null : await fetchRecipePage({ cuisine, subcategory })
 
   return (
     <>
@@ -82,6 +91,15 @@ export default async function RecipesPage({
 
         <CuisineFilter counts={counts} total={total} active={cuisine} query={query} />
 
+        {cuisine && subcategories.length > 0 && !query && (
+          <SubcategoryFilter
+            cuisine={cuisine}
+            cuisineTotal={counts.find(({ name }) => name === cuisine)?.count ?? 0}
+            counts={subcategories}
+            active={subcategory}
+          />
+        )}
+
         {search ? (
           <div className="flex flex-col gap-8">
             <p role="status" className="text-lg">
@@ -95,6 +113,7 @@ export default async function RecipesPage({
                 initial={search.matches}
                 initialHasMore={false}
                 cuisine={cuisine}
+                subcategory={null}
                 isAdminViewer={isAdminViewer}
               />
             )}
@@ -109,6 +128,7 @@ export default async function RecipesPage({
                   initial={search.related}
                   initialHasMore={false}
                   cuisine={cuisine}
+                  subcategory={null}
                   isAdminViewer={isAdminViewer}
                 />
               </section>
@@ -118,10 +138,11 @@ export default async function RecipesPage({
           /* Keyed on the filter so a chip change resets the grid's list rather
              than appending the new cuisine onto the old one. */
           <RecipeGrid
-            key={cuisine ?? "all"}
+            key={`${cuisine ?? "all"}/${subcategory ?? ""}`}
             initial={page!.recipes}
             initialHasMore={page!.hasMore}
             cuisine={cuisine}
+            subcategory={subcategory}
             isAdminViewer={isAdminViewer}
           />
         )}

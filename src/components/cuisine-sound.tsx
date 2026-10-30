@@ -23,7 +23,11 @@ import { useEffect } from "react";
  */
 
 /**
- * Ten of the eleven cuisines have a sound; only Other is silent.
+ * Ten of the twelve cuisines have a sound; Other and Mediterranean are silent.
+ *
+ * Persian plays the clip Mediterranean used to have (Sound Effects/
+ * Mediterranean.mp3): it was always the Persian joke, and moved with it when
+ * the Persian cuisine was added.
  *
  * Sound Effects/ also holds China.mp3 and Japan.mp3, which have no
  * corresponding cuisine — the collection has "Asian", not "Chinese" or
@@ -40,12 +44,12 @@ const SOUNDS: Record<string, string> = {
   Indian: "/sounds/indian.mp3",
   Italian: "/sounds/italian.mp3",
   Latin: "/sounds/latin.mp3",
-  Mediterranean: "/sounds/mediterranean.mp3",
+  Persian: "/sounds/persian.mp3",
 };
 
 /**
  * The source clips run from 0.6s to 30.7s, which is far too wide a range to
- * play whole: Mediterranean alone would still be going long after you had
+ * play whole: Persian alone would still be going long after you had
  * started reading the recipes, and clicking through three filters would stack
  * half a minute of audio each time. Capping every sound to the same short
  * sting makes them behave alike whatever their length, and the short ones
@@ -61,7 +65,7 @@ const CAP_MS = 2600;
  * so they play to the end and skip the cap and fade. A second selection still
  * interrupts them.
  */
-const PLAY_FULL = new Set(["French", "Mediterranean"]);
+const PLAY_FULL = new Set(["French", "Persian"]);
 const FADE_MS = 450;
 const FADE_STEPS = 18;
 const VOLUME = 0.35;

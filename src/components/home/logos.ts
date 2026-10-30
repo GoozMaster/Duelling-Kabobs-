@@ -37,6 +37,10 @@ export const badges = {
   american: americanBurger,
   latin: latinTaco,
   indian: indianTurban,
+  // The Down with Hunger scene doubles as the Persian badge. It is square
+  // artwork rather than a disc, but its subject sits in the middle, so the
+  // disc's object-cover crop keeps the face and the wrap.
+  downWithHunger,
 } satisfies Record<string, StaticImageData>;
 
 export type CuisineKey = keyof typeof badges;
@@ -50,7 +54,9 @@ export type CuisineKey = keyof typeof badges;
  * Mediterranean — which is an approximation rather than a match, and worth
  * replacing once there is art for the categories themselves.
  *
- * Every other cuisine falls back to a text disc. Keys are the cuisine names as
+ * Persian uses the Down with Hunger character, by request.
+ *
+ * Every other cuisine falls back to a drawn disc (components/cuisine-art.tsx). Keys are the cuisine names as
  * they are stored in the database.
  */
 export const cuisineBadges: Partial<Record<string, CuisineKey>> = {
@@ -61,6 +67,7 @@ export const cuisineBadges: Partial<Record<string, CuisineKey>> = {
   American: "american",
   Latin: "latin",
   Indian: "indian",
+  Persian: "downWithHunger",
 };
 
 export function badgeForCuisine(name: string): StaticImageData | null {

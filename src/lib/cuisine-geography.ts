@@ -69,6 +69,8 @@ export const CUISINE_COUNTRIES: CuisineCountry[] = [
   { id: "504", name: "Morocco", cuisine: "Mediterranean" },
   { id: "788", name: "Tunisia", cuisine: "Mediterranean" },
 
+  { id: "364", name: "Iran", cuisine: "Persian" },
+
   { id: "484", name: "Mexico", cuisine: "Latin" },
   { id: "320", name: "Guatemala", cuisine: "Latin" },
   { id: "340", name: "Honduras", cuisine: "Latin" },
@@ -135,4 +137,7 @@ export const CUISINE_FILL: Record<string, string> = {
   Mediterranean: "var(--sk-yellow)",
   American: "var(--sk-teal)",
   Latin: "var(--sk-brick)",
+  // Iran borders Turkey (Mediterranean, yellow), so it takes a green that
+  // only Italy also uses, and Italy is nowhere near.
+  Persian: "var(--sk-basil)",
 }
