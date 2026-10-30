@@ -23,7 +23,7 @@ import { useEffect } from "react";
  */
 
 /**
- * Ten of the eleven cuisines have a sound; only Other is silent.
+ * Ten of the twelve cuisines have a sound; Other and Persian are silent.
  *
  * Sound Effects/ also holds China.mp3 and Japan.mp3, which have no
  * corresponding cuisine — the collection has "Asian", not "Chinese" or
