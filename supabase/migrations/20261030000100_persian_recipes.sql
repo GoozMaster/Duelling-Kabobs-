@@ -7,7 +7,8 @@
 --
 -- WHERE THEY GO: drinks and desserts join the existing Drinks (2) and
 -- Desserts (7) cuisines, as the rest of the collection does; everything else
--- (6, Barbari bread included) goes under the new Persian cuisine.
+-- (6, Barbari bread included) goes under the new Persian cuisine. Barbari was
+-- later moved to Breads by 20261030000300_barbari_to_breads.sql.
 --
 -- Method text is one step per line with the book's numbering dropped: the
 -- recipe page renders every line as its own checkbox, so "1." would read twice.
