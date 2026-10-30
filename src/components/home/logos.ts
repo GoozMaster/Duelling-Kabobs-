@@ -1,12 +1,15 @@
 import type { StaticImageData } from "next/image";
 
+import americanBurger from "@/assets/logos/american-burger.jpg";
 import chineseNoodles from "@/assets/logos/chinese-noodles.jpg";
 import downWithHunger from "@/assets/logos/down-with-hunger.png";
 import downWithHungerMark from "@/assets/logos/down-with-hunger-mark.png";
 import duellingKebabs from "@/assets/logos/duelling-kebabs.png";
 import frenchBaker from "@/assets/logos/french-baker.jpg";
+import indianTurban from "@/assets/logos/indian-turban.jpg";
 import italianChef from "@/assets/logos/italian-chef.jpg";
 import japaneseSushi from "@/assets/logos/japanese-sushi.jpg";
+import latinTaco from "@/assets/logos/latin-taco.jpg";
 import persianKebab from "@/assets/logos/persian-kebab.jpg";
 
 /**
@@ -31,6 +34,9 @@ export const badges = {
   persian: persianKebab,
   french: frenchBaker,
   chinese: chineseNoodles,
+  american: americanBurger,
+  latin: latinTaco,
+  indian: indianTurban,
 } satisfies Record<string, StaticImageData>;
 
 export type CuisineKey = keyof typeof badges;
@@ -52,6 +58,9 @@ export const cuisineBadges: Partial<Record<string, CuisineKey>> = {
   French: "french",
   Asian: "japanese",
   Mediterranean: "persian",
+  American: "american",
+  Latin: "latin",
+  Indian: "indian",
 };
 
 export function badgeForCuisine(name: string): StaticImageData | null {

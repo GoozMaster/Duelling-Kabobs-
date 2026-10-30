@@ -12,6 +12,7 @@ import { viewerIsAdmin } from "@/lib/recipe-browse"
 import { instagramPost, youtubeId } from "@/lib/recipe-media"
 import { groupIngredients, sourceLink } from "@/lib/recipes"
 import { videoFromSource } from "@/lib/source-video"
+import { veganEntryFor, veganReason, veganSwapFor } from "@/lib/vegan-menu"
 import { createClient } from "@/lib/supabase/server"
 import { viewerPantry } from "@/lib/viewer-pantry"
 
@@ -85,6 +86,7 @@ export default async function RecipeDetailPage({
   // the view on; it is one pass over a dozen strings.
   const pantry = await viewerPantry(supabase)
   const marked = markIngredients(ingredients, pantry.items)
+  const vegan = veganEntryFor(recipe.title)
 
   const requiredMarked = marked.filter((item) => item.required)
   const totalRequired = requiredMarked.length
@@ -93,7 +95,11 @@ export default async function RecipeDetailPage({
   // Reuses the editor's own grouping, which is what makes the 39 multi-part
   // recipes read as "Poolish / Dough" rather than one flat list.
   const groups = groupIngredients(
-    marked.map((row) => ({ ...row, groupLabel: row.group_label })),
+    marked.map((row) => ({
+      ...row,
+      groupLabel: row.group_label,
+      veganSwap: veganSwapFor(vegan, row.name),
+    })),
   )
 
   const blocks = parseInstructions(recipe.instructions)
@@ -178,6 +184,21 @@ export default async function RecipeDetailPage({
             </div>
           </div>
         </header>
+
+        {vegan && (
+          <aside
+            aria-label="Vegan menu"
+            className="flex max-w-2xl flex-col gap-1 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-basil-soft)] px-5 py-4 shadow-[var(--sk-shadow-press)]"
+          >
+            <p className="text-sm font-bold tracking-widest text-[var(--sk-basil)] uppercase">
+              On the vegan menu
+            </p>
+            <p className="text-[17px]">{veganReason(vegan)}</p>
+            <Link href="/menus/vegan" className="w-fit text-sm font-semibold underline underline-offset-4">
+              See the vegan menu
+            </Link>
+          </aside>
+        )}
 
         <RecipeMedia
           id={recipe.id}

@@ -278,6 +278,19 @@
   border-radius: var(--sk-radius-pill);
 }
 
+/* A label inside a group that is not a link: it separates the Recipes links
+   from the Special menus below them. */
+.subheading {
+  display: block;
+  padding: 14px 12px 2px;
+  font-family: var(--sk-font-ui);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--sk-teal);
+}
+
 @media (max-width: 420px) {
   .nav .mark {
     font-size: 18px;
