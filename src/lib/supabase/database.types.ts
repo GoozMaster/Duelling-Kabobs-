@@ -106,6 +106,7 @@ export type Database = {
           instructions: string
           needs_review: boolean
           source_url: string | null
+          subcategory: string | null
           title: string
           youtube_url: string | null
           image_url: string | null
@@ -117,6 +118,7 @@ export type Database = {
           instructions: string
           needs_review?: boolean
           source_url?: string | null
+          subcategory?: string | null
           title: string
           youtube_url?: string | null
           image_url?: string | null
@@ -128,6 +130,7 @@ export type Database = {
           instructions?: string
           needs_review?: boolean
           source_url?: string | null
+          subcategory?: string | null
           title?: string
           youtube_url?: string | null
           image_url?: string | null

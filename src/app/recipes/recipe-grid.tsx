@@ -14,10 +14,19 @@ type Props = {
   initial: RecipeSummary[]
   initialHasMore: boolean
   cuisine: string | null
+  subcategory: string | null
   isAdminViewer: boolean
 }
 
-export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: Props) {
+export function RecipeGrid({
+  initial,
+  initialHasMore,
+  cuisine,
+  subcategory,
+  isAdminViewer,
+}: Props) {
+  // What the grid is showing, for its empty and end-of-list messages.
+  const scope = subcategory ?? cuisine
   const [recipes, setRecipes] = useState(initial)
   const [hasMore, setHasMore] = useState(initialHasMore)
   const [isAdmin, setIsAdmin] = useState(isAdminViewer)
@@ -46,7 +55,7 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
 
     startTransition(async () => {
       try {
-        const page = await loadMoreRecipes(cuisine, last.title)
+        const page = await loadMoreRecipes(cuisine, subcategory, last.title)
         setRecipes((current) => {
           // Guard against a duplicate arriving anyway — cheap, and a repeated
           // React key is a far worse symptom than a wasted request.
@@ -62,7 +71,7 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
         loadingRef.current = false
       }
     })
-  }, [cuisine, hasMore, recipes])
+  }, [cuisine, subcategory, hasMore, recipes])
 
   useEffect(() => {
     const node = sentinel.current
@@ -83,13 +92,13 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
     return (
       <div className="flex flex-col items-center gap-3 rounded-[var(--sk-radius-lg)] border-[3px] border-[var(--sk-outline)] bg-[var(--sk-surface-raised)] px-4 py-12 text-center text-lg">
         <p>
-          {cuisine
-            ? `No ${cuisine} recipes yet.`
+          {scope
+            ? `No ${scope} recipes yet.`
             : "No recipes yet. They will show up here as they are added."}
         </p>
         {/* A filtered dead end needs a way back out that isn't the chip row
             scrolled away above it. */}
-        {cuisine && (
+        {scope && (
           <Link
             href="/recipes"
             className="text-foreground text-sm font-medium underline underline-offset-4"
@@ -147,7 +156,7 @@ export function RecipeGrid({ initial, initialHasMore, cuisine, isAdminViewer }: 
       ) : (
         <p className="text-muted-foreground text-center text-sm">
           That is all {recipes.length} {recipes.length === 1 ? "recipe" : "recipes"}
-          {cuisine ? ` in ${cuisine}` : ""}.
+          {scope ? ` in ${scope}` : ""}.
         </p>
       )}
     </div>

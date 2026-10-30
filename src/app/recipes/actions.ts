@@ -18,9 +18,11 @@ import { createClient } from "@/lib/supabase/server"
  */
 export async function fetchRecipePage({
   cuisine,
+  subcategory,
   afterTitle,
 }: {
   cuisine?: string | null
+  subcategory?: string | null
   afterTitle?: string | null
 }): Promise<RecipePage> {
   const supabase = await createClient()
@@ -32,6 +34,7 @@ export async function fetchRecipePage({
     .limit(PAGE_SIZE)
 
   if (cuisine) query = query.eq("cuisine", cuisine)
+  if (subcategory) query = query.eq("subcategory", subcategory)
   if (afterTitle) query = query.gt("title", afterTitle)
 
   const { data, error } = await query
@@ -53,11 +56,12 @@ export async function fetchRecipePage({
  */
 export async function loadMoreRecipes(
   cuisine: string | null,
+  subcategory: string | null,
   afterTitle: string,
 ): Promise<RecipePage & { isAdminViewer: boolean }> {
   const supabase = await createClient()
   const { data } = await supabase.auth.getUser()
-  const page = await fetchRecipePage({ cuisine, afterTitle })
+  const page = await fetchRecipePage({ cuisine, subcategory, afterTitle })
 
   return { ...page, isAdminViewer: viewerIsAdmin(data.user?.email) }
 }

@@ -3,12 +3,13 @@ import Link from "next/link"
 
 import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
-import { cuisineCounts, viewerIsAdmin } from "@/lib/recipe-browse"
+import { cuisineCounts, subcategoryCounts, viewerIsAdmin } from "@/lib/recipe-browse"
 import { createClient } from "@/lib/supabase/server"
 
 import { fetchRecipePage } from "./actions"
 import { CuisineFilter } from "./cuisine-filter"
 import { RecipeGrid } from "./recipe-grid"
+import { SubcategoryFilter } from "./subcategory-filter"
 
 // Echoes the .btn sticker treatment from the home page rather than the filter
 // chips: these launch a different page, the chips filter this one.
@@ -23,9 +24,9 @@ export const metadata: Metadata = {
 export default async function RecipesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ cuisine?: string }>
+  searchParams: Promise<{ cuisine?: string; sub?: string }>
 }) {
-  const { cuisine: requested } = await searchParams
+  const { cuisine: requested, sub: requestedSub } = await searchParams
   const supabase = await createClient()
 
   // This page must never gate. isAdmin() is read only to decide whether the
@@ -41,7 +42,15 @@ export default async function RecipesPage({
   const cuisine =
     requested && counts.some(({ name }) => name === requested) ? requested : null
 
-  const page = await fetchRecipePage({ cuisine })
+  // Subheadings only exist inside a cuisine, and an unknown one is ignored for
+  // the same reason an unknown cuisine is: show the recipes, not a dead end.
+  const subcategories = cuisine ? await subcategoryCounts(supabase, cuisine) : []
+  const subcategory =
+    requestedSub && subcategories.some(({ name }) => name === requestedSub)
+      ? requestedSub
+      : null
+
+  const page = await fetchRecipePage({ cuisine, subcategory })
   const isAdminViewer = viewerIsAdmin(auth.user?.email)
 
   return (
@@ -72,13 +81,23 @@ export default async function RecipesPage({
 
         <CuisineFilter counts={counts} total={total} active={cuisine} />
 
+        {cuisine && subcategories.length > 0 && (
+          <SubcategoryFilter
+            cuisine={cuisine}
+            cuisineTotal={counts.find(({ name }) => name === cuisine)?.count ?? 0}
+            counts={subcategories}
+            active={subcategory}
+          />
+        )}
+
         {/* Keyed on the filter so a chip change resets the grid's list rather
             than appending the new cuisine onto the old one. */}
         <RecipeGrid
-          key={cuisine ?? "all"}
+          key={`${cuisine ?? "all"}/${subcategory ?? ""}`}
           initial={page.recipes}
           initialHasMore={page.hasMore}
           cuisine={cuisine}
+          subcategory={subcategory}
           isAdminViewer={isAdminViewer}
         />
       </main>

@@ -140,6 +140,14 @@ export default async function RecipeDetailPage({
                     {recipe.cuisine}
                   </Link>
                 )}
+                {recipe.cuisine && recipe.subcategory && (
+                  <Link
+                    href={`/recipes?cuisine=${encodeURIComponent(recipe.cuisine)}&sub=${encodeURIComponent(recipe.subcategory)}`}
+                    className={wayOn}
+                  >
+                    {recipe.subcategory}
+                  </Link>
+                )}
                 {ingredients.length > 0 && (
                   <span>
                     {ingredients.length} {ingredients.length === 1 ? "ingredient" : "ingredients"}
