@@ -20,6 +20,8 @@ export type SpecialMenu = {
   titles?: string[]
   /** Show each card's reason for being on the menu (vegan menu). */
   showReasons?: boolean
+  /** A themed page: its own backdrop and type treatment. */
+  theme?: "christmas" | "garden"
 }
 
 export const specialMenus: SpecialMenu[] = [
@@ -27,6 +29,7 @@ export const specialMenus: SpecialMenu[] = [
     slug: "christmas",
     navLabel: "Christmas",
     title: "Christmas Menu",
+    theme: "christmas",
     blurb: "A full holiday table: a gratin, a stew, mashed potatoes, hand pies, a green salad and star bread to finish.",
     recipeIds: [
       "67a52d40-7b09-4406-8a46-fb16028ef05d", // Vegan Zucchini Gratin
@@ -45,6 +48,7 @@ export const specialMenus: SpecialMenu[] = [
       "Recipes that are vegan as written, vegan with a choice the recipe already lists, or vegan after a simple swap. Each card says which, and the recipe page marks every swap next to its ingredient.",
     titles: veganTitles,
     showReasons: true,
+    theme: "garden",
   },
 ]
 

@@ -158,7 +158,7 @@ function cuisineFromLink(anchor: Element): string | null {
     const url = new URL(href, window.location.origin);
     // A special menu page has its own clip, keyed by its slug.
     const menu = url.pathname.match(/^\/menus\/([a-z0-9-]+)\/?$/);
-    if (menu) return `menu:${menu[1]}`;
+    if (menu && !url.search) return `menu:${menu[1]}`;
     if (!href.includes("cuisine=") || url.pathname !== "/recipes") return null;
     return url.searchParams.get("cuisine");
   } catch {

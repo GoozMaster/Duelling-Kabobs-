@@ -1,0 +1,177 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: #bfe7fa;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The rays turn once every few minutes: enough to feel alive, not to watch. */
+.rays {
+  transform-origin: 900px 170px;
+  animation: spin 240s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Clouds cross the whole scene and re-enter off the far edge. */
+.cloud {
+  animation: drift 160s linear infinite;
+}
+
+.c1 {
+  animation-duration: 190s;
+  animation-delay: -60s;
+}
+
+.c2 {
+  animation-duration: 140s;
+  animation-delay: -110s;
+}
+
+.c3 {
+  animation-duration: 220s;
+  animation-delay: -20s;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-380px);
+  }
+  to {
+    transform: translateX(1700px);
+  }
+}
+
+/* Stems pivot from their base. */
+.sway {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sway 5.5s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+  from {
+    transform: rotate(-1.8deg);
+  }
+  to {
+    transform: rotate(1.8deg);
+  }
+}
+
+.flyer {
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.f1 {
+  animation-name: wander1;
+  animation-duration: 38s;
+}
+
+.f2 {
+  animation-name: wander2;
+  animation-duration: 46s;
+  animation-delay: -18s;
+}
+
+.f3 {
+  animation-name: wander3;
+  animation-duration: 30s;
+  animation-delay: -8s;
+}
+
+@keyframes wander1 {
+  0% {
+    transform: translate(120px, 640px);
+  }
+  25% {
+    transform: translate(420px, 560px);
+  }
+  50% {
+    transform: translate(760px, 620px);
+  }
+  75% {
+    transform: translate(980px, 540px);
+  }
+  100% {
+    transform: translate(120px, 640px);
+  }
+}
+
+@keyframes wander2 {
+  0% {
+    transform: translate(1320px, 600px);
+  }
+  30% {
+    transform: translate(1040px, 520px);
+  }
+  60% {
+    transform: translate(700px, 580px);
+  }
+  100% {
+    transform: translate(1320px, 600px);
+  }
+}
+
+@keyframes wander3 {
+  0% {
+    transform: translate(300px, 740px);
+  }
+  35% {
+    transform: translate(620px, 700px);
+  }
+  70% {
+    transform: translate(900px, 720px);
+  }
+  100% {
+    transform: translate(300px, 740px);
+  }
+}
+
+.flap {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: flap 0.45s ease-in-out infinite alternate;
+}
+
+@keyframes flap {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0.45);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rays,
+  .cloud,
+  .sway,
+  .flyer,
+  .flap {
+    animation: none;
+  }
+
+  .f1 {
+    transform: translate(420px, 560px);
+  }
+  .f2 {
+    transform: translate(1040px, 520px);
+  }
+  .f3 {
+    transform: translate(620px, 700px);
+  }
+}
