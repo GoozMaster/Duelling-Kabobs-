@@ -1,0 +1,60 @@
+/* Type that sits straight on the daytime sky: ink on pale blue, with the
+   site's sticker shadow in white so it reads as cut out. */
+.eyebrow {
+  color: #0f5c66;
+}
+
+.title {
+  color: #16233f;
+  text-shadow:
+    3px 3px 0 #ffffff,
+    -1px -1px 0 #ffffff,
+    1px -1px 0 #ffffff,
+    -1px 1px 0 #ffffff;
+}
+
+.blurb {
+  color: #16233f;
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.85);
+}
+
+/* Section headings and the exit link can end up over green hills, so they
+   carry their own surface. */
+.heading,
+.exit {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 6px 18px;
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-pill);
+  background: #fdf6e3;
+  color: #16233f;
+  box-shadow: var(--sk-shadow-sticker);
+}
+
+.exit {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.exit:hover {
+  background: var(--sk-yellow);
+}
+
+/* The vegan menu's filter chips: the same pills as before, now links. */
+.filter {
+  text-decoration: none;
+  transition:
+    transform 0.1s var(--sk-ease-press),
+    box-shadow 0.1s var(--sk-ease-press);
+}
+
+.filter:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--sk-shadow-pop);
+}
+
+.filterActive {
+  background: var(--sk-yellow);
+}

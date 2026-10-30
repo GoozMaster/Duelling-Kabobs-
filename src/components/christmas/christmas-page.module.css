@@ -1,0 +1,39 @@
+/* Type that sits straight on the night sky. The cards keep the site's cream
+   surfaces; only the page's own heading, intro and exit link change. */
+.eyebrow {
+  color: #8ecae6;
+}
+
+.title {
+  color: #fdf6e3;
+  /* The site's sticker shadow, in ink, so the letters read as cut-outs. */
+  text-shadow:
+    3px 3px 0 #16233f,
+    -1px -1px 0 #16233f,
+    1px -1px 0 #16233f,
+    -1px 1px 0 #16233f;
+}
+
+.blurb {
+  color: #fdf6e3;
+  text-shadow: 0 1px 0 rgb(12 22 48 / 0.9);
+}
+
+/* A pill on its own surface, because by the foot of the page it sits over
+   snow rather than sky. */
+.exit {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 20px;
+  border: 3px solid var(--sk-outline);
+  border-radius: var(--sk-radius-pill);
+  background: #fdf6e3;
+  color: #16233f;
+  font-weight: 600;
+  box-shadow: var(--sk-shadow-sticker);
+  text-decoration: none;
+}
+
+.exit:hover {
+  background: var(--sk-yellow);
+}
