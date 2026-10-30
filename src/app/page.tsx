@@ -6,6 +6,7 @@ import { HeroClip } from "@/components/home/hero-clip";
 import s from "@/components/home/home.module.css";
 import { Overture } from "@/components/home/overture";
 import { type Pick, RecipeHighlight } from "@/components/home/recipe-highlight";
+import { ScrollToTop } from "@/components/home/scroll-to-top";
 import AnimatedContent from "@/components/animated-content";
 import { SkyDrift } from "@/components/home/sky-drift";
 import { Sunburst } from "@/components/home/sunburst";
@@ -97,6 +98,8 @@ export default async function Home() {
 
   return (
     <div className={s.home}>
+      <ScrollToTop />
+
       <Overture />
 
       <SiteNav />
