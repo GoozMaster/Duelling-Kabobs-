@@ -3,11 +3,14 @@ import Link from "next/link"
 
 import { SiteFooter } from "@/components/site-footer/site-footer"
 import { SiteNav } from "@/components/site-nav/site-nav"
+import { fetchAllIngredients } from "@/lib/ingredients"
+import { searchRecipesByIngredient } from "@/lib/ingredient-search"
 import { cuisineCounts, viewerIsAdmin } from "@/lib/recipe-browse"
 import { createClient } from "@/lib/supabase/server"
 
 import { fetchRecipePage } from "./actions"
 import { CuisineFilter } from "./cuisine-filter"
+import { IngredientSearchBar } from "./ingredient-search-bar"
 import { RecipeGrid } from "./recipe-grid"
 
 // Echoes the .btn sticker treatment from the home page rather than the filter
@@ -23,9 +26,10 @@ export const metadata: Metadata = {
 export default async function RecipesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ cuisine?: string }>
+  searchParams: Promise<{ cuisine?: string; q?: string }>
 }) {
-  const { cuisine: requested } = await searchParams
+  const { cuisine: requested, q } = await searchParams
+  const query = (q ?? "").trim().slice(0, 80)
   const supabase = await createClient()
 
   // This page must never gate. isAdmin() is read only to decide whether the
@@ -41,8 +45,12 @@ export default async function RecipesPage({
   const cuisine =
     requested && counts.some(({ name }) => name === requested) ? requested : null
 
-  const page = await fetchRecipePage({ cuisine })
   const isAdminViewer = viewerIsAdmin(auth.user?.email)
+
+  // An ingredient search replaces the paged list with every match, since the
+  // result set is small and ranking across pages would be meaningless.
+  const search = query ? await runSearch(supabase, query, cuisine) : null
+  const page = search ? null : await fetchRecipePage({ cuisine })
 
   return (
     <>
@@ -70,19 +78,75 @@ export default async function RecipesPage({
           </nav>
         </header>
 
-        <CuisineFilter counts={counts} total={total} active={cuisine} />
+        <IngredientSearchBar query={query} cuisine={cuisine} />
 
-        {/* Keyed on the filter so a chip change resets the grid's list rather
-            than appending the new cuisine onto the old one. */}
-        <RecipeGrid
-          key={cuisine ?? "all"}
-          initial={page.recipes}
-          initialHasMore={page.hasMore}
-          cuisine={cuisine}
-          isAdminViewer={isAdminViewer}
-        />
+        <CuisineFilter counts={counts} total={total} active={cuisine} query={query} />
+
+        {search ? (
+          <div className="flex flex-col gap-8">
+            <p role="status" className="text-lg">
+              {search.matches.length === 0
+                ? `No ${cuisine ? `${cuisine} ` : ""}recipes use "${query}".`
+                : `${search.matches.length} ${search.matches.length === 1 ? "recipe uses" : "recipes use"} "${query}"${cuisine ? ` in ${cuisine}` : ""}.`}
+            </p>
+            {search.matches.length > 0 && (
+              <RecipeGrid
+                key={`m-${cuisine ?? "all"}-${query}`}
+                initial={search.matches}
+                initialHasMore={false}
+                cuisine={cuisine}
+                isAdminViewer={isAdminViewer}
+              />
+            )}
+            {search.related.length > 0 && (
+              <section className="flex flex-col gap-4">
+                <h2 className="font-display text-2xl">Close matches</h2>
+                <p className="text-muted-foreground text-sm">
+                  These use some of the words in your search but not all of them.
+                </p>
+                <RecipeGrid
+                  key={`r-${cuisine ?? "all"}-${query}`}
+                  initial={search.related}
+                  initialHasMore={false}
+                  cuisine={cuisine}
+                  isAdminViewer={isAdminViewer}
+                />
+              </section>
+            )}
+          </div>
+        ) : (
+          /* Keyed on the filter so a chip change resets the grid's list rather
+             than appending the new cuisine onto the old one. */
+          <RecipeGrid
+            key={cuisine ?? "all"}
+            initial={page!.recipes}
+            initialHasMore={page!.hasMore}
+            cuisine={cuisine}
+            isAdminViewer={isAdminViewer}
+          />
+        )}
       </main>
       <SiteFooter />
     </>
   )
+}
+
+async function runSearch(
+  supabase: Awaited<ReturnType<typeof createClient>>,
+  query: string,
+  cuisine: string | null,
+) {
+  let recipeQuery = supabase
+    .from("recipes")
+    .select("id, title, cuisine, needs_review")
+    .order("title")
+    .limit(1000)
+  if (cuisine) recipeQuery = recipeQuery.eq("cuisine", cuisine)
+
+  const [{ data: recipes }, ingredients] = await Promise.all([
+    recipeQuery,
+    fetchAllIngredients(supabase),
+  ])
+
+  return searchRecipesByIngredient(query, recipes ?? [], ingredients)
 }

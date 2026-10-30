@@ -1,3 +1,5 @@
+import { specialMenus } from "@/lib/special-menus"
+
 /**
  * The destinations behind the site menu.
  *
@@ -11,10 +13,17 @@
 
 export type MenuLink = { href: string; label: string }
 
-export const recipeItems: MenuLink[] = [
+/** A non-link label that groups the links after it, such as "Special menus". */
+export type MenuSubheading = { subheading: string }
+
+export type MenuEntry = MenuLink | MenuSubheading
+
+export const recipeItems: MenuEntry[] = [
   { href: "/recipes", label: "All recipes" },
   { href: "/recipes/by-cuisine", label: "By cuisine" },
   { href: "/recipes/surprise", label: "Surprise me" },
+  { subheading: "Special menus" },
+  ...specialMenus.map((menu) => ({ href: `/menus/${menu.slug}`, label: menu.navLabel })),
 ]
 
 export const stockEverything: MenuLink = { href: "/stock", label: "Everything" }

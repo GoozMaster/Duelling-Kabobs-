@@ -12,7 +12,7 @@ import {
   useState,
 } from "react"
 
-import type { MenuLink } from "./links"
+import type { MenuEntry, MenuLink } from "./links"
 import s from "./site-nav.module.css"
 
 /**
@@ -37,7 +37,7 @@ import s from "./site-nav.module.css"
 
 export type StaggeredMenuItem =
   | { label: string; href: string; accent?: boolean }
-  | { label: string; links: MenuLink[] }
+  | { label: string; links: MenuEntry[] }
   /** A server action, posted as a form, for things a link must not do (sign out). */
   | { label: string; action: () => Promise<void> }
 
@@ -298,11 +298,19 @@ export function StaggeredMenu({
                       </span>
                     </span>
                     <ul className={s.sub} aria-labelledby={`${headingId}-${i}`}>
-                      {item.links.map((link) => (
-                        <li key={link.href} className={s.clip}>
-                          {renderLink(link, s.subLink)}
-                        </li>
-                      ))}
+                      {item.links.map((link) =>
+                        "subheading" in link ? (
+                          <li key={link.subheading} className={s.clip} aria-hidden="true">
+                            <span data-sm-label className={`${s.label} ${s.subheading}`}>
+                              {link.subheading}
+                            </span>
+                          </li>
+                        ) : (
+                          <li key={link.href} className={s.clip}>
+                            {renderLink(link, s.subLink)}
+                          </li>
+                        ),
+                      )}
                     </ul>
                   </>
                 ) : "action" in item ? (

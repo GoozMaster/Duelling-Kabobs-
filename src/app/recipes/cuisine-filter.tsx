@@ -7,6 +7,8 @@ type Props = {
   counts: Array<{ name: string; count: number }>
   total: number
   active: string | null
+  /** The ingredient search, carried across chip changes. */
+  query?: string
 }
 
 const base =
@@ -21,21 +23,23 @@ const empty = "bg-card text-muted-foreground opacity-50"
  * revert to "All". Links handle the initial navigation and work with the back
  * button; the client-side toggle happens in the click handler.
  */
-export function CuisineFilter({ counts, total, active }: Props) {
+export function CuisineFilter({ counts, total, active, query = "" }: Props) {
   const router = useRouter()
+  const q = query ? `q=${encodeURIComponent(query)}` : ""
+  const allHref = q ? `/recipes?${q}` : "/recipes"
 
   const handleCuisineClick = (e: React.MouseEvent<HTMLAnchorElement>, name: string) => {
     // If clicking an already-selected cuisine, go back to "All"
     if (active === name) {
       e.preventDefault()
-      router.push("/recipes")
+      router.push(allHref)
     }
   }
 
   return (
     <nav aria-label="Filter by cuisine" className="flex flex-wrap gap-2">
       <Link
-        href="/recipes"
+        href={allHref}
         aria-current={active ? undefined : "page"}
         className={`${base} ${active ? idle : selected}`}
       >
@@ -61,7 +65,7 @@ export function CuisineFilter({ counts, total, active }: Props) {
         return (
           <Link
             key={name}
-            href={`/recipes?cuisine=${encodeURIComponent(name)}`}
+            href={`/recipes?cuisine=${encodeURIComponent(name)}${q ? `&${q}` : ""}`}
             aria-current={isActive ? "page" : undefined}
             className={`${base} ${isActive ? selected : idle}`}
             onClick={(e) => handleCuisineClick(e, name)}

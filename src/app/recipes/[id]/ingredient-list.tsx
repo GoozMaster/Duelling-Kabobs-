@@ -7,6 +7,8 @@ export type MarkedIngredient = {
   name: string
   required: boolean
   substitution: string | null
+  /** Set when the recipe is on the vegan menu and this line needs a swap. */
+  veganSwap?: string | null
   onHand: boolean
 }
 
@@ -181,6 +183,11 @@ export function IngredientList({ groups, have, totalRequired, usedPantry }: Prop
                             )
                           )}
                         </span>
+                        {item.veganSwap && (
+                          <span className="text-[15px] font-semibold text-[var(--sk-basil)]">
+                            (vegan: {item.veganSwap})
+                          </span>
+                        )}
                         {item.substitution && (
                           <span className="text-muted-foreground text-[15px]">
                             or {item.substitution}
