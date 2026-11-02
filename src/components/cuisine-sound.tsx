@@ -23,11 +23,12 @@ import { useEffect } from "react";
  */
 
 /**
- * Ten of the twelve cuisines have a sound; Other and Mediterranean are silent.
+ * Eleven of the twelve cuisines have a sound; Other is silent.
  *
  * Persian plays the clip Mediterranean used to have (Sound Effects/
  * Mediterranean.mp3): it was always the Persian joke, and moved with it when
- * the Persian cuisine was added.
+ * the Persian cuisine was added. Mediterranean now has its own clip, the
+ * "SP Middle East" sound from myinstants.com, played as a capped sting.
  *
  * Sound Effects/ also holds China.mp3 and Japan.mp3, which have no
  * corresponding cuisine — the collection has "Asian", not "Chinese" or
@@ -44,6 +45,7 @@ const SOUNDS: Record<string, string> = {
   Indian: "/sounds/indian.mp3",
   Italian: "/sounds/italian.mp3",
   Latin: "/sounds/latin.mp3",
+  Mediterranean: "/sounds/mediterranean.mp3",
   Persian: "/sounds/persian.mp3",
   // Special menus, keyed "menu:<slug>" by cuisineFromLink.
   "menu:vegan": "/sounds/menu-vegan.mp3",
