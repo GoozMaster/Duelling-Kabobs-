@@ -304,6 +304,7 @@
 }
 
 .tourGrid .player,
+.tourGrid .credit,
 .tourGrid .covers {
   width: 100%;
   max-width: 960px;
@@ -332,6 +333,19 @@
   display: block;
   width: 100%;
   height: 100%;
+}
+
+/* The soundtrack's CC BY attribution: required, so present, but quiet. */
+.credit {
+  margin: calc(var(--sk-space-4) * -1) 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--sk-ink-muted);
+  text-wrap: pretty;
+}
+
+.credit a {
+  color: inherit;
 }
 
 /* Centred, and small enough to clear the native controls bar underneath.

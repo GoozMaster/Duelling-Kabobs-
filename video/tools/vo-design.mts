@@ -48,9 +48,7 @@ const LIGHT = -10;
 const PLACARD = lines.l26.start + 0.1; // scenes/close.tsx
 const duckOf = (id: string) => (id === "l11" ? LIGHT : DUCK);
 const rides: Array<[number, number]> = [[0, 0]];
-const sorted = Object.entries(lines)
-  .map(([id, l]) => ({ id, ...l }))
-  .sort((a, b) => a.start - b.start);
+const sorted = Object.values(lines).sort((a, b) => a.start - b.start);
 sorted.forEach((l, i) => {
   const next = sorted[i + 1];
   const prev = sorted[i - 1];

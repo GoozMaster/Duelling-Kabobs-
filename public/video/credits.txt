@@ -1,0 +1,14 @@
+Music:
+"Onion Capers" Kevin MacLeod (incompetech.com)
+Licensed under Creative Commons: By Attribution 4.0 License
+http://creativecommons.org/licenses/by/4.0/
+Source: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800023 (edited: trimmed, rearranged and time-stretched)
+Edited for the film: cut and rearranged at bar lines to fit the picture, time-stretched from 105.002 to 104 BPM, levels adjusted, a fade at the end.
+
+Sound effects (CC BY):
+"Bamboo Swing, C4.wav" by InspectorJ (www.jshaw.co.uk) of Freesound.org (https://freesound.org/people/InspectorJ/sounds/394457/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+"Richcraft - chime D6ish 20181219.wav" by richcraftstudios (https://freesound.org/people/richcraftstudios/sounds/454612/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+"Floor Tom Hit.wav" by CouleurCasquette (https://freesound.org/people/CouleurCasquette/sounds/349020/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)
+All sound effects and ambiences were modified: trimmed, layered, level-adjusted, equalised, panned and pitch-shifted by resampling for the film.
+
+More sounds (CC0) by: 15FPanska_KristynaHaupt, 15GPanskaZacekSamuel, adamlenhart, aliyahb, bolkmar, cb9382, cbenci, CHallSmith, dr19, ekfink, el_boss, hollandm, I.fekry, justamudkip, khenshom, Leonardmedia.nl, MegaPenguin13, Mickael_Leroi, myfreesoundaccount1998, nikerk, NoisyRedFox, nyxlitten, Pablobd, puZZelZ, qubodup, RoyalRose, Sadiquecat, SMKoski02, snuq, tony_bear, tothrec2, vcspran

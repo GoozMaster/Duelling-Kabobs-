@@ -10,7 +10,8 @@
  *      start playing before the whole thing has downloaded.
  *   3. Poster: the title card, as a JPEG.
  *
- *   node video/tools/finish.mjs
+ *   node video/tools/finish.mjs            from out/film_sound.mp4, the real-sound mux
+ *   node video/tools/finish.mjs <file.mp4>  from another render
  */
 import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
@@ -25,7 +26,9 @@ const root = path.resolve(here, "..");
 const bin = path.resolve(root, "../node_modules/@remotion/compositor-win32-x64-msvc");
 const ffmpeg = path.join(bin, "ffmpeg.exe");
 
-const raw = path.join(root, "out/explainer-raw.mp4");
+// The raw render's own audio is the old synthesised mix; what ships is the
+// picture with the real-sound soundtrack muxed on (see video/README.md).
+const raw = path.resolve(process.argv[2] ?? path.join(root, "out/film_sound.mp4"));
 const outDir = path.resolve(root, "../public/video");
 fs.mkdirSync(outDir, { recursive: true });
 
@@ -51,7 +54,7 @@ execFileSync(ffmpeg, [
 console.log(`→ ${path.relative(process.cwd(), out)} (${(fs.statSync(out).size / 1e6).toFixed(1)} MB)`);
 
 // ---- 3. poster: the title card, just after the clash settles
-const POSTER_AT = Number(process.env.POSTER_AT ?? 48.4);
+const POSTER_AT = Number(process.env.POSTER_AT ?? 61.6);
 const serveUrl = await bundle({ entryPoint: path.join(root, "src/index.ts"), publicDir: path.join(root, "public") });
 const composition = await selectComposition({ serveUrl, id: "Explainer" });
 const png = path.join(root, "out/poster.png");
