@@ -1,0 +1,1771 @@
+[
+ {
+  "id": "fs-549207",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-549207_call-bell.ogg",
+  "title": "Call Bell.wav",
+  "author": "Pablobd",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Pablobd/sounds/549207/",
+  "download_url": "https://cdn.freesound.org/previews/549/549207_5701403-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_bell",
+  "rank": 1,
+  "best_segment": [
+   11.631,
+   14.6
+  ],
+  "notes": "Concierge/call bell, AKG CK93 (page). FOUR clean single strikes, near-silent between (floor -81.4 dBFS, mono 48 kHz). earshot find stroke trims (5 ms pre-roll): 0.619, 6.465, 11.631, 17.146 s; give each 2.5-3 s for the ring-out (earshot measure decay 574 ms; ring visible to ~4 s on the spectrogram). match z: 11.63 +5.5, 17.15 +5.5, 6.46 +5.4, 0.62 +5.4, all strong, 95-97% 'service bell' vs bicycle/triangle/timer. Trim realness 0.99 on 6.46, 11.63 and 17.15 (6.46/17.15 add 'pitch dead steady': normal for a struck bell). AVOID the 17.15 take: 2 clipped samples (peak +0.2 dBFS); 0.62 / 6.46 / 11.63 have 0 clipped (peaks -0.6 / -0.1 / -0.3 dBFS). Pitch (partials.py, FFT 50 ms-1.05 s after the peak): dominant 3113 Hz (G7 -13c), 5755 Hz (F#8 -49c, -1..-6 dB), lowest strong partial 1151 Hz (D6 -36c, -15..-18 dB). Suggest 0.62 take for 88.80 (light, -6..-8 dB), 6.46 for 118.75, 11.63 for 128.59 (bright). The 3.1 kHz partial sits in the voice presence band: if it masks narration, a gentle -3 dB bell at 3.1 kHz or resample -1 st. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 21.867,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": 0.15,
+   "lufs": -13.89,
+   "noise_floor_dbfs": -81.4,
+   "clipped_samples": 4,
+   "attack_at": 0.634,
+   "centroid_hz": 2805,
+   "rolloff95_hz": 9453,
+   "onsets": [
+    0.65,
+    6.502,
+    11.656,
+    17.183
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 5.5,
+    "verdict": "strong",
+    "segment": [
+     11.63,
+     14.6
+    ],
+    "p_vs_alts": "97% vs bicycle bell 2% / triangle 1% / timer beep <1%"
+   }
+  }
+ },
+ {
+  "id": "fs-49973",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-49973_hotel-bell-6inch.ogg",
+  "title": "Bell 6inch away.aif",
+  "author": "mwl500",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/mwl500/sounds/49973/",
+  "download_url": "https://cdn.freesound.org/previews/49/49973_251523-hq.ogg",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "\"Bell 6inch away.aif\" by mwl500 (https://freesound.org/people/mwl500/sounds/49973/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)",
+  "need": "a_bell",
+  "rank": 2,
+  "best_segment": [
+   13.305,
+   16.3
+  ],
+  "notes": "Traditional hotel porter's desk bell, Rode NT1 at 6 inches (page). THREE clean single strikes at 0.209, 8.591, 13.305 s (find strokes z +4.3 / +3.6 / +4.4); ring-out ~7 s each, floor -74.8 dBFS, mono 48 kHz, 0 clipped. match z 13.30 +4.9, 0.21 +4.8, 8.59 +4.6 (strong), but forced choice leans 'bicycle bell' (61-81%): more metallic and brighter than 549207 (earshot ab: B brighter, 4 dB quieter; A 549207 slightly closer, z +5.5 vs +4.9). Partials 907 Hz (A#5 -48c), 2303 Hz (D7 -34c), 4221 Hz (C8 +14c), 6532 Hz (G#8 -30c, loudest in takes 1 and 3). Lower fundamental: the warmer alternative, or a variety take. Trim realness 1.00 (13.30-16.3). Avoid find window 0.683-2.525 (head cut). [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 19.014,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -1.31,
+   "lufs": -21.73,
+   "noise_floor_dbfs": -74.8,
+   "clipped_samples": 0,
+   "attack_at": 0.296,
+   "centroid_hz": 1504,
+   "rolloff95_hz": 8852,
+   "onsets": [
+    0.302,
+    0.766,
+    8.661,
+    9.427,
+    13.166,
+    13.421,
+    13.886
+   ]
+  },
+  "earshot": {
+   "realness": 1.0,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 4.9,
+    "verdict": "strong",
+    "segment": [
+     13.3,
+     16.3
+    ],
+    "p_vs_alts": "37% vs bicycle bell 61% / triangle 2%"
+   }
+  }
+ },
+ {
+  "id": "fs-221515",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-221515_service-bell-ring.ogg",
+  "title": "service bell ring",
+  "author": "AlaskaRobotics",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/AlaskaRobotics/sounds/221515/",
+  "download_url": "https://cdn.freesound.org/previews/221/221515_1282865-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_bell",
+  "rank": 3,
+  "best_segment": [
+   0.259,
+   3.0
+  ],
+  "notes": "Metal service bell, Roland DR-20 dynamic mic (page). ONE strike at 0.259 s (find z +5.3), long sustained ring (decay 1996 ms). Floor -62.3 dBFS, 0 clipped; analyze flags 'dull' and side/mid +7.4 dB (unusually wide for a bell: sum to mono and check). Partials 3621 Hz (A7 +49c), 6738 Hz, 1309 Hz (E6 -13c). Single take: backup. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 8.833,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -1.15,
+   "lufs": -10.93,
+   "noise_floor_dbfs": -62.3,
+   "clipped_samples": 0,
+   "attack_at": 0.265,
+   "centroid_hz": 1705,
+   "rolloff95_hz": 7073,
+   "onsets": [
+    0.279,
+    1.974
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 5.3,
+    "verdict": "strong",
+    "segment": [
+     0.26,
+     3.0
+    ],
+    "p_vs_alts": "87% vs bicycle bell 12%"
+   }
+  }
+ },
+ {
+  "id": "fs-803259",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-803259_call-bell-multiple.ogg",
+  "title": "BELLMisc_Call Bell Ring Multiple 01_KVV AUDIO_FREE",
+  "author": "KVV_Audio",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/KVV_Audio/sounds/803259/",
+  "download_url": "https://cdn.freesound.org/previews/803/803259_12846320-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"BELLMisc_Call Bell Ring Multiple 01_KVV AUDIO_FREE\" by KVV Audio (https://freesound.org/people/KVV_Audio/sounds/803259/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "a_bell",
+  "rank": 4,
+  "best_segment": [
+   14.997,
+   18.0
+  ],
+  "notes": "Small desk call bell, Zoom H5 + EM 258, 96 kHz (page). Mostly multi-ring bursts (about 4.2-5.0 s and 9.4-11.0 s: skip). Single strikes at 0.011, 14.997, 19.053 s (match z +5.1 / +4.9 / +4.9). Peak -8.2 dBFS, gated between takes (floor -200, 4.3% exact zeros in the 15.0 trim). Partials ~1245-1276 Hz (D#6), 3480 Hz (A7 -20c), 6556 Hz. Author asks for 'KVV Audio' and the sounds used in the credits/description. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 22.265,
+   "codec": "vorbis",
+   "kbps": 149,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": -8.19,
+   "lufs": -25.67,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.02,
+   "centroid_hz": 2204,
+   "rolloff95_hz": 10120,
+   "onsets": [
+    0.07,
+    0.186,
+    4.226,
+    4.389,
+    4.574,
+    4.737,
+    4.923,
+    5.085,
+    5.271,
+    9.474,
+    9.66,
+    9.845
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 4.9,
+    "verdict": "strong",
+    "segment": [
+     15.0,
+     18.0
+    ],
+    "p_vs_alts": "22% vs bicycle bell 78%"
+   }
+  }
+ },
+ {
+  "id": "fs-264594",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-264594_brass-reception-bell.ogg",
+  "title": "Reception bell",
+  "author": "cdrk",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/cdrk/sounds/264594/",
+  "download_url": "https://cdn.freesound.org/previews/264/264594_65641-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Reception bell\" by cdrk (https://freesound.org/people/cdrk/sounds/264594/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "a_bell",
+  "rank": 5,
+  "best_segment": [
+   0.011,
+   1.4
+  ],
+  "notes": "Brass reception bell (page), one strike at 0.011 s, ring to ~6.5 s. Floor -60.9 dBFS, earshot bandwidth 16.25 kHz, and broadband rustle visible 1.5-2.5 s on the spectrogram (find cut events 0.80-1.67, 1.95-2.34): use 0.01-1.4 s only. Partials 868 Hz (A5 -24c), 3948 Hz (B7 -2c), 2239 Hz. Last resort. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 6.799,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.25,
+   "lufs": -20.33,
+   "noise_floor_dbfs": -60.9,
+   "clipped_samples": 0,
+   "attack_at": 0.003,
+   "centroid_hz": 1075,
+   "rolloff95_hz": 8126,
+   "onsets": [
+    0.07,
+    0.441,
+    0.673,
+    0.836,
+    0.952,
+    1.3,
+    1.718,
+    1.974,
+    2.392
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 4.6,
+    "verdict": "strong",
+    "segment": [
+     0.01,
+     3.0
+    ],
+    "p_vs_alts": "59% vs triangle 34% / bicycle 7%"
+   }
+  }
+ },
+ {
+  "id": "fs-454612",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-454612_chime-rod-d6.ogg",
+  "title": "Richcraft - chime D6ish 20181219.wav",
+  "author": "richcraftstudios",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/richcraftstudios/sounds/454612/",
+  "download_url": "https://cdn.freesound.org/previews/454/454612_9211095-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Richcraft - chime D6ish 20181219.wav\" by richcraftstudios (https://freesound.org/people/richcraftstudios/sounds/454612/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "a_chime",
+  "rank": 1,
+  "best_segment": [
+   0.0,
+   2.0
+  ],
+  "notes": "A single wind-chime rod struck with a wood stick, studio (page). One stroke at ~0.05 s, attack 5 ms, decay 943 ms, floor -85.5 dBFS, mono, peak -8.0 dBFS, 0 clipped. Nearly a pure tone: 3692 Hz (A#7 -17c), next partial 2342 Hz 41 dB down; bandwidth 10.2 kHz (110 kbps preview; irrelevant for this tone). Realness 0.98 file / 0.95 on 0-2 s ('pitch dead steady' note: normal for a struck rod). Use at 26.49, low, fade out by ~1.5 s; resample within +-2 st to the track's key if needed. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 3.297,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -8.05,
+   "lufs": -17.04,
+   "noise_floor_dbfs": -85.5,
+   "clipped_samples": 0,
+   "attack_at": 0.046,
+   "centroid_hz": 3529,
+   "rolloff95_hz": 9560,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "match": {
+    "query": "a single soft gentle chime note, a small bell or glass struck once",
+    "z": 3.8,
+    "verdict": "strong",
+    "p_vs_alts": "93% vs desk bell 6% / synth ping <1% / wind chimes <1%"
+   }
+  }
+ },
+ {
+  "id": "fs-423104",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-423104_wine-glass-taps.ogg",
+  "title": "Wine Glass Three Taps",
+  "author": "SoundsLikeFoley",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/SoundsLikeFoley/sounds/423104/",
+  "download_url": "https://cdn.freesound.org/previews/423/423104_7478740-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Wine Glass Three Taps\" by SoundsLikeFoley (https://freesound.org/people/SoundsLikeFoley/sounds/423104/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "a_chime",
+  "rank": 2,
+  "best_segment": [
+   3.367,
+   4.47
+  ],
+  "notes": "Wine glass tapped, Lewitt LCT 540 + MixPre-6, 24/96 (page). Taps at 0.150, 0.393 and 3.367 s (find z +4.1 / +4.2 / +4.3). Use 3.367-4.470 (peak -1.2 dBFS, 0 clipped, trim realness 0.93 with note 'quiet parts are tonal tails'); the 0.15-1.35 trim peaks at -0.0 dBFS (no headroom). Pitch 963 Hz (B5 -44c) + 2464 Hz (D#7 -18c). Floor -84.4 dBFS. Lower and warmer than the rod, shorter tail (earshot ab: 440 ms). earshot ab: rod and glass tie (z +3.8 each). Good for 26.49 or 63.9. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 6.433,
+   "codec": "vorbis",
+   "kbps": 152,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": -0.34,
+   "lufs": -19.0,
+   "noise_floor_dbfs": -84.4,
+   "clipped_samples": 0,
+   "attack_at": 0.155,
+   "centroid_hz": 920,
+   "rolloff95_hz": 8102,
+   "onsets": [
+    0.163,
+    0.418,
+    0.65,
+    3.39,
+    3.622,
+    3.855
+   ]
+  },
+  "earshot": {
+   "realness": 0.93,
+   "match": {
+    "query": "a single soft gentle chime note, a small bell or glass struck once",
+    "z": 3.8,
+    "verdict": "strong",
+    "segment": [
+     3.37,
+     4.47
+    ],
+    "p_vs_alts": "99% vs desk bell 1%"
+   }
+  }
+ },
+ {
+  "id": "fs-373367",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-373367_glockenspiel-f4.ogg",
+  "title": "Glockenspiel - F#4 (glock_medium_G4.wav)",
+  "author": "sgossner",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/sgossner/sounds/373367/",
+  "download_url": "https://cdn.freesound.org/previews/373/373367_2475994-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_chime",
+  "rank": 3,
+  "best_segment": [
+   0.0,
+   2.5
+  ],
+  "notes": "VSCO 2 Community Edition glockenspiel one-shot (page; CC0). One note, attack 7 ms, decay 2396 ms. VERY quiet: peak -26.6 dBFS, -48.1 LUFS, floor -88.2 dBFS: needs ~+20 dB. Measured fundamental 788 Hz (G5 +8c) despite the 'F#4' title; partials 4483, 7038 Hz. The tuned option if a celesta-like note in key is wanted. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 7.207,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -26.64,
+   "lufs": -48.13,
+   "noise_floor_dbfs": -88.2,
+   "clipped_samples": 0,
+   "attack_at": 0.006,
+   "centroid_hz": 1838,
+   "rolloff95_hz": 9183,
+   "onsets": [
+    0.07,
+    0.163,
+    0.279,
+    0.418,
+    0.464,
+    0.557,
+    0.859,
+    1.115,
+    1.184,
+    1.254,
+    1.416,
+    1.533
+   ]
+  },
+  "earshot": {
+   "realness": 0.94,
+   "match": {
+    "query": "a single soft gentle chime note, a small bell or glass struck once",
+    "z": 4.0,
+    "verdict": "strong",
+    "p_vs_alts": "86% vs desk bell 14%"
+   }
+  }
+ },
+ {
+  "id": "fs-185822",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-185822_single-chime.ogg",
+  "title": "Single chime",
+  "author": "LloydEvans09",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/LloydEvans09/sounds/185822/",
+  "download_url": "https://cdn.freesound.org/previews/185/185822_2567799-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_chime",
+  "rank": 4,
+  "best_segment": [
+   0.048,
+   2.048
+  ],
+  "notes": "A single chime struck, very dry room, AKG 414 + Oktava M/S, 96 kHz (page). Stroke at 0.048 s (find for 'a single soft chime stroke' only weak z +2.4; match strong +3.5). Attack 84 ms (soft), decay 3565 ms, peak -4.1 dBFS, floor -68.9 dBFS. Partials 2491 Hz (D#7 +1c) and 5698 Hz (F8 +34c) at equal level. Backup. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 7.67,
+   "codec": "vorbis",
+   "kbps": 139,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": -4.07,
+   "lufs": -14.63,
+   "noise_floor_dbfs": -68.9,
+   "clipped_samples": 0,
+   "attack_at": 0.053,
+   "centroid_hz": 2690,
+   "rolloff95_hz": 9194,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "match": {
+    "query": "a single soft gentle chime note, a small bell or glass struck once",
+    "z": 3.5,
+    "verdict": "strong",
+    "segment": [
+     0.05,
+     3.0
+    ],
+    "p_vs_alts": "94% vs desk bell 5%"
+   }
+  }
+ },
+ {
+  "id": "fs-742810",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-742810_tshirt-whip.ogg",
+  "title": "Whipping T-shirt",
+  "author": "Sadiquecat",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Sadiquecat/sounds/742810/",
+  "download_url": "https://cdn.freesound.org/previews/742/742810_5287430-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_swish",
+  "rank": 1,
+  "best_segment": [
+   0.847,
+   1.355
+  ],
+  "notes": "T-shirt whipped, Zoom H5 + Rode NT5, indoors, 96 kHz mono (page). Three takes (find): 0.847-1.355 (z +4.3, peak -7.7 dBFS), 0.035-0.465 (z +3.4, peak -18.5), 1.953-2.450 (find +2.7 / match +3.0, peak -8.6). Each 0.43-0.51 s. Floor -74.0 dBFS; realness 0.98 on the 0.85 trim. Use 0.847 for 37.68 and 1.953 for 129.98; the swish peaks near 1.12 s / 2.25 s in the file (spectrogram): align peak just before the iris apex. Low-weighted (earshot ab brightness 638 Hz): a slight high shelf if it vanishes. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 2.664,
+   "codec": "vorbis",
+   "kbps": 103,
+   "src_rate": 96000,
+   "channels": 1,
+   "peak_dbfs": -7.65,
+   "lufs": -33.64,
+   "noise_floor_dbfs": -74.0,
+   "clipped_samples": 0,
+   "attack_at": 0.13,
+   "centroid_hz": 1692,
+   "rolloff95_hz": 9000,
+   "onsets": [
+    0.139,
+    0.209,
+    0.302,
+    0.952,
+    0.998,
+    1.115,
+    1.161,
+    1.997,
+    2.252
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "match": {
+    "query": "a quick swish of a stick or cloth swung fast through the air",
+    "z": 4.5,
+    "verdict": "strong",
+    "segment": [
+     0.85,
+     1.36
+    ],
+    "p_vs_alts": ">99% vs synthesized whoosh <1% / wind <1% / punch <1%"
+   }
+  }
+ },
+ {
+  "id": "fs-1940",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-1940_wire-swish-x4.ogg",
+  "title": "rbh swish wire x 4.wav",
+  "author": "RHumphries",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/RHumphries/sounds/1940/",
+  "download_url": "https://cdn.freesound.org/previews/1/1940_1112-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"rbh swish wire x 4.wav\" by RHumphries (https://freesound.org/people/RHumphries/sounds/1940/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "a_swish",
+  "rank": 2,
+  "best_segment": [
+   0.517,
+   1.51
+  ],
+  "notes": "Wire coat hanger swung fast, Zaxcom Deva II + MKH30/MKH40 M/S (page). Best find event 0.517-1.510 (z +4.9); 0.100-0.311 is tail cut (avoid). Quiet: file peak -17.0 dBFS, trim -23.8 (needs +10..+15 dB). Floor -70.3 dBFS. Thinner and brighter than the T-shirt (earshot ab 3.9 kHz vs 638 Hz, A slightly closer z +4.5 vs +3.9): a stick-like swish to layer over the cloth or to differentiate the second wipe. Trim realness 0.96. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 2.135,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -17.04,
+   "lufs": -36.32,
+   "noise_floor_dbfs": -70.3,
+   "clipped_samples": 0,
+   "attack_at": 0.589,
+   "centroid_hz": 2574,
+   "rolloff95_hz": 8667,
+   "onsets": [
+    0.07,
+    0.116,
+    0.163,
+    0.348,
+    0.604,
+    1.091,
+    1.138,
+    1.602,
+    1.649
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "match": {
+    "query": "a quick swish of a stick or cloth swung fast through the air",
+    "z": 3.9,
+    "verdict": "strong",
+    "segment": [
+     0.52,
+     1.51
+    ],
+    "p_vs_alts": "100% vs synthesized whoosh 0%"
+   }
+  }
+ },
+ {
+  "id": "fs-394457",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-394457_bamboo-swing-c4.ogg",
+  "title": "Bamboo Swing, C4.wav",
+  "author": "InspectorJ",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/InspectorJ/sounds/394457/",
+  "download_url": "https://cdn.freesound.org/previews/394/394457_5121236-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Bamboo Swing, C4.wav\" by InspectorJ (www.jshaw.co.uk) of Freesound.org (https://freesound.org/people/InspectorJ/sounds/394457/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "a_swish",
+  "rank": 3,
+  "best_segment": [
+   0.25,
+   1.0
+  ],
+  "notes": "Raw bamboo swung close to the recorder (page; the slower 'C' swing). One swing, attack 0.31 s, file 1.18 s, peak -21.4 dBFS (~+12 dB), floor -73.6 dBFS. Author's credit form used below. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 1.185,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -21.39,
+   "lufs": -35.93,
+   "noise_floor_dbfs": -73.6,
+   "clipped_samples": 0,
+   "attack_at": 0.31,
+   "centroid_hz": 1860,
+   "rolloff95_hz": 8517,
+   "onsets": [
+    0.07,
+    0.372,
+    0.743
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "match": {
+    "query": "a quick swish of a stick or cloth swung fast through the air",
+    "z": 3.9,
+    "verdict": "strong",
+    "p_vs_alts": "89% vs synthesized whoosh 11%"
+   }
+  }
+ },
+ {
+  "id": "fs-75544",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-75544_bamboo-pole-swish.ogg",
+  "title": "swish Bamboo pole w insect net 12.wav",
+  "author": "ra_gun",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/ra_gun/sounds/75544/",
+  "download_url": "https://cdn.freesound.org/previews/75/75544_94000-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_swish",
+  "rank": 4,
+  "best_segment": [
+   0.0,
+   0.44
+  ],
+  "notes": "Bamboo pole (with insect net) swung, Tascam DR-100 (page). 0.44 s, attack 0.13 s, peak -3.2 dBFS. analyze floor -50.8 dBFS: the file is one event with no gap, so that 'floor' is the swish's own tail; fade the last 100 ms. Backup. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 0.442,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -3.16,
+   "lufs": null,
+   "noise_floor_dbfs": -50.8,
+   "clipped_samples": 0,
+   "attack_at": 0.13,
+   "centroid_hz": 1700,
+   "rolloff95_hz": 9755,
+   "onsets": [
+    0.139
+   ]
+  },
+  "earshot": {
+   "realness": 0.94,
+   "match": {
+    "query": "a quick swish of a stick or cloth swung fast through the air",
+    "z": 3.8,
+    "verdict": "strong",
+    "p_vs_alts": "90% vs synthesized whoosh 10%"
+   }
+  }
+ },
+ {
+  "id": "fs-855844",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-855844_long-bamboo-whoosh.ogg",
+  "title": "Whoosh - Long Bamboo stick - OS ST 13",
+  "author": "Sadiquecat",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Sadiquecat/sounds/855844/",
+  "download_url": "https://cdn.freesound.org/previews/855/855844_5287430-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_swish",
+  "rank": 5,
+  "best_segment": [
+   0.0,
+   0.62
+  ],
+  "notes": "Long bamboo stick, DJI Mic 3, trimmed + normalised (page). 0.62 s, peak -0.02 dBFS, floor -73.8. Realness 0.98 but forced choice hears a designed whoosh (75%). Backup only. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 0.62,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.02,
+   "lufs": -15.98,
+   "noise_floor_dbfs": -73.8,
+   "clipped_samples": 0,
+   "attack_at": 0.09,
+   "centroid_hz": 2312,
+   "rolloff95_hz": 9220,
+   "onsets": [
+    0.093
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "match": {
+    "query": "a quick swish of a stick or cloth swung fast through the air",
+    "z": 3.3,
+    "verdict": "strong",
+    "p_vs_alts": "25% vs synthesized whoosh 75%"
+   }
+  }
+ },
+ {
+  "id": "fs-719636",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-719636_bamboo-swoosh-v1.ogg",
+  "title": "Fast whoosh, bamboo swoosh through air, version 1",
+  "author": "zapsplat.com",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/zapsplat.com/sounds/719636/",
+  "download_url": "https://cdn.freesound.org/previews/719/719636_15601358-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: forced choice hears a synthesized whoosh (85%), analyze flags dull; better real swishes exist. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 0.554,
+   "codec": "vorbis",
+   "kbps": 209,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": -2.81,
+   "lufs": -23.96,
+   "noise_floor_dbfs": -113.6,
+   "clipped_samples": 0,
+   "attack_at": 0.062,
+   "centroid_hz": 1508,
+   "rolloff95_hz": 7998,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.91,
+   "match": {
+    "query": "a quick swish of a stick or cloth swung fast through the air",
+    "z": 3.1,
+    "verdict": "strong",
+    "p_vs_alts": "12% vs synthesized whoosh 85%"
+   }
+  }
+ },
+ {
+  "id": "fs-263454",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-263454_towel-whipping.ogg",
+  "title": "Clothes Whipping",
+  "author": "AlecCorday",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/AlecCorday/sounds/263454/",
+  "download_url": "https://cdn.freesound.org/previews/263/263454_1591616-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": [
+   5.085,
+   5.3
+  ],
+  "notes": "REJECTED: towel snaps rather than swishes; best take 5.085-5.300 only plausible (find +2.6 / match +2.9), other takes weak or no match. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 11.891,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -2.75,
+   "lufs": -28.33,
+   "noise_floor_dbfs": -82.1,
+   "clipped_samples": 0,
+   "attack_at": 0.811,
+   "centroid_hz": 1820,
+   "rolloff95_hz": 9181,
+   "onsets": [
+    0.813,
+    1.974,
+    2.995,
+    3.042,
+    4.087,
+    5.201,
+    5.364,
+    6.269,
+    6.316,
+    7.454,
+    8.568,
+    9.59
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "match": {
+    "query": "a quick swish of a stick or cloth swung fast through the air",
+    "z": 2.9,
+    "verdict": "plausible",
+    "segment": [
+     5.08,
+     5.3
+    ],
+    "p_vs_alts": "69% vs punch 17% / synth whoosh 14%"
+   }
+  }
+ },
+ {
+  "id": "fs-463763",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-463763_throw-swish-x12.ogg",
+  "title": "throw swish x12 HZA 07-03-2019.wav",
+  "author": "hz37",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/hz37/sounds/463763/",
+  "download_url": "https://cdn.freesound.org/previews/463/463763_123355-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: realness 'likely code-synthesized' (p_real 0.31, 3 of 3 windows), floor -200 dBFS; page says 'abstract throw swishes'. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 9.885,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -8.85,
+   "lufs": -26.6,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.38,
+   "centroid_hz": 1323,
+   "rolloff95_hz": 6637,
+   "onsets": [
+    0.279,
+    0.372,
+    0.418,
+    1.184,
+    1.277,
+    1.324,
+    2.09,
+    2.159,
+    2.229,
+    2.879,
+    2.972,
+    3.042
+   ]
+  },
+  "earshot": {
+   "realness": 0.31,
+   "match": null
+  }
+ },
+ {
+  "id": "fs-349020",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-349020_floor-tom-hit.ogg",
+  "title": "Floor Tom Hit.wav",
+  "author": "CouleurCasquette",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/CouleurCasquette/sounds/349020/",
+  "download_url": "https://cdn.freesound.org/previews/349/349020_3632866-hq.ogg",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "\"Floor Tom Hit.wav\" by CouleurCasquette (https://freesound.org/people/CouleurCasquette/sounds/349020/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)",
+  "need": "a_impact",
+  "rank": 1,
+  "best_segment": [
+   0.0,
+   1.2
+  ],
+  "notes": "Floor tom, AT2020, edited in Ableton (page). One hit, attack 0.034 s, peak -0.02 dBFS (0 clipped), -19.65 LUFS, floor -64.9 dBFS, centroid 177 Hz, mono (110 kbps preview; 'dull' = a low drum). Ring decays over ~2.5 s: cut at 1.2 s with a 300 ms fade for a short top. Realness 0.87 file / 0.84 on 0-1.2 s ('quiet parts are tonal tails': a drum ring). Attack-aligned on 45.89, under the music's drop, well below the drop's peak: a real drum, not a trailer boom. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 2.916,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -0.02,
+   "lufs": -19.65,
+   "noise_floor_dbfs": -64.9,
+   "clipped_samples": 0,
+   "attack_at": 0.034,
+   "centroid_hz": 177,
+   "rolloff95_hz": 7197,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.87,
+   "match": {
+    "query": "a single big acoustic drum hit, a bass drum or floor tom struck once",
+    "z": 6.1,
+    "verdict": "strong",
+    "p_vs_alts": ">99% vs trailer boom <1% / door slam <1% / kick pattern <1%"
+   }
+  }
+ },
+ {
+  "id": "fs-375287",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-375287_bass-drum-sidehit.ogg",
+  "title": "Bass drum (bdrum_special_sidehit.wav)",
+  "author": "sgossner",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/sgossner/sounds/375287/",
+  "download_url": "https://cdn.freesound.org/previews/375/375287_2475994-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_impact",
+  "rank": 2,
+  "best_segment": [
+   0.0,
+   0.86
+  ],
+  "notes": "VSCO 2 CE bass drum, special side hit (page; CC0). 0.86 s, attack 0.095 s, peak -20.4 dBFS (~+15 dB), floor -65.4, centroid 542 Hz. Shorter and drier than the floor tom: an alternative or a transient layer. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 0.858,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -20.35,
+   "lufs": -41.8,
+   "noise_floor_dbfs": -65.4,
+   "clipped_samples": 0,
+   "attack_at": 0.095,
+   "centroid_hz": 542,
+   "rolloff95_hz": 6675,
+   "onsets": [
+    0.116
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "match": {
+    "query": "a single big acoustic drum hit, a bass drum or floor tom struck once",
+    "z": 3.5,
+    "verdict": "strong",
+    "p_vs_alts": ">99% vs trailer boom <1%"
+   }
+  }
+ },
+ {
+  "id": "fs-410721",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-410721_concert-bass-drum.ogg",
+  "title": "Symphonic_Concert_Bass_Drum_Vel02.wav",
+  "author": "pjcohen",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/pjcohen/sounds/410721/",
+  "download_url": "https://cdn.freesound.org/previews/410/410721_394391-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Symphonic_Concert_Bass_Drum_Vel02.wav\" by pjcohen (https://freesound.org/people/pjcohen/sounds/410721/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: realness uncertain on the file (0.35) and on the 0-1.5 s trim (0.61), very quiet (peak -31.9 dBFS), forced choice leans 'trailer boom'. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 4.425,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -31.88,
+   "lufs": -49.3,
+   "noise_floor_dbfs": -97.5,
+   "clipped_samples": 0,
+   "attack_at": 0.009,
+   "centroid_hz": 1836,
+   "rolloff95_hz": 10012,
+   "onsets": [
+    0.07,
+    0.116,
+    0.163,
+    0.279,
+    0.418,
+    0.511,
+    0.673,
+    0.743,
+    0.859,
+    0.998,
+    1.184,
+    1.254
+   ]
+  },
+  "earshot": {
+   "realness": 0.35,
+   "match": {
+    "query": "a single big acoustic drum hit, a bass drum or floor tom struck once",
+    "z": 3.4,
+    "verdict": "strong",
+    "p_vs_alts": "41% vs trailer boom 59%"
+   }
+  }
+ },
+ {
+  "id": "fs-488463",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-488463_floor-tom1.ogg",
+  "title": "FloorTom1Drum.wav",
+  "author": "Trvth",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Trvth/sounds/488463/",
+  "download_url": "https://cdn.freesound.org/previews/488/488463_10527164-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: noise floor -35.1 dBFS (brief needs < -55), rolloff95 4.3 kHz. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 1.008,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.28,
+   "lufs": -24.1,
+   "noise_floor_dbfs": -35.1,
+   "clipped_samples": 0,
+   "attack_at": 0.003,
+   "centroid_hz": 419,
+   "rolloff95_hz": 4267,
+   "onsets": [
+    0.07,
+    0.372,
+    0.488,
+    0.534,
+    0.766,
+    0.975
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "match": {
+    "query": "a single big acoustic drum hit, a bass drum or floor tom struck once",
+    "z": 5.8,
+    "verdict": "strong",
+    "p_vs_alts": ">99%"
+   }
+  }
+ },
+ {
+  "id": "fs-402143",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-402143_magnet-cupboard.ogg",
+  "title": "opening-closing-cupboard_1.wav",
+  "author": "Mickael_Leroi",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Mickael_Leroi/sounds/402143/",
+  "download_url": "https://cdn.freesound.org/previews/402/402143_6623543-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_cupboard",
+  "rank": 1,
+  "best_segment": [
+   0.0,
+   1.25
+  ],
+  "notes": "Magnet-catch cupboard opened then closed, Zoom H6 (page). OPENING = 0.0-1.25 s: magnet release clicks near 0.05 and 0.2 s, then door transients 0.464-0.880 (find z +3.9) and 0.880-1.225 (z +3.5); match on 0.0-1.25 strong z +3.1, 97% 'cupboard door opening', trim realness 1.00. Quiet: trim peak about -20 dBFS (RMS -40): +10..+12 dB. CLOSING = 2.806-3.605 (find z +4.7, match +5.0, peak -0.5 dBFS): a firm shut, not for 63.6. Floor -63.5 dBFS, 48 kHz stereo (side/mid -6 dB: sum to mono). Attack-align at 63.6. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 4.695,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.46,
+   "lufs": -18.26,
+   "noise_floor_dbfs": -63.5,
+   "clipped_samples": 0,
+   "attack_at": 0.104,
+   "centroid_hz": 2422,
+   "rolloff95_hz": 9558,
+   "onsets": [
+    0.07,
+    0.557,
+    0.743,
+    0.929,
+    1.207,
+    1.324,
+    1.904,
+    1.974,
+    2.136,
+    2.879,
+    2.995,
+    3.251
+   ]
+  },
+  "earshot": {
+   "realness": 1.0,
+   "match": {
+    "query": "a wooden kitchen cupboard door opening",
+    "z": 3.1,
+    "verdict": "strong",
+    "segment": [
+     0.0,
+     1.25
+    ],
+    "p_vs_alts": "97% vs door slam 2% / drawer <1% / creaky door 0%"
+   }
+  }
+ },
+ {
+  "id": "fs-364104",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-364104_sliding-cabinet-door.ogg",
+  "title": "Sliding_Wooden_Cabinet_Door_1 (of 2)",
+  "author": "Rudmer_Rotteveel",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Rudmer_Rotteveel/sounds/364104/",
+  "download_url": "https://cdn.freesound.org/previews/364/364104_4921277-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "a_cupboard",
+  "rank": 2,
+  "best_segment": [
+   0.02,
+   1.305
+  ],
+  "notes": "Sliding wooden cabinet door opened and closed, Tascam DR-05 (page). Opening slide 0.020-1.305 (find z +3.6, trim realness 0.96), floor -92.8 dBFS. Reads as a drawer (87%) and is a 1.3 s broadband slide (centroid 4.3 kHz, on the voice): only if a sliding pantry suits the picture; low-pass it. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 4.88,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.48,
+   "lufs": -20.83,
+   "noise_floor_dbfs": -92.8,
+   "clipped_samples": 0,
+   "attack_at": 0.235,
+   "centroid_hz": 4322,
+   "rolloff95_hz": 10303,
+   "onsets": [
+    0.07,
+    0.418,
+    1.138,
+    2.717,
+    2.995,
+    3.901,
+    4.133
+   ]
+  },
+  "earshot": {
+   "realness": 0.96,
+   "match": {
+    "query": "a wooden kitchen cupboard door opening",
+    "z": 3.8,
+    "verdict": "strong",
+    "segment": [
+     0.02,
+     1.31
+    ],
+    "p_vs_alts": "13% vs drawer closing 87%"
+   }
+  }
+ },
+ {
+  "id": "mk-1908",
+  "category": "accents",
+  "file": "audio/assets/accents/mk-1908_cupboard-sliding-door.wav",
+  "title": "Cupboard soft sliding door",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/door/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/1908/1908.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": "a_cupboard",
+  "rank": 3,
+  "best_segment": [
+   0.5,
+   2.0
+  ],
+  "notes": "24-bit WAV, 2.42 s, attack 0.636 s, floor -56.1 dBFS (borderline), dull (rolloff95 6.2 kHz). Heard as a drawer closing (99%). Backup. [Mixkit has no per-item page for SFX; listed on the category page; licence text read at https://mixkit.co/license/ (modal sfxFree) 2026-10-31: free for commercial and non-commercial projects; no redistribution of the item on its own; no registering on a rights management service]",
+  "analysis": {
+   "duration": 2.421,
+   "codec": "pcm_s24le",
+   "kbps": 2117,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -3.88,
+   "lufs": -21.69,
+   "noise_floor_dbfs": -56.1,
+   "clipped_samples": 0,
+   "attack_at": 0.636,
+   "centroid_hz": 924,
+   "rolloff95_hz": 6229,
+   "onsets": [
+    0.186,
+    1.463,
+    1.602,
+    1.811,
+    1.974
+   ]
+  },
+  "earshot": {
+   "realness": 0.8,
+   "match": {
+    "query": "a wooden kitchen cupboard door opening",
+    "z": 3.4,
+    "verdict": "strong",
+    "p_vs_alts": "1% vs drawer closing 99%"
+   }
+  }
+ },
+ {
+  "id": "fs-472787",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-472787_cupboard-open.ogg",
+  "title": "Cupboard open",
+  "author": "supersnd",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/supersnd/sounds/472787/",
+  "download_url": "https://cdn.freesound.org/previews/472/472787_3877322-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: weak match (z +2.4), sounds most like 'a printer printing' (z +3.0), quiet (peak -28.5 dBFS). [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 2.1,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -28.53,
+   "lufs": -41.15,
+   "noise_floor_dbfs": -74.5,
+   "clipped_samples": 0,
+   "attack_at": 0.085,
+   "centroid_hz": 1314,
+   "rolloff95_hz": 8527,
+   "onsets": [
+    0.07,
+    0.116,
+    0.395,
+    0.488,
+    0.697,
+    0.836,
+    0.882,
+    0.975,
+    1.045,
+    1.115,
+    1.207,
+    1.347
+   ]
+  },
+  "earshot": {
+   "realness": 0.93,
+   "match": {
+    "query": "a wooden kitchen cupboard door opening",
+    "z": 2.4,
+    "verdict": "weak",
+    "p_vs_alts": "3% vs drawer closing 97%"
+   }
+  }
+ },
+ {
+  "id": "fs-205095",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-205095_opening-cupboards.ogg",
+  "title": "Opening Cupboards",
+  "author": "jadend2",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/jadend2/sounds/205095/",
+  "download_url": "https://cdn.freesound.org/previews/205/205095_2437207-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: 12 clipped samples (peak +0.14 dBFS), floor -58.8 dBFS, dull; sounds most like a door slam. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 2.111,
+   "codec": "vorbis",
+   "kbps": 195,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": 0.14,
+   "lufs": -21.56,
+   "noise_floor_dbfs": -58.8,
+   "clipped_samples": 12,
+   "attack_at": 0.17,
+   "centroid_hz": 1049,
+   "rolloff95_hz": 6330,
+   "onsets": [
+    0.232,
+    0.511
+   ]
+  },
+  "earshot": {
+   "realness": 0.94,
+   "match": {
+    "query": "a wooden kitchen cupboard door opening",
+    "z": 2.8,
+    "verdict": "plausible"
+   }
+  }
+ },
+ {
+  "id": "fs-398281",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-398281_reception-bell.ogg",
+  "title": "Reception Bell",
+  "author": "FlashTrauma",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/FlashTrauma/sounds/398281/",
+  "download_url": "https://cdn.freesound.org/previews/398/398281_2351866-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: 94 clipped samples, peak +2.75 dBFS. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 8.603,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 2.75,
+   "lufs": -17.43,
+   "noise_floor_dbfs": -67.5,
+   "clipped_samples": 94,
+   "attack_at": 0.019,
+   "centroid_hz": 1741,
+   "rolloff95_hz": 8290,
+   "onsets": [
+    0.07,
+    0.232
+   ]
+  },
+  "earshot": {
+   "realness": 1.0,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 5.3,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-78404",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-78404_service-bell-multi.ogg",
+  "title": "service bell multi.wav",
+  "author": "ottophokus",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/ottophokus/sounds/78404/",
+  "download_url": "https://cdn.freesound.org/previews/78/78404_1223475-hq.ogg",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "\"service bell multi.wav\" by ottophokus (https://freesound.org/people/ottophokus/sounds/78404/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: 114 clipped samples, floor -42.6 dBFS, -5.5 LUFS, multi-ring. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 3.76,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": 0.9,
+   "lufs": -5.5,
+   "noise_floor_dbfs": -42.6,
+   "clipped_samples": 114,
+   "attack_at": 0.194,
+   "centroid_hz": 5267,
+   "rolloff95_hz": 9505,
+   "onsets": [
+    0.209,
+    0.441,
+    0.65,
+    0.859,
+    1.045,
+    1.254,
+    1.44,
+    1.625,
+    1.834
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 5.0,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-78507",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-78507_desk-bell-several.ogg",
+  "title": "desk_bell_several_times_01.wav",
+  "author": "joedeshon",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/joedeshon/sounds/78507/",
+  "download_url": "https://cdn.freesound.org/previews/78/78507_1218676-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"desk_bell_several_times_01.wav\" by joedeshon (https://freesound.org/people/joedeshon/sounds/78507/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: camcorder recording, noise-reduced (page), floor -55.7 dBFS, -4.8 LUFS, rapid multi-rings with no clean single strike + ring-out. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 10.098,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -1.28,
+   "lufs": -4.77,
+   "noise_floor_dbfs": -55.7,
+   "clipped_samples": 0,
+   "attack_at": 0.056,
+   "centroid_hz": 2600,
+   "rolloff95_hz": 9560,
+   "onsets": [
+    0.07,
+    0.302,
+    0.464,
+    0.627,
+    0.789,
+    0.952,
+    1.138,
+    1.277,
+    1.44,
+    1.625,
+    1.765,
+    1.95
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 4.8,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "mk-931",
+  "category": "accents",
+  "file": "audio/assets/accents/mk-931_service-bell.wav",
+  "title": "Service bell",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/bell/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/931/931.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: realness 'uncertain' (0.74; --ast re-check still uncertain, CLAP +1.0), only plausible z +2.9, forced choice hears a kitchen timer beep (52%). [Mixkit has no per-item page for SFX; listed on the category page; licence text read at https://mixkit.co/license/ (modal sfxFree) 2026-10-31: free for commercial and non-commercial projects; no redistribution of the item on its own; no registering on a rights management service]",
+  "analysis": {
+   "duration": 1.179,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.54,
+   "lufs": -16.71,
+   "noise_floor_dbfs": -74.2,
+   "clipped_samples": 0,
+   "attack_at": 0.013,
+   "centroid_hz": 4167,
+   "rolloff95_hz": 10034,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.74,
+   "match": {
+    "query": "a single strike of a brass hotel reception desk service bell, a clean ding with a natural ring-out",
+    "z": 2.9,
+    "verdict": "plausible",
+    "p_vs_alts": "33% vs kitchen timer beep 52%"
+   }
+  }
+ },
+ {
+  "id": "mk-1791",
+  "category": "accents",
+  "file": "audio/assets/accents/mk-1791_cooking-bell-ding.wav",
+  "title": "Cooking bell ding",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/bell/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/1791/1791.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: realness 'uncertain' (0.71; --ast re-check still uncertain); as a chime it reads as a desk bell (83%), would blur with a_bell. [Mixkit has no per-item page for SFX; listed on the category page; licence text read at https://mixkit.co/license/ (modal sfxFree) 2026-10-31: free for commercial and non-commercial projects; no redistribution of the item on its own; no registering on a rights management service]",
+  "analysis": {
+   "duration": 1.588,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -8.52,
+   "lufs": -22.24,
+   "noise_floor_dbfs": -90.2,
+   "clipped_samples": 0,
+   "attack_at": 0.004,
+   "centroid_hz": 5311,
+   "rolloff95_hz": 9875,
+   "onsets": [
+    0.07,
+    0.209,
+    0.255,
+    0.464,
+    0.58,
+    0.627,
+    0.697
+   ]
+  },
+  "earshot": {
+   "realness": 0.71,
+   "match": {
+    "query": "a single soft gentle chime note, a small bell or glass struck once",
+    "z": 3.4,
+    "verdict": "strong",
+    "p_vs_alts": "16% vs desk bell 83%"
+   }
+  }
+ },
+ {
+  "id": "mk-3108",
+  "category": "accents",
+  "file": "audio/assets/accents/mk-3108_crystal-chime.wav",
+  "title": "Crystal chime",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/chime/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/3108/3108.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: realness 'uncertain' (0.71), no match (z +0.0), sounds most like 'a magic sparkle chime': a designed sparkle. [Mixkit has no per-item page for SFX; listed on the category page; licence text read at https://mixkit.co/license/ (modal sfxFree) 2026-10-31: free for commercial and non-commercial projects; no redistribution of the item on its own; no registering on a rights management service]",
+  "analysis": {
+   "duration": 2.0,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -2.87,
+   "lufs": -13.09,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.101,
+   "centroid_hz": 6199,
+   "rolloff95_hz": 10056,
+   "onsets": [
+    0.093,
+    0.395
+   ]
+  },
+  "earshot": {
+   "realness": 0.71,
+   "match": {
+    "query": "a single soft gentle chime note, a small bell or glass struck once",
+    "z": 0.0,
+    "verdict": "no match",
+    "p_vs_alts": "synthesized notification ping >99%"
+   }
+  }
+ },
+ {
+  "id": "mk-1107",
+  "category": "accents",
+  "file": "audio/assets/accents/mk-1107_page-forward-chime.wav",
+  "title": "Page forward single chime",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/chime/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/1107/1107.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: no match (z +0.1), heard as a synthesized notification ping (96%). [Mixkit has no per-item page for SFX; listed on the category page; licence text read at https://mixkit.co/license/ (modal sfxFree) 2026-10-31: free for commercial and non-commercial projects; no redistribution of the item on its own; no registering on a rights management service]",
+  "analysis": {
+   "duration": 1.689,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -5.0,
+   "lufs": -15.88,
+   "noise_floor_dbfs": -85.4,
+   "clipped_samples": 0,
+   "attack_at": 0.162,
+   "centroid_hz": 3472,
+   "rolloff95_hz": 10206,
+   "onsets": [
+    0.093,
+    0.186,
+    0.372,
+    0.488
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "match": {
+    "query": "a single soft gentle chime note, a small bell or glass struck once",
+    "z": 0.1,
+    "verdict": "no match",
+    "p_vs_alts": "synthesized notification ping 96%"
+   }
+  }
+ },
+ {
+  "id": "mk-1065",
+  "category": "accents",
+  "file": "audio/assets/accents/mk-1065_wood-chime-bell.wav",
+  "title": "Antique wood chime bell ring",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/chime/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/1065/1065.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: 25 s of repeated strokes; best single stroke only weak (find z +2.0 at 13.28 s), others no match; rolloff95 7.6 kHz, floor -62.6. [Mixkit has no per-item page for SFX; listed on the category page; licence text read at https://mixkit.co/license/ (modal sfxFree) 2026-10-31: free for commercial and non-commercial projects; no redistribution of the item on its own; no registering on a rights management service]",
+  "analysis": {
+   "duration": 24.978,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -6.02,
+   "lufs": -26.36,
+   "noise_floor_dbfs": -62.6,
+   "clipped_samples": 0,
+   "attack_at": 0.045,
+   "centroid_hz": 3199,
+   "rolloff95_hz": 7649,
+   "onsets": [
+    0.07,
+    0.209,
+    2.229,
+    4.481,
+    6.711,
+    8.94,
+    11.169,
+    13.375,
+    15.627,
+    17.81,
+    20.108
+   ]
+  },
+  "earshot": {
+   "realness": 0.81,
+   "match": null
+  }
+ },
+ {
+  "id": "fs-262958",
+  "category": "accents",
+  "file": "audio/assets/accents/fs-262958_glass-tap.ogg",
+  "title": "Glass Tap.wav",
+  "author": "Unicornaphobist",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Unicornaphobist/sounds/262958/",
+  "download_url": "https://cdn.freesound.org/previews/262/262958_4932087-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: 0.19 s, 2 clipped samples, floor -22.6 dBFS, dull. [licence read on the item's own Freesound page 2026-10-31]",
+  "analysis": {
+   "duration": 0.194,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": 0.0,
+   "lufs": null,
+   "noise_floor_dbfs": -22.6,
+   "clipped_samples": 2,
+   "attack_at": 0.0,
+   "centroid_hz": 754,
+   "rolloff95_hz": 5902,
+   "onsets": [
+    0.116,
+    0.163
+   ]
+  },
+  "earshot": {
+   "realness": 0.79,
+   "match": null
+  }
+ }
+]

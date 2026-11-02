@@ -1,28 +1,29 @@
 import type { CSSProperties, ReactNode } from "react";
 
 import { drop, easeLand, p, pop, useT } from "../anim";
-import { Lemon } from "../art";
 import { useScene } from "../scene";
 import { C, DISPLAY, POP } from "../theme";
-import { Ground, Sfx, Stamp } from "../ui";
+import { CuisineTag, Ground, Headline, Sfx, Sticker } from "../ui";
 
 const F = { x: 960 - 290, y: 150, w: 580, h: 850, split: 290 };
 const LINE = { stroke: C.ink, strokeWidth: 6, strokeLinejoin: "round" as const, strokeLinecap: "round" as const };
 
 /**
  * The problem. The list is stuck to the fridge by a magnet — right there, and
- * no help at all. Question marks; the doors swing open; there is a hole on the
- * shelf where the lemon should be. The music has dropped to the minor walk.
+ * no help at all. Question marks; then the doors swing open on the recipe you
+ * want to make, and question marks pop over what you might be missing. The
+ * music has dropped to its light bars.
  */
 export function Problem() {
   const t = useT();
-  const { phrase } = useScene();
+  const { at, phrase } = useScene();
 
   const land = 0.45;
   const qs = phrase("l07", "can't tell you");
-  const opens = phrase("l08", "in your pantry") - 0.1;
+  const opens = at("l27") - 0.1;
   const swing = p(t, opens, 0.7, easeLand);
-  const out = phrase("l08", "out of lemons") + 0.25;
+  const cardAt = opens + 0.45;
+  const missing = phrase("l27", "what you're missing");
 
   return (
     <Ground>
@@ -42,7 +43,7 @@ export function Problem() {
             overflow: "hidden",
           }}
         >
-          <Interior t={t} out={out} />
+          <Interior />
         </div>
 
         <Door top={0} height={F.split} angle={-112 * swing} handleY={F.split - 90}>
@@ -107,10 +108,11 @@ export function Problem() {
         <Sfx key={i} at={qs + i * 0.14} name="pop" volume={0.35} />
       ))}
 
-      <Stamp at={out} size={110} rotate={-12} style={{ left: 930, top: 700 }}>
-        OUT
-      </Stamp>
-      <Sfx at={out} name="stamp" volume={0.8} />
+      <RecipeCard t={t} at={cardAt} missing={missing} />
+      <Sfx at={cardAt} name="pop" volume={0.45} />
+      {MISSING.map((row, i) => (
+        <Sfx key={row} at={missing + i * 0.16} name="pop" volume={0.35} />
+      ))}
     </Ground>
   );
 }
@@ -175,9 +177,8 @@ function Door({
   );
 }
 
-function Interior({ t, out }: { t: number; out: number }) {
+function Interior() {
   const shelf = (y: number) => <line x1={0} x2={F.w} y1={y} y2={y} {...LINE} strokeWidth={8} />;
-  const pulse = t > out - 0.6 ? 1 + 0.05 * Math.sin((t - out) * 12) * Math.exp(-Math.max(0, t - out) * 2) : 1;
   return (
     <svg width={F.w - 16} height={F.h - 16} viewBox={`0 0 ${F.w} ${F.h}`} style={{ position: "absolute", inset: 0, background: C.tealSoft }}>
       {/* freezer: ice trays and a frosty bag */}
@@ -204,23 +205,63 @@ function Interior({ t, out }: { t: number; out: number }) {
       <path d="M390 510 L520 510 L520 440 Z" fill={C.gold} {...LINE} />
       <circle cx={480} cy={490} r={10} fill={C.sand} />
 
-      {/* bottom shelf: eggs, and a lemon-shaped hole */}
+      {/* bottom shelf: eggs */}
       <rect x={60} y={660} width={230} height={60} rx={12} fill={C.sand} {...LINE} />
       {[0, 1, 2, 3].map((i) => (
         <ellipse key={i} cx={95 + i * 54} cy={652} rx={22} ry={28} fill={C.raised} {...LINE} strokeWidth={5} />
       ))}
-      <g transform={`translate(340 600) scale(${pulse * 1.35})`} style={{ transformOrigin: "60px 45px" }}>
-        <g opacity={0.25}>
-          <Lemon />
-        </g>
-        <path
-          d="M14 46 C8 40 10 34 18 30 C30 12 54 6 76 12 C92 16 104 26 108 36 C114 38 116 44 110 50 C108 66 94 80 70 84 C46 88 24 78 16 62 C8 58 8 50 14 46 Z"
-          fill="none"
-          stroke={C.ink}
-          strokeWidth={5}
-          strokeDasharray="12 10"
-        />
-      </g>
     </svg>
+  );
+}
+
+// Rows of the card as bars, not invented quantities; the two rows marked are
+// the ones the question marks land on.
+const ROWS = [250, 300, 210, 280, 240, 190];
+const MISSING = [1, 3];
+const CARD = { x: 960 - 260, y: 230, w: 520, h: 640 };
+
+function RecipeCard({ t, at, missing }: { t: number; at: number; missing: number }) {
+  const s = pop(t, at);
+  if (s <= 0) return null;
+  return (
+    <div style={{ position: "absolute", left: CARD.x, top: CARD.y, width: CARD.w, height: CARD.h, transform: `rotate(-3deg) scale(${s})` }}>
+      <Sticker radius={26} depth={POP} style={{ position: "absolute", inset: 0, padding: "40px 40px" }}>
+        <Headline size={50}>RED WINE BRAISED</Headline>
+        <Headline size={50}>SHORT RIBS</Headline>
+        <div style={{ marginTop: 18 }}>
+          <CuisineTag size={24}>French</CuisineTag>
+        </div>
+        <div style={{ marginTop: 34 }}>
+          {ROWS.map((w, i) => {
+            const k = MISSING.indexOf(i);
+            const q = k >= 0 ? pop(t, missing + k * 0.16) : 0;
+            return (
+              <div key={i} style={{ position: "relative", display: "flex", alignItems: "center", gap: 18, height: 50 }}>
+                <span style={{ width: 12, height: 12, borderRadius: "50%", background: C.ink }} />
+                <span style={{ width: w, height: 12, borderRadius: 6, background: q > 0 ? C.brick : C.muted, opacity: q > 0 ? 0.8 : 0.45 }} />
+                {q > 0 && (
+                  <span
+                    style={{
+                      position: "absolute",
+                      left: w + 50,
+                      top: -26,
+                      fontFamily: DISPLAY,
+                      fontSize: 80,
+                      color: C.brick,
+                      WebkitTextStroke: `8px ${C.ink}`,
+                      paintOrder: "stroke fill",
+                      textShadow: `5px 5px 0 ${C.ink}`,
+                      transform: `rotate(${k ? 12 : -10}deg) scale(${q})`,
+                    }}
+                  >
+                    ?
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </Sticker>
+    </div>
   );
 }

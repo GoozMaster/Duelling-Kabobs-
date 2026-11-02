@@ -85,9 +85,7 @@ export function Explainer() {
       })}
 
       {tl.scenes.slice(1).map((scene) => (
-        <Sequence key={scene.id} from={f(scene.start - WIPE_IN - 0.08)} layout="none">
-          <Sfx at={0} name="whoosh" volume={0.3} />
-        </Sequence>
+        <Sfx key={scene.id} at={scene.start - WIPE_IN - 0.08} name="whoosh" volume={0.3} />
       ))}
     </AbsoluteFill>
   );

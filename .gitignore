@@ -48,3 +48,6 @@ next-env.d.ts
 /video/public/music/
 /video/public/sfx/
 /video/public/art/
+# downloaded recordings for the real-sound mix: licensed for use in the film, never for redistribution
+/video/audio/assets/*/
+!/video/audio/assets/manifests/

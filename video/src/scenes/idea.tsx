@@ -1,17 +1,30 @@
-import type { ReactNode } from "react";
 import { Img, staticFile } from "remotion";
 
-import { bob, drop, easeGravity, easeLand, lin, p, pop, useT, wobble } from "../anim";
-import { Burst, Drumstick, Flame, Plates, Pot, Puff, RubberChicken } from "../art";
+import { bob, drop, easeLand, lin, p, pop, useT, wobble } from "../anim";
+import { Burst, Flame, Pot, Puff } from "../art";
 import { useScene } from "../scene";
 import { C, POP } from "../theme";
-import { Ground, Headline, Sfx, Sunburst } from "../ui";
+import { Disc, Ground, Headline, Sfx, Sunburst } from "../ui";
 
 const POT = { x: 720, y: 530, w: 480, h: 400 };
 const MOUTH = { x: 960, y: POT.y + 170 };
 
+// The site's cuisine logos, in the order they tumble in.
+const LOGOS = [
+  "italian-chef.jpg",
+  "japanese-sushi.jpg",
+  "latin-taco.jpg",
+  "persian-kebab.jpg",
+  "american-burger.jpg",
+  "french-baker.jpg",
+  "indian-turban.jpg",
+  "chinese-noodles.jpg",
+];
+const LOGO = 170;
+const FLY = 0.75;
+
 /**
- * The idea. Food, humour and family go into one pot, which rattles, and bursts
+ * The idea. The cuisine logos spin past and drop into one pot, which rattles, and bursts
  * into the name: the protester from the site's hero drops in under the
  * wordmark and lands with a stamp. The score's glockenspiel run and hit land on the same
  * frame as the burst.
@@ -21,19 +34,22 @@ export function Idea() {
   const { at, phrase } = useScene();
 
   const land = 0.5;
-  const parts: Array<{ word: string; at: number; art: ReactNode; w: number; h: number; vb: string }> = [
-    { word: "FOOD", at: phrase("l10", "One part food"), art: <Drumstick />, w: 170, h: 160, vb: "-5 -10 125 120" },
-    { word: "HUMOR", at: phrase("l10", "One part humor"), art: <RubberChicken />, w: 220, h: 170, vb: "0 -10 150 125" },
-    { word: "FAMILY", at: phrase("l10", "feeding the family"), art: <Plates />, w: 200, h: 170, vb: "0 -10 140 125" },
+  const parts: Array<{ word: string; at: number }> = [
+    { word: "FOOD", at: phrase("l10", "One part food") },
+    { word: "HUMOR", at: phrase("l10", "One part humor") },
+    { word: "FAMILY", at: phrase("l10", "feeding the family") },
   ];
-  const FALL = 0.55;
+  // When each logo lands in the pot: a quick, even rotation across the line.
+  const firstIn = at("l10") + 0.6;
+  const lastLand = at("l11") - 0.35;
+  const lands = LOGOS.map((_, i) => firstIn + ((lastLand - firstIn) * i) / (LOGOS.length - 1));
 
   const burst = at("l11");
   const rattleFrom = phrase("l10", "All of it");
   const rattle = t > rattleFrom && t < burst ? lin(t, rattleFrom, burst - rattleFrom) : 0;
   const shake = rattle * 7 * Math.sin(t * 60);
-  const lastIn = Math.max(...parts.map((q) => q.at + FALL));
-  const lid = parts.reduce((acc, q) => Math.max(acc, Math.max(0, 1 - Math.abs(t - (q.at + FALL * 0.8)) / 0.18)), 0);
+  const lastIn = lastLand;
+  const lid = lands.reduce((acc, l) => Math.max(acc, Math.max(0, 1 - Math.abs(t - l) / 0.16)), 0);
 
   const after = t >= burst + 0.18;
   // Grows past 1 so even its valleys clear the frame's far corners.
@@ -71,29 +87,26 @@ export function Idea() {
               );
             })}
           </div>
-          {/* what goes in */}
-          {parts.map((q) => {
-            const k = (t - (q.at - FALL * 0.2)) / FALL;
-            if (k < 0 || k > 1.1) return null;
-            const e = easeGravity(Math.min(1, k));
-            const y = -q.h + (MOUTH.y - q.h * 0.4 + q.h) * e;
-            const s = k > 0.85 ? 1 - (k - 0.85) * 4 : 1;
+          {/* what goes in: each logo swings in from alternate sides, spinning, and drops */}
+          {lands.map((l, i) => {
+            const k = (t - (l - FLY)) / FLY;
+            if (k < 0 || k > 1) return null;
+            const side = i % 2 ? 1 : -1;
+            const x = MOUTH.x + side * 900 * (1 - k) ** 1.6;
+            const y = MOUTH.y - 40 - Math.sin(Math.min(1, k * 1.15) * Math.PI) * 480 + 80 * k;
+            const s = k > 0.8 ? 1 - (k - 0.8) * 4.5 : 1;
             return (
-              <svg
-                key={q.word}
-                viewBox={q.vb}
+              <div
+                key={LOGOS[i]}
                 style={{
                   position: "absolute",
-                  left: MOUTH.x - q.w / 2,
-                  top: y - q.h / 2,
-                  width: q.w,
-                  height: q.h,
-                  overflow: "visible",
-                  transform: `rotate(${k * 200}deg) scale(${Math.max(0, s)})`,
+                  left: x - LOGO / 2,
+                  top: y - LOGO / 2,
+                  transform: `rotate(${side * k * 540}deg) scale(${Math.max(0, s)})`,
                 }}
               >
-                {q.art}
-              </svg>
+                <Disc src={LOGOS[i]} size={LOGO} />
+              </div>
             );
           })}
 
@@ -126,8 +139,8 @@ export function Idea() {
       {parts.map((q) => (
         <Sfx key={q.word} at={q.at} name="pop" volume={0.45} />
       ))}
-      {parts.map((q) => (
-        <Sfx key={q.word + "in"} at={q.at + FALL * 0.8} name="thock" volume={0.35} />
+      {lands.map((l) => (
+        <Sfx key={l} at={l} name="thock" volume={0.3} />
       ))}
 
       {/* ---- the burst, and what it reveals */}

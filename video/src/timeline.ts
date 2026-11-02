@@ -32,13 +32,13 @@ export const PLAN: ScenePlan[] = [
     ],
     tail: 1.0,
   },
-  { id: "problem", lines: [{ id: "l07", gap: 0.5 }, { id: "l08", gap: 0.45 }], tail: 1.1 },
+  { id: "problem", lines: [{ id: "l07", gap: 0.5 }, { id: "l27", gap: 0.5 }], tail: 1.1 },
   {
     id: "idea",
-    lines: [{ id: "l09", gap: 0.45 }, { id: "l10", gap: 0.4 }, { id: "l11", gap: 0.55 }],
+    lines: [{ id: "l09", gap: 0.35 }, { id: "l10", gap: 0.35 }, { id: "l11", gap: 0.35 }],
     tail: 2.2,
   },
-  { id: "menu", lines: [{ id: "l12", gap: 0.5 }, { id: "l13", gap: 0.4 }], tail: 1.2 },
+  { id: "menu", lines: [{ id: "l12", gap: 0.5 }, { id: "l13", gap: 0.4 }, { id: "l28", gap: 0.5 }], tail: 1.2 },
   {
     id: "pantry",
     lines: [{ id: "l14", gap: 0.5 }, { id: "l15", gap: 0.4 }, { id: "l16", gap: 0.45 }],
@@ -59,8 +59,8 @@ export const PLAN: ScenePlan[] = [
     lines: [{ id: "l21", gap: 0.5 }, { id: "l22", gap: 1.1 }, { id: "l23", gap: 0.9 }],
     tail: 1.1,
   },
-  { id: "surprise", lines: [{ id: "l24", gap: 0.5 }], tail: 3.4 },
-  { id: "close", lines: [{ id: "l25", gap: 0.8 }, { id: "l26", gap: 0.6 }], tail: 3.2 },
+  { id: "surprise", lines: [{ id: "l24", gap: 0.5 }], tail: 4.0 },
+  { id: "close", lines: [{ id: "l25", gap: 0.8 }, { id: "l26", gap: 0.6 }], tail: 2.6 },
 ];
 
 export type TimedLine = { id: string; start: number; end: number };
@@ -92,7 +92,10 @@ export function buildTimeline(durations: Record<string, number>): Timeline {
       lines[line.id] = tl;
       t = tl.end;
     }
-    const end = snap(t + (plan.tail ?? 1), BAR / 2);
+    // The end card is the one boundary with nothing after it to keep on the beat,
+    // so its hold is exact rather than rounded up to the next half-bar.
+    const last = plan === PLAN[PLAN.length - 1];
+    const end = last ? Math.round((t + (plan.tail ?? 1)) * FPS) / FPS : snap(t + (plan.tail ?? 1), BAR / 2);
     scenes.push({ id: plan.id, start, end, lines: timed });
     cursor = end;
   }

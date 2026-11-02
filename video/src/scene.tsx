@@ -20,6 +20,10 @@ type SceneApi = {
 };
 
 const Ctx = createContext<SceneApi | null>(null);
+const StartCtx = createContext(0);
+
+/** When the enclosing scene starts, in film time; 0 outside a scene. */
+export const useSceneStart = () => useContext(StartCtx);
 
 export function useScene() {
   const api = useContext(Ctx);
@@ -39,7 +43,11 @@ export function SceneProvider({ scene, children }: { scene: TimedScene; children
     end: (id) => line(id).end - scene.start,
     phrase: (id, phrase) => phraseAt(TEXT[id], phrase, line(id).start - scene.start, line(id).end - scene.start),
   };
-  return <Ctx.Provider value={api}>{children}</Ctx.Provider>;
+  return (
+    <StartCtx.Provider value={scene.start}>
+      <Ctx.Provider value={api}>{children}</Ctx.Provider>
+    </StartCtx.Provider>
+  );
 }
 
 /** How long the iris takes to close over the old scene, and to open on the new. */

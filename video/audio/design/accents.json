@@ -1,0 +1,277 @@
+{
+ "_doc": "ac. accents for the Down With Hunger explainer (accents designer): one brass service bell (3 strikes of one recording), one soft chime, the pantry cupboard, a short floor tom under the hero reveal, two iris swishes. Every file is ranked in audio/assets/manifests/accents.json; all CC0 except the chime rod fs-454612 and the floor tom fs-349020 (CC BY). Key: the music (Onion Capers, stretched to 104 BPM) is C major with F G C F / Bb F Bb C Bb F G C phrases; tuned material is pitched by resampling to a tone of the chord under it.",
+ "samples": {
+  "ac.bell.a": {
+   "_doc": "fs-549207 strike 1 (0.619 find trim + 10 ms so the attack sits 5 ms in). pitch +0.13 st: dominant partial 3113 Hz (G7 -13c) -> 3137 Hz G7 +1c measured (partials.py on the dump); G is the root of the G chord under 88.80 (src bar 14) and 128.59 (src bar 53) and the 5th of the C under 118.75 (src bar 47). hp 500: the bell has nothing useful below its 1159 Hz partial.",
+   "file": "audio/assets/accents/fs-549207_call-bell.ogg",
+   "start": 0.629,
+   "end": 3,
+   "mono": true,
+   "eq": {
+    "hp": 500
+   },
+   "pitch": 0.13,
+   "norm_peak_db": -6,
+   "fade_in": 0.002,
+   "fade_out": 1
+  },
+  "ac.bell.b": {
+   "_doc": "strike 2 (6.465 + 10 ms), as ac.bell.a",
+   "file": "audio/assets/accents/fs-549207_call-bell.ogg",
+   "start": 6.475,
+   "end": 9.3,
+   "mono": true,
+   "eq": {
+    "hp": 500
+   },
+   "pitch": 0.13,
+   "norm_peak_db": -6,
+   "fade_in": 0.002,
+   "fade_out": 1.2
+  },
+  "ac.bell.c": {
+   "_doc": "strike 3 (11.631 + 10 ms), as ac.bell.a; the longest ring for the bright close bell. The 17.146 strike is avoided (clipped).",
+   "file": "audio/assets/accents/fs-549207_call-bell.ogg",
+   "start": 11.641,
+   "end": 14.6,
+   "mono": true,
+   "eq": {
+    "hp": 500
+   },
+   "pitch": 0.13,
+   "norm_peak_db": -6,
+   "fade_in": 0.002,
+   "fade_out": 1.4
+  },
+  "ac.chime": {
+   "_doc": "fs-454612 wind-chime rod, nearly a pure tone 3692 Hz (A#7 -17c). pitch -0.83 st -> 3519 Hz A7 -0c measured: A is the 3rd of the F chord under 26.49 (src bar 23, last F of A2) and in C major (Bb is not; C8 would need +2.17 st, beyond +-2).",
+   "file": "audio/assets/accents/fs-454612_chime-rod-d6.ogg",
+   "start": 0.044,
+   "end": 1.6,
+   "mono": true,
+   "eq": {
+    "hp": 1200
+   },
+   "pitch": -0.83,
+   "norm_peak_db": -6,
+   "fade_in": 0.002,
+   "fade_out": 0.8
+  },
+  "ac.cupboard": {
+   "_doc": "fs-402143 magnet-catch cupboard OPENING (0.0-1.25 in the file; +32 ms so the release click is the attack): the catch lets go, then the doors swing (transient 77 ms later). The closing at 2.8 s is not used. The doors-fully-open transient group at +0.50..0.70 s matches the picture's doors reaching full open (easeLand overshoot max at +0.43 s); peq -4 dB at 3 kHz because l14 ('already stocked') runs until 64.62.",
+   "file": "audio/assets/accents/fs-402143_magnet-cupboard.ogg",
+   "start": 0.032,
+   "end": 1.25,
+   "mono": true,
+   "eq": {
+    "hp": 120,
+    "peq": [
+     [
+      3000,
+      1,
+      -4
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_in": 0.004,
+   "fade_out": 0.15
+  },
+  "ac.tom": {
+   "_doc": "fs-349020 floor tom, cut to 1.17 s with a 300 ms fade (a short top, no trailer boom). pitch +0.85 st: its 166 Hz (E3 +15c) -> F3, the root of the F under 45.89 and the 5th of the Bb drop that follows.",
+   "file": "audio/assets/accents/fs-349020_floor-tom-hit.ogg",
+   "start": 0.03,
+   "end": 1.2,
+   "mono": true,
+   "eq": {
+    "hp": 45,
+    "highshelf": [
+     4000,
+     -3
+    ]
+   },
+   "pitch": 0.85,
+   "norm_peak_db": -6,
+   "fade_in": 0.002,
+   "fade_out": 0.3
+  },
+  "ac.swish.a": {
+   "_doc": "fs-742810 T-shirt whip, take 1 (find z +4.0; earshot 'cloth whipping through the air' z +4.3). The cloth cracks lightly at its peak (279 ms in, crest 19 dB): that crack lands as the disc covers the frame.",
+   "file": "audio/assets/accents/fs-742810_tshirt-whip.ogg",
+   "start": 0.847,
+   "end": 1.355,
+   "eq": {
+    "hp": 120
+   },
+   "norm_peak_db": -6,
+   "fade_in": 0.01,
+   "fade_out": 0.1
+  },
+  "ac.swish.b": {
+   "_doc": "fs-394457 bamboo swing (CC BY 4.0, InspectorJ), 0.25-1.0: a smooth stick swish (earshot: 'a fast whoosh' z +4.6 / 'a stick swung fast' +4.2, realness 0.98). Replaces the T-shirt's third take, which carries a crack at its peak and reads as 'a box lid closing' (z +3.6, match for a smooth swish +0.7). Peak 225 ms in.",
+   "file": "audio/assets/accents/fs-394457_bamboo-swing-c4.ogg",
+   "start": 0.25,
+   "end": 1,
+   "eq": {
+    "hp": 120
+   },
+   "norm_peak_db": -6,
+   "fade_in": 0.01,
+   "fade_out": 0.1
+  },
+  "ac.bell.end": {
+   "_doc": "lead: strike 1 again with its full ring (to just before strike 2 at 6.465) for the end-card ring-out; earshot critique flagged 4.2 s of dead air after the music button decays by ~135.4",
+   "file": "audio/assets/accents/fs-549207_call-bell.ogg",
+   "start": 0.629,
+   "end": 6.4,
+   "mono": true,
+   "eq": {
+    "hp": 500
+   },
+   "pitch": 0.13,
+   "norm_peak_db": -6,
+   "fade_in": 0.002,
+   "fade_out": 2.5
+  }
+ },
+ "pools": {
+  "ac.p.bell.a": [
+   "ac.bell.a"
+  ],
+  "ac.p.bell.b": [
+   "ac.bell.b"
+  ],
+  "ac.p.bell.c": [
+   "ac.bell.c"
+  ],
+  "ac.p.chime": [
+   "ac.chime"
+  ],
+  "ac.p.cupboard": [
+   "ac.cupboard"
+  ],
+  "ac.p.tom": [
+   "ac.tom"
+  ],
+  "ac.p.swish.a": [
+   "ac.swish.a"
+  ],
+  "ac.p.swish.b": [
+   "ac.swish.b"
+  ]
+ },
+ "_rules_doc": "Bells: one recording, a different strike each time, light -> bright (-8, -6, -4). surprise:sparkle:0 (128.74), pantry:sparkle:0 (63.94) and every other *:whoosh:* are unsounded on purpose (the bell carries the sparkle, the music carries the cuts). Swishes: the yellow disc closes over the last 0.32 s of the scene (src/scene.tsx: r = lin^1.6 * 1250 px); the screen-coverage rate of that disc, sampled at 240 Hz on 1920x1080 with each scene's exit point, peaks at cue + 0.279 s (problem -> idea, exit 960,600) and cue + 0.267 s (surprise -> close, exit 960,540), full cover at cue + 0.38. offset 0.25 + mix.py's peak alignment puts the measured apex at about cue + 0.27-0.30 (qa sync).",
+ "rules": [
+  {
+   "name": "ac.bell.search",
+   "_doc": "'4 you can cook right now': light",
+   "match": {
+    "id": "^search:ding:0$"
+   },
+   "pool": "ac.p.bell.a",
+   "mode": "fixed",
+   "gain_db": -8,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "ac.bell.shop",
+   "_doc": "the shopping list done",
+   "match": {
+    "id": "^shop:ding:0$"
+   },
+   "pool": "ac.p.bell.b",
+   "mode": "fixed",
+   "gain_db": -6,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "ac.bell.surprise",
+   "_doc": "the reel lands on a dish: bright, also carries surprise:sparkle:0 150 ms later",
+   "match": {
+    "id": "^surprise:ding:0$"
+   },
+   "pool": "ac.p.bell.c",
+   "mode": "fixed",
+   "gain_db": -4,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "ac.chime.list",
+   "_doc": "'It still does': one soft chime stroke, well under the bells",
+   "match": {
+    "id": "^list:sparkle:0$"
+   },
+   "pool": "ac.p.chime",
+   "mode": "fixed",
+   "gain_db": -12,
+   "pan": 0,
+   "align": "attack",
+   "qa_ok": "kind 'swell' is the old 'sparkle' cue renamed; this is a struck chime on the sparkle frame (attack on the cue, ring after), not a riser that should end on it"
+  },
+  {
+   "name": "ac.cupboard.pantry",
+   "_doc": "the pantry doors open at 63.64 with easeLand (src/scenes/pantry.tsx): their angular velocity is highest at the very start, so the catch release is attack-aligned on the cue and the swing follows",
+   "match": {
+    "id": "^pantry:whoosh:0$"
+   },
+   "pool": "ac.p.cupboard",
+   "mode": "fixed",
+   "gain_db": -8,
+   "pan": 0,
+   "align": "attack",
+   "qa_ok": "kind 'whoosh' is the old cue name; this is a cupboard opening: the catch click is on the cue (the doors start swinging), the door transient 77-85 ms later is the swing itself, not a late whoosh apex"
+  },
+  {
+   "name": "ac.tom.idea",
+   "_doc": "the pot bursts / the title arrives; short and under: the music's drop at 46.154 is the main event, the tom lands about an eighth-note before it like a pickup",
+   "match": {
+    "id": "^idea:sparkle:0$"
+   },
+   "pool": "ac.p.tom",
+   "mode": "fixed",
+   "gain_db": -10,
+   "pan": 0,
+   "align": "attack",
+   "qa_ok": "kind 'swell' is the old 'sparkle' cue renamed; a drum hit attack-aligned on the burst frame, not a riser"
+  },
+  {
+   "name": "ac.swish.idea",
+   "match": {
+    "id": "^problem:whoosh:1$"
+   },
+   "pool": "ac.p.swish.a",
+   "mode": "fixed",
+   "gain_db": -10,
+   "pan": 0,
+   "align": "peak",
+   "offset": 0.25
+  },
+  {
+   "name": "ac.swish.close",
+   "match": {
+    "id": "^surprise:whoosh:0$"
+   },
+   "pool": "ac.p.swish.b",
+   "mode": "fixed",
+   "gain_db": -18,
+   "pan": 0,
+   "align": "peak",
+   "offset": 0.25,
+   "_doc": "bamboo is 11 LU denser than the T-shirt take at the same peak (-20.1 vs -31.0 LUFS, earshot measure): -18 here sits it about level with ac.swish.idea at -10"
+  }
+ ],
+ "_place_doc": "lead: one bell strike after the last line (l26 ends 135.28) so the end card rings out instead of sitting in 4 s of silence; G7 over the C button chord",
+ "place": [
+  {
+   "sample": "ac.bell.end",
+   "at": 160.768,
+   "gain_db": -6,
+   "pan": 0,
+   "align": "attack",
+   "qa_ok": "free placement: the end-card ring-out after the music button, not tied to a cue"
+  }
+ ]
+}

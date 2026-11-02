@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { Html5Audio, Img, Sequence, staticFile, useVideoConfig } from "remotion";
 
 import { easePress, pop, useT } from "./anim";
+import { useSceneStart } from "./scene";
 import { C, DISPLAY, KEY, PRESS, STICKER, UI } from "./theme";
 
 // ---------------------------------------------------------------- sound
@@ -18,6 +19,9 @@ const TRIM: Partial<Record<SfxName, number>> = { tick: 0.55, switch: 0.8 };
 /** One sound effect at `at` seconds into the enclosing sequence. 0.5 sits level with the voice. */
 export function Sfx({ at, name, volume = 0.5 }: { at: number; name: SfxName; volume?: number }) {
   const { fps } = useVideoConfig();
+  // tools/cues.mts mounts every scene once and listens here for the cue list.
+  const start = useSceneStart();
+  (globalThis as { __cue?: (cue: object) => void }).__cue?.({ t: start + at, name, volume });
   return (
     <Sequence from={Math.round(at * fps)} durationInFrames={Math.round(2 * fps)} layout="none">
       <Html5Audio src={staticFile(`sfx/${name}.wav`)} volume={volume * (TRIM[name] ?? 1)} />

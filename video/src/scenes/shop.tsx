@@ -1,5 +1,4 @@
 import { easeLand, easePress, lin, p, pop, useT } from "../anim";
-import { Lemon } from "../art";
 import { useScene } from "../scene";
 import { C, POP, PRESS } from "../theme";
 import { click, Cursor, cursorAt, CuisineTag, Ground, Headline, label, Sfx, Stamp, Sticker, Sunburst, text, Window } from "../ui";
@@ -27,11 +26,11 @@ const NOTE = { x: 1420, y: 250, w: 420, h: 470 };
 
 /**
  * The quick shop. One recipe, one switch: the list colours itself in, and the
- * only thing on it that is not already in the kitchen goes onto the note.
+ * red rows, the things not already in the kitchen, fly onto the note.
  */
 export function Shop() {
   const t = useT();
-  const { phrase } = useScene();
+  const { at, phrase } = useScene();
 
   const winIn = 0.35;
   const flipAt = phrase("l21", "flip") + 0.3;
@@ -43,11 +42,11 @@ export function Shop() {
   const colourAt = (i: number) =>
     ROWS[i][1] ? greenAt + haves.findIndex(([j]) => j === i) * 0.09 : redAt + (i - 1) * 0.16;
 
-  const lemonAt = phrase("l23", "it's a lemon");
-  const noteAt = lemonAt - 0.3;
-  const flyK = lin(t, lemonAt, 0.75);
-  const landed = t > lemonAt + 0.75;
-  const doneAt = phrase("l23", "Shopping list") + 0.55;
+  const needs = ROWS.map((r, i) => [i, r[1]] as const).filter(([, h]) => !h).map(([i]) => i);
+  const noteAt = at("l23") - 0.8;
+  const FLY = 0.6;
+  const flyAt = (j: number) => at("l23") - 0.55 + j * 0.14;
+  const doneAt = phrase("l23", "done");
 
   const switchX = ORIGIN.x + WIN.w - 12 - PADX - 100;
   const switchY = ORIGIN.y + 268;
@@ -58,11 +57,6 @@ export function Shop() {
     { t: flipAt + 1.2, x: switchX + 120, y: switchY + 260 },
   ]);
 
-  // The lemon's arc from the need rows to the note.
-  const from = { x: ORIGIN.x + 820, y: ORIGIN.y + ROWS_Y + ROW_H * 1.5 - 40 };
-  const to = { x: NOTE.x + 40, y: NOTE.y + 180 };
-  const fx = from.x + (to.x - from.x) * easePress(flyK);
-  const fy = from.y + (to.y - from.y) * flyK - Math.sin(flyK * Math.PI) * 260;
 
   return (
     <Ground>
@@ -179,18 +173,22 @@ export function Shop() {
             <Headline size={52} color={C.raised} style={{ marginTop: 4 }}>
               LIST
             </Headline>
-            {landed && (
-              <div style={{ display: "flex", alignItems: "center", gap: 20, marginTop: 50, transform: `scale(${pop(t, lemonAt + 0.75)})`, transformOrigin: "0% 50%" }}>
-                <span style={{ width: 46, height: 46, border: `5px solid ${C.ink}`, borderRadius: 10, background: C.raised, position: "relative" }}>
-                  {t > doneAt && (
-                    <svg viewBox="0 0 120 120" style={{ position: "absolute", left: -12, top: -20, width: 76, height: 76, transform: `scale(${pop(t, doneAt)})` }}>
-                      <path d="M22 62 L50 90 L104 22" fill="none" stroke={C.basil} strokeWidth={18} strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  )}
-                </span>
-                <span style={text(46, 600)}>1 lemon</span>
-              </div>
-            )}
+            {needs.map((row, j) => {
+              const land = flyAt(j) + FLY;
+              if (t < land) return null;
+              return (
+                <div key={row} style={{ display: "flex", alignItems: "center", gap: 20, marginTop: j ? 26 : 46, transform: `scale(${pop(t, land)})`, transformOrigin: "0% 50%" }}>
+                  <span style={{ width: 46, height: 46, border: `5px solid ${C.ink}`, borderRadius: 10, background: C.raised, position: "relative", flexShrink: 0 }}>
+                    {t > doneAt + j * 0.08 && (
+                      <svg viewBox="0 0 120 120" style={{ position: "absolute", left: -12, top: -20, width: 76, height: 76, transform: `scale(${pop(t, doneAt + j * 0.08)})` }}>
+                        <path d="M22 62 L50 90 L104 22" fill="none" stroke={C.basil} strokeWidth={18} strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                  </span>
+                  <span style={{ width: 230 - j * 50, height: 30, borderRadius: 8, background: C.brickSoft, borderLeft: `8px solid ${C.brick}` }} />
+                </div>
+              );
+            })}
           </Sticker>
           <Stamp at={doneAt} color={C.basil} size={96} rotate={-14} style={{ left: 70, top: 320 }}>
             DONE
@@ -198,27 +196,38 @@ export function Shop() {
         </div>
       )}
       <Sfx at={noteAt} name="pop" volume={0.5} />
-      <Sfx at={lemonAt} name="whoosh" volume={0.3} />
-      <Sfx at={lemonAt + 0.75} name="thock" volume={0.5} />
+      {needs.map((row, j) => (
+        <Sfx key={row} at={flyAt(j) + FLY} name="thock" volume={0.45} />
+      ))}
       <Sfx at={doneAt} name="stamp" volume={0.8} />
       <Sfx at={doneAt + 0.05} name="ding" volume={0.35} />
 
-      {t > lemonAt && !landed && (
-        <svg
-          viewBox="-5 -5 125 95"
-          style={{
-            position: "absolute",
-            left: fx - 60,
-            top: fy - 45,
-            width: 150,
-            height: 112,
-            overflow: "visible",
-            transform: `rotate(${flyK * 400}deg) scale(${1 - 0.35 * flyK})`,
-          }}
-        >
-          <Lemon />
-        </svg>
-      )}
+      {/* the red rows, lifted off the page and onto the note */}
+      {needs.map((row, j) => {
+        const k = lin(t, flyAt(j), FLY);
+        if (k <= 0 || k >= 1) return null;
+        const e = easePress(k);
+        const from = { x: ORIGIN.x + PADX - 20, y: ORIGIN.y + ROWS_Y + row * ROW_H };
+        const to = { x: NOTE.x + 110, y: NOTE.y + 230 + j * 72 };
+        const w = (WIN.w - 12 - (PADX - 20) * 2) * (1 - e) + (230 - j * 50) * e;
+        return (
+          <div
+            key={row}
+            style={{
+              position: "absolute",
+              left: from.x + (to.x - from.x) * e,
+              top: from.y + (to.y - from.y) * e - Math.sin(k * Math.PI) * 180,
+              width: w,
+              height: (ROW_H - 8) * (1 - 0.5 * e),
+              borderRadius: 14,
+              background: C.brickSoft,
+              borderLeft: `8px solid ${C.brick}`,
+              boxShadow: POP,
+              transform: `rotate(${Math.sin(k * Math.PI) * -8}deg)`,
+            }}
+          />
+        );
+      })}
 
       {t > 1.2 && t < flipAt + 1.3 && <Cursor x={cursor.x} y={cursor.y} pressed={click(t, flipAt)} />}
     </Ground>

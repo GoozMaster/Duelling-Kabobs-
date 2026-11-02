@@ -24,22 +24,8 @@ export function Close() {
     <Ground>
       <Sunburst speed={6} x={PANEL.x + PANEL.size / 2} y={PANEL.y + PANEL.size / 2} size={3000} />
 
-      <div style={{ position: "absolute", left: 150, top: 230, width: 900 }}>
-        <div style={{ transform: `scale(${pop(t, 0.35)})`, transformOrigin: "0% 50%" }}>
-          <span
-            style={{
-              ...label(26, C.teal),
-              display: "inline-block",
-              background: C.tealSoft,
-              border: `${KEY}px solid ${C.ink}`,
-              borderRadius: 999,
-              padding: "8px 26px",
-            }}
-          >
-            No shopping list required
-          </span>
-        </div>
-        <div style={{ marginTop: 34 }}>
+      <div style={{ position: "absolute", left: 150, top: 290, width: 900 }}>
+        <div>
           {["DOWN WITH", "HUNGER"].map((word, i) => (
             <div key={word} style={{ transform: `scale(${slam(t, wordmark + 0.05 + i * 0.22)})`, transformOrigin: "0% 60%" }}>
               <Headline size={160} style={{ lineHeight: 0.95 }}>
@@ -49,7 +35,7 @@ export function Close() {
           ))}
         </div>
         <div style={{ ...text(46, 500, C.muted), marginTop: 36, transform: `scale(${pop(t, lede)})`, transformOrigin: "0% 50%" }}>
-          Every dish worth cooking, one menu away.
+          Every dish worth cooking, one click away.
         </div>
         <div style={{ display: "flex", gap: 26, marginTop: 50, transform: `scale(${pop(t, lede + 0.9)})`, transformOrigin: "0% 50%" }}>
           <span style={button(true)}>Open the fridge</span>

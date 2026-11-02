@@ -1,0 +1,2367 @@
+[
+ {
+  "id": "fs-742356",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-742356_single-knock-wood.ogg",
+  "title": "SingleKnock_Wood",
+  "author": "NoisyRedFox",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/NoisyRedFox/sounds/742356/",
+  "download_url": "https://cdn.freesound.org/previews/742/742356_14357801-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_land_wood",
+  "rank": 1,
+  "best_segment": [
+   0.04,
+   0.2
+  ],
+  "notes": "Single knock on wood, one take (0.2 s file). Attack 0.045 s, peak -1.2 dBFS, centroid 615 Hz (warm, low: stays out of the voice band), rolloff95 7.1 kHz (analyze flags 'dull'). Floor reads -46.3 dBFS but the file is only 0.2 s long, so that is the knock's own tail, not room. find (kind=event) trim 0.04-0.20 plausible z +2.5. Best single soft-knock voice: title card 0.55 and close 130.98-131.45; vary with ranks 2/3. Page read 2026-10-31: licence 'Creative Commons 0'; original Ogg Vorbis (.ogg), 44.1 kHz, Mono; description: \"Knocking on wood\".",
+  "analysis": {
+   "duration": 0.2,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -1.2,
+   "lufs": null,
+   "noise_floor_dbfs": -46.3,
+   "clipped_samples": 0,
+   "attack_at": 0.045,
+   "centroid_hz": 615,
+   "rolloff95_hz": 7110,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single soft short wooden knock on a wooden table",
+    "z": 4.2,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-543247",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-543247_knock-on-wood.ogg",
+  "title": "knock on wood.WAV",
+  "author": "myfreesoundaccount1998",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/myfreesoundaccount1998/sounds/543247/",
+  "download_url": "https://cdn.freesound.org/previews/543/543247_11178658-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_land_wood",
+  "rank": 2,
+  "best_segment": [
+   2.16,
+   2.48
+  ],
+  "notes": "Knocking on a wooden table, several knocks (5.7 s, 48 kHz WAV source). find takes (all strong): 2.16-2.48 (z +3.7), 4.14-4.42 (+3.7), 3.46-3.78 (+3.6), 3.15-3.46 (+3.5), 4.42-4.80 (+3.2), 2.48-2.68 (+3.2); avoid 5.58-5.68 (no match). Forced choice vs 'a door knock in a room' only 78/22: keep it close and dry (no reverb). Peak -7.7 dBFS, -34 LUFS, floor -59.3 dBFS, centroid 923 Hz. The pool for the ~6 landing knocks (cycle takes; the notepad at 8.78 can take the 4.42-4.80 take a little louder). Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"Knocking on a wooden table\".",
+  "analysis": {
+   "duration": 5.681,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -7.68,
+   "lufs": -33.97,
+   "noise_floor_dbfs": -59.3,
+   "clipped_samples": 0,
+   "attack_at": 1.163,
+   "centroid_hz": 923,
+   "rolloff95_hz": 7187,
+   "onsets": [
+    0.07,
+    1.184,
+    1.509,
+    2.183,
+    2.508,
+    3.181,
+    3.506,
+    4.156,
+    4.481,
+    5.666
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single soft short wooden knock on a wooden table",
+    "z": 4.1,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "mk-2182",
+  "category": "foley",
+  "file": "audio/assets/foley/mk-2182_wood-hard-hit.wav",
+  "title": "Wood hard hit",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/wood/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2182/2182.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": "f_land_wood",
+  "rank": 3,
+  "best_segment": [
+   0.0,
+   0.417
+  ],
+  "notes": "Mixkit 'Wood hard hit' (lossless WAV). Attack 0.055 s, peak -2.0 dBFS, floor -63.3 dBFS, centroid 2044 Hz, rolloff95 9.3 kHz. earshot hears 'a punchy impact hit' (z +3.8) / 'a heavy thud' (+3.3): harder than the others, good for the heavier notepad drop at 8.78. LICENCE NOTE: listed by this title on the category page above (read 2026-10-31). https://mixkit.co/license/ loads the Sound Effects Free License text in a script modal that could not be read in this session (the page's meta description says items may be used in commercial and non-commercial projects): the licence auditor must read and quote the sfxFree text before use.",
+  "analysis": {
+   "duration": 0.417,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -2.04,
+   "lufs": null,
+   "noise_floor_dbfs": -63.3,
+   "clipped_samples": 0,
+   "attack_at": 0.055,
+   "centroid_hz": 2044,
+   "rolloff95_hz": 9282,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single soft short wooden knock on a wooden table",
+    "z": 3.7,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-406287",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-406287_wooden-spoon-drop-counter.ogg",
+  "title": "hit - wooden spoon - dropped onto counter 07.wav",
+  "author": "Anthousai",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Anthousai/sounds/406287/",
+  "download_url": "https://cdn.freesound.org/previews/406/406287_5923045-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_land_wood",
+  "rank": 4,
+  "best_segment": [
+   0.0,
+   0.6
+  ],
+  "notes": "Wooden spoon dropped onto a laminate counter (Tascam DR-40, 96 kHz). Peak -0.08 dBFS (near full scale: pad it), floor -62.5 dBFS, centroid 1697 Hz. Sounds most like 'a wooden block hit' (z +3.1); laminate not wood, plus a small bounce: backup / variation layer only. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 96 kHz, Stereo; description: \"Dropping a wooden spoon onto a laminate counter top from about 4 inches high. Recorded with a Tascam DR-40.\".",
+  "analysis": {
+   "duration": 0.885,
+   "codec": "vorbis",
+   "kbps": 251,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": -0.08,
+   "lufs": -22.9,
+   "noise_floor_dbfs": -62.5,
+   "clipped_samples": 0,
+   "attack_at": 0.0,
+   "centroid_hz": 1697,
+   "rolloff95_hz": 7906,
+   "onsets": [
+    0.163,
+    0.255
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single soft short wooden knock on a wooden table",
+    "z": 2.9,
+    "verdict": "plausible"
+   }
+  }
+ },
+ {
+  "id": "fs-63535",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-63535_fist-knock-table.ogg",
+  "title": "knock1.wav",
+  "author": "florian_reinke",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/florian_reinke/sounds/63535/",
+  "download_url": "https://cdn.freesound.org/previews/63/63535_398161-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_land_wood",
+  "rank": 5,
+  "best_segment": [
+   0.0,
+   0.204
+  ],
+  "notes": "Fist knock on a wooden table, single 0.2 s take. Peak -14.1 dBFS (quiet), floor -60.5 dBFS, centroid 1139 Hz. Second reading 'a single mechanical keyboard key press' (z +2.7): a little clicky. Backup. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 44.1 kHz, Stereo; description: \"a fist knocks on a wooden table\".",
+  "analysis": {
+   "duration": 0.204,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -14.14,
+   "lufs": null,
+   "noise_floor_dbfs": -60.5,
+   "clipped_samples": 0,
+   "attack_at": 0.021,
+   "centroid_hz": 1139,
+   "rolloff95_hz": 8305,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.91,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single soft short wooden knock on a wooden table",
+    "z": 2.8,
+    "verdict": "plausible"
+   }
+  }
+ },
+ {
+  "id": "fs-470710",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-470710_traditional-rubber-stamp.ogg",
+  "title": "traditional stamp.wav",
+  "author": "I.fekry",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/I.fekry/sounds/470710/",
+  "download_url": "https://cdn.freesound.org/previews/470/470710_9906084-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp",
+  "rank": 1,
+  "best_segment": [
+   0.49,
+   0.79
+  ],
+  "notes": "'a traditional rubber stamp' (author). One take: attack 0.501 s; trim 0.49-0.79 (find: weak z +2.4 on the short trim; whole file strong +3.4, 'an office stamp' strong +3.1, 'a stamp thumped onto paper on a desk' strong +3.5). Reads as 'a punchy impact hit' (+4.2) / 'a heavy thud' (+3.4): the firmest stamp, -15 LUFS. 36 clipped samples at the hit (peak +0.25 dBFS on decode): pad 3 dB and check the trim for flat tops; if audible, use rank 2. For OUT 36.16 and ON HAND 75.79 (firm); pitch -1..-2 st and layer over f_stamp_heavy for 46.22 / 46.52 / 134.53. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 44.1 kHz, Stereo; description: \"a traditional rubber stamp free for all. Enjoy!\".",
+  "analysis": {
+   "duration": 1.59,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 0.25,
+   "lufs": -15.02,
+   "noise_floor_dbfs": -64.1,
+   "clipped_samples": 36,
+   "attack_at": 0.501,
+   "centroid_hz": 3655,
+   "rolloff95_hz": 9713,
+   "onsets": [
+    0.511
+   ]
+  },
+  "earshot": {
+   "realness": 0.96,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a rubber stamp hitting paper on a desk",
+    "z": 3.4,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-461888",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-461888_rubber-plastic-stamp.ogg",
+  "title": "17_stamp, rubber, plastic.wav",
+  "author": "15FPanska_KristynaHaupt",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/15FPanska_KristynaHaupt/sounds/461888/",
+  "download_url": "https://cdn.freesound.org/previews/461/461888_9681967-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp",
+  "rank": 2,
+  "best_segment": [
+   8.97,
+   9.61
+  ],
+  "notes": "Rubber/plastic stamp, many takes (15.6 s), noise-gated: digital silence between hits (floor reads -200). find ('an office stamp hitting paper'): 8.97-9.61 strong z +3.2, 14.90-15.48 plausible +2.6, then weak 3.79-4.00 (+2.3), 0.70-0.97, 12.13-12.69, 6.63-6.92 (+2.2). 'a rubber stamp hitting paper on a desk' plausible z +2.8. Peak -8.9 dBFS, -32.5 LUFS (quiet: +8-10 dB), rolloff95 9.0 kHz. Gated tails: give each trim a 10-20 ms fade-out. Pool for the four recipe-title stamps 19.6-22.9 (same stamp, slight variation) and the lighter ones at 90.07 / 98.81. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"stamp, rubber, plastic\".",
+  "analysis": {
+   "duration": 15.578,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -8.94,
+   "lufs": -32.54,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.166,
+   "centroid_hz": 0,
+   "rolloff95_hz": 8957,
+   "onsets": [
+    0.139,
+    0.209,
+    0.255,
+    0.789,
+    3.274,
+    3.344,
+    3.878,
+    6.2,
+    6.734,
+    9.033,
+    9.149,
+    9.636,
+    9.706,
+    12.074,
+    12.585,
+    14.93,
+    15.372
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "an office stamp",
+    "z": 3.6,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-784653",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-784653_document-stamping.ogg",
+  "title": "stamp, stamping, document, office",
+  "author": "treesound1951",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/treesound1951/sounds/784653/",
+  "download_url": "https://cdn.freesound.org/previews/784/784653_3151368-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp",
+  "rank": 3,
+  "best_segment": [
+   2.18,
+   2.94
+  ],
+  "notes": "Document stamping, Olympus LS-12, ~2.1 onsets/s over 19.7 s. 'an office stamp' find: 2.18-2.94 strong z +3.2, 1.12-1.53 strong +3.1; plausible 17.33-17.65 / 7.17-8.97 (+2.9), 4.55-5.00 / 14.91-15.77 (+2.8), 16.06-16.22 (+2.7), 16.74-17.05 (+2.6). earshot also hears 'an old typewriter' (+3.5) and the stamp-vs-stapler forced choice goes to stapler (96%): crisper and clackier than ranks 1-2, so a variation or top layer only. Peak -0.2 dBFS, -22.3 LUFS, floor -69.9 dBFS, centroid 2369 Hz (in the voice band: dip 2-4 kHz under speech). Page read 2026-10-31: licence 'Creative Commons 0'; original Mp3 (.mp3), 44.1 kHz, Stereo; description: \"Document stamping. Audio was recorded using: Olympus LS-12 linear PCM recorder.\".",
+  "analysis": {
+   "duration": 19.71,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.21,
+   "lufs": -22.26,
+   "noise_floor_dbfs": -69.9,
+   "clipped_samples": 0,
+   "attack_at": 1.121,
+   "centroid_hz": 2369,
+   "rolloff95_hz": 9528,
+   "onsets": [
+    0.209,
+    1.115,
+    1.161,
+    1.324,
+    2.206,
+    2.322,
+    2.461,
+    2.67,
+    2.856,
+    4.644,
+    5.573,
+    5.666,
+    5.851,
+    6.757,
+    7.198,
+    7.384,
+    7.43,
+    7.779,
+    8.336,
+    8.545,
+    8.847,
+    9.056,
+    10.31,
+    11.633
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "an office stamp",
+    "z": 2.7,
+    "verdict": "plausible"
+   }
+  }
+ },
+ {
+  "id": "fs-362623",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-362623_stamp-paper.ogg",
+  "title": "Stamp",
+  "author": "kermite607",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/kermite607/sounds/362623/",
+  "download_url": "https://cdn.freesound.org/previews/362/362623_3165091-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp",
+  "rank": 4,
+  "best_segment": [
+   0.03,
+   0.48
+  ],
+  "notes": "Stamp applied to paper (TASCAM, 48 kHz), one take 0.54 s. find trim 0.03-0.48 plausible z +2.9. 'a rubber stamp hitting paper on a desk' no match (+1.7); reads as 'a box lid closing' (+3.2): lighter and clickier, centroid 3538 Hz. Peak -2.2 dBFS, floor -64.7 dBFS. Light variation only (90.07). Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"Recording of a stamp being applied to a piece of paper. Recorded in stereo with a TASCAM DR-100MKII.\".",
+  "analysis": {
+   "duration": 0.543,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -2.23,
+   "lufs": -25.43,
+   "noise_floor_dbfs": -64.7,
+   "clipped_samples": 0,
+   "attack_at": 0.03,
+   "centroid_hz": 3538,
+   "rolloff95_hz": 9379,
+   "onsets": [
+    0.07,
+    0.348,
+    0.418
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "an office stamp",
+    "z": 3.1,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-824382",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-824382_hardcover-book-table.ogg",
+  "title": "Hardcover book hitting table",
+  "author": "nyxlitten",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/nyxlitten/sounds/824382/",
+  "download_url": "https://cdn.freesound.org/previews/824/824382_17219471-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp_heavy",
+  "rank": 1,
+  "best_segment": [
+   13.44,
+   13.61
+  ],
+  "notes": "Hardcover book dropped on a table repeatedly (15.8 s). find: 13.44-13.61 strong z +3.2, 7.56-7.66 plausible +2.8, 4.50-4.72 / 1.43-1.63 weak +2.4; avoid head/tail-cut trims (4.41-4.50, 10.54-10.71, 7.42-7.56). Whole file >99% vs 'a door slam'. Peak +0.07 dBFS with 4 clipped samples (pad 3 dB, check the take), floor -65.4 dBFS. 13.44 take (let it ring ~0.3 s) under the end-card placard 134.53; 7.56 / 4.50 takes for 46.22 / 46.52, with f_stamp rank 1 layered on top for the rubber 'thock'. Page read 2026-10-31: licence 'Creative Commons 0'; original Mp3 (.mp3), 44.1 kHz, Stereo; description: \"I drop a Hardcover book on a table repeatedly\".",
+  "analysis": {
+   "duration": 15.776,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 0.07,
+   "lufs": -24.16,
+   "noise_floor_dbfs": -65.4,
+   "clipped_samples": 4,
+   "attack_at": 1.433,
+   "centroid_hz": 1739,
+   "rolloff95_hz": 9314,
+   "onsets": [
+    1.231,
+    1.463,
+    3.344,
+    4.435,
+    4.551,
+    7.477,
+    7.523,
+    7.593,
+    9.334,
+    10.333,
+    10.565,
+    13.444,
+    13.491
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a heavy book slammed flat on a wooden table",
+    "z": 3.4,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-836521",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-836521_heavy-book-on-wood-table.ogg",
+  "title": "Book dropped on table",
+  "author": "Valerie-Vivegnis",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Valerie-Vivegnis/sounds/836521/",
+  "download_url": "https://cdn.freesound.org/previews/836/836521_15375955-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp_heavy",
+  "rank": 2,
+  "best_segment": [
+   1.25,
+   1.56
+  ],
+  "notes": "Heavy leather-bound book dropped on a wooden table (one take). Whole file strong z +3.3 but forced choice goes to 'a door slam' (77%); find trim 1.25-1.56 weak +2.2. Floor -98.6 dBFS (very clean), centroid 5351 Hz (bright: low-pass ~8 kHz). Backup heavy hit / layer. Page read 2026-10-31: licence 'Creative Commons 0'; original Mp3 (.mp3), 48 kHz, Stereo; description: \"Just an heavy leather-bound book being dropped on a wooden table. Recorded with a mic attached to the edge of the table.\".",
+  "analysis": {
+   "duration": 2.52,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -3.25,
+   "lufs": -22.25,
+   "noise_floor_dbfs": -98.6,
+   "clipped_samples": 0,
+   "attack_at": 1.259,
+   "centroid_hz": 5351,
+   "rolloff95_hz": 10185,
+   "onsets": [
+    1.277
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a heavy book slammed flat on a wooden table",
+    "z": 3.3,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-387929",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-387929_large-book-down.ogg",
+  "title": "Putting a Large Book Down",
+  "author": "rylandbrooks",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/rylandbrooks/sounds/387929/",
+  "download_url": "https://cdn.freesound.org/previews/387/387929_1939831-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp_heavy",
+  "rank": 3,
+  "best_segment": [
+   1.5,
+   2.2
+  ],
+  "notes": "Large hardcover notebook placed (not slammed) on a wooden table, mic at 6 in. Weak z +2.4; reads 'paper rustling' (+3.7): too soft for a slam. Attack 1.545 s. Not recommended. Page read 2026-10-31: licence 'Creative Commons 0'; original Mp3 (.mp3), 44.1 kHz, Stereo; description: \"Placing an 8\"x12\" hardcover notebook down on a wooden table surface. Recorded from 6 inches\".",
+  "analysis": {
+   "duration": 4.925,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -5.59,
+   "lufs": -35.45,
+   "noise_floor_dbfs": -71.9,
+   "clipped_samples": 0,
+   "attack_at": 1.545,
+   "centroid_hz": 3107,
+   "rolloff95_hz": 9698,
+   "onsets": [
+    0.07,
+    0.116,
+    0.302,
+    0.441,
+    0.557,
+    0.697,
+    0.836,
+    0.952,
+    1.207,
+    1.324,
+    1.579,
+    1.765,
+    1.834,
+    1.95,
+    2.113,
+    2.345,
+    2.461,
+    2.624,
+    2.926,
+    3.065,
+    3.135,
+    3.344,
+    3.46,
+    3.622
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a heavy book slammed flat on a wooden table",
+    "z": 2.4,
+    "verdict": "weak"
+   }
+  }
+ },
+ {
+  "id": "fs-325584",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-325584_mouth-pops-dry.ogg",
+  "title": "mouth pops - dry.flac",
+  "author": "cbenci",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/cbenci/sounds/325584/",
+  "download_url": "https://cdn.freesound.org/previews/325/325584_589586-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pop",
+  "rank": 1,
+  "best_segment": [
+   20.43,
+   20.5
+  ],
+  "notes": "Dry mouth pops, many takes, gated (silence between, floor -200). 'a short clean mouth pop' find, all strong: 20.43-20.50 (z +4.9), 12.77-12.85 (+4.7), 11.00-11.06 (+4.7), 5.02-5.09 (+4.6), 14.85-14.91 (+4.6), 9.25-9.34 (+4.6), 16.47-16.55 (+4.6), 1.82-1.89 (+4.6). Each pop ~70 ms. rolloff95 4.3 kHz (analyze: dull): warm, below the voice's consonants. Peak -3.0 dBFS, -25.9 LUFS. The pool for the bubble runs (5.52 + 5.94-6.50 thinned to 4-5; 29.8-30.1 x3): cycle takes, pitch_ramp +1..+3 st. Realness 0.86 (real or pro-produced). Page read 2026-10-31: licence 'Creative Commons 0'; original Flac (.flac), 48 kHz, Stereo; description: \"A popping sound made with my mouth. Dry, no ambience.\".",
+  "analysis": {
+   "duration": 25.488,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -2.95,
+   "lufs": -25.89,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.257,
+   "centroid_hz": 0,
+   "rolloff95_hz": 4258,
+   "onsets": [
+    0.279,
+    1.834,
+    3.576,
+    5.039,
+    6.525,
+    7.732,
+    9.265,
+    11.029,
+    12.794,
+    14.861,
+    16.486,
+    18.344,
+    20.457,
+    21.896,
+    23.452
+   ]
+  },
+  "earshot": {
+   "realness": 0.86,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a short clean cork pop",
+    "z": 4.0,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-583568",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-583568_pop-mouth.ogg",
+  "title": "pop mouth.WAV",
+  "author": "thereverbjunkie",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/thereverbjunkie/sounds/583568/",
+  "download_url": "https://cdn.freesound.org/previews/583/583568_1450691-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pop",
+  "rank": 2,
+  "best_segment": [
+   1.25,
+   1.6
+  ],
+  "notes": "Mouth pop, Sony PCM-D100. Strong z +4.1, #1 of 322 descriptions; >99% vs balloon / synth blip. Attack 1.301 s; peak -3.5 dBFS, floor -62.2 dBFS, centroid 769 Hz. Clean hero pop: first bubble 5.52 and the single soft pops (49.9, 105.35, 121.50, 132.58). analyze counts 4 spikes in the 3.2 s file: use only the event at ~1.30 s. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 44.1 kHz, Stereo; description: \"Recorded the sound of a mouth making a \"pop\" sound with a Sony PCM d100.\".",
+  "analysis": {
+   "duration": 3.204,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -3.51,
+   "lufs": -22.16,
+   "noise_floor_dbfs": -62.2,
+   "clipped_samples": 0,
+   "attack_at": 1.301,
+   "centroid_hz": 769,
+   "rolloff95_hz": 6739,
+   "onsets": [
+    0.302,
+    1.393
+   ]
+  },
+  "earshot": {
+   "realness": 0.94,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a short clean cork pop",
+    "z": 4.1,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-575527",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-575527_gin-cork-pop.ogg",
+  "title": "Cork pop",
+  "author": "dr19",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/dr19/sounds/575527/",
+  "download_url": "https://cdn.freesound.org/previews/575/575527_5984825-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pop",
+  "rank": 3,
+  "best_segment": [
+   0.84,
+   1.06
+  ],
+  "notes": "Gin bottle cork pops. find: 0.84-1.06 strong z +3.8, 2.98-3.15 strong +3.6; avoid 1.50-2.52 and 2.63-2.80 (no match). Peak +0.04 dBFS with 4 clipped samples: pad. Floor -57.4 dBFS (marginal). Real cork, a bit bigger: menu window 49.9 or recipe page 105.35. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 44.1 kHz, Mono; description: \"A couple of cork pops from a mostly full bottle of gin, would suit any situation calling for a \"pop\" sound! Recorded with a Rode NT2-A.\".",
+  "analysis": {
+   "duration": 3.808,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": 0.04,
+   "lufs": -17.48,
+   "noise_floor_dbfs": -57.4,
+   "clipped_samples": 4,
+   "attack_at": 0.905,
+   "centroid_hz": 1248,
+   "rolloff95_hz": 8501,
+   "onsets": [
+    0.929,
+    3.019
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a short clean cork pop",
+    "z": 3.7,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-691907",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-691907_mouth-pop-2.ogg",
+  "title": "Mouth pop 2",
+  "author": "hollandm",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/hollandm/sounds/691907/",
+  "download_url": "https://cdn.freesound.org/previews/691/691907_5309408-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pop",
+  "rank": 4,
+  "best_segment": [
+   0.06,
+   0.4
+  ],
+  "notes": "Mouth pop, AKG P220, single take. Attack 0.062 s, peak -0.26 dBFS, floor -100.9 dBFS (gated), centroid 1798 Hz. Another take for run variation. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 44.1 kHz, Stereo; description: \"A popping sound made by the mouth, recorded with an AKG P220\".",
+  "analysis": {
+   "duration": 0.5,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.26,
+   "lufs": -22.49,
+   "noise_floor_dbfs": -100.9,
+   "clipped_samples": 0,
+   "attack_at": 0.062,
+   "centroid_hz": 1798,
+   "rolloff95_hz": 10032,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a short clean cork pop",
+    "z": 3.3,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-344607",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-344607_jar-open-pop.ogg",
+  "title": "Opening_Jar_Pop.wav",
+  "author": "vcspran",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/vcspran/sounds/344607/",
+  "download_url": "https://cdn.freesound.org/previews/344/344607_5144331-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pop",
+  "rank": 5,
+  "best_segment": [
+   1.0,
+   1.4
+  ],
+  "notes": "Jar lid opened with a pop. Attack 1.032 s; floor -76.8 dBFS. Reads first as 'a box lid closing' (z +3.7): lid handling before the pop; use only from ~1.0 s. Variation / the map label pop at 58.54. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"Opening the lid of a jar with popping sound\".",
+  "analysis": {
+   "duration": 1.867,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -5.94,
+   "lufs": -25.43,
+   "noise_floor_dbfs": -76.8,
+   "clipped_samples": 0,
+   "attack_at": 1.032,
+   "centroid_hz": 2638,
+   "rolloff95_hz": 9410,
+   "onsets": [
+    0.116,
+    0.186,
+    0.325,
+    0.673,
+    0.836,
+    0.906,
+    1.045,
+    1.509
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a short clean cork pop",
+    "z": 3.0,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-868628",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-868628_glass-jars-wooden-shelf.ogg",
+  "title": "Arranging Glass Jars on a Shelf",
+  "author": "adamlenhart",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/adamlenhart/sounds/868628/",
+  "download_url": "https://cdn.freesound.org/previews/868/868628_19205976-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_jar",
+  "rank": 1,
+  "best_segment": [
+   112.64,
+   112.84
+  ],
+  "notes": "Arranging glass jars (full and empty) on a wooden shelf, 119 s: exactly the need. find (kind=event, 95-119 s): 112.64-112.84 (z +5.0), 97.49-97.65 (+4.7), 95.10-95.31 (+4.7), 99.10-99.72 (+4.7), 111.08-111.34 (+4.7), 102.38-102.97 (+4.5), 108.92-109.19 (+4.5), 104.60-104.94 (+4.4); also 33.61-34.25 (+3.8). Window scan best regions: 96.88-103.12 (+5.8), 112.50-118.75 (+5.7). CAUTION: the original is an MP3: the spectrogram shows a hard cut near 12.6 kHz with only sparse content to 16 kHz; rolloff95 6.0 kHz; floor -55.6 dBFS (at the limit). Under narration the missing top is not missed, but it is below the brief's bandwidth bar: kept, flag to the critic; pair with ranks 2/3 if it reads dull. ~8 uses at 65.1-68.0 climbing per shelf: 8 of the trims above, pitch_ramp +0..+2 st. Page read 2026-10-31: licence 'Creative Commons 0'; original Mp3 (.mp3), 44.1 kHz, Stereo; description: \"The sounds of arranging glass jars, some full and some empty, on a wooden shelf indoors. Glass on wood, glass on glass.\".",
+  "analysis": {
+   "duration": 119.267,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.59,
+   "lufs": -22.61,
+   "noise_floor_dbfs": -55.6,
+   "clipped_samples": 0,
+   "attack_at": 0.709,
+   "centroid_hz": 894,
+   "rolloff95_hz": 6007,
+   "onsets": [
+    0.65,
+    2.624,
+    4.156,
+    6.687,
+    7.361,
+    7.639,
+    7.825,
+    9.799,
+    10.008,
+    11.958,
+    12.098,
+    14.28,
+    16.904,
+    19.644,
+    21.548,
+    21.734,
+    21.92,
+    22.547,
+    23.638,
+    23.847,
+    24.056,
+    24.126,
+    25.728,
+    26.053
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a glass jar set down on a wooden shelf",
+    "z": 5.6,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-235498",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-235498_glass-jar-set-on-table.ogg",
+  "title": "glass jar_set on table_2.wav",
+  "author": "ekfink",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/ekfink/sounds/235498/",
+  "download_url": "https://cdn.freesound.org/previews/235/235498_4255182-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_jar",
+  "rank": 2,
+  "best_segment": [
+   0.0,
+   1.0
+  ],
+  "notes": "Large glass jar set down onto a wooden table top (48 kHz WAV). One take; find 0-1.0 strong z +5.2. Attack 0.143 s, peak -6.3 dBFS, -29.8 LUFS, floor -71.8 dBFS, centroid 889 Hz, rolloff95 7.5 kHz (dull). Clean, heavier: last jar of each shelf. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Mono; description: \"a large glass jar being set down onto a wooden table top\".",
+  "analysis": {
+   "duration": 1.248,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -6.26,
+   "lufs": -29.76,
+   "noise_floor_dbfs": -71.8,
+   "clipped_samples": 0,
+   "attack_at": 0.143,
+   "centroid_hz": 889,
+   "rolloff95_hz": 7524,
+   "onsets": [
+    0.163,
+    0.325
+   ]
+  },
+  "earshot": {
+   "realness": 0.94,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a glass jar set down on a wooden shelf",
+    "z": 4.9,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-171939",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-171939_put-down-glass-object.ogg",
+  "title": "Put Down Glass Object.flac",
+  "author": "qubodup",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/qubodup/sounds/171939/",
+  "download_url": "https://cdn.freesound.org/previews/171/171939_71257-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_jar",
+  "rank": 3,
+  "best_segment": [
+   0.0,
+   1.0
+  ],
+  "notes": "Glass object put down (96 kHz FLAC original). Strong z +4.6; also 'a wooden block hit' (+3.8) / 'a glass ting' (+3.1). Floor -114 dBFS (very clean), centroid 2612 Hz, rolloff95 10.1 kHz: the brightest jar. Peak +0.14 dBFS with 10 clipped samples on decode: pad 3 dB. Attack at 0.0 (starts on the transient: 2 ms fade-in). Page read 2026-10-31: licence 'Creative Commons 0'; original Flac (.flac), 96 kHz, Stereo; description: \"Putting down an empty glass on a work surface. Recorded with a Zoom H2 http://farm2.staticflickr.com/1222/1405299175_a2b015e0a3.jpg http://farm9.staticflickr.com/8070/8213683889_517a10ef52_o.png On FL\".",
+  "analysis": {
+   "duration": 1.0,
+   "codec": "vorbis",
+   "kbps": 176,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": 0.14,
+   "lufs": -22.01,
+   "noise_floor_dbfs": -114.4,
+   "clipped_samples": 10,
+   "attack_at": 0.0,
+   "centroid_hz": 2612,
+   "rolloff95_hz": 10109,
+   "onsets": [
+    0.232
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a glass jar set down on a wooden shelf",
+    "z": 4.6,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-503478",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-503478_fridge-door-closing.ogg",
+  "title": "Fridge door - closing",
+  "author": "bolkmar",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/bolkmar/sounds/503478/",
+  "download_url": "https://cdn.freesound.org/previews/503/503478_2927958-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_fridge",
+  "rank": 1,
+  "best_segment": [
+   0.22,
+   1.25
+  ],
+  "notes": "Fridge door closing (Tascam DR-05 V2). Strong z +4.5, 97% vs car door / wooden door. The thud is at ~0.30 s; there is a click at 0.00-0.01 s in the spectrogram: start the trim at 0.22. Peak -0.9 dBFS, -24.5 LUFS, centroid 724 Hz (soft low thunk); floor -54.0 dBFS (just above the -55 bar: fade the tail after ~0.6 s). For 29.30 (doors shut). Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"A fridge door closing, recorded with a Tascam DR-05 V2 and edited on Adobe Audition CC.\".",
+  "analysis": {
+   "duration": 1.25,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.92,
+   "lufs": -24.52,
+   "noise_floor_dbfs": -54.0,
+   "clipped_samples": 0,
+   "attack_at": 0.098,
+   "centroid_hz": 724,
+   "rolloff95_hz": 7372,
+   "onsets": [
+    0.255,
+    0.325
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a fridge door shutting with a soft rubber seal thud",
+    "z": 4.5,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-538595",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-538595_refrigerator-door-open-close.ogg",
+  "title": "DOORSAppliance-INT_Refrigerator Door Opening and Closing_ZT_NONE_24BIT48KHz-STEREO",
+  "author": "puZZelZ",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/puZZelZ/sounds/538595/",
+  "download_url": "https://cdn.freesound.org/previews/538/538595_7114446-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_fridge",
+  "rank": 2,
+  "best_segment": [
+   32.82,
+   33.37
+  ],
+  "notes": "Refrigerator door opening and closing, 24-bit 48 kHz original, 51 s of takes. 'opening, seal unsticking' find: 13.01-13.89 (z +4.7), 31.09-31.78 (+4.6), 32.82-33.37 (+4.3), 36.15-36.80 (+4.0), 6.61-7.21 (+3.8). 'shutting' find: 13.01-13.89 (+4.4), 31.22-31.78 (+4.1), 36.15-36.80 / 42.88-43.33 / 6.61-7.21 (+3.9). The same segments win both queries; 32.82-33.37 scores clearly higher as an open (+4.3) than as a close (+3.1): use it for 32.99. 42.88-43.33 / 31.22-31.78 are the best close alternatives to rank 1. Peak -0.2 dBFS, floor -65.6 dBFS, centroid 2485 Hz. Best overall fridge source. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"The sound of a Refrigerator Door opening and closing. 24 Bit 48000 KHz Recorded on Rode Video Mic Go Mixed in Pro Tools\".",
+  "analysis": {
+   "duration": 51.247,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.22,
+   "lufs": -32.7,
+   "noise_floor_dbfs": -65.6,
+   "clipped_samples": 0,
+   "attack_at": 6.827,
+   "centroid_hz": 2485,
+   "rolloff95_hz": 9043,
+   "onsets": [
+    0.07,
+    2.763,
+    2.995,
+    3.111,
+    3.529,
+    3.738,
+    3.831,
+    4.853,
+    6.037,
+    6.641,
+    6.85,
+    6.989,
+    7.175,
+    9.543,
+    9.613,
+    9.892,
+    10.031,
+    10.565,
+    12.701,
+    13.05,
+    13.189,
+    13.491,
+    15.07,
+    15.302
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a fridge door opening, the rubber seal unsticking",
+    "z": 4.8,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-237400",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-237400_fridge-door-open-close.ogg",
+  "title": "Fridge Door Open Close ",
+  "author": "squareal",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/squareal/sounds/237400/",
+  "download_url": "https://cdn.freesound.org/previews/237/237400_1502374-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_fridge",
+  "rank": 3,
+  "best_segment": [
+   14.22,
+   14.74
+  ],
+  "notes": "Fridge door open/close, Sennheiser 416 + Sound Devices. Close: 14.22-14.74 strong z +3.8, 4.34-4.59 strong +3.1. Open: 13.82-14.54 (+4.0), 4.08-4.63 (+3.1), 9.54-10.20 (+3.1). Avoid head/tail-cut trims (9.95-10.20, 0.25-0.65, 13.97-14.22). Quiet: peak -15.8 dBFS, -37.4 LUFS (+10-12 dB); floor -77.2 dBFS (clean); centroid 3589 Hz (brighter seal). Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Mono; description: \"Recording of a fridge door opening and closing. Recorded using a Sennheiser 416 and a Sound Devices 552.\".",
+  "analysis": {
+   "duration": 15.06,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -15.76,
+   "lufs": -37.43,
+   "noise_floor_dbfs": -77.2,
+   "clipped_samples": 0,
+   "attack_at": 0.158,
+   "centroid_hz": 3589,
+   "rolloff95_hz": 9969,
+   "onsets": [
+    0.093,
+    0.163,
+    0.279,
+    0.464,
+    0.72,
+    1.718,
+    3.715,
+    4.11,
+    4.412,
+    5.712,
+    6.734,
+    7.709,
+    8.731,
+    9.474,
+    9.59,
+    9.776,
+    9.985,
+    10.704,
+    11.703,
+    12.725,
+    13.677,
+    14.002,
+    14.303
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a fridge door shutting with a soft rubber seal thud",
+    "z": 4.4,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-426365",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-426365_fridge-door-open-near.ogg",
+  "title": "Fridge Door Open",
+  "author": "pbharri",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/pbharri/sounds/426365/",
+  "download_url": "https://cdn.freesound.org/previews/426/426365_7124140-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_fridge",
+  "rank": 4,
+  "best_segment": [
+   0.0,
+   1.23
+  ],
+  "notes": "Fridge door opening, near distance, one take. Strong z +4.5, >99% vs creak / velcro. Very quiet: peak -25.7 dBFS, -51 LUFS; floor -59.5 dBFS, so only ~34 dB of signal over noise: after +20 dB the floor sits near -40 dBFS. Backup for 32.99. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"Fridge Door opening at near distance.\".",
+  "analysis": {
+   "duration": 1.233,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -25.68,
+   "lufs": -51.02,
+   "noise_floor_dbfs": -59.5,
+   "clipped_samples": 0,
+   "attack_at": 0.015,
+   "centroid_hz": 2370,
+   "rolloff95_hz": 9514,
+   "onsets": [
+    0.07,
+    0.186,
+    0.372,
+    0.464,
+    0.604
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a fridge door opening, the rubber seal unsticking",
+    "z": 4.5,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-870728",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-870728_pots-hitting-counter.ogg",
+  "title": "Pots Hitting Counter",
+  "author": "CHallSmith",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/CHallSmith/sounds/870728/",
+  "download_url": "https://cdn.freesound.org/previews/870/870728_18412227-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pot",
+  "rank": 1,
+  "best_segment": [
+   7.05,
+   7.39
+  ],
+  "notes": "Large pots set down on a stainless-steel counter, metal clanks (48 kHz WAV original). find: 7.05-7.39 (z +5.3), 17.32-17.89 (+5.1), 29.79-30.23 (+5.1), 1.19-1.85 (+4.7), 34.17-34.65 (+4.7), 8.82-9.70 (+4.5), 16.70-17.20 (+4.4), 28.46-28.86 (+4.3). Peak -0.6 dBFS, -17.5 LUFS, floor -73.2 dBFS, centroid 2821 Hz. Use 7.05-7.39 (short) for the pot onto the burner at 38.58; low-pass ~9 kHz. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Mono; description: \"Large pots setting down on stainless steel counter. metal clanks.\".",
+  "analysis": {
+   "duration": 36.301,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -0.56,
+   "lufs": -17.48,
+   "noise_floor_dbfs": -73.2,
+   "clipped_samples": 0,
+   "attack_at": 3.119,
+   "centroid_hz": 2821,
+   "rolloff95_hz": 9733,
+   "onsets": [
+    0.116,
+    0.255,
+    0.395,
+    0.627,
+    1.277,
+    1.486,
+    3.135,
+    4.876,
+    6.107,
+    7.129,
+    8.94,
+    10.24,
+    10.565,
+    10.96,
+    12.469,
+    12.655,
+    14.42,
+    14.93,
+    16.765,
+    17.345,
+    17.531,
+    19.691,
+    21.92,
+    22.152
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a metal cooking pot set down on a stovetop, a short clank",
+    "z": 5.1,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "mk-3135",
+  "category": "foley",
+  "file": "audio/assets/foley/mk-3135_cast-iron-pan-set-down.wav",
+  "title": "Cast iron pan set down",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/kitchen/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/3135/3135.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "need": "f_pot",
+  "rank": 2,
+  "best_segment": [
+   0.1,
+   0.77
+  ],
+  "notes": "Mixkit 'Cast iron pan set down' (lossless WAV). Attack 0.15 s, peak -1.6 dBFS, -18.6 LUFS, floor -86.1 dBFS, centroid 1351 Hz. Heavier, less ring; also reads 'ice cubes in a glass' (+3.4). Alternative for 38.58. LICENCE NOTE: listed by this title on the category page above (read 2026-10-31). https://mixkit.co/license/ loads the Sound Effects Free License text in a script modal that could not be read in this session (the page's meta description says items may be used in commercial and non-commercial projects): the licence auditor must read and quote the sfxFree text before use.",
+  "analysis": {
+   "duration": 0.771,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -1.55,
+   "lufs": -18.56,
+   "noise_floor_dbfs": -86.1,
+   "clipped_samples": 0,
+   "attack_at": 0.15,
+   "centroid_hz": 1351,
+   "rolloff95_hz": 9419,
+   "onsets": [
+    0.163,
+    0.325,
+    0.441
+   ]
+  },
+  "earshot": {
+   "realness": 0.94,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a metal cooking pot set down on a stovetop, a short clank",
+    "z": 3.7,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-873865",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-873865_dropping-fork-table.ogg",
+  "title": "Dropping silverware",
+  "author": "cb9382",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/cb9382/sounds/873865/",
+  "download_url": "https://cdn.freesound.org/previews/873/873865_19181807-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pot_fork",
+  "rank": 1,
+  "best_segment": [
+   0.59,
+   1.25
+  ],
+  "notes": "Fork dropped on a table near the mic. find ('a metal fork dropped, a clink'): 0.59-1.25 strong z +4.0, 2.52-2.91 strong +3.8; avoid 0.05-0.59 and 1.96-2.52 (no match / tail cut). Peak -0.4 dBFS, -14.8 LUFS, floor -69.5 dBFS, centroid 3209 Hz. Reads 'ice cubes in a glass' (+3.7) / 'a wine glass ring' (+3.6): bright clink. Two takes for the drops at 40.6-44.5; the third from rank 2. Page read 2026-10-31: licence 'Creative Commons 0'; original M4a (.m4a), 44.1 kHz, Mono; description: \"Dropping a fork on the table near the mic.\".",
+  "analysis": {
+   "duration": 3.646,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -0.44,
+   "lufs": -14.83,
+   "noise_floor_dbfs": -69.5,
+   "clipped_samples": 0,
+   "attack_at": 0.65,
+   "centroid_hz": 3209,
+   "rolloff95_hz": 9571,
+   "onsets": [
+    0.139,
+    0.232,
+    0.557,
+    0.673,
+    2.043,
+    2.508,
+    2.554,
+    2.67
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a metal fork dropped into a metal pot, a clink",
+    "z": 4.8,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-560280",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-560280_forks-in-saucepan.ogg",
+  "title": "Metal Clank1.m4a",
+  "author": "RoyalRose",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/RoyalRose/sounds/560280/",
+  "download_url": "https://cdn.freesound.org/previews/560/560280_12560866-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pot_fork",
+  "rank": 2,
+  "best_segment": [
+   15.08,
+   15.45
+  ],
+  "notes": "Knives and forks shaken in a saucepan (raw m4a original). Actually inside a pot, so it has the pot's ring. find single strokes: 15.08-15.45 (z +4.4), 3.20-3.71 (+3.6), 5.92-6.21 (+3.6); avoid the long rattles (0.46-2.43, 9.14-11.82) and 2.59-2.83 (head cut). Preview 110 kbps, rolloff95 9.0 kHz, floor -62.7 dBFS. 15.08-15.45 for one of the 3 drops. Page read 2026-10-31: licence 'Creative Commons 0'; original M4a (.m4a), 44.1 kHz, Mono; description: \"Knives and forks in a saucepan being shaken around. Loud sound, Attempt #1. Raw audio, no edits. May be background noise.\".",
+  "analysis": {
+   "duration": 15.836,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -0.76,
+   "lufs": -14.14,
+   "noise_floor_dbfs": -62.7,
+   "clipped_samples": 0,
+   "attack_at": 0.55,
+   "centroid_hz": 4080,
+   "rolloff95_hz": 8957,
+   "onsets": [
+    0.418,
+    0.557,
+    0.882,
+    1.207,
+    1.277,
+    1.602,
+    1.858,
+    1.95,
+    2.252,
+    2.577,
+    2.624,
+    2.786,
+    2.902,
+    3.065,
+    3.181,
+    3.228,
+    3.831,
+    4.505,
+    5.178,
+    5.294,
+    5.875,
+    5.944,
+    6.571,
+    6.757
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a metal fork dropped into a metal pot, a clink",
+    "z": 3.4,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-764728",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-764728_forks-knives-drop.ogg",
+  "title": "Forks and knives drop3",
+  "author": "nikerk",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/nikerk/sounds/764728/",
+  "download_url": "https://cdn.freesound.org/previews/764/764728_2039537-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pot_fork",
+  "rank": 3,
+  "best_segment": [
+   0.25,
+   1.0
+  ],
+  "notes": "Forks and knives drop (48 kHz WAV original), one cluster. Strong z +4.5 but reads 'coins dropping' (+3.3) / 'keys jingling' (+3.2): several pieces, busier. Centroid 5013 Hz (low-pass it). Peak -2.2 dBFS, floor -76.3 dBFS. Backup. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"various silverware foley snippets\".",
+  "analysis": {
+   "duration": 2.1,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -2.24,
+   "lufs": -21.52,
+   "noise_floor_dbfs": -76.3,
+   "clipped_samples": 0,
+   "attack_at": 0.248,
+   "centroid_hz": 5013,
+   "rolloff95_hz": 10217,
+   "onsets": [
+    0.116,
+    0.279,
+    0.418,
+    0.511,
+    0.72,
+    0.882,
+    1.207,
+    1.486,
+    1.579,
+    1.858,
+    2.02
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a metal fork dropped into a metal pot, a clink",
+    "z": 4.5,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-869163",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-869163_sticky-notes.ogg",
+  "title": "Sticky Notes Sounds",
+  "author": "aliyahb",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/aliyahb/sounds/869163/",
+  "download_url": "https://cdn.freesound.org/previews/869/869163_19216797-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_paper",
+  "rank": 1,
+  "best_segment": [
+   12.38,
+   12.83
+  ],
+  "notes": "Sticky notes ripped off, put down, picked up, shuffled (32.9 s, m4a original). find: 12.38-12.83 strong z +3.6, 13.92-15.01 strong +3.4, 15.89-16.25 plausible +2.9, 9.32-9.46 / 22.03-22.48 / 25.84-26.01 plausible +2.7; avoid 17.95-19.27 (head cut). Peak +0.05 dBFS with 2 clipped samples; floor -53.1 dBFS (just above the -55 bar: keep trims short). Use 12.38-12.83 for the note slapped on (116.94-118.75). Page read 2026-10-31: licence 'Creative Commons 0'; original M4a (.m4a), 48 kHz, Mono; description: \"Sticky notes being ripped off, put down and picked up, shuffled\".",
+  "analysis": {
+   "duration": 32.896,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": 0.05,
+   "lufs": -28.94,
+   "noise_floor_dbfs": -53.1,
+   "clipped_samples": 2,
+   "attack_at": 0.641,
+   "centroid_hz": 1651,
+   "rolloff95_hz": 9840,
+   "onsets": [
+    0.07,
+    0.65,
+    0.836,
+    1.44,
+    2.113,
+    2.461,
+    2.67,
+    2.717,
+    2.81,
+    3.042,
+    3.251,
+    3.297,
+    3.831,
+    4.389,
+    4.551,
+    5.55,
+    5.782,
+    6.757,
+    6.873,
+    8.127,
+    8.29,
+    8.568,
+    9.056,
+    9.242
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a sticky note slapped onto paper",
+    "z": 3.5,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-461803",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-461803_sticky-notes-on-paper.ogg",
+  "title": "13_Sticky notes.wav",
+  "author": "15GPanskaZacekSamuel",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/15GPanskaZacekSamuel/sounds/461803/",
+  "download_url": "https://cdn.freesound.org/previews/461/461803_9681705-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_paper",
+  "rank": 2,
+  "best_segment": [
+   3.63,
+   4.08
+  ],
+  "notes": "Sticking notes on paper (48 kHz WAV original). Whole file weak +2.2, but find: 3.63-4.08 strong z +3.2; 1.43-1.59 / 6.35-6.63 / 2.01-2.71 plausible +2.5. Quiet: peak -17.8 dBFS, -46.5 LUFS (+15 dB); floor -73.7 dBFS (clean); centroid 3586 Hz. Clean alternative to rank 1 (the 3.63-4.08 trim). Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Stereo; description: \"Sticking notes on the paper.\".",
+  "analysis": {
+   "duration": 11.292,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -17.78,
+   "lufs": -46.46,
+   "noise_floor_dbfs": -73.7,
+   "clipped_samples": 0,
+   "attack_at": 1.459,
+   "centroid_hz": 3586,
+   "rolloff95_hz": 10002,
+   "onsets": [
+    0.07,
+    1.022,
+    1.091,
+    1.486,
+    2.043,
+    2.183,
+    2.252,
+    2.415,
+    2.647,
+    3.39,
+    3.669,
+    3.994,
+    4.737,
+    4.853,
+    4.969,
+    5.178,
+    5.851,
+    6.385,
+    6.432,
+    7.43,
+    7.593,
+    7.663,
+    7.872,
+    8.591
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a sticky note slapped onto paper",
+    "z": 2.2,
+    "verdict": "weak"
+   }
+  }
+ },
+ {
+  "id": "fs-802604",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-802604_pencil-writing-taps.ogg",
+  "title": "Pencil - Writing and Taps",
+  "author": "JelloApocalypse",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/JelloApocalypse/sounds/802604/",
+  "download_url": "https://cdn.freesound.org/previews/802/802604_3501916-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_paper_pen",
+  "rank": 1,
+  "best_segment": [
+   16.29,
+   17.09
+  ],
+  "notes": "Scribbling, tapping and writing with a pencil on paper (64 s). find (kind=event, 0-23 s): 16.29-17.09 (z +4.2), 7.04-7.63 (+4.1), 13.18-13.98 (+3.7), 5.28-6.77 (+3.6), 19.43-20.88 (+3.4); 14.69-14.87 single stroke +3.4 but tail cut. Floor -48.6 dBFS (above the -55 bar: hiss in the gaps of the 110 kbps preview): fine for short strokes under voice + music, not for exposed taps; gate between strokes. Peak -0.5 dBFS, centroid 2124 Hz. Handwriting lines 12.7-17.8: one short stroke (0.2-0.6 s) per line, quiet, or silence per the brief. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Mono; description: \"Intense scribbling, tapping, and writing with a pencil on a piece of paper.\".",
+  "analysis": {
+   "duration": 64.155,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -0.46,
+   "lufs": -26.85,
+   "noise_floor_dbfs": -48.6,
+   "clipped_samples": 0,
+   "attack_at": 0.198,
+   "centroid_hz": 2124,
+   "rolloff95_hz": 10185,
+   "onsets": [
+    0.209,
+    0.534,
+    0.859,
+    2.136,
+    3.135,
+    4.133,
+    5.364,
+    6.478,
+    6.85,
+    6.989,
+    7.454,
+    7.686,
+    8.057,
+    8.568,
+    8.916,
+    9.149,
+    9.404,
+    9.543,
+    9.752,
+    10.17,
+    10.588,
+    10.867,
+    11.262,
+    11.494
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a pencil tapping on paper on a desk",
+    "z": 3.1,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-596550",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-596550_pencil-tap-desk.ogg",
+  "title": "Tapping Pencil on Desk - Foley.wav",
+  "author": "tothrec2",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/tothrec2/sounds/596550/",
+  "download_url": "https://cdn.freesound.org/previews/596/596550_9801597-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_paper_pen",
+  "rank": 2,
+  "best_segment": [
+   1.31,
+   3.04
+  ],
+  "notes": "Pencil tapping on a desk, foley (48 kHz WAV original). Whole file strong +3.0 but find trims only weak (1.31-3.04 z +2.4, 7.56-9.29 +2.3, 12.62-14.00 +2.1). Clean floor -76.6 dBFS, peak -12.6 dBFS, centroid 1685 Hz. Taps on wood, not paper. Backup, and the closest clean stand-in for the push pin. Page read 2026-10-31: licence 'Creative Commons 0'; original Wave (.wav), 48 kHz, Mono; description: \"Several seconds of tapping of pencil on desk\".",
+  "analysis": {
+   "duration": 16.855,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -12.63,
+   "lufs": -39.03,
+   "noise_floor_dbfs": -76.6,
+   "clipped_samples": 0,
+   "attack_at": 0.939,
+   "centroid_hz": 1685,
+   "rolloff95_hz": 9474,
+   "onsets": [
+    0.186,
+    0.372,
+    0.58,
+    0.952,
+    1.347,
+    1.672,
+    2.043,
+    2.276,
+    2.624,
+    2.926,
+    3.204,
+    3.506,
+    3.855,
+    4.296,
+    4.528,
+    4.923,
+    5.201,
+    5.526,
+    5.944,
+    6.246,
+    6.594,
+    6.943,
+    7.593,
+    7.895
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a pencil tapping on paper on a desk",
+    "z": 3.0,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "fs-266894",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-266894_tack-paper-cork-board.ogg",
+  "title": "Tacking paper to a cork board",
+  "author": "pfranzen",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/pfranzen/sounds/266894/",
+  "download_url": "https://cdn.freesound.org/previews/266/266894_3482490-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Tacking paper to a cork board\" by pfranzen (https://freesound.org/people/pfranzen/sounds/266894/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "f_pin",
+  "rank": 1,
+  "best_segment": [
+   0.0,
+   0.126
+  ],
+  "notes": "Author: tacking one piece of paper to a cork board with one pushpin, 'kinda violently'. 0.13 s, attack 0.004 s, peak -6.6 dBFS, centroid 4031 Hz. earshot: 'a push pin tapped into a cork board' no match (z +1.6), 'a small sharp tap' no match (+1.8); reads 'a single mechanical keyboard key press' (+3.4). Right cause, but fails the z >= 2.5 bar (no push-pin wording in earshot's vocabulary). Use small and quiet, or replace. CC BY 4.0: credit required. Page read 2026-10-31: licence 'Attribution 4.0'; original Ogg Vorbis (.ogg), 44.1 kHz, Mono; description: \"Tacking exactly one piece of paper to a cork board with exactly one pushpin (and doing it kinda violently). Recorded for the visual novelette, Francy Droo and the Mystery of the Missing Mother-in-Law:\".",
+  "analysis": {
+   "duration": 0.126,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -6.61,
+   "lufs": null,
+   "noise_floor_dbfs": -53.6,
+   "clipped_samples": 0,
+   "attack_at": 0.004,
+   "centroid_hz": 4031,
+   "rolloff95_hz": 9840,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 1.0,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a push pin tapped into a cork board",
+    "z": 1.6,
+    "verdict": "no match"
+   }
+  }
+ },
+ {
+  "id": "fs-118615",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-118615_pot-on-stove.ogg",
+  "title": "sitting pot on stove.WAV",
+  "author": "krb21",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/krb21/sounds/118615/",
+  "download_url": "https://cdn.freesound.org/previews/118/118615_1269383-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pot",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: 274 clipped samples, floor -50.6 dBFS, 30 spikes; pot set on an old rusty stove (match strong z +5.3, unusable as recorded)",
+  "analysis": {
+   "duration": 30.277,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": 0.51,
+   "lufs": -16.73,
+   "noise_floor_dbfs": -50.6,
+   "clipped_samples": 274,
+   "attack_at": 1.051,
+   "centroid_hz": 1511,
+   "rolloff95_hz": 8161,
+   "onsets": [
+    1.045,
+    1.3,
+    4.087,
+    4.272,
+    6.966,
+    9.311,
+    9.52,
+    9.938,
+    10.077,
+    11.773,
+    13.793,
+    14.002,
+    14.071,
+    14.303,
+    14.512,
+    14.698,
+    14.861,
+    16.44,
+    16.533,
+    18.251,
+    18.413,
+    20.689,
+    21.989,
+    22.314
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-133893",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-133893_jar-ceramic-set-down.ogg",
+  "title": "jar_and_ceramic_set_down.wav",
+  "author": "moxobna",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/moxobna/sounds/133893/",
+  "download_url": "https://cdn.freesound.org/previews/133/133893_43834-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_jar",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: 1681 clipped samples (peak +0.78 dBFS); glass jar mixed with a ceramic tile (match strong z +5.0)",
+  "analysis": {
+   "duration": 27.319,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 0.78,
+   "lufs": -14.63,
+   "noise_floor_dbfs": -61.1,
+   "clipped_samples": 1681,
+   "attack_at": 1.813,
+   "centroid_hz": 1232,
+   "rolloff95_hz": 8624,
+   "onsets": [
+    1.834,
+    1.95,
+    5.155,
+    9.706,
+    9.938,
+    13.375,
+    13.491,
+    17.485,
+    17.694,
+    21.525,
+    24.358,
+    24.543
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-787456",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-787456_hand-on-table.ogg",
+  "title": "hand_on_table",
+  "author": "nottooloud_1",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/nottooloud_1/sounds/787456/",
+  "download_url": "https://cdn.freesound.org/previews/787/787456_15709975-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp_heavy",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: 2179 clipped samples (peak +0.98 dBFS)",
+  "analysis": {
+   "duration": 0.681,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": 0.98,
+   "lufs": -6.64,
+   "noise_floor_dbfs": -90.1,
+   "clipped_samples": 2179,
+   "attack_at": 0.078,
+   "centroid_hz": 2421,
+   "rolloff95_hz": 9488,
+   "onsets": [
+    0.093
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-339966",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-339966_stamp.ogg",
+  "title": "Stamp",
+  "author": "vladnegrila",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/vladnegrila/sounds/339966/",
+  "download_url": "https://cdn.freesound.org/previews/339/339966_3669461-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: reads as 'a camera shutter click' (z +3.9; AudioSet Camera 0.86); stamp queries weak / no match; find best z +1.3",
+  "analysis": {
+   "duration": 23.442,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -4.27,
+   "lufs": -26.64,
+   "noise_floor_dbfs": -70.6,
+   "clipped_samples": 0,
+   "attack_at": 0.363,
+   "centroid_hz": 1871,
+   "rolloff95_hz": 9528,
+   "onsets": [
+    0.325,
+    0.395,
+    0.65,
+    2.601,
+    2.67,
+    2.786,
+    2.949,
+    4.365,
+    4.435,
+    4.69,
+    5.341,
+    6.246,
+    6.525,
+    8.266,
+    8.545,
+    11.378,
+    11.703,
+    12.585,
+    13.607,
+    13.886,
+    14.605,
+    14.768,
+    14.93,
+    15.372
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-814249",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-814249_mechanical-stamp-4-presses.ogg",
+  "title": "stamp_4presses_paper.wav / Old mechanical stamp, pressing four times, paper hits",
+  "author": "Mihacappy",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Mihacappy/sounds/814249/",
+  "download_url": "https://cdn.freesound.org/previews/814/814249_10594370-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_stamp",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: old mechanical stamp reads as 'a camera shutter click' (z +3.7); stamp query no match (z +0.9); find best +1.3",
+  "analysis": {
+   "duration": 5.148,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.76,
+   "lufs": -26.09,
+   "noise_floor_dbfs": -55.8,
+   "clipped_samples": 0,
+   "attack_at": 0.055,
+   "centroid_hz": 3731,
+   "rolloff95_hz": 9862,
+   "onsets": [
+    0.07,
+    0.209,
+    0.418,
+    0.697,
+    1.254,
+    1.649,
+    1.927,
+    2.02,
+    2.926,
+    2.995,
+    3.088,
+    3.32,
+    3.39,
+    4.458,
+    4.737,
+    4.807
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-233240",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-233240_stamp.ogg",
+  "title": "stamp.wav",
+  "author": "eduardfrigola",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/eduardfrigola/sounds/233240/",
+  "download_url": "https://cdn.freesound.org/previews/233/233240_3537605-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"stamp.wav\" by eduardfrigola (https://freesound.org/people/eduardfrigola/sounds/233240/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "f_stamp",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: stamp-vs-stapler forced choice 98% stapler; find best trim weak +2.0",
+  "analysis": {
+   "duration": 4.209,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 0.02,
+   "lufs": -25.48,
+   "noise_floor_dbfs": -62.2,
+   "clipped_samples": 1,
+   "attack_at": 1.455,
+   "centroid_hz": 1944,
+   "rolloff95_hz": 8566,
+   "onsets": [
+    0.07,
+    0.232,
+    0.58,
+    1.184,
+    1.37,
+    1.44,
+    1.486,
+    1.695,
+    1.741,
+    2.206,
+    2.461,
+    2.601,
+    2.67,
+    2.81,
+    2.856,
+    3.204,
+    3.297,
+    3.413,
+    3.483,
+    4.203
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-178650",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-178650_self-inking-stamp-paper.ogg",
+  "title": "OFFICE SELF INKING STAMP ON PAPER 01.wav",
+  "author": "sengjinn",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/sengjinn/sounds/178650/",
+  "download_url": "https://cdn.freesound.org/previews/178/178650_2979997-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"OFFICE SELF INKING STAMP ON PAPER 01.wav\" by sengjinn (https://freesound.org/people/sengjinn/sounds/178650/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "need": "f_stamp",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: self-inking stamp (spring clack), 86 kbps preview; find best weak +2.2",
+  "analysis": {
+   "duration": 7.24,
+   "codec": "vorbis",
+   "kbps": 86,
+   "src_rate": 96000,
+   "channels": 2,
+   "peak_dbfs": -2.94,
+   "lufs": -23.72,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.077,
+   "centroid_hz": 1422,
+   "rolloff95_hz": 9937,
+   "onsets": [
+    0.093,
+    0.395,
+    1.347,
+    1.602,
+    2.554,
+    2.833,
+    3.924,
+    4.203,
+    5.178,
+    5.48,
+    5.642,
+    6.409,
+    6.989,
+    7.082
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-433992",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-433992_fridge-open-door-speeds.ogg",
+  "title": "Fridge Open Door",
+  "author": "Snake16547",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Snake16547/sounds/433992/",
+  "download_url": "https://cdn.freesound.org/previews/433/433992_7565196-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_fridge",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: floor -44.8 dBFS (hum / room) despite strong fridge matches",
+  "analysis": {
+   "duration": 39.92,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.21,
+   "lufs": -31.3,
+   "noise_floor_dbfs": -44.8,
+   "clipped_samples": 0,
+   "attack_at": 1.005,
+   "centroid_hz": 1533,
+   "rolloff95_hz": 9646,
+   "onsets": [
+    0.116,
+    0.372,
+    1.022,
+    1.37,
+    1.602,
+    8.94,
+    9.427,
+    9.59,
+    9.799,
+    9.868,
+    10.054,
+    11.796,
+    12.074,
+    12.516,
+    12.794,
+    12.934,
+    13.468,
+    13.607,
+    13.886,
+    14.025,
+    14.164,
+    14.28,
+    16.045,
+    19.04
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ },
+ {
+  "id": "fs-446634",
+  "category": "foley",
+  "file": "audio/assets/foley/fs-446634_thumbtack.ogg",
+  "title": "ThumbTack",
+  "author": "Nicolas4677",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Nicolas4677/sounds/446634/",
+  "download_url": "https://cdn.freesound.org/previews/446/446634_9134393-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "need": "f_pin",
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED, do not use: rejected: floor -44.8 dBFS, tonal ~2 kHz swell (AudioSet 'Finger snapping' 0.90); 'a push pin...' no match (+1.1)",
+  "analysis": {
+   "duration": 0.5,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -13.56,
+   "lufs": -44.77,
+   "noise_floor_dbfs": -44.8,
+   "clipped_samples": 0,
+   "attack_at": 0.029,
+   "centroid_hz": 166,
+   "rolloff95_hz": 9697,
+   "onsets": [
+    0.116,
+    0.279
+   ]
+  },
+  "earshot": {
+   "realness_verdict": "real or pro-produced"
+  }
+ }
+]

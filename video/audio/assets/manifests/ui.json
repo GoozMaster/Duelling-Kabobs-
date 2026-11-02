@@ -1,0 +1,2621 @@
+[
+ {
+  "id": "fs-118206",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-118206_mbp-trackpad-click.ogg",
+  "title": "Mac Book Pro Track Pad Click.aif",
+  "author": "MegaPenguin13",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/MegaPenguin13/sounds/118206/",
+  "download_url": "https://cdn.freesound.org/previews/118/118206_2043421-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/MegaPenguin13/sounds/118206/ on 2026-10-31; page description: A Mac Book Pro's track pad single and double clicking, as well as clicking and dragging.",
+  "need": "u_click",
+  "rank": 1,
+  "best_segment": [
+   0.526,
+   0.755
+  ],
+  "notes": "MacBook Pro trackpad, ~20 press/release takes in 28 s (CC0). Takes (earshot find, strong): 0.526-0.755 (press 0.564, release 0.7075 = 144 ms later, -8.9 dB; trim z 3.15 strong, realness 0.935 real), 4.806-4.944 (z 3.53 find / 3.40 match strong; main transient 4.8445, realness 0.879), 2.926-3.160 (press 2.9635, release 3.094 = 131 ms, -9.0 dB; match z 2.52 plausible), 12.759-13.140 (press 12.8305, release 13.0635, -8.6 dB). Each transient falls -20 dB within 4-5.5 ms (trim.py). Very quiet: takes peak -28..-30 dBFS, floor -75.5..-78 dBFS around takes, so ~+25 dB gain is clean. analyze.py: low band 40-120 Hz is +19.7 dB rel 1-4 kHz (hum line in the spectrogram) -> high-pass at ~150 Hz. Release is ~9 dB under the press and 130-145 ms late: to get the brief's ~85 ms / 0-3 dB release, cut the press (from 5 ms before it, ~60 ms) and the release separately and place the release 85 ms after the press at -2 dB. Avoid 10.824-10.905 alone (realness uncertain 0.692). Whole-file match is 'no match' (z 1.58) because the file also holds drags: use the trims only.",
+  "analysis": {
+   "duration": 28.028,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -27.22,
+   "lufs": -59.54,
+   "noise_floor_dbfs": -75.5,
+   "clipped_samples": 0,
+   "attack_at": 0.0,
+   "centroid_hz": 3220,
+   "rolloff95_hz": 9765,
+   "onsets": [
+    0.58,
+    0.743,
+    2.786,
+    2.995,
+    3.135,
+    4.853,
+    5.016,
+    6.943,
+    7.175,
+    7.338,
+    9.079,
+    9.265,
+    10.844,
+    11.053,
+    11.262,
+    12.841,
+    13.096,
+    15.116,
+    16.881,
+    18.321,
+    20.271,
+    21.432,
+    22.245,
+    23.29,
+    24.938,
+    26.424,
+    27.33
+   ]
+  },
+  "earshot": {
+   "realness": 0.93,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single close-miked computer mouse click, press and release",
+    "z": 1.58,
+    "verdict": "no match"
+   },
+   "trims": [
+    {
+     "start": 0.526,
+     "end": 0.755,
+     "z": 3.15,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.935,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 2.926,
+     "end": 3.16,
+     "z": 2.52,
+     "verdict": "plausible",
+     "realness": {
+      "p_real": 0.937,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 10.824,
+     "end": 10.905,
+     "z": 2.67,
+     "verdict": "plausible",
+     "realness": {
+      "p_real": 0.692,
+      "verdict": "uncertain"
+     }
+    },
+    {
+     "start": 4.806,
+     "end": 4.944,
+     "z": 3.4,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.879,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-197169",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-197169_macbook-air-trackpad.ogg",
+  "title": "Click on a MacBook Air 2013 trackpad ",
+  "author": "damjancd",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/damjancd/sounds/197169/",
+  "download_url": "https://cdn.freesound.org/previews/197/197169_1263348-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Click on a MacBook Air 2013 trackpad \" by damjancd (https://freesound.org/people/damjancd/sounds/197169/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/damjancd/sounds/197169/ on 2026-10-31; page description: The epic MacBook click known worldwide and recognized everywhere. Recoded with a Zoom H1 and post done in Audacity.",
+  "need": "u_click",
+  "rank": 2,
+  "best_segment": [
+   0.0,
+   0.347
+  ],
+  "notes": "MacBook Air 2013 trackpad, one press+release (Zoom H1, CC BY 4.0). Press at 0.006, release at 0.165 (159 ms, -22.4 dB); -20 dB within 3.5 ms; peak -0.8 dBFS. Whole-file match z 3.44 strong for the click query, realness 0.84 real. Only one take (no variation) and the release is very quiet; earshot find with 'a single trackpad click' scored it z 1.22 (no match), so the match depends on wording. Use as the alternative click voice if fs-118206's hum is a problem.",
+  "analysis": {
+   "duration": 0.347,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -1.19,
+   "lufs": null,
+   "noise_floor_dbfs": -103.8,
+   "clipped_samples": 0,
+   "attack_at": 0.004,
+   "centroid_hz": 2729,
+   "rolloff95_hz": 9928,
+   "onsets": [
+    0.186
+   ]
+  },
+  "earshot": {
+   "realness": 0.84,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single close-miked computer mouse click, press and release",
+    "z": 3.44,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-329051",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-329051_single-mouse-click.ogg",
+  "title": "Single click mouse",
+  "author": "ScouseMouseJB",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/ScouseMouseJB/sounds/329051/",
+  "download_url": "https://cdn.freesound.org/previews/329/329051_5284496-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Single click mouse\" by ScouseMouseJB (https://freesound.org/people/ScouseMouseJB/sounds/329051/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/ScouseMouseJB/sounds/329051/ on 2026-10-31; page description: Sound of a single mouse click, double mouse click will also be on my page. Recorded with Rode NT-1 at 24bit 44.1khz",
+  "need": "u_click",
+  "rank": 3,
+  "best_segment": [
+   0.0,
+   0.357
+  ],
+  "notes": "Single mouse click, Rode NT-1 24-bit/44.1 (CC BY 4.0). Transients at 0.072 (-4.2 dB) and 0.209 (0 dB), 137 ms apart (release louder than press); -20 dB in 5.5 ms; peak -28.7 dBFS (very quiet). Match z 2.80 plausible, find 0.135-0.357 z 3.20 strong; realness 0.933. One take only.",
+  "analysis": {
+   "duration": 0.357,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -28.38,
+   "lufs": null,
+   "noise_floor_dbfs": -67.4,
+   "clipped_samples": 0,
+   "attack_at": 0.071,
+   "centroid_hz": 1766,
+   "rolloff95_hz": 9501,
+   "onsets": [
+    0.093,
+    0.232
+   ]
+  },
+  "earshot": {
+   "realness": 0.93,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single close-miked computer mouse click, press and release",
+    "z": 2.8,
+    "verdict": "plausible"
+   },
+   "trims": [
+    {
+     "start": 0.0,
+     "end": 0.357,
+     "z": 2.8,
+     "verdict": "plausible",
+     "realness": {
+      "p_real": 0.933,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-213004",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-213004_mouse-click.ogg",
+  "title": "Mouse Click.wav",
+  "author": "abstraktgeneriert",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/abstraktgeneriert/sounds/213004/",
+  "download_url": "https://cdn.freesound.org/previews/213/213004_3610778-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/abstraktgeneriert/sounds/213004/ on 2026-10-31; page description: Might be useful for mouse clicks of an operating system or web browser.",
+  "need": "u_click",
+  "rank": 4,
+  "best_segment": [
+   1.0,
+   1.3
+  ],
+  "notes": "Mouse click (CC0). Press 1.048, release 1.146 (98 ms, -17.8 dB); -20 dB in 8 ms; peak -8.5 dBFS; floor -67.5 dBFS. Trim match z 2.21 weak (below the 2.5 bar), whole file 2.54 plausible but p_vs_alts 0.099 (reads more like a switch/typing). Backup only.",
+  "analysis": {
+   "duration": 2.329,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -9.14,
+   "lufs": -32.9,
+   "noise_floor_dbfs": -67.2,
+   "clipped_samples": 0,
+   "attack_at": 1.047,
+   "centroid_hz": 4619,
+   "rolloff95_hz": 10012,
+   "onsets": [
+    0.07,
+    1.068,
+    1.184
+   ]
+  },
+  "earshot": {
+   "realness": 0.96,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a single close-miked computer mouse click, press and release",
+    "z": 2.54,
+    "verdict": "plausible"
+   },
+   "trims": [
+    {
+     "start": 1.0,
+     "end": 1.3,
+     "z": 2.21,
+     "verdict": "weak",
+     "realness": {
+      "p_real": 0.985,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-840876",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-840876_light-switch-5.ogg",
+  "title": "Flipping Light Switch 5",
+  "author": "justamudkip",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/justamudkip/sounds/840876/",
+  "download_url": "https://cdn.freesound.org/previews/840/840876_14675142-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/justamudkip/sounds/840876/ on 2026-10-31; page description: The sound of a light switch being flicked on and off. Recorded with a 1st Generation DJI Mic and Processed with ocenAudio",
+  "need": "u_switch",
+  "rank": 1,
+  "best_segment": [
+   3.481,
+   3.77
+  ],
+  "notes": "Light switch flicked on/off, 4 clean takes (DJI Mic, CC0). Takes (find): 3.481-3.770 (transient 3.5585; match z 4.25 strong, realness 0.995), 1.152-1.280 (1.22; z 3.91 strong, realness 0.937), 0.236-0.350 (0.275; find z 2.81), 2.407-2.495 (2.414; find z 2.53). Single sharp transient per take, -20 dB within 3.5-4 ms, peaks -0.3..-1.7 dBFS, floor -74.5..-80 dBFS around the takes. Same plastic-click family as the trackpad click but a firmer single snap: reads clearly as a toggle. Use 3.481-3.770 for the 110.03 switch.",
+  "analysis": {
+   "duration": 4.019,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -0.27,
+   "lufs": -28.33,
+   "noise_floor_dbfs": -75.8,
+   "clipped_samples": 0,
+   "attack_at": 0.274,
+   "centroid_hz": 2896,
+   "rolloff95_hz": 9661,
+   "onsets": [
+    0.279,
+    1.231,
+    2.438,
+    3.576
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a small plastic light switch toggled",
+    "z": 3.54,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 3.481,
+     "end": 3.77,
+     "z": 4.25,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.995,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 1.152,
+     "end": 1.28,
+     "z": 3.91,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.937,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-219413",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-219413_plastic-light-switch.ogg",
+  "title": "Plastic Light Switch.wav",
+  "author": "lharman94",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/lharman94/sounds/219413/",
+  "download_url": "https://cdn.freesound.org/previews/219/219413_3444704-hq.ogg",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "\"Plastic Light Switch.wav\" by lharman94 (https://freesound.org/people/lharman94/sounds/219413/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)",
+  "licence_seen": "'Attribution 3.0' (https://creativecommons.org/licenses/by/3.0/) read on https://freesound.org/people/lharman94/sounds/219413/ on 2026-10-31; page description: Recording of plastic light switch being flicked on and off. This was recorded using a Tascam DR-40's internal microphones in X-Y position. Sample Rate: 44,100.",
+  "need": "u_switch",
+  "rank": 2,
+  "best_segment": [
+   11.165,
+   11.23
+  ],
+  "notes": "Plastic light switch on/off, many takes in 14.8 s (Tascam DR-40 internal XY, CC BY 3.0). Best takes: 11.165-11.230 (transient 11.171; match z 4.32 strong, realness 0.961, peak -1.1 dBFS), 3.565-3.660 (3.581; z 4.00 strong, realness 0.99), 6.001-6.055 (find z 2.66), 9.292-9.460 (find z 2.76). -20 dB within 3-5 ms; floor -80..-83 dBFS around takes. Avoid 13.9-14.8 (weak/no match, head/tail cut).",
+  "analysis": {
+   "duration": 14.785,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.18,
+   "lufs": -28.4,
+   "noise_floor_dbfs": -79.1,
+   "clipped_samples": 0,
+   "attack_at": 3.579,
+   "centroid_hz": 2100,
+   "rolloff95_hz": 9334,
+   "onsets": [
+    1.37,
+    3.599,
+    6.014,
+    9.125,
+    9.381,
+    11.192,
+    14.002,
+    14.118,
+    14.698
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a small plastic light switch toggled",
+    "z": 3.4,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 3.565,
+     "end": 3.66,
+     "z": 4.0,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.99,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 11.165,
+     "end": 11.23,
+     "z": 4.32,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.961,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-128437",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-128437_small-toggle-switch.ogg",
+  "title": "SMALL SIZE TOGGLE SWITCH.wav",
+  "author": "StevenBrown",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/StevenBrown/sounds/128437/",
+  "download_url": "https://cdn.freesound.org/previews/128/128437_3515-hq.ogg",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "\"SMALL SIZE TOGGLE SWITCH.wav\" by StevenBrown (https://freesound.org/people/StevenBrown/sounds/128437/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)",
+  "licence_seen": "'Attribution 3.0' (https://creativecommons.org/licenses/by/3.0/) read on https://freesound.org/people/StevenBrown/sounds/128437/ on 2026-10-31; page description: A small toggle switch, on and off.",
+  "need": "u_switch",
+  "rank": 3,
+  "best_segment": [
+   0.332,
+   0.445
+  ],
+  "notes": "Small toggle switch on and off (CC BY 3.0), 2 takes: 0.332-0.445 (transient 0.3795, peak -4.4 dBFS, -20 dB in 3 ms, match z 3.66 strong, realness 0.973) and 2.629-2.720 (2.6735, -6.2 dBFS, find z 2.77). Floor -98 dBFS (very clean). Also usable as u_tick (tick query z 3.47 strong).",
+  "analysis": {
+   "duration": 3.6,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -3.85,
+   "lufs": -31.14,
+   "noise_floor_dbfs": -97.8,
+   "clipped_samples": 0,
+   "attack_at": 0.378,
+   "centroid_hz": 5366,
+   "rolloff95_hz": 10099,
+   "onsets": [
+    0.372,
+    2.67
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a small plastic light switch toggled",
+    "z": 3.19,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 0.332,
+     "end": 0.445,
+     "z": 3.66,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.973,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-244923",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-244923_light-switch.ogg",
+  "title": "light switch.wav",
+  "author": "kwahmah_02",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/kwahmah_02/sounds/244923/",
+  "download_url": "https://cdn.freesound.org/previews/244/244923_4486188-hq.ogg",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "\"light switch.wav\" by kwahmah_02 (https://freesound.org/people/kwahmah_02/sounds/244923/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)",
+  "licence_seen": "'Attribution 3.0' (https://creativecommons.org/licenses/by/3.0/) read on https://freesound.org/people/kwahmah_02/sounds/244923/ on 2026-10-31; page description: Just pressing a switch to turn some lights on (or off).",
+  "need": "u_switch",
+  "rank": 4,
+  "best_segment": [
+   0.05,
+   0.3
+  ],
+  "notes": "Light switch, one take (CC BY 3.0). Whole-file match z 4.30 strong (highest of the switches), transient at 0.10, -20 dB in 7 ms, peak -0.2 dBFS; analyze floor -63.9 dBFS (noisier than rank 1-3). Earshot find with 'a light switch flicked' only z 2.23 weak. Single take.",
+  "analysis": {
+   "duration": 1.02,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -0.12,
+   "lufs": -24.32,
+   "noise_floor_dbfs": -63.9,
+   "clipped_samples": 0,
+   "attack_at": 0.098,
+   "centroid_hz": 4299,
+   "rolloff95_hz": 9969,
+   "onsets": [
+    0.116
+   ]
+  },
+  "earshot": {
+   "realness": 0.89,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a small plastic light switch toggled",
+    "z": 4.3,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-2585",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-2585_light-switch-tap.wav",
+  "title": "On or off light switch tap",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/switch/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2585/2585.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/switch/",
+  "need": "u_switch",
+  "rank": 5,
+  "best_segment": [
+   0.0,
+   0.3
+  ],
+  "notes": "Mixkit 'On or off light switch tap' WAV. Transient at 0.0015 (no pre-roll: the trim starts on the attack), -20 dB in 4.5 ms, peak -1.0 dBFS, floor -87 dBFS. Match z 3.79 strong for the switch query, realness 0.86 real. Earshot's closest label is 'a wooden block hit' (z +4.1): a bit knocky.",
+  "analysis": {
+   "duration": 1.106,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.51,
+   "lufs": -21.95,
+   "noise_floor_dbfs": -87.5,
+   "clipped_samples": 0,
+   "attack_at": 0.001,
+   "centroid_hz": 5551,
+   "rolloff95_hz": 10260,
+   "onsets": [
+    0.116
+   ]
+  },
+  "earshot": {
+   "realness": 0.86,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a small plastic light switch toggled",
+    "z": 3.79,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-625265",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-625265_light-switch-gentle.ogg",
+  "title": "Light Switch - Toggle, Gentle",
+  "author": "ffb.soffa",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/ffb.soffa/sounds/625265/",
+  "download_url": "https://cdn.freesound.org/previews/625/625265_9327432-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Light Switch - Toggle, Gentle\" by ffb.soffa (https://freesound.org/people/ffb.soffa/sounds/625265/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/ffb.soffa/sounds/625265/ on 2026-10-31; page description: The mono recording of light switch, gently toggled on and off. Mic Perspective: Close Up iPhone XR, Noise Reduced Recording.",
+  "need": "u_switch",
+  "rank": 6,
+  "best_segment": [
+   2.401,
+   2.784
+  ],
+  "notes": "Light switch gently toggled, iPhone XR, noise-reduced (CC BY 4.0). Takes 0.567-1.035 (z 3.25, peak -21.1 dBFS, -20 dB in 11 ms) and 2.401-2.784 (pre-click 2.479 -18.9 dB then main 2.4995; peak -11.5 dBFS; z 3.23). Floor -92 dBFS (noise-reduced). Softer; backup.",
+  "analysis": {
+   "duration": 3.573,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -11.54,
+   "lufs": -37.44,
+   "noise_floor_dbfs": -91.4,
+   "clipped_samples": 0,
+   "attack_at": 0.569,
+   "centroid_hz": 3110,
+   "rolloff95_hz": 9568,
+   "onsets": [
+    0.07,
+    0.488,
+    0.58,
+    0.998,
+    2.276,
+    2.485,
+    2.856
+   ]
+  },
+  "earshot": {
+   "realness": 0.91,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a small plastic light switch toggled",
+    "z": 3.22,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-565645",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-565645_mbp2018-keystrokes.ogg",
+  "title": "Computer keyboard typing and keystrokes - Apple MacBook Pro 2018",
+  "author": "khenshom",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/khenshom/sounds/565645/",
+  "download_url": "https://cdn.freesound.org/previews/565/565645_6652872-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/khenshom/sounds/565645/ on 2026-10-31; page description: Various typings on Apple MacBook Pro 2018 computer. Close up, multiple keystrokes, single clicks in different speeds. Recorded with Sennheiser MKE600 mic on a Zoom H5 recorder.",
+  "need": "u_keys",
+  "rank": 1,
+  "best_segment": [
+   0.0,
+   10.0
+  ],
+  "notes": "Apple MacBook Pro 2018 keyboard, close-up, Sennheiser MKE600 into Zoom H5; 'multiple keystrokes, single clicks in different speeds' (page). Mono, floor -85.2 dBFS (keys.py, 10th pct), whole file match z 4.56 strong, 0-10 s trim z 4.89 strong / realness 0.969. keys.py finds 396 keystroke transients. Single-key trims (find, strong): 14.836-15.260 (pk -2.5 dBFS; match z 2.82 plausible, realness 0.993), 46.474-46.650, 48.936-49.255, 20.141-20.269 (z 2.53), 30.346-30.585, 26.366-26.680, 38.840-39.031. Space-bar candidates (lowest 40 ms centroid, isolated): 15.134 (centroid 1990 Hz, pk -35.5), 1.563 (2031 Hz, pk -28.0), 31.113 (2105 Hz). Levels vary widely (-2.5 to -50 dBFS): normalise slices to within +-2 dB.",
+  "analysis": {
+   "duration": 53.075,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -2.52,
+   "lufs": -44.73,
+   "noise_floor_dbfs": -84.6,
+   "clipped_samples": 0,
+   "attack_at": 2.461,
+   "centroid_hz": 2999,
+   "rolloff95_hz": 9733,
+   "onsets": [
+    0.302,
+    0.418,
+    0.534,
+    0.65,
+    0.813,
+    1.068,
+    1.161,
+    1.254,
+    1.324,
+    1.579,
+    1.881,
+    1.997,
+    2.136,
+    2.252,
+    2.368,
+    2.461,
+    2.647,
+    2.717,
+    2.833,
+    2.949,
+    3.135,
+    3.506,
+    3.576,
+    3.715,
+    3.785,
+    3.947,
+    4.063,
+    4.342,
+    4.481,
+    4.667
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "typing on a laptop keyboard, single keystrokes",
+    "z": 4.56,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 14.836,
+     "end": 15.26,
+     "z": 2.82,
+     "verdict": "plausible",
+     "realness": {
+      "p_real": 0.993,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 20.141,
+     "end": 20.269,
+     "z": 2.53,
+     "verdict": "plausible",
+     "realness": {
+      "p_real": 0.975,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 0.0,
+     "end": 10.0,
+     "z": 4.89,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.969,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "mk-2532",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-2532_slow-typing.wav",
+  "title": "Slow typing on a keyboard",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/keyboard/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2532/2532.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/keyboard/",
+  "need": "u_keys",
+  "rank": 2,
+  "best_segment": [
+   8.478,
+   8.695
+  ],
+  "notes": "Mixkit 'Slow typing on a keyboard' WAV, 23.8 s, effectively mono (side/mid -88.6 dB), floor -85.7 dBFS, 176 keystroke transients. Whole-file match z 5.62 strong (top of the rank), realness 0.93. Single-key trims (find, all strong z 4.5-4.7): 15.549-15.760, 8.478-8.695 (trim z 3.99 strong, realness 0.958), 19.326-19.795, 2.212-2.790. Keys are spaced but rarely isolated by >150 ms each side (keys.py: 1), so slice from 5 ms before each attack and fade within ~80 ms.",
+  "analysis": {
+   "duration": 23.806,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -1.9,
+   "lufs": -30.79,
+   "noise_floor_dbfs": -84.8,
+   "clipped_samples": 0,
+   "attack_at": 0.088,
+   "centroid_hz": 4870,
+   "rolloff95_hz": 10034,
+   "onsets": [
+    0.116,
+    0.232,
+    0.441,
+    0.627,
+    0.766,
+    0.975,
+    1.091,
+    1.277,
+    1.556,
+    1.695,
+    1.858,
+    1.974,
+    2.229,
+    2.345,
+    2.577,
+    2.694,
+    3.042,
+    3.181,
+    3.344,
+    3.506,
+    3.715,
+    3.831,
+    3.971,
+    4.11,
+    4.296,
+    4.412,
+    4.551,
+    4.807,
+    4.923,
+    5.108
+   ]
+  },
+  "earshot": {
+   "realness": 0.93,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "typing on a laptop keyboard, single keystrokes",
+    "z": 5.62,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 8.478,
+     "end": 8.695,
+     "z": 3.99,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.958,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-541763",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-541763_mbp-typing-192k.ogg",
+  "title": "Typing - MacBook Pro - 192 kHz.wav",
+  "author": "PhillipArthurSimmons",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/PhillipArthurSimmons/sounds/541763/",
+  "download_url": "https://cdn.freesound.org/previews/541/541763_8871827-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/PhillipArthurSimmons/sounds/541763/ on 2026-10-31; page description: This is the sound of typing on a 2019 MacBook Pro.",
+  "need": "u_keys",
+  "rank": 3,
+  "best_segment": [
+   40.445,
+   40.73
+  ],
+  "notes": "2019 MacBook Pro typing at 192 kHz (CC0). 49.5 s, 492 keystroke transients, floor -65.2 dBFS (keys.py; analyze -64.7, the noisiest of the keyboards but under -55). Match z 5.53 strong. Trims: 40.445-40.730 (z 4.26 strong, realness 0.989), 44.257-44.465, 15.811-16.043, 10.978-11.190, 42.119-42.375. Space-bar find: 37.364-39.285 (z 3.11) and 28.897-30.670 (z 3.02) are multi-key events. Mostly fast continuous typing.",
+  "analysis": {
+   "duration": 49.542,
+   "codec": "vorbis",
+   "kbps": 196,
+   "src_rate": 192000,
+   "channels": 2,
+   "peak_dbfs": -1.58,
+   "lufs": -32.2,
+   "noise_floor_dbfs": -64.7,
+   "clipped_samples": 0,
+   "attack_at": 0.155,
+   "centroid_hz": 4679,
+   "rolloff95_hz": 10066,
+   "onsets": [
+    0.07,
+    0.186,
+    0.302,
+    0.441,
+    0.534,
+    0.65,
+    0.697,
+    0.789,
+    0.929,
+    1.045,
+    1.091,
+    1.347,
+    1.44,
+    1.533,
+    1.788,
+    1.927,
+    2.113,
+    2.252,
+    2.299,
+    2.647,
+    2.856,
+    3.042,
+    3.228,
+    3.344,
+    3.437,
+    3.553,
+    3.715,
+    3.808,
+    3.994,
+    4.505
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "typing on a laptop keyboard, single keystrokes",
+    "z": 5.53,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 40.445,
+     "end": 40.73,
+     "z": 4.26,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.989,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-414759",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-414759_mbp-keyboard.ogg",
+  "title": "MacBook Pro Keyboard",
+  "author": "marco_luzi",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/marco_luzi/sounds/414759/",
+  "download_url": "https://cdn.freesound.org/previews/414/414759_7782492-hq.ogg",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0/",
+  "attribution": "\"MacBook Pro Keyboard\" by marco_luzi (https://freesound.org/people/marco_luzi/sounds/414759/), licensed under CC BY 3.0 (https://creativecommons.org/licenses/by/3.0/)",
+  "licence_seen": "'Attribution 3.0' (https://creativecommons.org/licenses/by/3.0/) read on https://freesound.org/people/marco_luzi/sounds/414759/ on 2026-10-31; page description: Typing on a MacBook Pro 2017 keyboard. Recorded with RØDE NT1-A and a Behringer XENYX QX1002USB mixer. The sound was post processed with a Noise Gate and a 20 Bands Graphic Equalizer in Adobe Audition",
+  "need": "u_keys",
+  "rank": 4,
+  "best_segment": [
+   1.6,
+   2.2
+  ],
+  "notes": "MacBook Pro 2017 keyboard, Rode NT1-A, noise-gated and EQ'd (CC BY 3.0). 192 kHz, peak -10.3 dBFS, LUFS -40.7, floor -72.1 dBFS, match z 3.51 strong (lowest of the four), centroid 1548 Hz (duller). Isolated keys at 1.709, 2.040, 4.616, 10.358, 13.699 (keys.py). Backup; gated (watch for gate chatter).",
+  "analysis": {
+   "duration": 21.639,
+   "codec": "vorbis",
+   "kbps": 186,
+   "src_rate": 192000,
+   "channels": 2,
+   "peak_dbfs": -10.25,
+   "lufs": -40.65,
+   "noise_floor_dbfs": -68.7,
+   "clipped_samples": 0,
+   "attack_at": 1.285,
+   "centroid_hz": 1548,
+   "rolloff95_hz": 9623,
+   "onsets": [
+    0.72,
+    1.022,
+    1.207,
+    1.324,
+    1.37,
+    1.533,
+    1.741,
+    2.067,
+    2.229,
+    2.345,
+    2.461,
+    2.577,
+    2.717,
+    2.81,
+    2.972,
+    3.158,
+    3.344,
+    3.483,
+    3.692,
+    3.878,
+    3.947,
+    4.319,
+    4.481,
+    4.644,
+    4.783,
+    4.969,
+    5.178,
+    5.294,
+    5.433,
+    5.712
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "typing on a laptop keyboard, single keystrokes",
+    "z": 3.51,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-564128",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-564128_cards-wooden-table.ogg",
+  "title": "Playing cards on a wooden table",
+  "author": "snuq",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/snuq/sounds/564128/",
+  "download_url": "https://cdn.freesound.org/previews/564/564128_398110-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/snuq/sounds/564128/ on 2026-10-31; page description: Standard playing cards being placed on a wooden table, slides across table, tapping on table, and a few flip/hit sounds. Recorded with a Zoom H5 and a XYH-5 mic at close range.",
+  "need": "u_cards",
+  "rank": 1,
+  "best_segment": [
+   36.487,
+   36.655
+  ],
+  "notes": "Playing cards on a wooden table: placing, sliding, tapping, a few flips/hits; Zoom H5 + XYH-5 at close range (CC0). 78.6 s, floor -72..-76 dBFS around takes. Single flips/placements (find 'a single playing card flipped onto a wooden table', strong): 36.487-36.655 (z 4.50; trim match 3.39 strong, realness 0.982, peak -10.9 dBFS, main hit 36.5195, -20 dB in 4.5 ms), 33.873-34.085 (z 3.99; trim 3.25 strong, realness 0.991, hit 33.918), 47.988-48.165 (z 3.88; trim 2.79 plausible, hit 48.050), 45.319-45.500 (z 3.67, hits 45.325/45.3455), 3.133-3.830 (z 4.11, a flip with 6 small transients up to 3.6635). Use these 4-5 for the six cold-open flips (1.80-4.44), cycling takes, climbing pitch. Dealing windows (find 'dealt', strong): 32.540-36.645 (z 4.45), 12.535-16.980 (z 4.26), 0.015-4.865 (z 4.25). Level drops after ~56 s (peaks -30..-40 dB).",
+  "analysis": {
+   "duration": 78.596,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -0.01,
+   "lufs": -38.06,
+   "noise_floor_dbfs": -72.2,
+   "clipped_samples": 0,
+   "attack_at": 2.06,
+   "centroid_hz": 2082,
+   "rolloff95_hz": 9980,
+   "onsets": [
+    0.139,
+    0.58,
+    1.161,
+    1.649,
+    2.067,
+    2.159,
+    2.717,
+    2.926,
+    3.088,
+    3.181,
+    3.576,
+    3.692,
+    4.319,
+    4.69,
+    4.876,
+    5.178,
+    6.107,
+    6.502,
+    6.711,
+    6.85,
+    6.989,
+    7.686,
+    9.056,
+    9.752,
+    9.892,
+    10.077,
+    10.263,
+    10.937,
+    11.796,
+    12.701
+   ]
+  },
+  "earshot": {
+   "realness": 0.98,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 3.99,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 36.487,
+     "end": 36.655,
+     "z": 3.39,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.982,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 33.873,
+     "end": 34.085,
+     "z": 3.25,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.991,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 47.988,
+     "end": 48.165,
+     "z": 2.79,
+     "verdict": "plausible",
+     "realness": {
+      "p_real": 0.982,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-571577",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-571577_card-deal-var1.ogg",
+  "title": "Playing Card Deal Variation 1",
+  "author": "el_boss",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/el_boss/sounds/571577/",
+  "download_url": "https://cdn.freesound.org/previews/571/571577_9129912-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/el_boss/sounds/571577/ on 2026-10-31; page description: A two-part variation of a card dealing onto a wooden table. This can be used for a card use sound effect in video games.",
+  "need": "u_cards",
+  "rank": 2,
+  "best_segment": [
+   0.2,
+   0.6
+  ],
+  "notes": "One card dealt onto a wooden table, two-part (CC0). Transients 0.2575 (-5.0 dB, slide) and 0.336 (0 dB, landing); -20 dB in 2.5 ms; peak -2.2 dBFS. Whole-file match z 4.13 strong, realness 0.99. One take: good as the crisp deal for the menu run (50.4-50.8), alternate with fs-240777 / mk-2001.",
+  "analysis": {
+   "duration": 0.754,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -1.93,
+   "lufs": -23.47,
+   "noise_floor_dbfs": -76.5,
+   "clipped_samples": 0,
+   "attack_at": 0.256,
+   "centroid_hz": 3735,
+   "rolloff95_hz": 9950,
+   "onsets": [
+    0.07,
+    0.279,
+    0.372
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 4.13,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-240777",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-240777_dealing-card.ogg",
+  "title": "Dealing Card",
+  "author": "f4ngy",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/f4ngy/sounds/240777/",
+  "download_url": "https://cdn.freesound.org/previews/240/240777_4107740-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Dealing Card\" by f4ngy (https://freesound.org/people/f4ngy/sounds/240777/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/f4ngy/sounds/240777/ on 2026-10-31; page description: Dealing a card",
+  "need": "u_cards",
+  "rank": 3,
+  "best_segment": [
+   0.3,
+   0.65
+  ],
+  "notes": "Dealing a card (CC BY 4.0). Transients 0.3885 (-5.4 dB) and 0.459 (0 dB); peak -5.2 dBFS; -20 dB in 3 ms. Match z 4.48 strong (the top card match), realness 0.99. Same author as fs-240776 (flip): a matched pair.",
+  "analysis": {
+   "duration": 0.683,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -5.16,
+   "lufs": -29.84,
+   "noise_floor_dbfs": -78.4,
+   "clipped_samples": 0,
+   "attack_at": 0.376,
+   "centroid_hz": 3895,
+   "rolloff95_hz": 10102,
+   "onsets": [
+    0.255,
+    0.395,
+    0.488
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 4.48,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-240776",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-240776_card-flip.ogg",
+  "title": "Card Flip",
+  "author": "f4ngy",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/f4ngy/sounds/240776/",
+  "download_url": "https://cdn.freesound.org/previews/240/240776_4107740-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Card Flip\" by f4ngy (https://freesound.org/people/f4ngy/sounds/240776/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/f4ngy/sounds/240776/ on 2026-10-31; page description: Flipping a card over",
+  "need": "u_cards",
+  "rank": 4,
+  "best_segment": [
+   0.05,
+   0.5
+  ],
+  "notes": "Flipping a card over (CC BY 4.0). Small flick transients 0.1055/0.125 then the landing at 0.4225 (0 dB); peak -4.3 dBFS. Match z 3.94 strong, realness 0.99. One take; a flip with a clear flick-then-land shape for the cold open.",
+  "analysis": {
+   "duration": 0.59,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -4.86,
+   "lufs": -31.3,
+   "noise_floor_dbfs": -71.2,
+   "clipped_samples": 0,
+   "attack_at": 0.076,
+   "centroid_hz": 4497,
+   "rolloff95_hz": 10109,
+   "onsets": [
+    0.07,
+    0.116,
+    0.279,
+    0.441
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 3.94,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-2002",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-2002_poker-card-flick.wav",
+  "title": "Poker card flick",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/cards/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2002/2002.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/cards/",
+  "need": "u_cards",
+  "rank": 5,
+  "best_segment": [
+   0.03,
+   0.35
+  ],
+  "notes": "Mixkit 'Poker card flick' WAV. Transients 0.0535 (-20 dB), 0.196 (0 dB), 0.2595; peak -5.0 dBFS; floor -85.6 dBFS. Match z 3.90 strong, realness 0.89 real.",
+  "analysis": {
+   "duration": 1.336,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -5.23,
+   "lufs": -32.13,
+   "noise_floor_dbfs": -85.6,
+   "clipped_samples": 0,
+   "attack_at": 0.186,
+   "centroid_hz": 5317,
+   "rolloff95_hz": 10156,
+   "onsets": [
+    0.07,
+    0.209
+   ]
+  },
+  "earshot": {
+   "realness": 0.89,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 3.9,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-2001",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-2001_poker-card-placement.wav",
+  "title": "Poker card placement",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/cards/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2001/2001.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/cards/",
+  "need": "u_cards",
+  "rank": 6,
+  "best_segment": [
+   0.0,
+   0.3
+  ],
+  "notes": "Mixkit 'Poker card placement' WAV. Transients 0.009 (-11.6 dB) and 0.0205 (0 dB): starts on the attack. Peak -2.0 dBFS, floor -85.7 dBFS, -20 dB in 4.5 ms. Match z 3.21 strong, realness 0.95.",
+  "analysis": {
+   "duration": 1.108,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -2.03,
+   "lufs": -24.27,
+   "noise_floor_dbfs": -85.7,
+   "clipped_samples": 0,
+   "attack_at": 0.006,
+   "centroid_hz": 5939,
+   "rolloff95_hz": 10185,
+   "onsets": [
+    0.07
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 3.21,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-539274",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-539274_cards-dealt.ogg",
+  "title": "Playing Cards Being Dealt",
+  "author": "paulmerlo",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/paulmerlo/sounds/539274/",
+  "download_url": "https://cdn.freesound.org/previews/539/539274_11914665-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/paulmerlo/sounds/539274/ on 2026-10-31; page description: Some foley I made of me dealing some playing cards.",
+  "need": "u_cards",
+  "rank": 7,
+  "best_segment": [
+   12.188,
+   16.136
+  ],
+  "notes": "Playing cards being dealt, foley (CC0). Run 12.188-16.136 (match z 3.81 strong, realness 0.997, peak -7.4..-8.3 dBFS) holds ~4 deals per s; floor around -64..-65 dBFS. CLIPPING: analyze reports peak +1.68 dBFS / 4 clipped samples (in 1.1-4.1 s, find peaks +1.7 at 3.04-4.07): avoid 1.0-4.1 s. Use only 10.2-17.5 s.",
+  "analysis": {
+   "duration": 25.68,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 1.68,
+   "lufs": -32.08,
+   "noise_floor_dbfs": -68.5,
+   "clipped_samples": 4,
+   "attack_at": 1.133,
+   "centroid_hz": 2821,
+   "rolloff95_hz": 10002,
+   "onsets": [
+    0.441,
+    0.58,
+    0.65,
+    0.836,
+    0.929,
+    1.138,
+    1.486,
+    1.788,
+    1.881,
+    2.322,
+    2.485,
+    2.717,
+    3.019,
+    3.065,
+    3.437,
+    4.296,
+    4.365,
+    4.807,
+    4.969,
+    5.271,
+    5.341,
+    5.759,
+    5.944,
+    6.246,
+    6.687,
+    7.129,
+    7.175,
+    7.663,
+    7.779,
+    7.988
+   ]
+  },
+  "earshot": {
+   "realness": 1.0,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 3.8,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 12.188,
+     "end": 16.136,
+     "z": 3.81,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.997,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-808201",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-808201_cards-dealing-poker.ogg",
+  "title": "paper cards ruffling dealing poker",
+  "author": "Leonardmedia.nl",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/Leonardmedia.nl/sounds/808201/",
+  "download_url": "https://cdn.freesound.org/previews/808/808201_13523213-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/Leonardmedia.nl/sounds/808201/ on 2026-10-31; page description: paper cards ruffling dealing poker or card game",
+  "need": "u_cards",
+  "rank": 8,
+  "best_segment": [
+   9.8,
+   11.56
+  ],
+  "notes": "Paper cards ruffling/dealing (CC0), mono 11.7 s, peak -13.4 dBFS, LUFS -48.7 (quiet), floor -74 dBFS. Window 9.800-11.560 match z 4.10 strong, realness 0.996: deals at 10.6135, 11.05, 11.4935. A quick real dealing run for 50.4-50.8 if cut to 4 hits.",
+  "analysis": {
+   "duration": 11.703,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": -13.44,
+   "lufs": -48.71,
+   "noise_floor_dbfs": -74.0,
+   "clipped_samples": 0,
+   "attack_at": 0.779,
+   "centroid_hz": 4586,
+   "rolloff95_hz": 10131,
+   "onsets": [
+    0.093,
+    0.418,
+    0.789,
+    0.906,
+    1.068,
+    1.207,
+    1.509,
+    1.95,
+    2.02,
+    2.252,
+    2.508,
+    2.67,
+    2.786,
+    2.995,
+    3.46,
+    3.669,
+    3.715,
+    3.924,
+    4.156,
+    4.435,
+    4.644,
+    4.76,
+    4.807,
+    4.923,
+    5.039,
+    5.132,
+    5.55,
+    5.805,
+    5.921,
+    6.107
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a playing card dealt and flipped onto a table",
+    "z": 3.82,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 9.8,
+     "end": 11.56,
+     "z": 4.1,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.996,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-274007",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-274007_prize-wheel.ogg",
+  "title": "prize wheel",
+  "author": "tony_bear",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/tony_bear/sounds/274007/",
+  "download_url": "https://cdn.freesound.org/previews/274/274007_4993416-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/tony_bear/sounds/274007/ on 2026-10-31; page description: the sound of a prize wheel spinning",
+  "need": "u_ratchet",
+  "rank": 1,
+  "best_segment": [
+   31.4,
+   36.7
+  ],
+  "notes": "A real prize wheel spinning (CC0). Spectrogram: 5 spins, full bandwidth to ~19 kHz, clean black floor between spins (analyze floor -78.1 dBFS). Each spin starts fast and slows to a stop: spin A 31.4-36.7 (match z 3.49 strong, realness 0.956, peak -0.4 dBFS, floor -78.6 around it): clicks.py counts 33 clicks from 33.6 to 36.7 slowing 10 -> 8 -> 5 -> 4 -> 4 -> 2 per 0.5 s, last click 36.477; the last 3.1 s (33.6-36.7) alone: match z 3.01 strong, realness 0.938 -> drop it under 124.5-127.3 nearly as is (cut 33.6-36.6, fade the tail). Spin B 11.2-16.6 (peak -0.3 dBFS, floor -80.5; 13.5-16.6 match z 2.77 plausible). Spin C 4.2-9.4 contains the file's only clipped sample (4.848 s): avoid 4.80-4.90. The 0.2-1.0 s and 17-30 s parts are small partial spins.",
+  "analysis": {
+   "duration": 39.59,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 0.04,
+   "lufs": -22.1,
+   "noise_floor_dbfs": -78.1,
+   "clipped_samples": 2,
+   "attack_at": 0.329,
+   "centroid_hz": 2263,
+   "rolloff95_hz": 8630,
+   "onsets": [
+    0.07,
+    0.209,
+    0.348,
+    0.464,
+    0.58,
+    0.975,
+    1.486,
+    1.811,
+    2.183,
+    2.345,
+    2.577,
+    2.67,
+    3.019,
+    3.367,
+    3.529,
+    3.622,
+    3.831,
+    3.947,
+    4.203,
+    4.296,
+    4.458,
+    4.667,
+    4.876,
+    6.339,
+    6.78,
+    6.85,
+    6.966,
+    7.036,
+    7.105,
+    7.175
+   ]
+  },
+  "earshot": {
+   "realness": 0.94,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a prize wheel ratchet clicker spinning and slowing down",
+    "z": 3.41,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 33.6,
+     "end": 36.7,
+     "z": 3.01,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.938,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 31.4,
+     "end": 36.7,
+     "z": 3.49,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.956,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 13.5,
+     "end": 16.6,
+     "z": 2.77,
+     "verdict": "plausible",
+     "realness": {
+      "p_real": 0.944,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-156996",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-156996_freewheel-clicks.ogg",
+  "title": "Freewheel clicks.wav",
+  "author": "donkpow",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/donkpow/sounds/156996/",
+  "download_url": "https://cdn.freesound.org/previews/156/156996_2284406-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/donkpow/sounds/156996/ on 2026-10-31; page description: A sample from a bicycle freewheel in action, focusing primarily on the metallic clicking sound of the pawl and ratchet mechanism.",
+  "need": "u_ratchet",
+  "rank": 2,
+  "best_segment": [
+   13.4,
+   17.2
+  ],
+  "notes": "Bicycle freewheel pawl-and-ratchet clicks (CC0), 18 s, 108 clicks, peak -3.3 dBFS, floor -66.7 dBFS. The end slows: last clicks 13.488 ... 15.708, 15.896, 16.104, 16.343, 16.640, 17.047 (intervals ~0.12 -> 0.41 s). 13.4-17.2 match z 3.78 strong, realness 0.957. Metallic: brighter and harder than the plastic wheel; fine as sliced single clicks.",
+  "analysis": {
+   "duration": 17.971,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -3.26,
+   "lufs": -29.52,
+   "noise_floor_dbfs": -66.7,
+   "clipped_samples": 0,
+   "attack_at": 0.09,
+   "centroid_hz": 5182,
+   "rolloff95_hz": 9980,
+   "onsets": [
+    0.093,
+    0.302,
+    0.534,
+    0.813,
+    1.091,
+    1.3,
+    1.486,
+    1.533,
+    1.695,
+    1.858,
+    2.02,
+    2.136,
+    2.276,
+    2.392,
+    2.531,
+    2.67,
+    2.786,
+    2.949,
+    3.088,
+    3.228,
+    3.39,
+    3.599,
+    3.762,
+    3.808,
+    3.994,
+    4.272,
+    4.551,
+    4.853,
+    5.085,
+    5.294
+   ]
+  },
+  "earshot": {
+   "realness": 0.95,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a prize wheel ratchet clicker spinning and slowing down",
+    "z": 3.98,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 13.4,
+     "end": 17.2,
+     "z": 3.78,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.957,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-74792",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-74792_bike-freewheel.ogg",
+  "title": "bike_freewheel.aif",
+  "author": "tim.kahn",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/tim.kahn/sounds/74792/",
+  "download_url": "https://cdn.freesound.org/previews/74/74792_7037-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"bike_freewheel.aif\" by tim.kahn (https://freesound.org/people/tim.kahn/sounds/74792/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/tim.kahn/sounds/74792/ on 2026-10-31; page description: Mostly a test of some new equipment, this is the sound of a bicycle freewheel spinning, then slowing then stopping. Recorded with AT4021 mics into a modded Marantz PMD-661. You can see the setup here:",
+  "need": "u_ratchet",
+  "rank": 3,
+  "best_segment": [
+   60.0,
+   77.0
+  ],
+  "notes": "Bicycle freewheel spinning, slowing and stopping over 78 s (AT4021 pair into a Marantz PMD-661, CC BY 4.0, tim.kahn). Whole file match z 4.14 strong. clicks.py: 139 clicks per 2 s at the start -> 5 per 2 s at 68-70 s -> last at 76.5 s; floor -66.4 dBFS. The slow tail 60-77 s alone reads as weak (z 2.21, p_vs_alts 0.027 vs 'a mechanical clock ticking'), realness 0.909. Use only as a source of isolated single ratchet clicks (e.g. 67.476, 67.728, 67.993, 68.277, 68.583, 68.908, 69.266, 69.662) to place by hand.",
+  "analysis": {
+   "duration": 78.016,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -7.24,
+   "lufs": -33.03,
+   "noise_floor_dbfs": -66.4,
+   "clipped_samples": 0,
+   "attack_at": 0.013,
+   "centroid_hz": 5180,
+   "rolloff95_hz": 10109,
+   "onsets": [
+    0.07,
+    2.485,
+    3.135,
+    3.878,
+    4.017,
+    4.714,
+    6.269,
+    6.92,
+    7.872,
+    8.545,
+    8.87,
+    9.218,
+    9.543,
+    9.892,
+    10.24,
+    10.612,
+    10.96,
+    11.331,
+    13.212,
+    14.071,
+    14.396,
+    14.675,
+    14.791,
+    16.811,
+    18.158,
+    19.528,
+    20.108,
+    22.105,
+    24.242,
+    24.799
+   ]
+  },
+  "earshot": {
+   "realness": 0.87,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "a prize wheel ratchet clicker spinning and slowing down",
+    "z": 4.14,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 60.0,
+     "end": 77.0,
+     "z": 2.21,
+     "verdict": "weak",
+     "realness": {
+      "p_real": 0.909,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-857345",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-857345_pen-click-c.ogg",
+  "title": "PenClick_TypeC",
+  "author": "SMKoski02",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/SMKoski02/sounds/857345/",
+  "download_url": "https://cdn.freesound.org/previews/857/857345_9892794-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/SMKoski02/sounds/857345/ on 2026-10-31; page description: Pen click type C, from a ballpoint pen.",
+  "need": "u_tick",
+  "rank": 1,
+  "best_segment": [
+   7.348,
+   7.46
+  ],
+  "notes": "Ballpoint pen click type C, many takes in 57.6 s (CC0); floor -64..-70 dBFS around takes. Crisp single-transient takes (find strong): 47.936-47.975 (transient 47.942, pk -3.3, -20 dB in 2 ms), 8.690-8.750 (8.6965, pk -3.6, 3 ms; match z 4.13 strong, realness 0.979), 44.275-44.330 (44.2815, 2.5 ms; z 4.08, realness 0.962), 50.732-50.790, 55.708-55.785. 7.348-7.460 has click+release (7.3875, 7.4065 -5.9 dB; z 4.32 strong, realness 0.966). Use 8.690-8.750 / 44.275-44.330 for the counter locks (25.15, 70.55), and the same takes 6-10 dB softer for the row ticks (112.2-113.8).",
+  "analysis": {
+   "duration": 57.599,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": -2.77,
+   "lufs": -28.22,
+   "noise_floor_dbfs": -68.4,
+   "clipped_samples": 0,
+   "attack_at": 0.921,
+   "centroid_hz": 2894,
+   "rolloff95_hz": 9905,
+   "onsets": [
+    0.093,
+    0.627,
+    0.952,
+    1.277,
+    2.554,
+    2.601,
+    2.856,
+    4.04,
+    4.296,
+    5.526,
+    5.596,
+    5.805,
+    7.129,
+    7.384,
+    8.499,
+    8.545,
+    8.707,
+    9.868,
+    10.077,
+    11.192,
+    11.238,
+    11.471,
+    13.978,
+    14.28,
+    14.629,
+    14.675,
+    14.954,
+    15.302,
+    15.581,
+    15.975
+   ]
+  },
+  "earshot": {
+   "realness": 0.96,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "one crisp small mechanical click of a retractable pen",
+    "z": 3.47,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 7.348,
+     "end": 7.46,
+     "z": 4.32,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.966,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 44.275,
+     "end": 44.33,
+     "z": 4.08,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.962,
+      "verdict": "real or pro-produced"
+     }
+    },
+    {
+     "start": 8.69,
+     "end": 8.75,
+     "z": 4.13,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.979,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-487213",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-487213_clicking-pen.ogg",
+  "title": "Clicking a pen",
+  "author": "freemaster2",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/freemaster2/sounds/487213/",
+  "download_url": "https://cdn.freesound.org/previews/487/487213_334103-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/freemaster2/sounds/487213/ on 2026-10-31; page description: Clicking a pen",
+  "need": "u_tick",
+  "rank": 2,
+  "best_segment": [
+   1.094,
+   1.21
+  ],
+  "notes": "Clicking a pen (CC0). Take 1.094-1.210: single transient 1.1555, -20 dB in 2 ms, peak -0.3 dBFS, floor -82 dBFS; match z 3.87 strong, realness 0.957. CLIPPED samples at 0.484 and 1.257 s: avoid 0.37-0.555 and keep the trim ending before 1.25.",
+  "analysis": {
+   "duration": 2.752,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": 0.06,
+   "lufs": -17.7,
+   "noise_floor_dbfs": -79.6,
+   "clipped_samples": 4,
+   "attack_at": 0.375,
+   "centroid_hz": 2247,
+   "rolloff95_hz": 8012,
+   "onsets": [
+    0.395,
+    0.511,
+    1.161,
+    1.277,
+    1.997,
+    2.67
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "one crisp small mechanical click of a retractable pen",
+    "z": 3.55,
+    "verdict": "strong"
+   },
+   "trims": [
+    {
+     "start": 1.094,
+     "end": 1.21,
+     "z": 3.87,
+     "verdict": "strong",
+     "realness": {
+      "p_real": 0.957,
+      "verdict": "real or pro-produced"
+     }
+    }
+   ]
+  }
+ },
+ {
+  "id": "fs-176795",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-176795_gel-pen-click.ogg",
+  "title": "Gel pen click",
+  "author": "MrAuralization",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/MrAuralization/sounds/176795/",
+  "download_url": "https://cdn.freesound.org/previews/176/176795_2843367-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Gel pen click\" by MrAuralization (https://freesound.org/people/MrAuralization/sounds/176795/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/MrAuralization/sounds/176795/ on 2026-10-31; page description: A gel pen click. Recorded with a Zoom H1. 24Bit/44.1kHz Because of the Creative Commons license, please remember to put my username in the credits.",
+  "need": "u_tick",
+  "rank": 3,
+  "best_segment": [
+   1.23,
+   1.55
+  ],
+  "notes": "Gel pen click, Zoom H1 24-bit (CC BY 4.0; author asks for the username in the credits). Event 1.230-1.550: 1.2745 (-10.3 dB), 1.445 (0 dB): two-part click; peak -5.8 dBFS; floor -67 dBFS. Match z 3.98 strong, realness 0.90. Softer, lower centroid (866 Hz file-wide): good for the soft row-highlight ticks.",
+  "analysis": {
+   "duration": 1.948,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -5.14,
+   "lufs": -34.46,
+   "noise_floor_dbfs": -62.7,
+   "clipped_samples": 0,
+   "attack_at": 1.274,
+   "centroid_hz": 866,
+   "rolloff95_hz": 9472,
+   "onsets": [
+    0.07,
+    1.3,
+    1.416
+   ]
+  },
+  "earshot": {
+   "realness": 0.9,
+   "realness_verdict": "real or pro-produced",
+   "match": {
+    "query": "one crisp small mechanical click of a retractable pen",
+    "z": 3.98,
+    "verdict": "strong"
+   },
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-328380",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-328380_deliberate-mouse-click.ogg",
+  "title": "Very deliberate mouse click",
+  "author": "pfranzen",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/pfranzen/sounds/328380/",
+  "download_url": "https://cdn.freesound.org/previews/328/328380_3482490-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Very deliberate mouse click\" by pfranzen (https://freesound.org/people/pfranzen/sounds/328380/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/pfranzen/sounds/328380/ on 2026-10-31; page description: Like, oh my god, this is some serious clicking that's going on right now. Recorded with an old Gateway mouse, for the visual novel \"Francy Droo and the Secret of the Shady Midnight Caller\": http://sto",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: clipped (analyze: peak +2.65 dBFS, 42 clipped samples). Match z 2.91 plausible otherwise.",
+  "analysis": {
+   "duration": 0.569,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 44100,
+   "channels": 1,
+   "peak_dbfs": 2.65,
+   "lufs": -17.92,
+   "noise_floor_dbfs": -63.3,
+   "clipped_samples": 42,
+   "attack_at": 0.123,
+   "centroid_hz": 4143,
+   "rolloff95_hz": 10088,
+   "onsets": [
+    0.116,
+    0.279,
+    0.395,
+    0.441
+   ]
+  },
+  "earshot": {
+   "realness": 1.0,
+   "realness_verdict": "real or pro-produced",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-467490",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-467490_mbp-trackpad.ogg",
+  "title": "MacBook Pro trackpad (48/24)",
+  "author": "neilraouf",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/neilraouf/sounds/467490/",
+  "download_url": "https://cdn.freesound.org/previews/467/467490_2639035-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/neilraouf/sounds/467490/ on 2026-10-31; page description: clicking on a trackpad",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED for u_click: whole-file match z 1.42 no match; find takes weak (z 2.22-2.30); analyze floor -200 dBFS = digitally gated silence between clicks; centroid 723 Hz (dull).",
+  "analysis": {
+   "duration": 4.5,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -11.48,
+   "lufs": -35.14,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.624,
+   "centroid_hz": 723,
+   "rolloff95_hz": 9073,
+   "onsets": [
+    0.488,
+    0.65,
+    0.813,
+    1.091,
+    1.277,
+    1.788,
+    1.974,
+    2.67,
+    2.833,
+    3.088
+   ]
+  },
+  "earshot": {
+   "realness": 0.96,
+   "realness_verdict": "real or pro-produced",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-2541",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-2541_single-key-laptop.wav",
+  "title": "Single key press in a laptop",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/keyboard/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2541/2541.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/keyboard/",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: 'Single key press in a laptop' match z 1.78 no match for the keys query; one 0.26 s key.",
+  "analysis": {
+   "duration": 0.264,
+   "codec": "pcm_s24le",
+   "kbps": 2117,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -19.19,
+   "lufs": null,
+   "noise_floor_dbfs": -200.0,
+   "clipped_samples": 0,
+   "attack_at": 0.111,
+   "centroid_hz": 4948,
+   "rolloff95_hz": 10282,
+   "onsets": [
+    0.116
+   ]
+  },
+  "earshot": {
+   "realness": 0.87,
+   "realness_verdict": "real or pro-produced",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-1113",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-1113_mouse-click-close.wav",
+  "title": "Mouse click close",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/click/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/1113/1113.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/click/",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: earshot realness 0.09 'likely code-synthesized'.",
+  "analysis": {
+   "duration": 1.376,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.09,
+   "lufs": -22.71,
+   "noise_floor_dbfs": -88.2,
+   "clipped_samples": 0,
+   "attack_at": 0.01,
+   "centroid_hz": 7459,
+   "rolloff95_hz": 10325,
+   "onsets": [
+    0.139
+   ]
+  },
+  "earshot": {
+   "realness": 0.09,
+   "realness_verdict": "likely code-synthesized",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-2997",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-2997_clear-mouse-clicks.wav",
+  "title": "Clear mouse clicks",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/click/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2997/2997.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/click/",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: earshot realness 0.06 'likely code-synthesized'.",
+  "analysis": {
+   "duration": 1.045,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.98,
+   "lufs": -25.18,
+   "noise_floor_dbfs": -84.8,
+   "clipped_samples": 0,
+   "attack_at": 0.0,
+   "centroid_hz": 6329,
+   "rolloff95_hz": 10217,
+   "onsets": [
+    0.209
+   ]
+  },
+  "earshot": {
+   "realness": 0.06,
+   "realness_verdict": "likely code-synthesized",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-1932",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-1932_slot-machine-wheel.wav",
+  "title": "Slot machine wheel",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/wheel/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/1932/1932.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/wheel/",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: earshot realness 0.09 'likely code-synthesized' (2 of 2 windows).",
+  "analysis": {
+   "duration": 6.107,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.99,
+   "lufs": -8.75,
+   "noise_floor_dbfs": -84.6,
+   "clipped_samples": 0,
+   "attack_at": 0.1,
+   "centroid_hz": 2278,
+   "rolloff95_hz": 10303,
+   "onsets": [
+    0.116,
+    0.325,
+    0.441,
+    0.557,
+    0.743,
+    0.859,
+    0.975,
+    1.161,
+    1.277,
+    1.393,
+    1.579,
+    1.695,
+    1.811,
+    1.997,
+    2.09,
+    2.206,
+    2.415,
+    2.508,
+    2.624,
+    2.833,
+    2.926,
+    3.042,
+    3.251,
+    3.344,
+    3.46,
+    3.669,
+    3.762,
+    3.878,
+    4.087,
+    4.18
+   ]
+  },
+  "earshot": {
+   "realness": 0.09,
+   "realness_verdict": "likely code-synthesized",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "mk-2582",
+  "category": "ui",
+  "file": "audio/assets/ui/mk-2582_quick-switch-click.wav",
+  "title": "Quick switch click",
+  "author": "Mixkit",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-sound-effects/switch/",
+  "download_url": "https://assets.mixkit.co/active_storage/sfx/2582/2582.wav",
+  "license": "Mixkit Sound Effects Free License",
+  "license_url": "https://mixkit.co/license/#sfxFree",
+  "attribution": null,
+  "licence_seen": "Mixkit Sound Effects Free License text read 2026-10-31 at https://mixkit.co/license/modal/sfxFree/: commercial and non-commercial use, may modify and use in films/online video; may not redistribute on its own or register with a rights-management service. Item listed on https://mixkit.co/free-sound-effects/switch/",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: earshot realness 0.37 'uncertain'; better real switches exist (match z 3.59 strong, closest label 'crisp hi-hats').",
+  "analysis": {
+   "duration": 1.036,
+   "codec": "pcm_s16le",
+   "kbps": 1411,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.25,
+   "lufs": -13.38,
+   "noise_floor_dbfs": -97.1,
+   "clipped_samples": 0,
+   "attack_at": 0.0,
+   "centroid_hz": 6496,
+   "rolloff95_hz": 10195,
+   "onsets": [
+    0.07,
+    0.186
+   ]
+  },
+  "earshot": {
+   "realness": 0.37,
+   "realness_verdict": "uncertain",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-442098",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-442098_spin-the-wheel.ogg",
+  "title": "Spin the wheel sound.wav",
+  "author": "tec_studio",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/tec_studio/sounds/442098/",
+  "download_url": "https://cdn.freesound.org/previews/442/442098_1431924-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Spin the wheel sound.wav\" by tec_studio (https://freesound.org/people/tec_studio/sounds/442098/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/tec_studio/sounds/442098/ on 2026-10-31; page description: Spin the wheel and pick your prize!",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: noise floor -18.6 dBFS (continuous whir), match z 2.03 weak.",
+  "analysis": {
+   "duration": 5.936,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -2.28,
+   "lufs": -11.59,
+   "noise_floor_dbfs": -18.6,
+   "clipped_samples": 0,
+   "attack_at": 0.038,
+   "centroid_hz": 2099,
+   "rolloff95_hz": 8290,
+   "onsets": [
+    0.07,
+    0.441,
+    0.604,
+    0.789,
+    0.952,
+    1.207,
+    1.393,
+    1.602,
+    1.834,
+    1.95,
+    2.067,
+    2.206,
+    2.345,
+    2.485,
+    2.647,
+    2.81,
+    2.879,
+    2.995,
+    3.204,
+    3.437,
+    3.715,
+    4.04,
+    4.156,
+    4.389,
+    5.224,
+    5.457
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-752284",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-752284_spin-wheel-clicks.ogg",
+  "title": "Spin the wheel clicks",
+  "author": "leocb",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/leocb/sounds/752284/",
+  "download_url": "https://cdn.freesound.org/previews/752/752284_2109897-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/leocb/sounds/752284/ on 2026-10-31; page description: I recorded some little \"wheel of fortune\" toys at a novelty store using my phone. There's some background noise/hissing and a phone rang while I was recording. A bit of noise reduction processing and ",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: phone recording, floor -36.8 dBFS; page says background hiss and a phone ringing during the recording. Match z 2.92 plausible.",
+  "analysis": {
+   "duration": 37.547,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -0.06,
+   "lufs": -25.2,
+   "noise_floor_dbfs": -36.8,
+   "clipped_samples": 0,
+   "attack_at": 0.086,
+   "centroid_hz": 1852,
+   "rolloff95_hz": 10123,
+   "onsets": [
+    0.07,
+    1.834,
+    1.997,
+    2.159,
+    2.624,
+    2.717,
+    2.81,
+    2.926,
+    3.042,
+    3.274,
+    3.413,
+    3.553,
+    3.599,
+    3.692,
+    3.762,
+    3.855,
+    3.924,
+    4.04,
+    4.11,
+    4.249,
+    4.342,
+    4.481,
+    4.574,
+    4.783,
+    4.899,
+    5.132,
+    5.201,
+    5.41,
+    5.457,
+    6.571
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-324270",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-324270_freewheel.ogg",
+  "title": "freewheel.flac",
+  "author": "savvah",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/savvah/sounds/324270/",
+  "download_url": "https://cdn.freesound.org/previews/324/324270_3722909-hq.ogg",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"freewheel.flac\" by savvah (https://freesound.org/people/savvah/sounds/324270/), licensed under CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)",
+  "licence_seen": "'Attribution 4.0' (https://creativecommons.org/licenses/by/4.0/) read on https://freesound.org/people/savvah/sounds/324270/ on 2026-10-31; page description: old bicycle \"merida\" recorded at home, arm-pedaling",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED: floor -42.9 dBFS (above -55), 110 kbps preview. Match z 4.13 strong otherwise.",
+  "analysis": {
+   "duration": 68.711,
+   "codec": "vorbis",
+   "kbps": 110,
+   "src_rate": 48000,
+   "channels": 1,
+   "peak_dbfs": -12.26,
+   "lufs": -29.54,
+   "noise_floor_dbfs": -42.9,
+   "clipped_samples": 0,
+   "attack_at": 0.012,
+   "centroid_hz": 4782,
+   "rolloff95_hz": 10077,
+   "onsets": [
+    0.07,
+    4.574,
+    5.689,
+    8.661,
+    11.238,
+    11.587,
+    11.912,
+    17.438,
+    19.156,
+    22.918,
+    27.144,
+    28.607,
+    32.461,
+    32.647,
+    33.297,
+    34.9,
+    35.875,
+    35.991,
+    36.362,
+    37.129,
+    37.686,
+    37.918,
+    38.29,
+    38.545,
+    38.754,
+    39.335,
+    39.59,
+    39.729,
+    40.171,
+    40.472
+   ]
+  },
+  "earshot": {
+   "realness": 0.97,
+   "realness_verdict": "real or pro-produced",
+   "match": null,
+   "trims": []
+  }
+ },
+ {
+  "id": "fs-321484",
+  "category": "ui",
+  "file": "audio/assets/ui/fs-321484_retractable-pen.ogg",
+  "title": "Retractable Pen Click In Out",
+  "author": "dslrguide",
+  "source": "freesound",
+  "page_url": "https://freesound.org/people/dslrguide/sounds/321484/",
+  "download_url": "https://cdn.freesound.org/previews/321/321484_5485024-hq.ogg",
+  "license": "CC0 1.0",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "attribution": null,
+  "licence_seen": "'Creative Commons 0' (https://creativecommons.org/publicdomain/zero/1.0/) read on https://freesound.org/people/dslrguide/sounds/321484/ on 2026-10-31; page description: Clicking sound from opening and closing a clicky retractable pen. Recorded with a Rode VideoMic Pro into a Zoom H5 recorder.",
+  "need": null,
+  "rank": null,
+  "best_segment": null,
+  "notes": "REJECTED for use: clipped sample at 0.336 s (the main click, peak +0.1 dBFS); otherwise the best pen match (z 5.09 strong, realness 0.99).",
+  "analysis": {
+   "duration": 0.806,
+   "codec": "vorbis",
+   "kbps": 192,
+   "src_rate": 48000,
+   "channels": 2,
+   "peak_dbfs": 0.11,
+   "lufs": -27.41,
+   "noise_floor_dbfs": -64.7,
+   "clipped_samples": 4,
+   "attack_at": 0.063,
+   "centroid_hz": 2998,
+   "rolloff95_hz": 10019,
+   "onsets": [
+    0.07,
+    0.348
+   ]
+  },
+  "earshot": {
+   "realness": 0.99,
+   "realness_verdict": "real or pro-produced",
+   "match": null,
+   "trims": []
+  }
+ }
+]

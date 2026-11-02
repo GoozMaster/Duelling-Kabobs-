@@ -319,7 +319,7 @@ function Cooking({ t, since }: { t: number; since: number }) {
       </svg>
       {/* The pot scene's own caption and the loader's sub-line, verbatim. */}
       <div style={{ ...text(34, 600), marginTop: 10 }}>Checking the shelves…</div>
-      <div style={{ ...text(24, 400, C.muted), marginTop: 6 }}>Matching 126 recipes against your 1 ingredient and staples</div>
+      <div style={{ ...text(24, 400, C.muted), marginTop: 6 }}>Matching 169 recipes against your 1 ingredient and staples</div>
     </div>
   );
 }

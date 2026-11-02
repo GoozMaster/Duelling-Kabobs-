@@ -1,0 +1,612 @@
+{
+ "_doc": "ui. fragment (real-sound designer, ui category) for the Down With Hunger explainer. One interface voice (a MacBook trackpad click, press + release), one toggle (a real light switch), one laptop keyboard, one deck of cards on a wooden table, one pen click for ticks and counter locks, and one real prize wheel for the slot reel. Every file is a real CC0 recording from audio/assets/manifests/ui.json. The narration runs almost continuously: every effect is short, dry, mono, centred and quiet.",
+ "samples": {
+  "ui.click.press": {
+   "_doc": "fs-118206 take 1: press transient at 0.564; trim 4 ms before it, end 56 ms later (before the release at 0.7075). The takes peak at -28 dBFS with a 40-120 Hz hum line 20 dB over 1-4 kHz, so a steep high-pass at 150 Hz before normalising.",
+   "file": "audio/assets/ui/fs-118206_mbp-trackpad-click.ogg",
+   "start": 0.557,
+   "end": 0.62,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "hp_order": 4
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.012
+  },
+  "ui.click.release": {
+   "_doc": "fs-118206: the release of the take at 12.83 (transient 13.0600; floor -80 dBFS RMS before it, the cleanest release in the file). Every release in this recording is ~14 dB under its press and 130-160 ms late; cut separately, placed 85 ms after the press and lifted to 8 dB under it (a compromise: the norm's 0-3 dB would raise the trackpad's own floor to an audible hiss).",
+   "file": "audio/assets/ui/fs-118206_mbp-trackpad-click.ogg",
+   "start": 13.0565,
+   "end": 13.105,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "hp_order": 4
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.025,
+   "qa_ok": "what continues after the trim is the trackpad recording's own noise floor (-80 dBFS RMS before the release, lifted with it), not the click's decay; the 25 ms fade takes it out"
+  },
+  "ui.toggle": {
+   "_doc": "fs-840876 light switch, take at 3.5585 (match z 4.25 strong, realness 0.995): a firmer single snap from the same plastic family as the click, so the 'Can I cook this?' switch reads as a toggle. Mid scoop at 2.5-4 kHz keeps it off the voice.",
+   "file": "audio/assets/ui/fs-840876_light-switch-5.ogg",
+   "start": 3.554,
+   "end": 3.7,
+   "mono": true,
+   "eq": {
+    "hp": 200,
+    "hp_order": 4,
+    "peq": [
+     [
+      3200,
+      1.0,
+      -3.0
+     ]
+    ],
+    "highshelf": [
+     6000,
+     -4
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.04
+  },
+  "ui.key.1": {
+   "file": "audio/assets/ui/fs-565645_mbp2018-keystrokes.ogg",
+   "start": 38.84,
+   "end": 38.96,
+   "mono": true,
+   "eq": {
+    "hp": 140,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05,
+   "gain_db": 3,
+   "_doc": "+3 dB: this take read as masked on the first typed character in the full mix"
+  },
+  "ui.key.2": {
+   "file": "audio/assets/ui/fs-565645_mbp2018-keystrokes.ogg",
+   "start": 20.168,
+   "end": 20.288,
+   "mono": true,
+   "eq": {
+    "hp": 140,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05
+  },
+  "ui.key.3": {
+   "file": "audio/assets/ui/fs-565645_mbp2018-keystrokes.ogg",
+   "start": 14.842,
+   "end": 14.962,
+   "mono": true,
+   "eq": {
+    "hp": 140,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05
+  },
+  "ui.key.4": {
+   "file": "audio/assets/ui/fs-565645_mbp2018-keystrokes.ogg",
+   "start": 46.506,
+   "end": 46.646,
+   "mono": true,
+   "eq": {
+    "hp": 140,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05
+  },
+  "ui.key.5": {
+   "file": "audio/assets/ui/fs-565645_mbp2018-keystrokes.ogg",
+   "start": 26.366,
+   "end": 26.486,
+   "mono": true,
+   "eq": {
+    "hp": 140,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05
+  },
+  "ui.key.6": {
+   "file": "audio/assets/ui/fs-565645_mbp2018-keystrokes.ogg",
+   "start": 12.178,
+   "end": 12.252,
+   "mono": true,
+   "eq": {
+    "hp": 140,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.035
+  },
+  "ui.flip.1": {
+   "_doc": "fs-564128 cards on a wooden table: single flips / placements from earshot find (all strong); the same deck and table for the cold-open flips and the menu deal; +3 dB: the softest-sounding take (read_db -2.9 as the last menu deal in the full mix)",
+   "file": "audio/assets/ui/fs-564128_cards-wooden-table.ogg",
+   "start": 36.497,
+   "end": 36.655,
+   "mono": true,
+   "eq": {
+    "hp": 180,
+    "hp_order": 4
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05,
+   "gain_db": 3
+  },
+  "ui.flip.2": {
+   "file": "audio/assets/ui/fs-564128_cards-wooden-table.ogg",
+   "start": 33.873,
+   "end": 34.085,
+   "mono": true,
+   "eq": {
+    "hp": 180,
+    "hp_order": 4
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05
+  },
+  "ui.flip.3": {
+   "file": "audio/assets/ui/fs-564128_cards-wooden-table.ogg",
+   "start": 45.319,
+   "end": 45.5,
+   "mono": true,
+   "eq": {
+    "hp": 180,
+    "hp_order": 4
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05
+  },
+  "ui.flip.4": {
+   "file": "audio/assets/ui/fs-564128_cards-wooden-table.ogg",
+   "start": 25.81,
+   "end": 26.045,
+   "mono": true,
+   "eq": {
+    "hp": 180,
+    "hp_order": 4
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.06
+  },
+  "ui.flip.5": {
+   "file": "audio/assets/ui/fs-564128_cards-wooden-table.ogg",
+   "start": 43.762,
+   "end": 43.925,
+   "mono": true,
+   "eq": {
+    "hp": 180,
+    "hp_order": 4
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.05
+  },
+  "ui.deal.2": {
+   "file": "audio/assets/ui/fs-808201_cards-dealing-poker.ogg",
+   "start": 11.041,
+   "end": 11.166,
+   "mono": true,
+   "eq": {
+    "hp": 180,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -4
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.04,
+   "_doc": "fs-808201 dealing run: two clean single deals at 11.05 and 11.4935 (the one at 10.6135 is dropped: it carries a 60 ms slide in front of its hit) (window match z 4.10 strong)"
+  },
+  "ui.deal.4": {
+   "_doc": "fs-571577 one card dealt: the landing at 0.336 only (the slide at 0.2575 would smear a 120 ms deal)",
+   "file": "audio/assets/ui/fs-571577_card-deal-var1.ogg",
+   "start": 0.326,
+   "end": 0.452,
+   "mono": true,
+   "eq": {
+    "hp": 180,
+    "hp_order": 4,
+    "highshelf": [
+     5000,
+     -4
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.04
+  },
+  "ui.tick.lock": {
+   "_doc": "fs-857345 pen click type C, take at 8.6965 (match z 4.13 strong, realness 0.979; -20 dB in 3 ms): the crisp counter lock",
+   "file": "audio/assets/ui/fs-857345_pen-click-c.ogg",
+   "start": 8.692,
+   "end": 8.75,
+   "mono": true,
+   "eq": {
+    "hp": 300,
+    "hp_order": 4,
+    "highshelf": [
+     6000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.015
+  },
+  "ui.tick.1": {
+   "_doc": "softer pen-click takes for highlight / row ticks (same pen as the lock)",
+   "file": "audio/assets/ui/fs-857345_pen-click-c.ogg",
+   "start": 44.277,
+   "end": 44.33,
+   "mono": true,
+   "eq": {
+    "hp": 300,
+    "hp_order": 4,
+    "highshelf": [
+     6000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.015
+  },
+  "ui.tick.2": {
+   "file": "audio/assets/ui/fs-857345_pen-click-c.ogg",
+   "start": 50.734,
+   "end": 50.79,
+   "mono": true,
+   "eq": {
+    "hp": 300,
+    "hp_order": 4,
+    "highshelf": [
+     6000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.015
+  },
+  "ui.tick.3": {
+   "file": "audio/assets/ui/fs-857345_pen-click-c.ogg",
+   "start": 55.71,
+   "end": 55.785,
+   "mono": true,
+   "eq": {
+    "hp": 300,
+    "hp_order": 4,
+    "highshelf": [
+     6000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.015
+  },
+  "ui.tick.4": {
+   "file": "audio/assets/ui/fs-857345_pen-click-c.ogg",
+   "start": 47.938,
+   "end": 47.975,
+   "mono": true,
+   "eq": {
+    "hp": 300,
+    "hp_order": 4,
+    "highshelf": [
+     6000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.002,
+   "fade_out": 0.012
+  },
+  "ui.reel": {
+   "_doc": "fs-274007 prize wheel, spin A: source 33.316-36.30 (first click 33.3259). Clicks every 58-64 ms at 33.33 slowing smoothly to 280 ms; the last full click is at 36.089 (36.77 is a -43 dBFS settle, cut off). 36.089 - 33.326 = 2.763 s = the picture's spin from the first spin tick (124.491) to its stop (127.258), so attack-aligned on surprise:tick:1 the wheel's last click lands on the reel's last tick.",
+   "file": "audio/assets/ui/fs-274007_prize-wheel.ogg",
+   "start": 33.316,
+   "end": 36.3,
+   "mono": true,
+   "eq": {
+    "hp": 200,
+    "hp_order": 4,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3.0
+     ]
+    ],
+    "highshelf": [
+     7000,
+     -3
+    ]
+   },
+   "norm_peak_db": -12,
+   "fade_in": 0.006,
+   "fade_out": 0.12,
+   "qa_ok": "the spin is entered mid-spin on purpose (the reel starts at full speed on the picture); a 6 ms fade-in sits before the first click"
+  }
+ },
+ "pools": {
+  "ui.click.press": [
+   "ui.click.press"
+  ],
+  "ui.click.release": [
+   "ui.click.release"
+  ],
+  "ui.toggle": [
+   "ui.toggle"
+  ],
+  "ui.keys": [
+   "ui.key.1",
+   "ui.key.2",
+   "ui.key.3",
+   "ui.key.4",
+   "ui.key.5",
+   "ui.key.6"
+  ],
+  "ui.flips": [
+   "ui.flip.1",
+   "ui.flip.2",
+   "ui.flip.3",
+   "ui.flip.4",
+   "ui.flip.5"
+  ],
+  "ui.deals": [
+   "ui.deal.2",
+   "ui.deal.4",
+   "ui.flip.3",
+   "ui.flip.1"
+  ],
+  "ui.tick.lock": [
+   "ui.tick.lock"
+  ],
+  "ui.ticks": [
+   "ui.tick.1",
+   "ui.tick.2",
+   "ui.tick.3",
+   "ui.tick.4"
+  ],
+  "ui.reel": [
+   "ui.reel"
+  ]
+ },
+ "rules": [
+  {
+   "name": "ui.flip",
+   "match": {
+    "kind": "tick",
+    "id": "^open:tick:[0-5]$"
+   },
+   "pool": "ui.flips",
+   "mode": "cycle",
+   "gain_db": -7,
+   "jitter_db": 1.0,
+   "pitch": [
+    -0.2,
+    0.2
+   ],
+   "pitch_ramp": [
+    0,
+    2
+   ],
+   "pan": 0,
+   "align": "attack",
+   "_doc": "six flips 528 ms apart, all sounded: cycle five takes of the same deck, climbing 2 st across the run"
+  },
+  {
+   "name": "ui.deal",
+   "match": {
+    "kind": "tick",
+    "id": "^menu:tick:[0246]$"
+   },
+   "pool": "ui.deals",
+   "mode": "cycle",
+   "gain_db": -7,
+   "jitter_db": 1.0,
+   "pitch_ramp": [
+    0,
+    1.5
+   ],
+   "pan": 0,
+   "align": "attack",
+   "_doc": "eight cards dealt 60 ms apart thinned to every other one (4 deals 120 ms apart); the odd ticks stay unsounded on purpose; two clean deals (fs-808201 at 11.05, fs-571577 landing) plus two single cards from the cold-open deck (ui.flip.3, ui.flip.1): same deck, same table. fs-808201 at 11.49 was dropped (centroid 7 kHz even shelved)"
+  },
+  {
+   "name": "ui.click press",
+   "match": {
+    "kind": "click",
+    "id": "^(menu:switch:[0-3]|search:switch:[01]|surprise:switch:0)$"
+   },
+   "pool": "ui.click.press",
+   "mode": "fixed",
+   "gain_db": -7,
+   "pan": 0,
+   "align": "attack",
+   "_doc": "the one interface voice at one level: cuisine chip, search panel, chip added, Surprise me"
+  },
+  {
+   "name": "ui.click release",
+   "match": {
+    "kind": "click",
+    "id": "^(menu:switch:[0-3]|search:switch:[01]|surprise:switch:0)$"
+   },
+   "pool": "ui.click.release",
+   "mode": "fixed",
+   "gain_db": -15,
+   "pan": 0,
+   "align": "attack",
+   "offset": 0.085,
+   "no_cue": true,
+   "_doc": "release 85 ms after the press, 8 dB under it (see ui.click.release)"
+  },
+  {
+   "name": "ui.toggle",
+   "match": {
+    "kind": "click",
+    "id": "^shop:switch:0$"
+   },
+   "pool": "ui.toggle",
+   "mode": "fixed",
+   "gain_db": -9,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "ui.type",
+   "match": {
+    "kind": "tick",
+    "id": "^(search:tick:[0-7]|menu:tick:(8|9|10|11))$"
+   },
+   "pool": "ui.keys",
+   "mode": "cycle",
+   "gain_db": -10,
+   "jitter_db": 1.5,
+   "pan": 0,
+   "align": "attack",
+   "_doc": "'pineapple juice': one key per sounded character, 110 ms apart (9 keys/s); vary the take and level, not the pitch; gain_ramp +2 dB to the last character, which sits on a narration word",
+   "gain_ramp": [
+    0,
+    2
+   ]
+  },
+  {
+   "name": "ui.type words",
+   "match": {
+    "kind": "pop",
+    "id": "^search:pop:[2-4]$"
+   },
+   "pool": "ui.keys",
+   "mode": "cycle",
+   "cycle_start": 3,
+   "gain_db": -13,
+   "jitter_db": 1.0,
+   "pan": 0,
+   "align": "attack",
+   "_doc": "the visitor prompt's three typed words: one soft key each, same board"
+  },
+  {
+   "name": "ui.lock",
+   "match": {
+    "kind": "pop",
+    "id": "^(list:pop:6|pantry:pop:4)$"
+   },
+   "pool": "ui.tick.lock",
+   "mode": "fixed",
+   "gain_db": -6,
+   "pan": 0,
+   "align": "attack",
+   "_doc": "one crisp tick on each counter's final value (126, 256)"
+  },
+  {
+   "name": "ui.rows",
+   "match": {
+    "kind": "tick",
+    "id": "^shop:tick:[02467]$"
+   },
+   "pool": "ui.ticks",
+   "mode": "cycle",
+   "gain_db": -15,
+   "weight_db": 3,
+   "weight_ref": 0.5,
+   "jitter_db": 1.0,
+   "pitch_ramp": [
+    0,
+    1.5
+   ],
+   "pan": 0,
+   "align": "attack",
+   "_doc": "ingredient rows thinned 8 -> 5 (rows 0, 2, 4 at 180 ms, then the two heavier rows 6, 7 that the picture gives 0.9 weight: +2.5 dB via weight_db)"
+  },
+  {
+   "name": "ui.menu tick",
+   "match": {
+    "kind": "tick",
+    "id": "^surprise:tick:0$"
+   },
+   "pool": "ui.ticks",
+   "mode": "fixed",
+   "gain_db": -18,
+   "pan": 0,
+   "align": "attack",
+   "_doc": "the Recipes dropdown pops open (121.90): one soft pen tick"
+  },
+  {
+   "name": "ui.reel",
+   "match": {
+    "kind": "tick",
+    "id": "^surprise:tick:1$"
+   },
+   "pool": "ui.reel",
+   "mode": "fixed",
+   "gain_db": -13,
+   "pan": 0,
+   "align": "start",
+   "_doc": "ONE real prize-wheel spin on the first spin tick: its own clicks slow down with the reel and its last click lands on the reel's stop (see ui.reel); align start, offset -9.9 ms puts the first click (9.9 ms into the sample) on 124.491",
+   "offset": -0.0099
+  },
+  {
+   "name": "ui.reel covered",
+   "match": {
+    "kind": "tick",
+    "id": "^surprise:tick:([2-9]|1[0-9]|20)$"
+   },
+   "pool": "ui.ticks",
+   "mode": "fixed",
+   "gain_db": -120,
+   "pan": 0,
+   "align": "attack",
+   "qa_ok": "no-op: the 19 remaining spin ticks are sounded by the single prize-wheel recording placed on surprise:tick:1; this -120 dB placement only marks them sounded",
+   "_doc": "inaudible marker so the A/V audit counts the spin ticks as sounded by the wheel"
+  }
+ ]
+}

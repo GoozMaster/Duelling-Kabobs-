@@ -1,0 +1,1172 @@
+{
+ "_doc": "fo. foley for the Down With Hunger explainer: one kitchen/desk palette (wood knocks, rubber stamps on paper, mouth/cork pops, a fridge door, a steel pot and cutlery, glass jars on a wooden shelf, pencil on paper, sticky notes). Every sample is a real CC0 recording from audio/assets/manifests/foley.json (no Mixkit, no CC BY). Point sources are mono, centred (pan 0 or cue pan scaled to +-0.15). Most effects sit under continuous narration, so most are high-passed (no rumble) and get a 2-4 kHz dip; levels are set by rule gain_db on peak-normalised samples. Runs are thinned by id regex (the bubble run, the jar ticks).",
+ "samples": {
+  "fo.knock.1": {
+   "_doc": "fs-742356 single knock: attack ~0.045",
+   "file": "audio/assets/foley/fs-742356_single-knock-wood.ogg",
+   "start": 0.041,
+   "end": 0.2,
+   "mono": true,
+   "eq": {
+    "hp": 90,
+    "peq": [
+     [
+      2800,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_in": 0.002,
+   "fade_out": 0.04
+  },
+  "fo.knock.2": {
+   "_doc": "fs-543247 knock take at 2.172",
+   "file": "audio/assets/foley/fs-543247_knock-on-wood.ogg",
+   "start": 2.167,
+   "end": 2.42,
+   "mono": true,
+   "eq": {
+    "hp": 90,
+    "peq": [
+     [
+      2800,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.08
+  },
+  "fo.knock.3": {
+   "_doc": "fs-543247 knock take at 3.164",
+   "file": "audio/assets/foley/fs-543247_knock-on-wood.ogg",
+   "start": 3.159,
+   "end": 3.4,
+   "mono": true,
+   "eq": {
+    "hp": 90,
+    "peq": [
+     [
+      2800,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.08
+  },
+  "fo.knock.4": {
+   "_doc": "fs-543247 knock take at 3.476",
+   "file": "audio/assets/foley/fs-543247_knock-on-wood.ogg",
+   "start": 3.471,
+   "end": 3.7,
+   "mono": true,
+   "eq": {
+    "hp": 90,
+    "peq": [
+     [
+      2800,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.08
+  },
+  "fo.knock.heavy": {
+   "_doc": "fs-543247 loudest take (4.146), -2 st: the notepad's heavier drop",
+   "file": "audio/assets/foley/fs-543247_knock-on-wood.ogg",
+   "start": 4.141,
+   "end": 4.4,
+   "mono": true,
+   "pitch": -2,
+   "eq": {
+    "hp": 70,
+    "lowshelf": [
+     250,
+     2
+    ],
+    "peq": [
+     [
+      2800,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.08
+  },
+  "fo.stamp.t1": {
+   "_doc": "fs-461888 rubber stamp: the press of each press/lift pair (9.146); ends before the lift 0.5 s later",
+   "file": "audio/assets/foley/fs-461888_rubber-plastic-stamp.ogg",
+   "start": 9.136,
+   "end": 9.33,
+   "mono": true,
+   "eq": {
+    "hp": 120,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.03
+  },
+  "fo.stamp.t2": {
+   "file": "audio/assets/foley/fs-461888_rubber-plastic-stamp.ogg",
+   "start": 14.939,
+   "end": 15.13,
+   "mono": true,
+   "eq": {
+    "hp": 120,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.03
+  },
+  "fo.stamp.t3": {
+   "file": "audio/assets/foley/fs-461888_rubber-plastic-stamp.ogg",
+   "start": 6.182,
+   "end": 6.38,
+   "mono": true,
+   "eq": {
+    "hp": 120,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.03
+  },
+  "fo.stamp.firm": {
+   "_doc": "fs-470710 traditional rubber stamp, the firmest; the trim keeps the rock of the handle (0.61 / 0.70) which is part of one stamp",
+   "file": "audio/assets/foley/fs-470710_traditional-rubber-stamp.ogg",
+   "start": 0.497,
+   "end": 0.86,
+   "mono": true,
+   "eq": {
+    "hp": 90,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.1
+  },
+  "fo.stamp.firm.low": {
+   "_doc": "the same stamp -2 st, the rubber top layer of the heavy slams",
+   "file": "audio/assets/foley/fs-470710_traditional-rubber-stamp.ogg",
+   "start": 0.497,
+   "end": 0.86,
+   "mono": true,
+   "pitch": -2,
+   "eq": {
+    "hp": 80,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.1
+  },
+  "fo.slam.1": {
+   "_doc": "fs-824382 hardcover book onto a table (1.432): the body of the heavy stamp under the drop",
+   "file": "audio/assets/foley/fs-824382_hardcover-book-table.ogg",
+   "start": 1.427,
+   "end": 1.75,
+   "mono": true,
+   "eq": {
+    "hp": 50,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ],
+    "highshelf": [
+     7000,
+     -3
+    ]
+   },
+   "norm_peak_db": -4,
+   "fade_out": 0.12
+  },
+  "fo.slam.2": {
+   "_doc": "fs-824382 take 7.498",
+   "file": "audio/assets/foley/fs-824382_hardcover-book-table.ogg",
+   "start": 7.493,
+   "end": 7.85,
+   "mono": true,
+   "eq": {
+    "hp": 50,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ],
+    "highshelf": [
+     7000,
+     -3
+    ]
+   },
+   "norm_peak_db": -4,
+   "fade_out": 0.12
+  },
+  "fo.slam.end": {
+   "_doc": "fs-824382 take 13.458 (the manifest's strongest), -1 st, let ring: the end-card placard",
+   "file": "audio/assets/foley/fs-824382_hardcover-book-table.ogg",
+   "start": 13.441,
+   "end": 13.85,
+   "mono": true,
+   "pitch": -1,
+   "eq": {
+    "hp": 45,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ],
+    "highshelf": [
+     7000,
+     -3
+    ]
+   },
+   "norm_peak_db": -4,
+   "fade_out": 0.18
+  },
+  "fo.pop.1": {
+   "_doc": "fs-325584 dry mouth pops, gated, ~40 ms each",
+   "file": "audio/assets/foley/fs-325584_mouth-pops-dry.ogg",
+   "start": 20.428,
+   "end": 20.5,
+   "mono": true,
+   "eq": {
+    "hp": 150
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.02
+  },
+  "fo.pop.2": {
+   "file": "audio/assets/foley/fs-325584_mouth-pops-dry.ogg",
+   "start": 11.0,
+   "end": 11.065,
+   "mono": true,
+   "eq": {
+    "hp": 150
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.02
+  },
+  "fo.pop.3": {
+   "file": "audio/assets/foley/fs-325584_mouth-pops-dry.ogg",
+   "start": 1.824,
+   "end": 1.89,
+   "mono": true,
+   "eq": {
+    "hp": 150
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.02
+  },
+  "fo.pop.4": {
+   "file": "audio/assets/foley/fs-325584_mouth-pops-dry.ogg",
+   "start": 7.714,
+   "end": 7.78,
+   "mono": true,
+   "eq": {
+    "hp": 150
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.02
+  },
+  "fo.pop.5": {
+   "file": "audio/assets/foley/fs-325584_mouth-pops-dry.ogg",
+   "start": 16.47,
+   "end": 16.55,
+   "mono": true,
+   "eq": {
+    "hp": 150
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.02
+  },
+  "fo.pop.6": {
+   "file": "audio/assets/foley/fs-325584_mouth-pops-dry.ogg",
+   "start": 23.426,
+   "end": 23.5,
+   "mono": true,
+   "eq": {
+    "hp": 150
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.02
+  },
+  "fo.cork.1": {
+   "_doc": "fs-575527 gin cork pop 0.888 (a window / page opening: a bit bigger)",
+   "file": "audio/assets/foley/fs-575527_gin-cork-pop.ogg",
+   "start": 0.897,
+   "end": 1.03,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.04
+  },
+  "fo.cork.2": {
+   "_doc": "fs-575527 cork pop 2.982",
+   "file": "audio/assets/foley/fs-575527_gin-cork-pop.ogg",
+   "start": 2.997,
+   "end": 3.14,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.04
+  },
+  "fo.lid": {
+   "_doc": "fs-344607 jar lid pop at ~1.0 (the lid handling before it is left out), +3 st: the small map label",
+   "file": "audio/assets/foley/fs-344607_jar-open-pop.ogg",
+   "start": 1.022,
+   "end": 1.11,
+   "mono": true,
+   "pitch": 3,
+   "eq": {
+    "hp": 200
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.03
+  },
+  "fo.fridge.shut": {
+   "_doc": "fs-503478 fridge door closing: the thud at ~0.25-0.30; the click at 0.00 and the first rub at 0.08 are left out",
+   "file": "audio/assets/foley/fs-503478_fridge-door-closing.ogg",
+   "start": 0.266,
+   "end": 0.75,
+   "mono": true,
+   "eq": {
+    "hp": 60,
+    "peq": [
+     [
+      2800,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -4,
+   "fade_out": 0.2
+  },
+  "fo.fridge.open": {
+   "_doc": "fs-538595 door opening, the seal unsticking (main transient 32.844; the soft lead-in from 32.75 is kept)",
+   "file": "audio/assets/foley/fs-538595_refrigerator-door-open-close.ogg",
+   "start": 32.745,
+   "end": 33.37,
+   "mono": true,
+   "eq": {
+    "hp": 80,
+    "peq": [
+     [
+      2800,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_in": 0.01,
+   "fade_out": 0.2
+  },
+  "fo.pot": {
+   "_doc": "fs-870728 large pot set down on steel, take 7.122, low-passed 9 kHz",
+   "file": "audio/assets/foley/fs-870728_pots-hitting-counter.ogg",
+   "start": 7.111,
+   "end": 7.39,
+   "mono": true,
+   "eq": {
+    "hp": 80,
+    "lp": 9000,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -4
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.1
+  },
+  "fo.drop.fork": {
+   "_doc": "fs-873865 fork dropped, the first clink at 0.632; ends (faded) before its bounce at 0.784 so it reads as one drop on the landing frame",
+   "file": "audio/assets/foley/fs-873865_dropping-fork-table.ogg",
+   "start": 0.627,
+   "end": 0.775,
+   "mono": true,
+   "eq": {
+    "hp": 200,
+    "lp": 9000,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.08
+  },
+  "fo.drop.pan": {
+   "_doc": "fs-560280 cutlery inside a saucepan, single stroke 15.084: the pot's own ring (the grin)",
+   "file": "audio/assets/foley/fs-560280_forks-in-saucepan.ogg",
+   "start": 15.079,
+   "end": 15.38,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "lp": 9000,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.12
+  },
+  "fo.drop.set": {
+   "_doc": "fs-764728 forks and knives drop, the cluster 0.36-1.08 (a first piece, the main crash at 0.52, the scatter): a whole table setting",
+   "file": "audio/assets/foley/fs-764728_forks-knives-drop.ogg",
+   "start": 0.355,
+   "end": 1.08,
+   "mono": true,
+   "eq": {
+    "hp": 200,
+    "lp": 7000,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -4
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.15
+  },
+  "fo.jar.1": {
+   "_doc": "fs-868628 glass jars set on a wooden shelf: single set-downs, each ending before the next contact",
+   "file": "audio/assets/foley/fs-868628_glass-jars-wooden-shelf.ogg",
+   "start": 95.103,
+   "end": 95.29,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.05
+  },
+  "fo.jar.4": {
+   "file": "audio/assets/foley/fs-868628_glass-jars-wooden-shelf.ogg",
+   "start": 111.085,
+   "end": 111.38,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.12
+  },
+  "fo.jar.5": {
+   "file": "audio/assets/foley/fs-868628_glass-jars-wooden-shelf.ogg",
+   "start": 112.648,
+   "end": 112.84,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.05
+  },
+  "fo.jar.6": {
+   "file": "audio/assets/foley/fs-868628_glass-jars-wooden-shelf.ogg",
+   "start": 113.963,
+   "end": 114.15,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.1
+  },
+  "fo.pin": {
+   "_doc": "fs-596550 pencil tap on a desk (1.664), +2 st: the stand-in for the push pin (no pin recording passed the match bar)",
+   "file": "audio/assets/foley/fs-596550_pencil-tap-desk.ogg",
+   "start": 1.659,
+   "end": 1.8,
+   "mono": true,
+   "pitch": 2,
+   "eq": {
+    "hp": 300
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.05
+  },
+  "fo.note.on": {
+   "_doc": "fs-461803 sticking notes on paper: the light stroke 1.43 (the note appears)",
+   "file": "audio/assets/foley/fs-461803_sticky-notes-on-paper.ogg",
+   "start": 1.45,
+   "end": 1.59,
+   "mono": true,
+   "eq": {
+    "hp": 200,
+    "lp": 7000
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.04
+  },
+  "fo.note.land": {
+   "_doc": "fs-869163 sticky notes put down, stroke 25.845 (the lemons land in the note)",
+   "file": "audio/assets/foley/fs-869163_sticky-notes.ogg",
+   "start": 25.865,
+   "end": 26.01,
+   "mono": true,
+   "eq": {
+    "hp": 200
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.04
+  },
+  "fo.note.slap": {
+   "_doc": "fs-869163 a sticky note put down hard (9.32-9.46, find 'a sticky note slapped onto paper' plausible z +2.9, head -31, tail -35): done",
+   "file": "audio/assets/foley/fs-869163_sticky-notes.ogg",
+   "start": 9.317,
+   "end": 9.46,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "lp": 8000,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.04
+  },
+  "fo.pop.hero": {
+   "_doc": "fs-691907 single mouth pop (AKG P220, gated: clean head); transient at 0.060",
+   "file": "audio/assets/foley/fs-691907_mouth-pop-2.ogg",
+   "start": 0.057,
+   "end": 0.2,
+   "mono": true,
+   "eq": {
+    "hp": 150
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.04
+  },
+  "fo.jar.2": {
+   "_doc": "fs-235498 a large glass jar set down on a wooden table (clean 48k WAV; attack 0.142, its settle at 0.23 / 0.31 kept)",
+   "file": "audio/assets/foley/fs-235498_glass-jar-set-on-table.ogg",
+   "start": 0.137,
+   "end": 0.42,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.06
+  },
+  "fo.jar.3": {
+   "_doc": "fs-171939 an empty glass put down (96k FLAC, brightest; low-passed to match the shelf jars)",
+   "file": "audio/assets/foley/fs-171939_put-down-glass-object.ogg",
+   "start": 0.187,
+   "end": 0.45,
+   "mono": true,
+   "eq": {
+    "hp": 150,
+    "lp": 10000,
+    "peq": [
+     [
+      3000,
+      1.0,
+      -3
+     ]
+    ]
+   },
+   "norm_peak_db": -6,
+   "fade_out": 0.06
+  }
+ },
+ "pools": {
+  "fo.knock": [
+   "fo.knock.1",
+   "fo.knock.2",
+   "fo.knock.3",
+   "fo.knock.4"
+  ],
+  "fo.knock.heavy": [
+   "fo.knock.heavy"
+  ],
+  "fo.stamp.title": [
+   "fo.stamp.t1",
+   "fo.stamp.t2",
+   "fo.stamp.t3"
+  ],
+  "fo.stamp.light": [
+   "fo.stamp.t2",
+   "fo.stamp.t1"
+  ],
+  "fo.stamp.firm": [
+   "fo.stamp.firm"
+  ],
+  "fo.stamp.firm.low": [
+   "fo.stamp.firm.low"
+  ],
+  "fo.slam.drop": [
+   "fo.slam.1",
+   "fo.slam.2"
+  ],
+  "fo.slam.end": [
+   "fo.slam.end"
+  ],
+  "fo.pop.hero": [
+   "fo.pop.hero"
+  ],
+  "fo.pop.run": [
+   "fo.pop.1",
+   "fo.pop.2",
+   "fo.pop.3",
+   "fo.pop.4",
+   "fo.pop.5",
+   "fo.pop.6"
+  ],
+  "fo.pop.soft": [
+   "fo.pop.hero",
+   "fo.pop.3"
+  ],
+  "fo.cork": [
+   "fo.cork.1",
+   "fo.cork.2"
+  ],
+  "fo.lid": [
+   "fo.lid"
+  ],
+  "fo.fridge.shut": [
+   "fo.fridge.shut"
+  ],
+  "fo.fridge.open": [
+   "fo.fridge.open"
+  ],
+  "fo.pot": [
+   "fo.pot"
+  ],
+  "fo.jar": [
+   "fo.jar.1",
+   "fo.jar.2",
+   "fo.jar.3",
+   "fo.jar.4",
+   "fo.jar.5",
+   "fo.jar.6"
+  ],
+  "fo.pin": [
+   "fo.pin"
+  ],
+  "fo.note.on": [
+   "fo.note.on"
+  ],
+  "fo.note.land": [
+   "fo.note.land"
+  ],
+  "fo.note.slap": [
+   "fo.note.slap"
+  ],
+  "fo.drop.fork": [
+   "fo.drop.fork"
+  ],
+  "fo.drop.pan": [
+   "fo.drop.pan"
+  ],
+  "fo.drop.set": [
+   "fo.drop.set"
+  ]
+ },
+ "rules": [
+  {
+   "name": "fo.land.knock",
+   "_doc": "soft wooden knocks: title card 0.55 and the close's hero art + wordmark (130.98-131.45)",
+   "match": {
+    "id": "^(open:thock:0|close:thock:[0-2])$"
+   },
+   "pool": "fo.knock",
+   "mode": "cycle",
+   "gain_db": -12,
+   "jitter_db": 1.5,
+   "pitch": [
+    -0.3,
+    0.3
+   ],
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.land.notepad",
+   "_doc": "the notepad's bounce-in at 8.78: a heavier take, 2 dB up",
+   "match": {
+    "id": "^list:thock:0$"
+   },
+   "pool": "fo.knock.heavy",
+   "mode": "fixed",
+   "gain_db": -12,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.stamp.title",
+   "_doc": "four recipe titles stamped (19.6-22.9): the same rubber stamp, four takes",
+   "match": {
+    "id": "^list:thock:[1-4]$"
+   },
+   "pool": "fo.stamp.title",
+   "mode": "cycle",
+   "gain_db": -14,
+   "jitter_db": 1.0,
+   "pitch": [
+    -0.3,
+    0.3
+   ],
+   "pan": "cue",
+   "pan_scale": 0.15,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pop.hero",
+   "_doc": "the first bubble, clear",
+   "match": {
+    "id": "^open:pop:0$"
+   },
+   "pool": "fo.pop.hero",
+   "mode": "fixed",
+   "gain_db": -12,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pop.run",
+   "_doc": "the bubble run 5.94-6.50 thinned to 4 (ids 1, 3, 5, 8: 160 / 160 / 240 ms gaps, not a metronome), climbing +1 -> +4 st, smaller and quieter than the first",
+   "match": {
+    "id": "^open:pop:[1358]$"
+   },
+   "pool": "fo.pop.run",
+   "mode": "cycle",
+   "gain_db": -16,
+   "jitter_db": 1.0,
+   "pitch_ramp": [
+    1,
+    4
+   ],
+   "gain_ramp": [
+    -1,
+    1
+   ],
+   "pan": "cue",
+   "pan_scale": 0.15,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pop.question",
+   "_doc": "question marks: over the fridge, then over the two missing rows",
+   "match": {
+    "id": "^problem:pop:([0-2]|4|5)$"
+   },
+   "pool": "fo.pop.run",
+   "mode": "cycle",
+   "cycle_start": 2,
+   "gain_ramp": [
+    -1,
+    1
+   ],
+   "gain_db": -15,
+   "jitter_db": 1.0,
+   "pitch_ramp": [
+    2,
+    4
+   ],
+   "pan": "cue",
+   "pan_scale": 0.15,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pop.panel",
+   "_doc": "a window / page pops open (menu 49.87, recipe page 105.35): the cork Also the l27 recipe card popping out of the fridge (the soft pop was masked under the voice).",
+   "match": {
+    "id": "^(menu:pop:0|shop:pop:0|problem:pop:3)$"
+   },
+   "pool": "fo.cork",
+   "mode": "cycle",
+   "gain_db": -13,
+   "pitch": [
+    0.5,
+    1.0
+   ],
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pop.soft",
+   "_doc": "soft pops: close lede, the l27 recipe card, the chicken results",
+   "match": {
+    "id": "^(close:pop:0|menu:pop:1)$"
+   },
+   "pool": "fo.pop.soft",
+   "mode": "cycle",
+   "gain_db": -15,
+   "pitch": [
+    0.5,
+    1.0
+   ],
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pop.surprise",
+   "_doc": "the Surprise-me button appears 121.50 (under l24): the same soft pop, 4 dB up to clear the voice",
+   "match": {
+    "id": "^surprise:pop:0$"
+   },
+   "pool": "fo.pop.soft",
+   "mode": "fixed",
+   "gain_db": -8,
+   "pitch": [
+    0.5,
+    1.0
+   ],
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pop.label",
+   "_doc": "unused since the map pin was cut (l13 no longer picks a spot)",
+   "match": {
+    "id": "^menu:pop:9$"
+   },
+   "pool": "fo.lid",
+   "mode": "fixed",
+   "gain_db": -19,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.pin",
+   "_doc": "unused since the map pin was cut",
+   "match": {
+    "id": "^menu:thock:9$"
+   },
+   "pool": "fo.pin",
+   "mode": "fixed",
+   "gain_db": -13,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.fridge.shut",
+   "_doc": "the fridge slides in, doors shut 29.30: a soft rubber-seal thunk",
+   "match": {
+    "id": "^problem:thock:0$"
+   },
+   "pool": "fo.fridge.shut",
+   "mode": "fixed",
+   "gain_db": -11,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.fridge.open",
+   "_doc": "the door opens 32.99: the seal unsticking, aligned by its peak (the release); the soft pull before it leads by ~0.1 s as the door starts to move",
+   "match": {
+    "id": "^problem:whoosh:0$"
+   },
+   "pool": "fo.fridge.open",
+   "mode": "fixed",
+   "gain_db": -12,
+   "pan": 0,
+   "align": "peak"
+  },
+  {
+   "name": "fo.stamp.firm",
+   "_doc": "the ON HAND stamp (the lemon OUT stamp is cut with l08)",
+   "match": {
+    "id": "^pantry:stamp:0$"
+   },
+   "pool": "fo.stamp.firm",
+   "mode": "fixed",
+   "gain_db": -10,
+   "jitter_db": 0.5,
+   "pitch": [
+    -0.3,
+    0.3
+   ],
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.stamp.light",
+   "_doc": "lighter stamps in the search tour (90.07 green tag; 98.81 No account needed, 1.5 dB up by weight)",
+   "match": {
+    "id": "^search:stamp:[01]$"
+   },
+   "pool": "fo.stamp.light",
+   "mode": "cycle",
+   "gain_db": -14,
+   "weight_db": 2,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.slam.drop",
+   "_doc": "the protester panel (46.22) and wordmark (46.52) slam in under the music's drop: book-on-table body",
+   "match": {
+    "id": "^idea:stamp:[01]$"
+   },
+   "pool": "fo.slam.drop",
+   "mode": "cycle",
+   "gain_db": -7,
+   "weight_db": 2,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.slam.drop rubber",
+   "_doc": "the rubber stamp top on the same two hits, so they read as stamps",
+   "match": {
+    "id": "^idea:stamp:[01]$"
+   },
+   "pool": "fo.stamp.firm.low",
+   "mode": "fixed",
+   "gain_db": -15,
+   "pan": 0,
+   "align": "attack",
+   "offset": 0.002
+  },
+  {
+   "name": "fo.slam.end",
+   "_doc": "the brick placard on the end card 134.53: the heaviest slam, with the music's last chord",
+   "match": {
+    "id": "^close:stamp:0$"
+   },
+   "pool": "fo.slam.end",
+   "mode": "fixed",
+   "gain_db": -5,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.slam.end rubber",
+   "match": {
+    "id": "^close:stamp:0$"
+   },
+   "pool": "fo.stamp.firm.low",
+   "mode": "fixed",
+   "gain_db": -14,
+   "pan": 0,
+   "align": "attack",
+   "offset": 0.002
+  },
+  {
+   "name": "fo.pot",
+   "_doc": "the pot onto the burner 38.58: one short steel clank",
+   "match": {
+    "id": "^idea:thock:0$"
+   },
+   "pool": "fo.pot",
+   "mode": "fixed",
+   "gain_db": -13,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.drop.fork",
+   "_doc": "the cuisine logos dropping into the pot (8 drops, thinned to 4): set-down",
+   "match": {
+    "id": "^idea:thock:6$"
+   },
+   "pool": "fo.drop.fork",
+   "mode": "fixed",
+   "gain_db": -16,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.drop.grin",
+   "_doc": "logo drop into the pot: pan clank",
+   "match": {
+    "id": "^idea:thock:3$"
+   },
+   "pool": "fo.drop.pan",
+   "mode": "fixed",
+   "gain_db": -15,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.drop.set",
+   "_doc": "the table setting lands 44.50: a cutlery cluster aligned by its PEAK (the main crash) on the landing; the first pieces lead it by ~0.17 s like things tumbling in",
+   "match": {
+    "id": "^idea:thock:(1|5|8)$"
+   },
+   "pool": "fo.drop.set",
+   "mode": "fixed",
+   "gain_db": -15,
+   "pan": 0,
+   "align": "peak"
+  },
+  {
+   "name": "fo.jar",
+   "_doc": "jars onto the shelves 65.46-68.03: 21 ticks thinned to 8 (two per group: 0,3 | 6,9 | 11,14 | 17,20), climbing +0 -> +2.5 st across the run; the 4 pantry:pop shelf arrivals stay silent (the jars are the action)",
+   "match": {
+    "id": "^pantry:tick:(0|3|6|9|11|14|17|20)$"
+   },
+   "pool": "fo.jar",
+   "mode": "cycle",
+   "gain_db": -17,
+   "jitter_db": 1.5,
+   "pitch_ramp": [
+    0,
+    2.5
+   ],
+   "pan": "cue",
+   "pan_scale": 0.15,
+   "align": "attack",
+   "gain_ramp": [
+    0,
+    4
+   ]
+  },
+  {
+   "name": "fo.note.on",
+   "_doc": "the sticky note appears 116.94: a light paper touch",
+   "match": {
+    "id": "^shop:pop:1$"
+   },
+   "pool": "fo.note.on",
+   "mode": "fixed",
+   "gain_db": -18,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.note.land",
+   "_doc": "the two red rows landing on the note",
+   "match": {
+    "id": "^shop:thock:[01]$"
+   },
+   "pool": "fo.note.land",
+   "mode": "fixed",
+   "gain_db": -10,
+   "pan": 0,
+   "align": "attack"
+  },
+  {
+   "name": "fo.note.slap",
+   "_doc": "done 118.70: the note slapped flat (a paper slap, not a stamp)",
+   "match": {
+    "id": "^shop:stamp:0$"
+   },
+   "pool": "fo.note.slap",
+   "mode": "fixed",
+   "gain_db": -12,
+   "pan": 0,
+   "align": "attack"
+  }
+ ],
+ "_levels_doc": "rule gains set against music.json + vo.json + the top-level buses (qa.py audibility, 2026-10-31): every event read >= 3 dB except where noted in the report",
+ "_unsounded_doc": "left silent on purpose: list:pop:0-3 (handwriting: pencil strokes from fs-802604 were masked by the narration l04 at any level that kept them out of the voice; the music carries it), open:pop:2,4,6,7 (bubble run thinned), pantry:tick (13 of 21 thinned), pantry:pop:0-3 (shelf arrivals; the jars are the action), idea:pop:0-2 (pre-events of the pot drops: one sound per drop, on the landing)"
+}

@@ -115,7 +115,7 @@ export function Surprise() {
             <Headline size={120} style={{ display: "inline-block" }}>
               SURPRISE ME
             </Headline>
-            <div style={{ ...text(32, 500, C.muted), marginTop: 18 }}>One recipe out of 126, picked at random.</div>
+            <div style={{ ...text(32, 500, C.muted), marginTop: 18 }}>One recipe out of 169, picked at random.</div>
           </div>
 
           <div style={{ position: "absolute", left: VIEW.x, top: VIEW.y, width: VIEW.w, height: VIEW.h, transform: `scale(${pop(t, pageIn + 0.1)})` }}>

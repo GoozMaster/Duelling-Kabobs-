@@ -1,0 +1,222 @@
+[
+ {
+  "id": "incompetech-USUAN1800023",
+  "category": "music",
+  "file": "audio/assets/music/incompetech-USUAN1800023_onion-capers.mp3",
+  "title": "Onion Capers",
+  "author": "Kevin MacLeod",
+  "source": "incompetech",
+  "page_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800023",
+  "download_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Onion%20Capers.mp3",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Onion Capers\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttp://creativecommons.org/licenses/by/4.0/\nSource: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1800023 (edited: trimmed, rearranged and time-stretched)",
+  "need": "m_track",
+  "rank": 1,
+  "best_segment": [
+   0.876,
+   128.9
+  ],
+  "notes": "RECOMMENDED. Licence read 2026-10-31 on the track page incompetech.com/music/royalty-free/index.html?isrc=<ISRC>, attribution code: '\"<title>\" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/'. Catalogue entry: piano, tuba, percussion; feel 'Bouncy, Bright, Relaxed'; page BPM 105; uploaded 2019. TEMPO: arrange.py 105.002 BPM, grid residual 3.2 ms, 100% of beats on the grid, downbeats 0.876 + 2.2857*n s (phase 1, confidence 1.06, not low); stretch ratio to 104 = 0.9905 (about 1 %, the smallest of all candidates). analyze.py 103.36 BPM (ibi std 20 ms), key C major (r 0.898). STRUCTURE (earshot timeline): lead-in 0.3 s; 0:00-0:18.0 lighter opening section (-21 LUFS); 0:18.0-0:45.5 groove (-20 LUFS; accents 0:22.30, 0:36.02 snare +19 dB); 0:45.5-2:09.1 main section (-19 LUFS, loudest 1:47.5-1:50.5 at -17.7 LUFS short-term); BUTTON ENDING: 0.3 s stop at 2:08.25 then a final hit at 2:08.57 (+39 dB over bed), tail to 2:14.9. LRA only 2.4 LU: the arrangement is flat, so the breakdown (28.8-38.1 s) and the drop (45.89 s) must be built with level rides / using the lighter opening bars, not the track's own dynamics. DROP CANDIDATES (0-based source bars): 15 (= 35.16 s, near the 0:36.02 snare accent), 8 (19.16 s), 46 (106.02 s), 47, 24, 9. First arrange draft (default 30 film bars, no arc) in out/audio-review/music/incompetech-USUAN1800023_arrange.json. QUALITY: 320 kbps, full bandwidth (earshot 20.5 kHz), peak -1.29 dBFS, -19.58 LUFS (quiet master: about +4 dB gain needed), 0 clipped samples. earshot realness 0.94 'real or pro-produced' (0/33 windows lean synthesized); match z +4.3 'strong' (#1 of 322); describe 'playful and quirky music' z +3.4. RISKS: tuba bass rather than walking upright bass; describe also hints 'chiptune video game music' z +3.1 and 'triumphant' z +3.3 (hints only). CC BY credit required; MacLeod tracks are widely used and Content ID claims are possible: dispute citing the licence.",
+  "analysis": {
+   "duration": 134.922,
+   "codec": "mp3",
+   "kbps": 320,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -1.29,
+   "lufs": -19.58,
+   "noise_floor_dbfs": -35.3,
+   "clipped_samples": 0,
+   "centroid_hz": 1469,
+   "rolloff95_hz": 8376,
+   "side_to_mid_db": -3.5,
+   "tempo": 103.36,
+   "key": "C major"
+  },
+  "earshot": {
+   "realness": 0.94,
+   "match": {
+    "query": "a playful bouncy comedy instrumental with plucked bass, mallets and light drums, major key",
+    "z": 4.3,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "mixkit-644",
+  "category": "music",
+  "file": "audio/assets/music/mixkit-644_upbeat-jazz.mp3",
+  "title": "Upbeat Jazz",
+  "author": "Francisco Alvear",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-stock-music/tag/funny/",
+  "download_url": "https://assets.mixkit.co/music/644/644.mp3",
+  "license": "Mixkit Stock Music Free License",
+  "license_url": "https://mixkit.co/license/#musicFree",
+  "attribution": null,
+  "need": "m_track",
+  "rank": 2,
+  "best_segment": [
+   2.45,
+   108
+  ],
+  "notes": "RUNNER-UP: the best built-in arc. Mixkit Stock Music Free License (read 2026-10-31 at https://mixkit.co/license/modal/musicFree/): 'can be used in your commercial and non-commercial projects for free ... permitted to download, copy, modify, distribute and publicly perform the Music Items on any web or social media platform'; not allowed: CDs/DVDs, video games, TV/radio broadcast, remixing into a music-only track, or registering them on any rights management service (no Content ID). Listed on the Mixkit 'funny' and 'comedy' tag pages as 'Upbeat Jazz by Francisco Alvear', 1:50, tags Jazz, Humorous, Lively, Bass, Drums, Comedy; the download modal (/free-stock-music/download/644/) serves the same mp3. TEMPO: arrange.py 110.004 BPM, residual 3.3 ms, 99% on grid, downbeats 0.036 + 2.1817*n s but phase confidence 0.07 LOW (alternative 1.127 + 2.1817*n, phase 2; another phase wins locally 52.4-69.8 s): verify bar lines by hand. Stretch ratio 0.9454 (5.5 %, near the 6 % limit). Key F major (r 0.632; F minor 0.617 close). STRUCTURE (timeline): lead-in 2.45 s; 0:00-0:10.7 sparse intro with snare roll (-24 LUFS); 0:10.7-0:19.45 build (-18 LUFS; accents 0:13.32, 0:15.35); 0:19.45-0:37.5 full band (-11 LUFS); 0:37.5-1:33.9 full band, loudest 0:36.5-0:39.5; 1:33.9-1:50.2 last section, final stab at 1:47.06, tail from 1:48.0. LRA 9.3 LU: the full-band entry at 19.45 s (source bar 9 = top drop candidate, 19.67 s) is a natural drop for 45.89 s. Drop candidates bars 9, 10, 24, 39, 17, 23. SHORT: 110.2 s (about 116.6 s after stretch) < 139.6 s, so sections must repeat. QUALITY: 256 kbps mp3, peak +0.03 dBFS, -11.65 LUFS (hot), 13 clipped samples (one clipped run at 0:58.76), encoder shelf at 16 kHz with sparse content to about 19.5 kHz. earshot realness 0.97 'real or pro-produced'; match z +4.1 'strong'; describe 'jazz music' z +5.5, 'celebratory and joyful' z +3.0. Never register the film with Content ID (Mixkit terms).",
+  "analysis": {
+   "duration": 110.237,
+   "codec": "mp3",
+   "kbps": 256,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 0.03,
+   "lufs": -11.65,
+   "noise_floor_dbfs": -28.4,
+   "clipped_samples": 13,
+   "centroid_hz": 962,
+   "rolloff95_hz": 7795,
+   "side_to_mid_db": -10,
+   "tempo": 107.67,
+   "key": "F major"
+  },
+  "earshot": {
+   "realness": 0.97,
+   "match": {
+    "query": "a playful bouncy comedy instrumental with plucked bass, mallets and light drums, major key",
+    "z": 4.1,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "incompetech-USUAN1200104",
+  "category": "music",
+  "file": "audio/assets/music/incompetech-USUAN1200104_sidewalk-shade-slower.mp3",
+  "title": "Sidewalk Shade - slower",
+  "author": "Kevin MacLeod",
+  "source": "incompetech",
+  "page_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1200104",
+  "download_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Sidewalk%20Shade%20-%20slower.mp3",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Sidewalk Shade - slower\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttp://creativecommons.org/licenses/by/4.0/\nSource: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1200104 (edited: trimmed, rearranged and time-stretched)",
+  "need": "m_track",
+  "rank": 3,
+  "best_segment": [
+   0.861,
+   178.6
+  ],
+  "notes": "Closest instrumentation to the brief (catalogue: bass, vibraphone, piano, drum kit; 'Just a nice little jazz piece'; page BPM 110; 2012). Licence read 2026-10-31 on the track page incompetech.com/music/royalty-free/index.html?isrc=<ISRC>, attribution code: '\"<title>\" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/'. TEMPO: arrange.py 110.001 BPM, residual 9.7 ms, 98% on grid, downbeats 0.861 + 2.1818*n s, phase confidence 0.43 LOW (alt 0.316 + 2.1818*n; other phase wins locally 70.1-87.6 and 131.2-157.4 s). Stretch 0.9455 (5.5 %). Key E major (r 0.376, weak). STRUCTURE (timeline): 0:00-0:29.75 (-16 LUFS; accents 0:00.82, 0:21.38 drum +29 dB), 0:29.75-1:04.85 vibraphone/piano (-17), 1:04.85-1:54.1 (-15, loudest 1:41-1:44), 1:54.1-2:21.05 lighter glockenspiel-tagged section (-16), 2:21.05-2:59.75 (-15), tail from 2:58.65. 182.9 s: no looping needed. LRA 4.3 LU, no clear breakdown or drop. Drop candidates bars 4 (9.59 s), 12 (27.04 s), 58, 44, 76, 33. QUALITY: 320 kbps but a dark master: centroid 808 Hz, spectrogram shows most content below about 11 kHz with only cymbal ticks above; earshot bandwidth 12.9 kHz. peak -0.11 dBFS, -15.51 LUFS, 0 clipped. realness 0.98; match z +4.1 'strong'; describe 'jazz music' z +5.4, mood hint 'romantic' z +3.0 (less comic than the brief).",
+  "analysis": {
+   "duration": 182.857,
+   "codec": "mp3",
+   "kbps": 320,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.11,
+   "lufs": -15.51,
+   "noise_floor_dbfs": -31.1,
+   "clipped_samples": 0,
+   "centroid_hz": 808,
+   "rolloff95_hz": 7870,
+   "side_to_mid_db": -7.5,
+   "tempo": 107.67,
+   "key": "E major"
+  },
+  "earshot": {
+   "realness": 0.98,
+   "match": {
+    "query": "a playful bouncy comedy instrumental with plucked bass, mallets and light drums, major key",
+    "z": 4.1,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "incompetech-USUAN2300001",
+  "category": "music",
+  "file": "audio/assets/music/incompetech-USUAN2300001_goblin-tinker-soldier-spy.mp3",
+  "title": "Goblin Tinker Soldier Spy",
+  "author": "Kevin MacLeod",
+  "source": "incompetech",
+  "page_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2300001",
+  "download_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Goblin_Tinker_Soldier_Spy.mp3",
+  "license": "CC BY 4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "\"Goblin Tinker Soldier Spy\" Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 4.0 License\nhttp://creativecommons.org/licenses/by/4.0/\nSource: https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2300001 (edited: trimmed, rearranged and time-stretched)",
+  "need": "m_track",
+  "rank": 4,
+  "best_segment": [
+   0,
+   130.2
+  ],
+  "notes": "Fallback. Licence read 2026-10-31 on the track page incompetech.com/music/royalty-free/index.html?isrc=<ISRC>, attribution code: '\"<title>\" Kevin MacLeod (incompetech.com) Licensed under Creative Commons: By Attribution 4.0 License http://creativecommons.org/licenses/by/4.0/'. Catalogue: tuba, percussion, bass, melodica, drums, marimba; 'Grooving, Bouncy, Humorous'; page BPM 101; 2023 (less used). TEMPO AMBIGUOUS: arrange.py auto-fit 132.012 BPM (residual 9.3 ms, 99%, phase conf 0.82, stretch 0.7878: out of range); forced --bpm 101 gives the same residual 9.3 ms / 99%, downbeats 0.155 + 2.3762*n, phase confidence 0.15 LOW, stretch 1.0297. 132/101 = 1.31 (about 4:3) suggests a swung/triplet feel; the supervisor must confirm the 101 BPM pulse. Key G minor (r 0.814) against the brief's major key. STRUCTURE (timeline): 0:00-0:10.58 intro (-19 LUFS), 0:10.58-0:24.4 (-16), 0:24.4-0:42.26 brass (-16), 0:42.26-1:40.37 (-16, loudest 1:08.5-1:11.5), 1:40.37-2:09.56 (-15), tail from 2:10.2. LRA 4.0 LU. QUALITY: 160 kbps mp3 (analyze: low bitrate), bandwidth 20.5 kHz, peak -0.42 dBFS, -15.61 LUFS, 0 clipped. realness 0.99; match z +3.8 'strong'; describe 'brass section' z +3.5; AudioSet 'Fart' 0.17 (comic tuba/trombone blats: may read zany rather than deadpan).",
+  "analysis": {
+   "duration": 136.098,
+   "codec": "mp3",
+   "kbps": 160,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": -0.42,
+   "lufs": -15.61,
+   "noise_floor_dbfs": -32.6,
+   "clipped_samples": 0,
+   "centroid_hz": 1917,
+   "rolloff95_hz": 9636,
+   "side_to_mid_db": -6.1,
+   "tempo": 129.2,
+   "key": "G minor"
+  },
+  "earshot": {
+   "realness": 0.99,
+   "match": {
+    "query": "a playful bouncy comedy instrumental with plucked bass, mallets and light drums, major key",
+    "z": 3.8,
+    "verdict": "strong"
+   }
+  }
+ },
+ {
+  "id": "mixkit-595",
+  "category": "music",
+  "file": "audio/assets/music/mixkit-595_secret-garden.mp3",
+  "title": "Secret Garden",
+  "author": "Eugenio Mininni",
+  "source": "mixkit",
+  "page_url": "https://mixkit.co/free-stock-music/tag/funny/",
+  "download_url": "https://assets.mixkit.co/music/595/595.mp3",
+  "license": "Mixkit Stock Music Free License",
+  "license_url": "https://mixkit.co/license/#musicFree",
+  "attribution": null,
+  "need": "m_track",
+  "rank": 5,
+  "best_segment": [
+   1.8,
+   148.2
+  ],
+  "notes": "NOT RECOMMENDED (kept for the record). Mixkit Stock Music Free License (read 2026-10-31 at https://mixkit.co/license/modal/musicFree/): 'can be used in your commercial and non-commercial projects for free ... permitted to download, copy, modify, distribute and publicly perform the Music Items on any web or social media platform'; not allowed: CDs/DVDs, video games, TV/radio broadcast, remixing into a music-only track, or registering them on any rights management service (no Content ID). Mixkit tags: Film Score, Humorous, Playful, Plucked, Strings, Comedy, Dramedy; 2:33. Tempo fits (arrange.py 100.003 BPM, residual 4.7 ms, 100% on grid, stretch 1.0400) but key A minor (r 0.705) and earshot reads it dark: match z +2.2 'weak', forced choice 'dark tense cinematic music' 94%; timeline sections tagged 'sad and melancholic' 0:30.6-2:11.4; downbeat phase confidence 0.01 LOW. Dull master (rolloff95 6654 Hz, bandwidth 12.9 kHz), hot (-10.69 LUFS, peak +0.03, 1 clipped sample). Opening has 4 stop-and-stab gaps (0:08.3, 0:15.6, 0:22.7, 0:30.0). realness 0.96.",
+  "analysis": {
+   "duration": 153,
+   "codec": "mp3",
+   "kbps": 256,
+   "src_rate": 44100,
+   "channels": 2,
+   "peak_dbfs": 0.03,
+   "lufs": -10.69,
+   "noise_floor_dbfs": -30,
+   "clipped_samples": 1,
+   "centroid_hz": 1423,
+   "rolloff95_hz": 6654,
+   "side_to_mid_db": -3.2,
+   "tempo": 99.38,
+   "key": "A minor"
+  },
+  "earshot": {
+   "realness": 0.96,
+   "match": {
+    "query": "a playful bouncy comedy instrumental with plucked bass, mallets and light drums, major key",
+    "z": 2.2,
+    "verdict": "weak"
+   }
+  }
+ }
+]

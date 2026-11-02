@@ -1,0 +1,116 @@
+{
+ "_doc": "mu. music edit for the Down With Hunger explainer (music supervisor). One track: 'Onion Capers' by Kevin MacLeod (CC BY 4.0), 105.0016 BPM measured, Rubber Band stretched to the picture's 104 BPM (ratio 0.99046, about 1 %). Source grid: downbeats at 0.8764 + 2.28568*n s (arrange.py, phase confidence 1.06, residual 3.2 ms, 100 % inliers; the 4-bar F G C F phrases change chord exactly on these bar lines). Re-cut 2026-11-01 for the 27-line script (163.2 s): every 'at' is a film bar line (n*2.30769 s) except the button; the drop on film bar 26 (60.0 s) under l11.",
+ "music": {
+  "file": "audio/assets/music/incompetech-USUAN1800023_onion-capers.mp3",
+  "src_bpm": 105.0016,
+  "target_bpm": 104,
+  "stretch": "rubberband",
+  "gain_db": 7.0,
+  "eq": {
+   "hp": 30
+  },
+  "segments": [
+   {
+    "label": "COLD OPEN src bars 0-3 (A1a, the track's lightest bars) -> film bars 0-3 (0-9.23), under the title card and bubbles; -2 dB",
+    "src_from": 0.8764,
+    "src_to": 10.0191,
+    "at": 0.0,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -2.0
+   },
+   {
+    "label": "LIST GROOVE src bars 16-23 (A2: F G C F x2) -> film bars 4-11 (9.23-27.69), half a bar after the 8.08 wipe; splice F (src 3) -> F (src 16)",
+    "src_from": 37.4473,
+    "src_to": 55.7327,
+    "at": 9.2308,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -1.5
+   },
+   {
+    "label": "LIST GROOVE cont. src bars 33-35 (A3a without its first bar: G C F) -> film bars 12-14 (27.69-34.62), under l04-l06 (the list now runs 12 bars, l03 is longer); splice F (src 23) -> G (src 33) = the phrase's own F -> G step",
+    "src_from": 76.3038,
+    "src_to": 83.1609,
+    "at": 27.6923,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -1.5
+   },
+   {
+    "label": "BREAKDOWN src bars 4-7 (A1b, light) -> film bars 15-18 (34.62-43.85), the music thins half a bar before the 35.77 wipe into 'the problem'; splice F (src 35) -> F (src 4); -6 dB",
+    "src_from": 10.0191,
+    "src_to": 19.1618,
+    "at": 34.6154,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -6.0
+   },
+   {
+    "label": "BREAKDOWN cont. src bars 1-3 (A1a without its first bar: G C F) -> film bars 19-21 (43.85-50.77), under l27; splice F (src 7) -> G (src 1); -6 dB",
+    "src_from": 3.1621,
+    "src_to": 10.0191,
+    "at": 43.8462,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -6.0
+   },
+   {
+    "label": "REBUILD src bars 36-39 (A3b: F G C F) -> film bars 22-25 (50.77-60.0), on the 50.77 wipe into 'the idea', under l09-l10 and the logos dropping into the pot; splice F (src 3) -> F (src 36); -3 dB",
+    "src_from": 83.1609,
+    "src_to": 92.3036,
+    "at": 50.7692,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -3.0
+   },
+   {
+    "label": "DROP src bars 24-36 (B2, the track's loudest B section with its +2 dB rise on the downbeat, then A3a and A3b's first bar) -> film bars 26-38 (60.0-90.0); the drop downbeat on film bar 26 = 60.000 s: 193 ms after the pot burst / l11 at 59.807, 127 ms before the protester stamp 60.127; splice F (src 39) -> Bb (src 24) = the native IV -> bVII entrance of every B section",
+    "src_from": 55.7327,
+    "src_to": 85.4466,
+    "at": 60.0,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": 0.0
+   },
+   {
+    "label": "TOUR GROOVE src bars 8-23 (B1 + A2) -> film bars 39-54 (90.0-126.92), pantry into search; splice F (src 36) -> Bb (src 8) = native B entrance",
+    "src_from": 19.1618,
+    "src_to": 55.7327,
+    "at": 90.0,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -1.0
+   },
+   {
+    "label": "TOUR GROOVE src bars 40-47 (B3, ends on C with the track's loudest bars) -> film bars 55-62 (126.92-145.38), across the 131.54 wipe into the shop; splice F (src 23) -> Bb (src 40) native B entrance",
+    "src_from": 92.3036,
+    "src_to": 110.589,
+    "at": 126.9231,
+    "fade_in": 0.008,
+    "fade_out": 0.03,
+    "gain_db": -1.0
+   },
+   {
+    "label": "ENDING src bars 50-55 (A4, the track's own last phrase) -> film bar 63 (145.38), on the wipe into 'surprise'; splice C (src 47) -> C (src 50) same chord; ends on the track's own stop after beat 3 of src bar 55 (music silent from film ~158.8, under the end of l25)",
+    "src_from": 115.1604,
+    "src_to": 128.45,
+    "at": 145.3846,
+    "fade_in": 0.008,
+    "fade_out": 0.05,
+    "gain_db": -1.0
+   },
+   {
+    "label": "BUTTON: the track's final hit as its own segment, its attack on the brick placard slam close:stamp:0 = 159.846 s (a 1.05 s comic stop-time after the track's own stop), ringing out under the 2.60 s end-card hold (tail_fade 2.0)",
+    "src_from": 128.562,
+    "src_to": 133.536,
+    "at": 159.846,
+    "fade_in": 0.004,
+    "fade_out": 0.01,
+    "tail_fade": 2.0,
+    "gain_db": -3.0,
+    "qa_ok": "a separate button segment placed on the picture (the slam), not on a bar line; the 1.3 s silence before it is the track's own stop-time lengthened on purpose"
+   }
+  ]
+ }
+}

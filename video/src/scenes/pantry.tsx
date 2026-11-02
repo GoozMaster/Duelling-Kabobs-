@@ -72,7 +72,7 @@ export function Pantry() {
     },
   ];
   const STAGGER = 0.06;
-  const opens = phrase("l14", "already stocked") - 0.05;
+  const opens = phrase("l14", "already accounted") - 0.05;
   const doors = p(t, opens, 0.75, easeLand);
   const lit = (shelf: number) =>
     groups.some((g) => g.items[0].shelf === shelf && t >= g.at && t < g.at + 1.3);
