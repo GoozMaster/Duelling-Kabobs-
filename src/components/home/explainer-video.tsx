@@ -19,10 +19,6 @@ import s from "./home.module.css";
  *
  * preload="metadata" rather than "none": it costs a few kilobytes and gives
  * the controls a real duration before anyone presses play.
- *
- * The soundtrack uses CC BY recordings. The on-page credit was removed at the
- * owner's request; the full list is still served at /video/credits.txt and
- * video/CREDITS.md has the sources.
  */
 export function ExplainerVideo() {
   const video = useRef<HTMLVideoElement>(null);

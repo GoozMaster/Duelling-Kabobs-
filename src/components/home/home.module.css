@@ -334,7 +334,6 @@
   height: 100%;
 }
 
-/* The soundtrack's CC BY attribution: required, so present, but quiet. */
 /* Centred, and small enough to clear the native controls bar underneath.
    The ink here is literal hex, not --sk-outline: the button sits on the
    video's poster, a daytime frame that never re-themes. */

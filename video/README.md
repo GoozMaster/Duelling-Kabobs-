@@ -23,8 +23,7 @@ The shipped soundtrack is the real-sound mix, not `video:music`'s synthesised on
 render, run `node video/tools/cues.mts` and `node video/tools/vo-design.mts`, render the mix with
 the real-sound skill's `mix.py --root video --design audio/sounddesign.json`, and mux it onto the
 render as `video/out/film_sound.mp4`, which `video:finish` reads. The design lives in
-`video/audio/`; the recordings themselves are downloaded, licensed per `video/CREDITS.md`, and
-never committed.
+`video/audio/`; the recordings themselves are downloaded and never committed.
 
 `npm run video:studio` opens Remotion Studio to scrub the timeline while editing.
 `node video/tools/stills.mjs <dir> <seconds...>` renders proof frames without a full render.
