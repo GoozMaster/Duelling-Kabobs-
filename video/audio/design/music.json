@@ -1,5 +1,5 @@
 {
- "_doc": "mu. music edit for the Down With Hunger explainer (music supervisor). One track: 'Onion Capers' by Kevin MacLeod (CC BY 4.0), 105.0016 BPM measured, Rubber Band stretched to the picture's 104 BPM (ratio 0.99046, about 1 %). Source grid: downbeats at 0.8764 + 2.28568*n s (arrange.py, phase confidence 1.06, residual 3.2 ms, 100 % inliers; the 4-bar F G C F phrases change chord exactly on these bar lines). Re-cut 2026-11-01 for the 27-line script (163.2 s): every 'at' is a film bar line (n*2.30769 s) except the button; the drop on film bar 26 (60.0 s) under l11. Re-cut again for the Voice Studio narration (165.03 s): scene starts moved by whole half-bars, so segments 4-10 were re-placed on film bars 19, 23, 27, 40, 56, 64 and the button on the stamp at 161.09.",
+ "_doc": "mu. music edit for the Down With Hunger explainer (music supervisor). One track: 'Onion Capers' by Kevin MacLeod (CC BY 4.0), 105.0016 BPM measured, Rubber Band stretched to the picture's 104 BPM (ratio 0.99046, about 1 %). Source grid: downbeats at 0.8764 + 2.28568*n s (arrange.py, phase confidence 1.06, residual 3.2 ms, 100 % inliers; the 4-bar F G C F phrases change chord exactly on these bar lines). Re-cut 2026-11-01 for the 27-line script (163.2 s): every 'at' is a film bar line (n*2.30769 s) except the button; the drop on film bar 26 (60.0 s) under l11. Re-cut again for the Voice Studio narration (165.03 s): scene starts moved by whole half-bars, so segments 4-10 were re-placed on film bars 19, 23, 27, 40, 56, 64 and the button on the stamp at 161.09. Re-cut for the Omid narration (138.97 s): list groove 8 bars, breakdown 6, rebuild+drop on bar 22, tour groove B1 only, B3, ending on bar 53.",
  "music": {
   "file": "audio/assets/music/incompetech-USUAN1800023_onion-capers.mp3",
   "src_bpm": 105.0016,
@@ -29,82 +29,73 @@
     "gain_db": -1.5
    },
    {
-    "label": "LIST GROOVE cont. src bars 33-35 (A3a without its first bar: G C F) -> film bars 12-14 (27.69-34.62), under l04-l06 (the list now runs 12 bars, l03 is longer); splice F (src 23) -> G (src 33) = the phrase's own F -> G step",
-    "src_from": 76.3038,
-    "src_to": 83.1609,
+    "label": "BREAKDOWN src bars 4-7 (A1b, light) -> film bars 15-18 (34.62-43.85), the music thins half a bar before the 35.77 wipe into 'the problem'; splice F (src 35) -> F (src 4); -6 dB [Omid re-cut]: film bars 12-15, half a bar before the problem wipe at 28.85",
+    "src_from": 10.0191,
+    "src_to": 19.1618,
     "at": 27.6923,
     "fade_in": 0.008,
     "fade_out": 0.03,
-    "gain_db": -1.5
+    "gain_db": -6
    },
    {
-    "label": "BREAKDOWN src bars 4-7 (A1b, light) -> film bars 15-18 (34.62-43.85), the music thins half a bar before the 35.77 wipe into 'the problem'; splice F (src 35) -> F (src 4); -6 dB",
-    "src_from": 10.0191,
-    "src_to": 19.1618,
-    "at": 34.6154,
+    "label": "BREAKDOWN cont. src bars 1-2 (A1a: G C) -> film bars 16-17 [Omid re-cut]; resolves into the rebuild F",
+    "src_from": 3.1621,
+    "src_to": 7.7335,
+    "at": 36.9231,
     "fade_in": 0.008,
     "fade_out": 0.03,
     "gain_db": -6
    },
    {
-    "label": "BREAKDOWN cont. src bars 0-3 (A1a, full: F G C F) -> film bars 19-21 (43.85-50.77), under l27; splice F (src 7) -> G (src 1); -6 dB [Voice Studio re-cut: now film bars 19-22 (43.85-53.08)]",
-    "src_from": 0.8764,
-    "src_to": 10.0191,
-    "at": 43.8462,
-    "fade_in": 0.008,
-    "fade_out": 0.03,
-    "gain_db": -6
-   },
-   {
-    "label": "REBUILD src bars 36-39 (A3b: F G C F) -> film bars 22-25 (50.77-60.0), on the 50.77 wipe into 'the idea', under l09-l10 and the logos dropping into the pot; splice F (src 3) -> F (src 36); -3 dB [Voice Studio re-cut: now film bars 23-26 (53.08-62.31), on the wipe into the idea]",
+    "label": "REBUILD src bars 36-39 (A3b: F G C F) -> film bars 22-25 (50.77-60.0), on the 50.77 wipe into 'the idea', under l09-l10 and the logos dropping into the pot; splice F (src 3) -> F (src 36); -3 dB [Voice Studio re-cut: now film bars 23-26 (53.08-62.31), on the wipe into the idea] [Omid re-cut]: film bars 18-21 (41.54-50.77), leading into the idea wipe at 43.85",
     "src_from": 83.1609,
     "src_to": 92.3036,
-    "at": 53.0769,
+    "at": 41.5385,
     "fade_in": 0.008,
     "fade_out": 0.03,
     "gain_db": -3
    },
    {
-    "label": "DROP src bars 24-36 (B2, the track's loudest B section with its +2 dB rise on the downbeat, then A3a and A3b's first bar) -> film bars 26-38 (60.0-90.0); the drop downbeat on film bar 26 = 60.000 s: 193 ms after the pot burst / l11 at 59.807, 127 ms before the protester stamp 60.127; splice F (src 39) -> Bb (src 24) = the native IV -> bVII entrance of every B section [Voice Studio re-cut: drop now on film bar 27 (62.31), under l11]",
+    "label": "DROP src bars 24-36 (B2, the track's loudest B section with its +2 dB rise on the downbeat, then A3a and A3b's first bar) -> film bars 26-38 (60.0-90.0); the drop downbeat on film bar 26 = 60.000 s: 193 ms after the pot burst / l11 at 59.807, 127 ms before the protester stamp 60.127; splice F (src 39) -> Bb (src 24) = the native IV -> bVII entrance of every B section [Voice Studio re-cut: drop now on film bar 27 (62.31), under l11] [Omid re-cut]: drop on film bar 22 (50.77), 0.15 s before l11; runs 15 bars (src 24-38)",
     "src_from": 55.7327,
-    "src_to": 85.4466,
-    "at": 62.3077,
+    "src_to": 90.018,
+    "at": 50.7692,
     "fade_in": 0.008,
     "fade_out": 0.03,
     "gain_db": 0
    },
    {
-    "label": "TOUR GROOVE src bars 8-23 (B1 + A2) -> film bars 39-54 (90.0-126.92), pantry into search; splice F (src 36) -> Bb (src 8) = native B entrance",
+    "label": "TOUR GROOVE src bars 8-15 (B1 only) -> film bars 37-44 [Omid re-cut]",
     "src_from": 19.1618,
-    "src_to": 55.7327,
-    "at": 92.3077,
+    "src_to": 37.4473,
+    "at": 85.3846,
     "fade_in": 0.008,
     "fade_out": 0.03,
     "gain_db": -1
    },
    {
-    "label": "TOUR GROOVE src bars 40-47 (B3, ends on C with the track's loudest bars) -> film bars 55-62 (126.92-145.38), across the 131.54 wipe into the shop; splice F (src 23) -> Bb (src 40) native B entrance",
+    "label": "TOUR GROOVE src bars 40-47 (B3, ends on C with the track's loudest bars) -> film bars 55-62 (126.92-145.38), across the 131.54 wipe into the shop; splice F (src 23) -> Bb (src 40) native B entrance [Omid re-cut]: film bars 45-52 (103.85-122.31)",
     "src_from": 92.3036,
     "src_to": 110.589,
-    "at": 129.2308,
+    "at": 103.8462,
     "fade_in": 0.008,
     "fade_out": 0.03,
     "gain_db": -1
    },
    {
-    "label": "ENDING src bars 50-55 (A4, the track's own last phrase) -> film bar 63 (145.38), on the wipe into 'surprise'; splice C (src 47) -> C (src 50) same chord; ends on the track's own stop after beat 3 of src bar 55 (music silent from film ~158.8, under the end of l25) [Voice Studio re-cut: film bar 64 (147.69); last bar shortened so the stop-time still falls before the stamp]",
+    "label": "ENDING src bars 50-55 (A4, the track's own last phrase) -> film bar 63 (145.38), on the wipe into 'surprise'; splice C (src 47) -> C (src 50) same chord; ends on the track's own stop after beat 3 of src bar 55 (music silent from film ~158.8, under the end of l25) [Voice Studio re-cut: film bar 64 (147.69); last bar shortened so the stop-time still falls before the stamp] [Omid re-cut]: starts on the surprise wipe, film bar 53 (122.31)",
     "src_from": 115.1604,
-    "src_to": 127.4,
-    "at": 147.6923,
+    "src_to": 126.9,
+    "at": 122.3077,
     "fade_in": 0.008,
     "fade_out": 0.35,
     "gain_db": -1
    },
    {
-    "label": "BUTTON: the track's final hit as its own segment, its attack on the brick placard slam close:stamp:0 = 159.846 s (a 1.05 s comic stop-time after the track's own stop), ringing out under the 2.60 s end-card hold (tail_fade 2.0) [Voice Studio re-cut: stamp now at 161.09]",
+    "label": "BUTTON: the track's final hit as its own segment, its attack on the brick placard slam close:stamp:0 = 159.846 s (a 1.05 s comic stop-time after the track's own stop), ringing out under the 2.60 s end-card hold (tail_fade 2.0) [Voice Studio re-cut: stamp now at 161.09] [Omid re-cut]: stamp at 135.10",
     "src_from": 128.562,
     "src_to": 133.536,
-    "at": 161.091,
+    "at": 135.101,
     "fade_in": 0.004,
     "fade_out": 0.01,
     "tail_fade": 2,

@@ -47,7 +47,7 @@ export function ExplainerVideo() {
           type="button"
           className={s.play}
           onClick={() => void video.current?.play()}
-          aria-label="Play the tour, 2 minutes 45 seconds"
+          aria-label="Play the tour, 2 minutes 19 seconds"
         >
           <span className={s.playDisc} aria-hidden="true">
             <svg viewBox="0 0 40 40">

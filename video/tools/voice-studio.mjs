@@ -8,6 +8,7 @@
  * Voice Studio must be running (backend on 127.0.0.1:3900).
  *
  *   node video/tools/voice-studio.mjs          regenerate every line
+ *   VS_PROFILE=Omid VS_OUT=out/vo-omid node video/tools/voice-studio.mjs   another voice, another folder
  *   node video/tools/voice-studio.mjs l05 l19  regenerate just these
  */
 import { execFileSync } from "node:child_process";
@@ -21,14 +22,14 @@ const root = path.resolve(here, "..");
 const ffmpeg = path.resolve(root, "../node_modules/@remotion/compositor-win32-x64-msvc/ffmpeg.exe");
 
 const API = process.env.OMNIVOICE_URL ?? "http://127.0.0.1:3900";
-const PROFILE = "Down With Hunger";
+const PROFILE = process.env.VS_PROFILE ?? "Down With Hunger";
 const SEED = 7;
 // The clone's natural pace ran about 20% slower than the shipped narration; 1.2 brings the total back to roughly the old length.
 const SPEED = Number(process.env.VS_SPEED ?? 1.2);
 
 const lines = JSON.parse(fs.readFileSync(path.join(root, "src/narration.json"), "utf8"));
 const only = new Set(process.argv.slice(2));
-const outDir = path.join(root, "out/vo-voicestudio");
+const outDir = path.join(root, process.env.VS_OUT ?? "out/vo-voicestudio");
 fs.mkdirSync(outDir, { recursive: true });
 
 const timingPath = path.join(outDir, "narration-timing.json");
