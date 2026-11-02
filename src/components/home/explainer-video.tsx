@@ -20,15 +20,15 @@ import s from "./home.module.css";
  * preload="metadata" rather than "none": it costs a few kilobytes and gives
  * the controls a real duration before anyone presses play.
  *
- * The soundtrack uses CC BY recordings, so the credit sits under the player,
- * with the full list in /video/credits.txt (video/CREDITS.md has the sources).
+ * The soundtrack uses CC BY recordings. The on-page credit was removed at the
+ * owner's request; the full list is still served at /video/credits.txt and
+ * video/CREDITS.md has the sources.
  */
 export function ExplainerVideo() {
   const video = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
 
   return (
-    <>
     <div className={s.player}>
       <video
         ref={video}
@@ -51,7 +51,7 @@ export function ExplainerVideo() {
           type="button"
           className={s.play}
           onClick={() => void video.current?.play()}
-          aria-label="Play the tour, 2 minutes 43 seconds"
+          aria-label="Play the tour, 2 minutes 45 seconds"
         >
           <span className={s.playDisc} aria-hidden="true">
             <svg viewBox="0 0 40 40">
@@ -64,12 +64,5 @@ export function ExplainerVideo() {
         </button>
       )}
     </div>
-    <p className={s.credit}>
-      Music: “Onion Capers” by Kevin MacLeod (incompetech.com),{" "}
-      <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Sound effects by InspectorJ,
-      richcraftstudios and CouleurCasquette on Freesound (CC BY).{" "}
-      <a href="/video/credits.txt">Full credits</a>.
-    </p>
-    </>
   );
 }
