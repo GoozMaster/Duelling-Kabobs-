@@ -28,7 +28,7 @@ import { useEffect } from "react";
  * Persian plays the clip Mediterranean used to have (Sound Effects/
  * Mediterranean.mp3): it was always the Persian joke, and moved with it when
  * the Persian cuisine was added. Mediterranean now has its own clip, the
- * "SP Middle East" sound from myinstants.com, played as a capped sting.
+ * "SP Middle East" sound from myinstants.com, played in full.
  *
  * Sound Effects/ also holds China.mp3 and Japan.mp3, which have no
  * corresponding cuisine — the collection has "Asian", not "Chinese" or
@@ -70,7 +70,7 @@ const CAP_MS = 2600;
  * so they play to the end and skip the cap and fade. A second selection still
  * interrupts them.
  */
-const PLAY_FULL = new Set(["French", "Persian", "menu:vegan", "menu:christmas"]);
+const PLAY_FULL = new Set(["French", "Mediterranean", "Persian", "menu:vegan", "menu:christmas"]);
 const FADE_MS = 450;
 const FADE_STEPS = 18;
 const VOLUME = 0.35;
